@@ -1,0 +1,77 @@
+/********************************************
+* VB
+* Post class
+* Copyright (c) 2016 Jakob Johansson
+*********************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Ubuntu", sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+	color: #FD1254;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+}
+
+#wrap {
+	width: 40%;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #f9f9f9;
+}
+
+p {
+	margin-top: 15px;
+	line-height: 1.6;
+}
+
+input, label {
+	font-weight: 300;
+	font-size: 15px;
+	display: block;
+	width: 100%;
+	margin: 15px 0;
+}
+
+label {
+	font-weight: 400;
+}
+
+input {
+	font-family: "Ubuntu", sans-serif;
+	padding: 10px;
+	background-color: #fff;
+	border: none;
+	outline: none;
+	border-left: 5px solid #ddd;
+}
+
+input[type="submit"] {
+	width: 50%;
+	color: #FD1254;
+	font-size: 20px;
+	margin: 0 auto;
+	border-left: 0;
+	border-bottom: 5px solid #ddd;
+}
+
+a {
+	color: #FD1254;
+	font-weight: 400;
+	text-align: center;
+	text-decoration: none;
+	display:block;
+	padding:10px 20px;
+	background-color: white;
+	border-radius: 8px;
+}
