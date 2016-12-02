@@ -69,14 +69,14 @@ class User {
 		if ($result->num_rows > 0) die("That username already exists.");
 		$result->free();
 
-		//proceed to add user
+		// proceed to add user
 		$stmt = $db->prepare("INSERT INTO `vb_user` (name, password) VALUES (?, ?)");
 		$stmt->bind_param("ss", $username, $pass);
 		if ($stmt->execute()) {
 			$last = $db->insert_id;
 			$_SESSION['username'] = $username;
 			$_SESSION['id'] = $last;
-			//success, redirect to welcome page
+			// success, redirect to welcome page
 			header("Location: welcome.php");
 		}
 		$stmt->close();

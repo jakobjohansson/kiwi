@@ -75,7 +75,7 @@ class Post {
 
 		$sql = "DELETE FROM `vb_post` WHERE id = $this->id";
 		if($db->query($sql)) {
-			//success
+			// success
 			header("Location: index.php");
 		} else {
 			return false;
@@ -97,7 +97,7 @@ class Post {
 		$stmt = $db->prepare("UPDATE ´vb_post´ SET (public = ?, title = ?, content = ?, thumb = ?) WHERE id = $post->getID()");
 		$stmt->bind_param("isss", $public, $title, $content, $thumb);
 		if ($stmt->execute()); {
-			//success
+			// success
 			$last = $db->insert_id;
 			$stmt->close();
 			header("Location: index.php".$last);
@@ -141,7 +141,7 @@ class Post {
 		$stmt->bind_param("sssis", $title, $content, $authorName, $authorID, $thumb);
 		
 		if($stmt->execute()) {
-			//success
+			// success
 			$last = $db->insert_id;
 			$stmt->close();
 			header("Location: index.php?id=".$last);
