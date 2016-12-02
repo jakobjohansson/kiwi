@@ -1,9 +1,4 @@
 <?php
-/********************************************
-* VB
-* Functions
-* Copyright (c) 2016 Jakob Johansson
-*********************************************/
 
 function get_title() {
 	global $post;

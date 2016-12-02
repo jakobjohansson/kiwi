@@ -10,11 +10,6 @@
 	<div id="wrap">
 		<main>
 <?php
-/********************************************
-* VB
-* Install interface
-* Copyright (c) 2016 Jakob Johansson
-*********************************************/
 
 // if file exists, include to show error message
 if (file_exists(dirname(__FILE__).'/define.php')) {

@@ -1,9 +1,5 @@
 <?php
-/********************************************
-* VB
-* User class
-* Copyright (c) 2016 Jakob Johansson
-*********************************************/
+
 if (file_exists(dirname(__FILE__).'/define.php')) {
 	include(dirname(__FILE__).'/config.php');
 } else exit;

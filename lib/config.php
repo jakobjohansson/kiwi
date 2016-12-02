@@ -1,9 +1,4 @@
 <?php
-/********************************************
-* VB
-* Config file
-* Copyright (c) 2016 Jakob Johansson
-*********************************************/
 
 // set some universal settings
 session_start();

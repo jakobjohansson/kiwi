@@ -1,9 +1,4 @@
 <?php
-/********************************************
-* VB
-* User class
-* Copyright (c) 2016 Jakob Johansson
-*********************************************/
 
 class User {
 	protected $id;

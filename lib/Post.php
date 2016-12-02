@@ -1,9 +1,4 @@
 <?php
-/********************************************
-* VB
-* Post class
-* Copyright (c) 2016 Jakob Johansson
-*********************************************/
 
 class Post {
 	protected $title;
