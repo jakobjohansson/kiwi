@@ -1,5 +1,5 @@
 # VB
-"humble effort for a blog module"
+"humble effort at a blog module"
 
 # Available functions
 
