@@ -4,9 +4,15 @@ if (file_exists(dirname(__FILE__).'/define.php')) {
 	include(dirname(__FILE__).'/config.php');
 } else exit;
 
+$error = false;
+
 if(userExists()) exit;
 
-if (isset($_POST['submit'])) createUser();
+if (isset($_POST['submit'])) {
+	if(!createUser()) {
+		$error = true;
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,5 +38,10 @@ if (isset($_POST['submit'])) createUser();
 			</form>
 		</main>
 	</div>
+	<?php
+	if ($error) {
+		echo '<div id="error">Sadly that username already exists.</div>';
+	}
+	?>
 </body>
 </html>

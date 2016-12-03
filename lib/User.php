@@ -61,7 +61,7 @@ class User {
 		// check if username already exist
 		$sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
 		$result = $db->query($sql);
-		if ($result->num_rows > 0) die("That username already exists.");
+		if ($result->num_rows > 0) return false;
 		$result->free();
 
 		// proceed to add user
