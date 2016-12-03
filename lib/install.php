@@ -129,7 +129,7 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 	</div>
 	<?php
 	if (isset($_GET['error'])) {
-		echo "<div id='error'>Couldn't connect to database. Try again!</div>";
+		echo "<div id='response'>Couldn't connect to database. Try again!</div>";
 	}
 	?>
 </body>

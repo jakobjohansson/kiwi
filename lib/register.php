@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
 	</div>
 	<?php
 	if ($error) {
-		echo '<div id="error">Sadly that username already exists.</div>';
+		echo '<div id="response">Username already exist / passwords don\'t match.</div>';
 	}
 	?>
 </body>

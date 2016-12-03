@@ -8,7 +8,7 @@ class User {
 	protected $loggedIn = false;
 
 	// autoconstruct
-	function __autoconstruct() {
+	function __construct() {
 		$this->name = $_SESSION['username'] ?? null;
 		$this->id = $_SESSION['id'] ?? null;
 		$this->loggedIn = (isset($_SESSION['username'])) ? true : null;
@@ -48,7 +48,7 @@ class User {
 	public static function createUser($username, $pass, $passrepeat) {
 		global $db;
 
-		if ($pass != $passrepeat) die("Password don't match");
+		if ($pass != $passrepeat) return false;
 		// validate
 		$username = trim($username);
 		$pass = trim($pass);
@@ -72,9 +72,32 @@ class User {
 			$_SESSION['username'] = $username;
 			$_SESSION['id'] = $last;
 			// success, redirect to welcome page
-			header("Location: welcome.php");
+			header("Location: ../admin/");
 		}
 		$stmt->close();
+	}
+
+	// login
+	public static function login($username, $pass) {
+		global $db;
+
+		$username = trim($username);
+		$pass = trim($pass);
+
+		$username = htmlspecialchars($username);
+		$pass = htmlspecialchars($pass);
+
+		$sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
+		$result = $db->query($sql);
+		if ($result->num_rows == 0) {
+			return false;
+		}
+		$row = $result->fetch_assoc();
+		if (password_verify($pass, $row['password'])) {
+			$_SESSION['id'] = $row['id'];
+			$_SESSION['username'] = $row['name'];
+			return true;
+		} else return false;
 	}
 }
 

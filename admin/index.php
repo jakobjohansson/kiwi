@@ -2,5 +2,9 @@
 $root = "../";
 require($root.'lib/config.php');
 
-if(auth()) echo "hej";
+if (!auth()) {
+	header("Location: login.php");
+} else { 
+
+}
 ?>

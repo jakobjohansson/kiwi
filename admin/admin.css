@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400');
+@import "bootstrap.min.css";
 
 * {
 	box-sizing: border-box;
@@ -10,25 +11,43 @@ body {
 	font-family: "Ubuntu", sans-serif;
 	font-weight: 300;
 	font-size: 14px;
+}
+
+/* general */
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 300;
+	margin: 0 !important;
 	color: #FD1254;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-weight: 300;
+a {
+	color: #FD1254;
 }
 
-#wrap {
-	width: 40%;
-	margin: 50px auto 0;
-	padding: 20px;
+.grey {
 	background-color: #f9f9f9;
 }
+
 
 p {
 	margin-top: 15px;
 	line-height: 1.6;
 }
 
+/* main */
+
+.mid {
+	margin-top: 200px;
+}
+
+#response {
+	display:none;
+	background-color: #FD1254;
+	color: white;
+	padding: 10px;
+}
+
+/* forms */
 input, label {
 	font-weight: 300;
 	font-size: 15px;
@@ -37,7 +56,12 @@ input, label {
 	margin: 15px 0;
 }
 
+.padd {
+	padding: 20px;
+}
+
 label {
+	color: #FD1254;
 	font-weight: 400;
 }
 
@@ -57,24 +81,4 @@ input[type="submit"] {
 	margin: 0 auto;
 	border-left: 0;
 	border-bottom: 5px solid #ddd;
-}
-
-a {
-	color: #FD1254;
-	font-weight: 400;
-	text-align: center;
-	text-decoration: none;
-	display:block;
-	padding:10px 20px;
-	background-color: white;
-	border-radius: 8px;
-}
-
-#response {
-	display:block;
-	background-color: crimson;
-	color: white;
-	width: 40%;
-	margin: 0 auto;
-	padding: 15px;
 }
