@@ -11,6 +11,7 @@ body {
 	font-family: "Ubuntu", sans-serif;
 	font-weight: 300;
 	font-size: 14px;
+	text-rendering: optimizeLegibility;
 }
 
 /* general */
@@ -20,34 +21,78 @@ h1, h2, h3, h4, h5, h6 {
 	color: #FD1254;
 }
 
-a {
-	color: #FD1254;
+.admin h1, .admin h2 {
+	color: #242424;
 }
 
-.grey {
-	background-color: #f9f9f9;
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
+	ul > li {
+		display:block;
+		float:left;
+		position: relative;
+	}
 
-p {
-	margin-top: 15px;
-	line-height: 1.6;
+		ul > li > ul {
+			position: absolute;
+			display: none;
+		}
+
+		ul > li > ul > li {
+				float: none;
+				white-space: nowrap;
+			}
+
+/* admin page */
+
+header {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 40px;
+	background-color: #262626;
+	border-bottom: 1px solid #ccc;
+	color: #fff;
+	line-height: 40px;
 }
 
-/* main */
+	header a {
+		color: #fff;
+	}
 
-.mid {
-	margin-top: 200px;
+nav > ul > li {
+	margin-right: 20px;
 }
+	
+	nav > ul > li > ul {
+		box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 3px;
+	}
 
-#response {
-	display:none;
-	background-color: #FD1254;
-	color: white;
-	padding: 10px;
+		nav > ul > li > ul > li {
+			background-color: #fff;
+			padding: 0 20px 0 10px;
+		}
+
+			nav > ul > li > ul > li a {
+				color: #000;
+			}
+
+main {
+	padding-top: 60px;
 }
 
 /* forms */
+textarea {
+	resize: none;
+	width: 100%;
+	border: none;
+	outline: 0;
+	min-height: 200px;
+}
 input, label {
 	font-weight: 300;
 	font-size: 15px;
@@ -56,14 +101,14 @@ input, label {
 	margin: 15px 0;
 }
 
-.padd {
-	padding: 20px;
-}
-
 label {
 	color: #FD1254;
 	font-weight: 400;
 }
+
+	.admin label {
+		color: inherit;
+	}
 
 input {
 	font-family: "Ubuntu", sans-serif;
@@ -74,11 +119,53 @@ input {
 	border-left: 5px solid #ddd;
 }
 
-input[type="submit"] {
-	width: 50%;
+	input[type="submit"] {
+		width: 50%;
+		color: #FD1254;
+		font-size: 20px;
+		margin: 0 auto;
+		border-left: 0;
+		border-bottom: 5px solid #ddd;
+	}
+
+		.admin input[type="submit"] {
+			color: inherit;
+		}
+
+		.admin input, .admin textarea {
+			border-left: none;
+			border-bottom: 5px solid #303030;
+		}
+
+/* login */
+
+.login a {
 	color: #FD1254;
-	font-size: 20px;
-	margin: 0 auto;
-	border-left: 0;
-	border-bottom: 5px solid #ddd;
+}
+
+.login .grey {
+	background-color: #f9f9f9;
+}
+
+
+.login p {
+	margin-top: 15px;
+	line-height: 1.6;
+}
+
+.login .mid {
+	margin-top: 200px;
+}
+
+.login #response {
+	padding: 10px;
+	opacity: 0;
+	background-color: #FD1254;
+	color: white;
+	-webkit-transition: opacity 0.5s;
+	transition: opacity 0.5s;
+}
+
+.login .padd {
+	padding: 20px;
 }

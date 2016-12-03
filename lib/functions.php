@@ -1,5 +1,11 @@
 <?php
 
+function murder($data) {
+	$data = trim($data);
+	$data = stripslashes($data);
+	return $data;
+}
+
 function get_title() {
 	global $post;
 	return $post->getTitle();
@@ -44,6 +50,13 @@ function is_public() {
 	global $post;
 	if ($post->getPublic() == 0) return false;
 	if ($post->getPublic() == 1) return true;
+}
+
+function get_feed() {
+	$feed = Post::getFeed();
+	foreach ($feed as $f) {
+		yield $f;
+	}
 }
 
 function addPost() {

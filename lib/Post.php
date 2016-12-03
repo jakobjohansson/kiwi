@@ -108,10 +108,11 @@ class Post {
 		$sql = "SELECT * FROM `vb_post` WHERE public = 1 ORDER BY id $order";
 		$result = $db->query($sql);
 		if ($result->num_rows == 0) {
-			return false;
+			echo "<p>No posts yet</p>";
 		} else {
-			$row = $result->fetch_all();
-			return $row;
+			while($row = $result->fetch_assoc()) {
+				yield $row;
+			}
 		}
 		$result->free();
 		
@@ -130,7 +131,7 @@ class Post {
 		$thumb = htmlspecialchars($thumb);
 
 		$authorName = $_SESSION['username'];
-		$authorID = $_SESSION['authorID'];
+		$authorID = $_SESSION['id'];
 
 		$stmt = $db->prepare("INSERT INTO `vb_post` (title, content, authorName, authorID, thumb) VALUES (?, ?, ?, ?, ?)");
 		$stmt->bind_param("sssis", $title, $content, $authorName, $authorID, $thumb);
@@ -139,7 +140,7 @@ class Post {
 			// success
 			$last = $db->insert_id;
 			$stmt->close();
-			header("Location: index.php?id=".$last);
+			header("Location: ../index.php?id=".$last);
 		}
 
 	}

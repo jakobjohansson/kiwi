@@ -26,7 +26,7 @@ if (auth()) {
 		<script src="admin.js"></script>
 		<title>VB - Login</title>
 	</head>
-	<body>
+	<body class="login">
 
 			<div class="container mid">
 				<div class="row">
@@ -41,7 +41,7 @@ if (auth()) {
 								<input type="submit" value="Log in" name="submit" />
 							</form>
 						</div>
-						<div id="response" class="padd"></div>
+						<div id="response"></div>
 					</div>
 				</div>
 			</div>

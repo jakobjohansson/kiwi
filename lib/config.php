@@ -28,13 +28,12 @@ require(dirname(__FILE__).'/functions.php');
 // load user
 $user = new User();
 
-// set up feed 
-$feed = Post::getFeed();
-$user = new User();
-
-// set up id
+// set up stuff
+$page = $_GET['page'] ?? null;
 $id = $_GET['id'] ?? null;
-$post = $id ? new Post($id) : false;
+if ($page) $page = murder($page);
+if ($id) $id = murder($id);
+$post = $id ? new Post($id) : null;
 
 //good to go
 ?>
