@@ -102,7 +102,7 @@ if($page == "add") {
 							$feed = get_feed("all");
 							foreach($feed as $f) {
 								$content = nl2br($f['content']);
-								echo "<a href='?id={$f['id']}'>{$f['title']}</a>";
+								echo "<a href='../?id={$f['id']}'>{$f['title']}</a>";
 								echo "<p>$content</p>";
 								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'>Edit</a> - <a href='?page=remove&id={$f['id']}'>Remove</a></p>";
 							}
