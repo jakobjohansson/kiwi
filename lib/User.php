@@ -11,7 +11,7 @@ class User {
 	function __construct() {
 		$this->name = $_SESSION['username'] ?? null;
 		$this->id = $_SESSION['id'] ?? null;
-		$this->loggedIn = (isset($_SESSION['username'])) ? true : null;
+		$this->loggedIn = (isset($_SESSION['username'])) ? true : false;
 	}
 
 	// getters
