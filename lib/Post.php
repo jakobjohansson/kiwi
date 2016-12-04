@@ -65,10 +65,10 @@ class Post {
 		return $this->public;
 	}
 
-	public function removePost() {
+	public function removePost($id) {
 		global $db;
 
-		$sql = "DELETE FROM `vb_post` WHERE id = $this->id";
+		$sql = "DELETE FROM `vb_post` WHERE id = $id";
 		if($db->query($sql)) {
 			// success
 			header("Location: index.php");
@@ -84,7 +84,6 @@ class Post {
 		$content = trim($content);
 
 		$title = htmlspecialchars($title);
-		$content = htmlspecialchars($content);
 
 		$thumb = $thumb['tmp_name'];
 		$thumb = htmlspecialchars($thumb);
@@ -111,7 +110,7 @@ class Post {
 		$sql = "SELECT * FROM `vb_post`".$insert." ORDER BY id $order";
 		$result = $db->query($sql);
 		if ($result->num_rows == 0) {
-			echo "<p>No posts yet</p>";
+			echo "<p>No posts yet.</p>";
 		} else {
 			while($row = $result->fetch_assoc()) {
 				yield $row;
@@ -122,24 +121,25 @@ class Post {
 	}
 
 	// add post
-	public static function addPost($title, $content, $thumb = null) {
+	public static function addPost($public, $title, $content, $thumb = null) {
 		global $db;
 
 		$title = trim($title);
 		$content = trim($content);
-		$thumb = trim($thumb);
 
 		$title = htmlspecialchars($title);
-		$content = htmlspecialchars($content);
+
+		$thumb = $thumb['tmp_name'];
 		$thumb = htmlspecialchars($thumb);
+		$thumb = trim($thumb);
 
 		$authorName = $_SESSION['username'];
 		$authorID = $_SESSION['id'];
 
 		if (strlen($title) < 2 || strlen($content) < 10) return false;
 
-		$stmt = $db->prepare("INSERT INTO `vb_post` (title, content, authorName, authorID, thumb) VALUES (?, ?, ?, ?, ?)");
-		$stmt->bind_param("sssis", $title, $content, $authorName, $authorID, $thumb);
+		$stmt = $db->prepare("INSERT INTO `vb_post` (public, title, content, authorName, authorID, thumb) VALUES (?, ?, ?, ?, ?, ?)");
+		$stmt->bind_param("isssis", $public, $title, $content, $authorName, $authorID, $thumb);
 		
 		if($stmt->execute()) {
 			// success

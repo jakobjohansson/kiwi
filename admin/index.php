@@ -11,6 +11,8 @@ if($page == "add") {
 	header("Location: ".$root."index.php");
 } elseif ($page == "edit" && isset($id) && $_SERVER['REQUEST_METHOD'] == "POST") {
 	updatePost();
+} elseif ($page == "remove" && isset($id)) {
+	removePost();
 } else {
 ?>
 
@@ -88,6 +90,8 @@ if($page == "add") {
 							<textarea name="content" id="content" placeholder="great inspirational quotes here"></textarea>
 							<label for="thumb">Optional image</label>
 							<input type="file" name="thumb" id="thumb" />
+							<label for="public">Public?</label>
+							<input type="checkbox" name="public" id="public" checked/>
 							<input type="submit" id="submit" name="submit" value="Add post!" />
 						</form>
 						<?php
@@ -97,9 +101,10 @@ if($page == "add") {
 							<?php
 							$feed = get_feed("all");
 							foreach($feed as $f) {
+								$content = nl2br($f['content']);
 								echo "<a href='?id={$f['id']}'>{$f['title']}</a>";
-								echo "<p>{$f['content']}</p>";
-								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'>Edit</a></p>";
+								echo "<p>$content</p>";
+								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'>Edit</a> - <a href='?page=remove&id={$f['id']}'>Remove</a></p>";
 							}
 						}
 						?>

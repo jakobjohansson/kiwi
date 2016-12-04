@@ -13,7 +13,7 @@ function get_title() {
 
 function get_content() {
 	global $post;
-	return nl2br($post->getContent());
+	return $post->getContent();
 }
 
 function get_date() {
@@ -60,12 +60,15 @@ function get_feed($all = "null") {
 }
 
 function addPost() {
-	Post::addPost($_POST['title'], $_POST['content'], $_POST['thumb']);
+	$public = 0;
+	if (isset($_POST['public'])) $public = 1;
+	else $public = 0;
+	Post::addPost($public, $_POST['title'], $_POST['content'], $_FILES['thumb']);
 }
 
 function removePost() {
 	global $post;
-	$post->removePost();
+	$post->removePost(get_id());
 }
 
 function updatePost() {
