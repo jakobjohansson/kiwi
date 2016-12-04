@@ -67,16 +67,18 @@ if($page == "add") {
 						<?php
 						if ($page == "edit" && isset($id)) {
 						?>
-						<h2>Edit <?=get_title()?></h2>
+						<h2>Editing <?=get_title()?></h2>
 						<form action="?page=edit&id=<?=get_ID()?>" method="post" enctype="multipart/form-data">
 							<label for="title">Title</label>
 							<input type="text" id="title" name="title" placeholder="e.g what a wonderful day" value="<?=get_title()?>"/>
 							<label for="content">Content</label>
-							<textarea name="content" id="content" placeholder="great inspirational quotes here"><?=get_content()?></textarea>
+							<textarea name="content" id="content" placeholder="great inspirational quotes here"><?=getCode(get_content())?></textarea>
 							<label for="thumb">Optional image</label>
 							<input type="file" name="thumb" id="thumb" />
 							<label for="public">Public?</label>
 							<input type="checkbox" name="public" id="public" <?=is_public()?>/>
+							<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Use [code][/code] to highlight.<br/>
+							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.
 							<input type="submit" id="submit" name="submit" value="Edit post!" />
 						</form>
 						<?php
@@ -92,6 +94,8 @@ if($page == "add") {
 							<input type="file" name="thumb" id="thumb" />
 							<label for="public">Public?</label>
 							<input type="checkbox" name="public" id="public" checked/>
+							<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Use [code][/code] to highlight.<br/>
+							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.
 							<input type="submit" id="submit" name="submit" value="Add post!" />
 						</form>
 						<?php
@@ -103,7 +107,7 @@ if($page == "add") {
 								$content = nl2br($f['content']);
 								echo "<article><h3><a href='../?id={$f['id']}'>{$f['title']}</a></h3>";
 								echo "<p>$content</p>";
-								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'>Edit</a> - <a href='?page=remove&id={$f['id']}'>Remove</a></p></article>";
+								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'><i class='option fa fa-2x fa-pencil-square'></i></a><a href='?page=remove&id={$f['id']}'><i class='option fa fa-2x fa-trash'></i></a> </p></article>";
 							}
 						}
 						?>

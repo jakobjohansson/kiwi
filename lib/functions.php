@@ -1,5 +1,14 @@
 <?php
 
+function getCode($content) {
+	$content = str_replace('<span class="code">', '[code]', $content);
+	$content = str_replace("</span>", '[/code]', $content);
+	$content = str_replace('<a href="', '[link to=', $content);
+	$content = str_replace("</a>", '[/link]', $content);
+	$content = str_replace('">', ']', $content);
+	return $content;
+}
+
 function murder($data) {
 	$data = trim($data);
 	$data = stripslashes($data);

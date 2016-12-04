@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400');
 @import "bootstrap.min.css";
+@import "font-awesome.min.css";
 
 * {
 	box-sizing: border-box;
@@ -24,8 +25,17 @@ h1, h2, h3, h4, h5, h6 {
 .admin h1, .admin h2 {
 	color: #242424;
 }
+	
+i {
+	color: #FD1254;
+}
 
- a, a:hover {
+	i.option {
+		margin-left: 15px;
+
+	}
+
+a, a:hover {
 	color: #FD1254;
 	text-decoration: none;
 }

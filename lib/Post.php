@@ -87,6 +87,10 @@ class Post {
 		$content = str_replace("[code]", '<span class="code">', $content);
 		$content = str_replace("[/code]", '</span>', $content);
 
+		$content = str_replace("[link to=", '<a href="', $content);
+		$content = str_replace("[/link]", '</a>', $content);
+		$content = str_replace("]", '">', $content);
+
 		$thumb = $thumb['tmp_name'];
 		$thumb = htmlspecialchars($thumb);
 		$thumb = trim($thumb);
@@ -132,6 +136,10 @@ class Post {
 		$content = trim($content);
 		$content = str_replace("[code]", '<span class="code">', $content);
 		$content = str_replace("[/code]", '</span>', $content);
+
+		$content = str_replace("[link to=", '<a href="', $content);
+		$content = str_replace("[/link]", '</a>', $content);
+		$content = str_replace("]", '">', $content);
 
 		$thumb = $thumb['tmp_name'];
 		$thumb = htmlspecialchars($thumb);
