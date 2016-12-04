@@ -81,9 +81,11 @@ class Post {
 		global $db;
 		
 		$title = trim($title);
-		$content = trim($content);
-
 		$title = htmlspecialchars($title);
+
+		$content = trim($content);
+		$content = str_replace("[code]", '<span class="code">', $content);
+		$content = str_replace("[/code]", '</span>', $content);
 
 		$thumb = $thumb['tmp_name'];
 		$thumb = htmlspecialchars($thumb);
@@ -125,9 +127,11 @@ class Post {
 		global $db;
 
 		$title = trim($title);
-		$content = trim($content);
-
 		$title = htmlspecialchars($title);
+
+		$content = trim($content);
+		$content = str_replace("[code]", '<span class="code">', $content);
+		$content = str_replace("[/code]", '</span>', $content);
 
 		$thumb = $thumb['tmp_name'];
 		$thumb = htmlspecialchars($thumb);
