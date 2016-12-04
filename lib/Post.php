@@ -77,35 +77,38 @@ class Post {
 		}
 	}
 
-	public function updatePost($public, $title, $content, $thumb = null) {
+	public function updatePost($id, $public, $title, $content, $thumb = null) {
 		global $db;
-
-		$public = filter_val($public, FILTER_VALIDATE_INT);
+		
 		$title = trim($title);
 		$content = trim($content);
-		$thumb = trim($thumb);
 
 		$title = htmlspecialchars($title);
 		$content = htmlspecialchars($content);
-		$thumb = htmlspecialchars($thumb);
 
-		$stmt = $db->prepare("UPDATE ´vb_post´ SET (public = ?, title = ?, content = ?, thumb = ?) WHERE id = $post->getID()");
-		$stmt->bind_param("isss", $public, $title, $content, $thumb);
+		$thumb = $thumb['tmp_name'];
+		$thumb = htmlspecialchars($thumb);
+		$thumb = trim($thumb);
+
+		$stmt = $db->prepare("UPDATE `vb_post` SET public = ?, title = ?, content = ?, thumb = ? WHERE id=?");
+		$stmt->bind_param("isssi", $public, $title, $content, $thumb, $id);
 		if ($stmt->execute()); {
 			// success
 			$last = $db->insert_id;
 			$stmt->close();
-			header("Location: index.php".$last);
+			header("Location: index.php");
 		}
 	}
 
 	// STATICS
 
 	// return all
-	public static function getFeed($order = "DESC") {
+	public static function getFeed($public = null, $order = "DESC") {
 		global $db;
-		
-		$sql = "SELECT * FROM `vb_post` WHERE public = 1 ORDER BY id $order";
+
+		$insert = " WHERE public = 1";
+		if ($public == "all") $insert = "";
+		$sql = "SELECT * FROM `vb_post`".$insert." ORDER BY id $order";
 		$result = $db->query($sql);
 		if ($result->num_rows == 0) {
 			echo "<p>No posts yet</p>";
@@ -132,6 +135,8 @@ class Post {
 
 		$authorName = $_SESSION['username'];
 		$authorID = $_SESSION['id'];
+
+		if (strlen($title) < 2 || strlen($content) < 10) return false;
 
 		$stmt = $db->prepare("INSERT INTO `vb_post` (title, content, authorName, authorID, thumb) VALUES (?, ?, ?, ?, ?)");
 		$stmt->bind_param("sssis", $title, $content, $authorName, $authorID, $thumb);

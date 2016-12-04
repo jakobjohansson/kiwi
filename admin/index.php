@@ -9,6 +9,8 @@ if($page == "add") {
 } elseif ($page == "logout") {
 	$user->logOut();
 	header("Location: ".$root."index.php");
+} elseif ($page == "edit" && isset($id) && $_SERVER['REQUEST_METHOD'] == "POST") {
+	updatePost();
 } else {
 ?>
 
@@ -61,14 +63,29 @@ if($page == "add") {
 						<h1>Welcome <?=$user->getName()?>.</h1>
 						<p>This is your admin page. To the top you can find the menu, where you can manage your posts and users.</p>
 						<?php
-						if ($page == "write") {
+						if ($page == "edit" && isset($id)) {
+						?>
+						<h2>Edit <?=get_title()?></h2>
+						<form action="?page=edit&id=<?=get_ID()?>" method="post" enctype="multipart/form-data">
+							<label for="title">Title</label>
+							<input type="text" id="title" name="title" placeholder="e.g what a wonderful day" value="<?=get_title()?>"/>
+							<label for="content">Content</label>
+							<textarea name="content" id="content" placeholder="great inspirational quotes here"><?=get_content()?></textarea>
+							<label for="thumb">Optional image</label>
+							<input type="file" name="thumb" id="thumb" />
+							<label for="public">Public?</label>
+							<input type="checkbox" name="public" id="public" <?=is_public()?>/>
+							<input type="submit" id="submit" name="submit" value="Edit post!" />
+						</form>
+						<?php
+						} elseif ($page == "write") {
 						?>
 						<h2>Write a post</h2>
-						<form action="?page=add" method="post">
+						<form action="?page=add" method="post" enctype="multipart/form-data">
 							<label for="title">Title</label>
 							<input type="text" id="title" name="title" placeholder="e.g what a wonderful day" />
 							<label for="content">Content</label>
-							<textarea name="content" id="content" placeholder="great inspirational novel here"></textarea>
+							<textarea name="content" id="content" placeholder="great inspirational quotes here"></textarea>
 							<label for="thumb">Optional image</label>
 							<input type="file" name="thumb" id="thumb" />
 							<input type="submit" id="submit" name="submit" value="Add post!" />
@@ -78,11 +95,11 @@ if($page == "add") {
 						?>
 							<h2>Overview</h2>
 							<?php
-							$feed = get_feed();
+							$feed = get_feed("all");
 							foreach($feed as $f) {
 								echo "<a href='?id={$f['id']}'>{$f['title']}</a>";
 								echo "<p>{$f['content']}</p>";
-								echo "<p>{$f['date']}</p>";
+								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'>Edit</a></p>";
 							}
 						}
 						?>

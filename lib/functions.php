@@ -13,7 +13,7 @@ function get_title() {
 
 function get_content() {
 	global $post;
-	return $post->getContent();
+	return nl2br($post->getContent());
 }
 
 function get_date() {
@@ -48,12 +48,12 @@ function get_url() {
 
 function is_public() {
 	global $post;
-	if ($post->getPublic() == 0) return false;
-	if ($post->getPublic() == 1) return true;
+	if ($post->getPublic() == 0) return;
+	if ($post->getPublic() == 1) return "checked";
 }
 
-function get_feed() {
-	$feed = Post::getFeed();
+function get_feed($all = "null") {
+	$feed = Post::getFeed($all);
 	foreach ($feed as $f) {
 		yield $f;
 	}
@@ -70,7 +70,10 @@ function removePost() {
 
 function updatePost() {
 	global $post;
-	$post->updatePost($_POST['public'], $_POST['title'], $_POST['content'], $_POST['thumb']);
+	$public = 0;
+	if (isset($_POST['public'])) $public = 1;
+	else $public = 0;
+	$post->updatePost(get_id(), $public, $_POST['title'], $_POST['content'], $_FILES['thumb']);
 }
 
 function createUser() {
