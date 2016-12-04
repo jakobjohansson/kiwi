@@ -25,6 +25,11 @@ h1, h2, h3, h4, h5, h6 {
 	color: #242424;
 }
 
+ a, a:hover {
+	color: #FD1254;
+	text-decoration: none;
+}
+
 ul {
 	list-style: none;
 	margin: 0;
@@ -49,20 +54,21 @@ ul {
 
 /* admin page */
 
-header {
+#header {
 	position: fixed;
 	top: 0;
 	width: 100%;
 	height: 40px;
-	background-color: #262626;
+	background-color: #eee;
 	border-bottom: 1px solid #ccc;
-	color: #fff;
+	color: crimson;
 	line-height: 40px;
 	z-index: 500;
+	font-weight: 400;
 }
 
-	header a {
-		color: #fff;
+	#header a, #header a:hover, #header a:link, #header a:visited {
+		color: crimson;
 	}
 
 nav > ul > li {
@@ -85,6 +91,15 @@ nav > ul > li {
 main {
 	padding-top: 60px;
 }
+
+article {
+	margin-top: 10px;
+	padding: 15px;
+}
+
+	article:nth-of-type(2n) {
+		background-color: #f9f9f9;
+	}
 
 /* forms */
 textarea {
@@ -119,13 +134,17 @@ input {
 	outline: none;
 	border-left: 5px solid #ddd;
 }
+	.admin input, .admin textarea {
+		border-left: 5px solid #FD1254;
+		padding-left:10px;
+	}
 
 	input[type="submit"] {
 		width: 50%;
 		color: #FD1254;
 		font-size: 20px;
 		margin: 0 auto;
-		border-left: 0;
+		border-left: none;
 		border-bottom: 5px solid #ddd;
 	}
 
@@ -133,16 +152,9 @@ input {
 			color: inherit;
 		}
 
-		.admin input, .admin textarea {
-			border-left: none;
-			border-bottom: 5px solid #303030;
-		}
+	
 
 /* login */
-
-.login a {
-	color: #FD1254;
-}
 
 .login .grey {
 	background-color: #f9f9f9;

@@ -27,7 +27,7 @@ if($page == "add") {
 	<title>Admin</title>
 </head>
 <body class="admin">
-	<header>
+	<header id="header">
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-12">
@@ -97,14 +97,13 @@ if($page == "add") {
 						<?php
 						} else {
 						?>
-							<h2>Overview</h2>
 							<?php
 							$feed = get_feed("all");
 							foreach($feed as $f) {
 								$content = nl2br($f['content']);
-								echo "<a href='../?id={$f['id']}'>{$f['title']}</a>";
+								echo "<article><h3><a href='../?id={$f['id']}'>{$f['title']}</a></h3>";
 								echo "<p>$content</p>";
-								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'>Edit</a> - <a href='?page=remove&id={$f['id']}'>Remove</a></p>";
+								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'>Edit</a> - <a href='?page=remove&id={$f['id']}'>Remove</a></p></article>";
 							}
 						}
 						?>
