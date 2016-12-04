@@ -42,6 +42,32 @@ class User {
 		$this->loggedIn = false;
 	}
 
+	public function setPassword($old, $new) {
+		global $db;
+
+		$old = trim($old);
+		$new = trim($new);
+
+		$sql = "SELECT password FROM `vb_user` WHERE id = ".$this->getID();
+		$result = $db->query($sql);
+		$row = $result->fetch_object();
+
+		if (!password_verify($old, $row->password)) return false;
+		$result->free();
+
+		$stmt = $db->prepare("UPDATE `vb_user` SET password = ? WHERE id = ".$this->getID());
+		$stmt->bind_param("s", $new);
+		$new = password_hash($new, PASSWORD_DEFAULT);
+		if ($stmt->execute()) {
+			$stmt->close();
+			return true;
+		} else {
+			$stmt->close();
+			return false;
+		}
+
+	} 
+
 	// STATICS
 
 	// create user

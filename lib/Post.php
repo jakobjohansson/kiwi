@@ -157,7 +157,7 @@ class Post {
 			// success
 			$last = $db->insert_id;
 			$stmt->close();
-			header("Location: ../index.php?id=".$last);
+			header("Location: index.php");
 		}
 
 	}

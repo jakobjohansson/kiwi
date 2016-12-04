@@ -4,6 +4,20 @@ require($root.'lib/config.php');
 
 if (!auth()) header("Location: login.php");
 
+
+if ($page == "password" && $_SERVER['REQUEST_METHOD'] == "POST") {
+	if ($_POST['new'] == $_POST['newre']) {
+		if(!$user->setPassword($_POST['old'], $_POST['new'])) {
+			echo "You entered wrong password!";
+		} else {
+			echo "Password successfully updated!";
+		}
+	} else {
+		echo "The passwords didnt match!";
+	}
+	exit;
+}
+
 if($page == "add") {
 	addPost();
 } elseif ($page == "logout") {
@@ -33,6 +47,7 @@ if($page == "add") {
 				<div class="col-xs-12">
 					<nav>
 						<ul>
+							<li><a href="../">Visit site</a></li>
 							<li>
 								Posts
 								<ul>
@@ -43,7 +58,7 @@ if($page == "add") {
 							<li>
 								Account
 								<ul>
-									<li><a href="">Change password</a></li>
+									<li><a href="?page=password">Change password</a></li>
 									<li><a href="">Remove account</a></li>
 								</ul>
 							</li>
@@ -65,7 +80,21 @@ if($page == "add") {
 						<h1>Welcome <?=$user->getName()?>.</h1>
 						<p>This is your admin page. To the top you can find the menu, where you can manage your posts and users.</p>
 						<?php
-						if ($page == "edit" && isset($id)) {
+						if ($page == "password") {
+						?>
+						<h2>Change password</h2>
+						<form action="?page=password" method="post" id="change">
+							<label for="old">Old password</label>
+							<input type="password" name="old" id="old" placeholder=". . . . ." />
+							<label for="new">New password</label>
+							<input type="password" name="new" id="new" placeholder=". . . . ." />
+							<label for="newrepeat">Repeat new password</label>
+							<input type="password" name="newre" id="newre" placeholder=". . . . ." />
+							<div id="response"></div>
+							<input type="submit" value="Change password" name="submit" />
+						</form>
+						<?php
+						} elseif ($page == "edit" && isset($id)) {
 						?>
 						<h2>Editing <?=get_title()?></h2>
 						<form action="?page=edit&id=<?=get_ID()?>" method="post" enctype="multipart/form-data">

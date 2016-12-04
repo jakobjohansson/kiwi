@@ -161,7 +161,6 @@ input {
 		.admin input[type="submit"] {
 			color: inherit;
 		}
-
 	
 
 /* login */
@@ -180,7 +179,7 @@ input {
 	margin-top: 200px;
 }
 
-.login #response {
+#response {
 	padding: 10px;
 	opacity: 0;
 	background-color: #FD1254;
