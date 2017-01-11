@@ -48,7 +48,7 @@ class VB extends Post
      */
     public function countPosts()
     {
-        $sql = "SELECT id FROM `vb_post`";
+        $sql = "SELECT id FROM `vb_post` ORDER BY id DESC";
         $result = $this->db->query($sql);
         $ids = 0;
         if ($result->num_rows > 0) {
