@@ -44,11 +44,15 @@ class VB extends Post
 
     /**
      * counts all the posts in the database
+     * @param boolean $hidden = false, set to true to show posts that are not public
      * @return int count of the array
      */
-    public function countPosts()
+    public function countPosts($hidden = false)
     {
-        $sql = "SELECT id FROM `vb_post` ORDER BY id DESC";
+        $sql = "SELECT id FROM `vb_post` WHERE PUBLIC = 1 ORDER BY id DESC";
+        if ($hidden) {
+            $sql = "SELECT id FROM `vb_post` ORDER BY id DESC";
+        }
         $result = $this->db->query($sql);
         $ids = 0;
         if ($result->num_rows > 0) {
@@ -64,11 +68,12 @@ class VB extends Post
     /**
      * uses the constructPost() method on all posts
      * and assembles them in an array
+     * @param boolean $hidden = false set to true to show hidden posts
      * @return array of post objects
      */
-    public function getPosts()
+    public function getPosts($hidden = false)
     {
-        $num = $this->countPosts();
+        $num = $this->countPosts($hidden);
         if ($num == 0) {
             return null;
         }
@@ -83,14 +88,15 @@ class VB extends Post
      * loops the getPosts() method
      * increments and returns post objects in every iteration
      * usage: while($vb->loopPosts()) {}
+     * @param boolean $hidden = false set to true to show hidden posts
      * @return true|false
      */
-    public function loopPosts()
+    public function loopPosts($hidden = false)
     {
-        $size = count($this->getPosts());
+        $size = count($this->getPosts($hidden));
         if ($this->currentpost < $size) {
             global $post;
-            $post = $this->constructPost($this->getPosts()[$this->currentpost]->id);
+            $post = $this->constructPost($this->getPosts($hidden)[$this->currentpost]->id);
             $this->currentpost++;
             return true;
         } else {

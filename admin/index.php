@@ -142,7 +142,7 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 						<?php
 
                         } else {
-                            while ($vb->loopPosts()) {
+                            while ($vb->loopPosts(true)) {
                                 $public = "(Public)";
                                 if ($post->public == 0) {
                                     $public = "(Not public)";

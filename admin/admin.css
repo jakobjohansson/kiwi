@@ -149,6 +149,10 @@ input {
 		padding-left:10px;
 	}
 
+    .admin textarea#content {
+        resize: vertical;
+    }
+
 	input[type="submit"] {
 		width: 50%;
 		color: #FD1254;
