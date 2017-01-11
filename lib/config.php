@@ -10,6 +10,7 @@ if (file_exists(dirname(__FILE__).'/define.php')) {
 // check if SQL works, otherwise redirect to install
 if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !defined("DB_DATABASE") || !defined("DB_INSTALLED")) {
     header("Location: lib/install.php");
+    exit;
 }
 
 // set up database
