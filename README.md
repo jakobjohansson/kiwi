@@ -3,11 +3,7 @@
 
 ## Information
 
-- use ``while($vb->loopPosts())`` to loop through all $post objects.
-- ``$post`` object is always available on pages with id's.
-- ``auth()`` returns true if user is logged in.
-- ``userExists()`` returns true if vb_user has any rows.
-- ``createUser()`` creates a new user, linking to $_post.
+Wordpress-like installation, quick and intuitive templates, non cluttered admin page.
 
 ## Guide
 In VB, there's no need to touch the index.php file. The ``views\`` folder is where all your templates go. You can however extend these possibilities by editing the statements in the index file. 
@@ -49,3 +45,8 @@ object(Post)#6 (8) {
     string(161) "Hello."
 }
 ```
+
+###Handy features
+- The auth() functions returns true when the user is logged in. This is handy for displaying specific content on your site.
+- [code]snippets[\code] will let you write html-code easily.
+- [link to="http://github.com"]makes it easy to make a link.[\link]
