@@ -60,7 +60,7 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
         if (fwrite($file, $write)) {
             fclose($file);
             // success!
-            // also needs to create tables here
+            // create tables
 
             $db = new mysqli($dbhost, $dbuser, $dbpass, $dbdb);
             if ($db->connect_errno > 0) {

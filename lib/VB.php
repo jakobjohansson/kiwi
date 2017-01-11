@@ -5,28 +5,24 @@ class VB extends Post
     protected $db;
     protected $currentpost = 0;
 
+    /**
+     * controller construction
+     * @param Post $post
+     * @param mysqli $db
+     * @return void
+     */
     public function __construct(Post $post, mysqli $db)
     {
         $this->post = $post;
         $this->db = $db;
     }
 
-    public function displayPost()
-    {
-        echo "<strong>";
-        echo $this->post->title;
-        echo "</strong><br />";
-        echo "posted ";
-        echo $this->post->date;
-        echo $this->post->content;
-        echo "<hr />";
-    }
 
-    public function getPost()
-    {
-        return $this->post;
-    }
-
+    /**
+     * constructs a post object with a given id
+     * @param int $id
+     * @return Post $post
+     */
     public function constructPost($id)
     {
         $sql = "SELECT * FROM `vb_post` WHERE id = '$id'";
@@ -43,9 +39,13 @@ class VB extends Post
         $result->free();
         $this->formatContent();
         $this->formatDate();
-        return $this->getPost();
+        return $this->post;
     }
 
+    /**
+     * counts all the posts in the database
+     * @return int count of the array
+     */
     public function countPosts()
     {
         $sql = "SELECT id FROM `vb_post`";
@@ -61,6 +61,11 @@ class VB extends Post
         return $ids;
     }
 
+    /**
+     * uses the constructPost() method on all posts
+     * and assembles them in an array
+     * @return array of post objects
+     */
     public function getPosts()
     {
         $num = $this->countPosts();
@@ -71,6 +76,12 @@ class VB extends Post
         return $return;
     }
 
+    /**
+     * loops the getPosts() method
+     * increments and returns post objects in every iteration
+     * usage: while($vb->loopPosts()) {}
+     * @return true|false
+     */
     public function loopPosts()
     {
         $size = count($this->getPosts());
@@ -84,7 +95,10 @@ class VB extends Post
         }
     }
 
-
+    /**
+     * formats post content lines into paragraphs
+     * @return void
+     */
     public function formatContent()
     {
         $string = $this->post->content;
@@ -95,12 +109,21 @@ class VB extends Post
         $this->post->content = $string;
     }
 
+    /**
+     * formats post date into F j, Y
+     * @return void
+     */
     public function formatDate()
     {
         $date = DateTime::createFromFormat("Y-m-d H:i:s", $this->post->date);
         $this->post->date = $date->format("F j, Y");
     }
 
+    /**
+     * removes a post with the given id
+     * @param int $id specific id of the post
+     * @return header|false
+     */
     public function removePost($id)
     {
         $sql = "DELETE FROM `vb_post` WHERE id = $id";
@@ -112,6 +135,15 @@ class VB extends Post
         }
     }
 
+    /**
+     * updates a post with a given id
+     * @param int $id specific id of the post
+     * @param int $public wether post is public or not
+     * @param string $title
+     * @param string $content
+     * @param $_FILES|null $thumb include post image
+     * @return header|false
+     */
     public function updatePost($id, $public, $title, $content, $thumb = null)
     {
         $title = trim($title);
@@ -139,6 +171,14 @@ class VB extends Post
         }
     }
 
+    /**
+     * adds a post
+     * @param int $public wether post should be public or not
+     * @param string $title
+     * @param string $content
+     * @param $_FILES|null $thumb include post image
+     * @return header|false
+     */
     public function addPost($public, $title, $content, $thumb = null)
     {
         $title = trim($title);
