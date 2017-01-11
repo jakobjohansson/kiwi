@@ -1,6 +1,7 @@
 <?php
 require("lib/config.php");
-
-// your code here
-?> 
-<a href="admin/">Admin</a>
+if ($page == "view" && $id) {
+    require("views/single.php");
+} else {
+    require("views/flow.php");
+}

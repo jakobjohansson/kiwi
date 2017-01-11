@@ -69,6 +69,9 @@ class VB extends Post
     public function getPosts()
     {
         $num = $this->countPosts();
+        if ($num == 0) {
+            return null;
+        }
         $return = array();
         foreach ($num as $id) {
             $return[] = $this->constructPost($id);

@@ -95,6 +95,16 @@ class User
         $username = htmlspecialchars($username);
         $pass = htmlspecialchars($pass);
 
+        if (strlen($pass) < 5) {
+            return false;
+            exit;
+        }
+
+        if (strlen($username) < 4) {
+            return false;
+            exit;
+        }
+
         $pass = password_hash($pass, PASSWORD_DEFAULT);
 
         // check if username already exist
@@ -102,6 +112,7 @@ class User
         $result = $db->query($sql);
         if ($result->num_rows > 0) {
             return false;
+            exit;
         }
         $result->free();
 
@@ -116,6 +127,7 @@ class User
             header("Location: ../admin/");
         }
         $stmt->close();
+        return true;
     }
 
     // login
