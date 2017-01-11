@@ -7,6 +7,10 @@ function getCode($content)
     $content = str_replace('<a href="', '[link to=', $content);
     $content = str_replace("</a>", '[/link]', $content);
     $content = str_replace('">', ']', $content);
+
+    $content = substr($content, 3);
+    $content = str_replace("</p><p>", "\r\n\r\n", $content);
+    $content = substr($content, 0, -4);
     return $content;
 }
 

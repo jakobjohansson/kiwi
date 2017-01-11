@@ -11,8 +11,8 @@ class User
     // autoconstruct
     public function __construct()
     {
-        $this->name = $_SESSION['username'] ? $_SESSION['username'] : null;
-        $this->id = $_SESSION['id'] ? $_SESSION['id'] : null;
+        $this->name = isset($_SESSION['username']) ? $_SESSION['username'] : null;
+        $this->id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
         $this->loggedIn = (isset($_SESSION['username'])) ? true : false;
     }
 
