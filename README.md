@@ -55,3 +55,4 @@ object(Post)#6 (8) {
 - Enable option to limit posts and make pagination.
 - Image snippet.
 - Support for post thumbnails.
+- Show only public posts on front end but both on admin interface.
