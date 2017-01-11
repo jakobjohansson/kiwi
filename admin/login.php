@@ -3,18 +3,18 @@ $root = "../";
 require($root.'lib/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	if(User::login($_POST['username'], $_POST['password']) == true) {
-		echo "Success!";
-	} else {
-		echo "Incorrect username or password.";
-	}
-	exit;
+    if (User::login($_POST['username'], $_POST['password']) == true) {
+        echo "Success!";
+    } else {
+        echo "Incorrect username or password.";
+    }
+    exit;
 }
 
 if (auth()) {
-	header("Location: index.php");
+    header("Location: index.php");
 } else {
-	// content ?>
+    // content?>
 
 	<!DOCTYPE html>
 	<html>
@@ -49,5 +49,6 @@ if (auth()) {
 	</body>
 	</html>
 	<?php
+
 }
 ?>

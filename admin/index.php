@@ -2,33 +2,43 @@
 $root = "../";
 require($root.'lib/config.php');
 
-if (!auth()) header("Location: login.php");
+if (!auth()) {
+    header("Location: login.php");
+}
 
 
 if ($page == "password" && $_SERVER['REQUEST_METHOD'] == "POST") {
-	if ($_POST['new'] == $_POST['newre']) {
-		if(!$user->setPassword($_POST['old'], $_POST['new'])) {
-			echo "You entered wrong password!";
-		} else {
-			echo "Password successfully updated!";
-		}
-	} else {
-		echo "The passwords didnt match!";
-	}
-	exit;
+    if ($_POST['new'] == $_POST['newre']) {
+        if (!$user->setPassword($_POST['old'], $_POST['new'])) {
+            echo "You entered wrong password!";
+        } else {
+            echo "Password successfully updated!";
+        }
+    } else {
+        echo "The passwords didnt match!";
+    }
+    exit;
 }
 
-if($page == "add") {
-	addPost();
+if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
+    $public = 0;
+    if (isset($_POST['public'])) {
+        $public = 1;
+    }
+    $vb->addPost($public, $_POST['title'], $_POST['content'], $_FILES['thumb']);
 } elseif ($page == "logout") {
-	$user->logOut();
-	header("Location: ".$root."index.php");
+    $user->logOut();
+    header("Location: ".$root."index.php");
 } elseif ($page == "edit" && isset($id) && $_SERVER['REQUEST_METHOD'] == "POST") {
-	updatePost();
+    $public = 0;
+    if (isset($_POST['public'])) {
+        $public = 1;
+    }
+    $vb->updatePost($id, $public, $_POST['title'], $_POST['content'], $_FILES['thumb']);
 } elseif ($page == "remove" && isset($id)) {
-	removePost();
+    $vb->removePost($id);
 } else {
-?>
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -80,8 +90,8 @@ if($page == "add") {
 						<h1>Welcome <?=$user->getName()?>.</h1>
 						<p>This is your admin page. To the top you can find the menu, where you can manage your posts and users.</p>
 						<?php
-						if ($page == "password") {
-						?>
+                        if ($page == "password") {
+                            ?>
 						<h2>Change password</h2>
 						<form action="?page=password" method="post" id="change">
 							<label for="old">Old password</label>
@@ -94,25 +104,27 @@ if($page == "add") {
 							<input type="submit" value="Change password" name="submit" />
 						</form>
 						<?php
-						} elseif ($page == "edit" && isset($id)) {
-						?>
-						<h2>Editing <?=get_title()?></h2>
-						<form action="?page=edit&id=<?=get_ID()?>" method="post" enctype="multipart/form-data">
+
+                        } elseif ($page == "edit" && isset($id)) {
+                            ?>
+						<h2>Editing <?=$post->title?></h2>
+						<form action="?page=edit&id=<?=$post->id?>" method="post" enctype="multipart/form-data">
 							<label for="title">Title</label>
-							<input type="text" id="title" name="title" placeholder="e.g what a wonderful day" value="<?=get_title()?>"/>
+							<input type="text" id="title" name="title" placeholder="e.g what a wonderful day" value="<?=$post->title?>"/>
 							<label for="content">Content</label>
-							<textarea name="content" id="content" placeholder="great inspirational quotes here"><?=getCode(get_content())?></textarea>
+							<textarea name="content" id="content" placeholder="great inspirational quotes here"><?=getCode($post->content)?></textarea>
 							<label for="thumb">Optional image</label>
 							<input type="file" name="thumb" id="thumb" />
 							<label for="public">Public?</label>
-							<input type="checkbox" name="public" id="public" <?=is_public()?>/>
+							<input type="checkbox" name="public" id="public" <?=is_public($post)?>/>
 							<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Use [code][/code] to highlight.<br/>
 							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.
 							<input type="submit" id="submit" name="submit" value="Edit post!" />
 						</form>
 						<?php
-						} elseif ($page == "write") {
-						?>
+
+                        } elseif ($page == "write") {
+                            ?>
 						<h2>Write a post</h2>
 						<form action="?page=add" method="post" enctype="multipart/form-data">
 							<label for="title">Title</label>
@@ -128,18 +140,18 @@ if($page == "add") {
 							<input type="submit" id="submit" name="submit" value="Add post!" />
 						</form>
 						<?php
-						} else {
-						?>
-							<?php
-							$feed = get_feed("all");
-							foreach($feed as $f) {
-								$content = nl2br($f['content']);
-								echo "<article><h3><a href='../?id={$f['id']}'>{$f['title']}</a></h3>";
-								echo "<p>$content</p>";
-								echo "<p>{$f['date']}. <a href='?page=edit&id={$f['id']}'><i class='option fa fa-2x fa-pencil-square'></i></a><a href='?page=remove&id={$f['id']}'><i class='option fa fa-2x fa-trash'></i></a> </p></article>";
-							}
-						}
-						?>
+
+                        } else {
+                            while ($vb->loopPosts()) {
+                                $public = "(Public)";
+                                if ($post->public == 0) {
+                                    $public = "(Not public)";
+                                }
+                                echo "<article><h3><a href='../?id=$post->id'>$post->title</a></h3>";
+                                echo "<p>$post->content</p>";
+                                echo "<p>$post->date. <a href='?page=edit&id=$post->id'><i class='option fa fa-2x fa-pencil-square'></i></a><a href='?page=remove&id=$post->id'><i class='option fa fa-2x fa-trash'></i></a> $public</p></article>";
+                            }
+                        } ?>
 					</div>
 				</div>
 			</div>
@@ -151,5 +163,6 @@ if($page == "add") {
 </html>
 
 <?php
+
 }
 ?>

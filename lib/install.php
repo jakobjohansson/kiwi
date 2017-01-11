@@ -16,14 +16,15 @@ ob_start();
 
 // if file exists, include to show error message
 if (file_exists(dirname(__FILE__).'/define.php')) {
-	include(dirname(__FILE__).'/define.php');
+    include(dirname(__FILE__).'/define.php');
 }
 
 // if settings are already defined, tell user to delete define.php
 if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !defined("DB_DATABASE")) {
 
-	//otherwise begin installation
-	if (!isset($_POST['submit'])) { ?>
+    //otherwise begin installation
+    if (!isset($_POST['submit'])) {
+        ?>
 
 		<h1>Welcome to VB!</h1>
 		<p>Take some time to configure the website. This is necessary for VB to run. Enter your database settings here. It will not be saved anywhere except on your computer. If you need help regarding the settings, contact your web administrator.</p>
@@ -40,36 +41,37 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 		</form>
 			
 	<?php
-	} else {
-		// execute after button is pressed
-		$dbhost = filter_var($_POST['dbhost'], FILTER_SANITIZE_STRING);
-		$dbuser = filter_var($_POST['dbuser'], FILTER_SANITIZE_STRING);
-		$dbpass = filter_var($_POST['dbpass'], FILTER_SANITIZE_STRING);
-		$dbdb = filter_var($_POST['dbdb'], FILTER_SANITIZE_STRING);
 
-		// needs to do some string regexp here probably
-		if (empty($dbhost) || empty($dbuser) || empty($dbpass) || empty($dbdb)) {
-			echo "<h1>Error</h1><p>All fields need to be filled out.</p>";
-			exit;
-		}
+    } else {
+        // execute after button is pressed
+        $dbhost = filter_var($_POST['dbhost'], FILTER_SANITIZE_STRING);
+        $dbuser = filter_var($_POST['dbuser'], FILTER_SANITIZE_STRING);
+        $dbpass = filter_var($_POST['dbpass'], FILTER_SANITIZE_STRING);
+        $dbdb = filter_var($_POST['dbdb'], FILTER_SANITIZE_STRING);
 
-		$file = fopen("define.php", "w");
-		$write = "<?php\ndefine('DB_HOST', \"$dbhost\");\ndefine('DB_USER', \"$dbuser\");\ndefine('DB_PASS', \"$dbpass\");\ndefine('DB_DATABASE', \"$dbdb\");\n";
-		if (fwrite($file, $write)) {
-			fclose($file);
-			// success!
-			// also needs to create tables here
+        // needs to do some string regexp here probably
+        if (empty($dbhost) || empty($dbuser) || empty($dbpass) || empty($dbdb)) {
+            echo "<h1>Error</h1><p>All fields need to be filled out.</p>";
+            exit;
+        }
 
-			$db = new mysqli($dbhost, $dbuser, $dbpass, $dbdb);
-			if($db->connect_errno > 0){
-				unlink("define.php");
-				header("Location: install.php?error");
-				die();
-			}
+        $file = fopen("define.php", "w");
+        $write = "<?php\ndefine('DB_HOST', \"$dbhost\");\ndefine('DB_USER', \"$dbuser\");\ndefine('DB_PASS', \"$dbpass\");\ndefine('DB_DATABASE', \"$dbdb\");\n";
+        if (fwrite($file, $write)) {
+            fclose($file);
+            // success!
+            // also needs to create tables here
 
-			$sql = "DROP TABLE IF EXISTS `vb_post`; DROP TABLE IF EXISTS `vb_user`;";
+            $db = new mysqli($dbhost, $dbuser, $dbpass, $dbdb);
+            if ($db->connect_errno > 0) {
+                unlink("define.php");
+                header("Location: install.php?error");
+                die();
+            }
 
-			$sql .= "CREATE TABLE `vb_post` (
+            $sql = "DROP TABLE IF EXISTS `vb_post`; DROP TABLE IF EXISTS `vb_user`;";
+
+            $sql .= "CREATE TABLE `vb_post` (
 					 `id` int(11) NOT NULL AUTO_INCREMENT,
 					 `title` varchar(255) NOT NULL,
 					 `content` text NOT NULL,
@@ -83,7 +85,7 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 					 KEY `id_2` (`id`)
 					) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;";
 
-			$sql .= "CREATE TABLE `vb_user` (
+            $sql .= "CREATE TABLE `vb_user` (
 					 `id` int(11) NOT NULL AUTO_INCREMENT,
 					 `name` varchar(255) NOT NULL,
 					 `postcount` int(11) NOT NULL DEFAULT '0',
@@ -91,34 +93,33 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 					 PRIMARY KEY (`id`)
 					) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
 
-			if ($db->multi_query($sql) === false) {
-				echo "<h1>Error</h1><p>An error occured while trying to add tables.</p>";
-				exit;
-			} else {
-				$file = fopen("define.php", "a");
-				$write = "define('DB_INSTALLED', true);";
-				fwrite($file, $write);
-				fclose($file);
-				?>
+            if ($db->multi_query($sql) === false) {
+                echo "<h1>Error</h1><p>An error occured while trying to add tables.</p>";
+                exit;
+            } else {
+                $file = fopen("define.php", "a");
+                $write = "define('DB_INSTALLED', true);";
+                fwrite($file, $write);
+                fclose($file); ?>
 				<h1>Success!</h1>
 				<p>Settings were successfully saved! Now, lets make your user!</p> 
 				<p><a href="register.php">Make your user!</a></p>
 				<?php
-			}
-			$db->close();
-		} else { 
-			fclose($file);
-			?>
+
+            }
+            $db->close();
+        } else {
+            fclose($file); ?>
 
 			<h1>Something went wrong</h1>
 			<p>We couldn't make the define.php file. Please make sure the VB folder has write privelegies and try again.</p>
 		<?php
-		}
-		
-	}
-} else { 
-	// error message
-	?>
+
+        }
+    }
+} else {
+    // error message
+    ?>
 
 	<h1>No access</h1>
 	<p>You can't access this file after a successfull installation. If you have problems or your installation messed up, you can delete <strong>lib/define.php</strong> to start this process over. Note that your posts and users won't be removed - you only have to set up your connection again.</p>
@@ -128,10 +129,10 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 		</main>
 	</div>
 	<?php
-	if (isset($_GET['error'])) {
-		echo "<div id='response'>Couldn't connect to database. Try again!</div>";
-	}
-	?>
+    if (isset($_GET['error'])) {
+        echo "<div id='response'>Couldn't connect to database. Try again!</div>";
+    }
+    ?>
 </body>
 </html>
 <?php

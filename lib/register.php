@@ -1,17 +1,21 @@
 <?php
 
 if (file_exists(dirname(__FILE__).'/define.php')) {
-	include(dirname(__FILE__).'/config.php');
-} else exit;
+    include(dirname(__FILE__).'/config.php');
+} else {
+    exit;
+}
 
 $error = false;
 
-if(userExists()) exit;
+if (userExists()) {
+    exit;
+}
 
 if (isset($_POST['submit'])) {
-	if(!createUser()) {
-		$error = true;
-	}
+    if (!createUser()) {
+        $error = true;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -39,9 +43,9 @@ if (isset($_POST['submit'])) {
 		</main>
 	</div>
 	<?php
-	if ($error) {
-		echo '<div id="response">Username already exist / passwords don\'t match.</div>';
-	}
-	?>
+    if ($error) {
+        echo '<div id="response">Username already exist / passwords don\'t match.</div>';
+    }
+    ?>
 </body>
 </html>
