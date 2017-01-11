@@ -115,8 +115,10 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 							<textarea name="content" id="content" placeholder="great inspirational quotes here"><?=getCode($post->content)?></textarea>
 							<label for="thumb">Optional image</label>
 							<input type="file" name="thumb" id="thumb" />
-							<label for="public">Public?</label>
-							<input type="checkbox" name="public" id="public" <?=is_public($post)?>/>
+							<label for="public">
+                                <i class='fa fa-globe fa-2x'></i> 
+                                <input type="checkbox" name="public" id="public" <?=is_public($post)?>/>
+                                </label>
 							<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Use [code][/code] to highlight.<br/>
 							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.
 							<input type="submit" id="submit" name="submit" value="Edit post!" />
@@ -133,8 +135,10 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 							<textarea name="content" id="content" placeholder="great inspirational quotes here"></textarea>
 							<label for="thumb">Optional image</label>
 							<input type="file" name="thumb" id="thumb" />
-							<label for="public">Public?</label>
-							<input type="checkbox" name="public" id="public" checked/>
+							<label for="public">
+                                <i class='fa fa-globe fa-2x'></i>
+                                <input type="checkbox" name="public" id="public" checked/>
+                            </label>
 							<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Use [code][/code] to highlight.<br/>
 							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.
 							<input type="submit" id="submit" name="submit" value="Add post!" />
@@ -143,9 +147,9 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 
                         } else {
                             while ($vb->loopPosts(true)) {
-                                $public = "(Public)";
-                                if ($post->public == 0) {
-                                    $public = "(Not public)";
+                                $public = null;
+                                if ($post->public == 1) {
+                                    $public = "<i class='option fa fa-globe fa-2x' alt='Public post'></i>";
                                 }
                                 echo "<article><h3><a href='../?id=$post->id'>$post->title</a></h3>";
                                 echo "$post->content";
