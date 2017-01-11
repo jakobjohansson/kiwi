@@ -10,6 +10,7 @@ function getCode($content)
 
     $content = substr($content, 3);
     $content = str_replace("</p><p>", "\r\n\r\n", $content);
+    $content = str_replace("<br />", "\r\n", $content);
     $content = substr($content, 0, -4);
     return $content;
 }

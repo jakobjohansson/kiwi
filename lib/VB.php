@@ -107,7 +107,7 @@ class VB extends Post
         $string = $this->post->content;
         $string = str_replace("\r\n", "<br />", $string);
         $string = str_replace("<br /><br />", "</p><p>", $string);
-        $string = str_replace("<br />", "", $string);
+        $string = str_replace("{<br />", "{<br />&nbsp;&nbsp;&nbsp;&nbsp;", $string);
         $string = "<p>".$string."</p>";
         $this->post->content = $string;
     }

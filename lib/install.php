@@ -66,7 +66,7 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
             if ($db->connect_errno > 0) {
                 unlink("define.php");
                 header("Location: install.php?error");
-                die();
+                exit;
             }
 
             $sql = "DROP TABLE IF EXISTS `vb_post`; DROP TABLE IF EXISTS `vb_user`;";

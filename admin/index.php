@@ -148,7 +148,7 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
                                     $public = "(Not public)";
                                 }
                                 echo "<article><h3><a href='../?id=$post->id'>$post->title</a></h3>";
-                                echo "<p>$post->content</p>";
+                                echo "$post->content";
                                 echo "<p>$post->date. <a href='?page=edit&id=$post->id'><i class='option fa fa-2x fa-pencil-square'></i></a><a href='?page=remove&id=$post->id'><i class='option fa fa-2x fa-trash'></i></a> $public</p></article>";
                             }
                         } ?>
