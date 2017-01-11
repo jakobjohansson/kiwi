@@ -38,7 +38,10 @@ $vb = new VB($post, $db);
 $page = isset($_GET['page']) ? murder($_GET['page']) : false;
 $id = isset($_GET['id']) ? murder($_GET['id']) : false;
 if ($id) {
-    $post = $vb->constructPost($id);
+    if (!$post = $vb->constructPost($id)) {
+        header("Location: ?");
+        exit;
+    }
 }
 
 //good to go;
