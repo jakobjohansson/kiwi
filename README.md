@@ -1,4 +1,4 @@
-# VB
+# Verbalizer
 "humble effort at a blog module"
 
 ## Information
@@ -6,7 +6,7 @@
 Wordpress-like installation, quick and intuitive templates, non cluttered admin page.
 
 ## Guide
-In VB, there's no need to touch the index.php file. The ``views\`` folder is where all your templates go. You can however extend these possibilities by editing the statements in the index file. 
+In Verbalizer, there's no need to touch the index.php file. The ``views\`` folder is where all your templates go. You can however extend these possibilities by editing the statements in the index file. 
 
 ###Flow.php
 Flow.php is the front page. This is cover-up for all kinds of pages.
