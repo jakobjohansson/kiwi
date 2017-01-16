@@ -34,7 +34,7 @@ $user = new User();
 
 // set up stuff
 $post = new Post();
-$vb = new VB($post, $db);
+$vb = new Verbalizer($post, $db);
 $page = isset($_GET['page']) ? murder($_GET['page']) : false;
 $id = isset($_GET['id']) ? murder($_GET['id']) : false;
 if ($id) {

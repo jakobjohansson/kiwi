@@ -4,9 +4,9 @@ function getCode($content)
 {
     $content = str_replace('<span class="code">', '[code]', $content);
     $content = str_replace("</span>", '[/code]', $content);
-    $content = str_replace('<a href="', '[link to=', $content);
+    $content = str_replace('<a href="', '[link to=#', $content);
     $content = str_replace("</a>", '[/link]', $content);
-    $content = str_replace('">', ']', $content);
+    $content = str_replace('">', '#]', $content);
 
     $content = substr($content, 3);
     $content = str_replace("</p><p>", "\r\n\r\n", $content);
