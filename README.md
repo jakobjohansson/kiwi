@@ -52,7 +52,7 @@ object(Post)#6 (8) {
 - ``[link to="http://github.com"]``makes it easy to make a link.``[/link]``
 
 ##To do list
-- Enable option to limit posts and make pagination.
-- Image snippet.
-- Support for post thumbnails.
-- Show only public posts on front end but both on admin interface.
+- [ ] Enable option to limit posts and make pagination.
+- [ ] Image snippet.
+- [ ] Support for post thumbnails.
+- [x] Show only public posts on front end but both on admin interface.
