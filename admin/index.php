@@ -120,7 +120,8 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
                                 <input type="checkbox" name="public" id="public" <?=is_public($post)?>/>
                                 </label>
 							<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Use [code][/code] to highlight.<br/>
-							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.
+							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.<br/>
+                            <i class="fa fa-picture-o" aria-hidden="true"></i> Use [img]source[/img] to paste an image.
 							<input type="submit" id="submit" name="submit" value="Edit post!" />
 						</form>
 						<?php
@@ -140,7 +141,8 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
                                 <input type="checkbox" name="public" id="public" checked/>
                             </label>
 							<i class="fa fa-exclamation-circle" aria-hidden="true"></i> Use [code][/code] to highlight.<br/>
-							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.
+							<i class="fa fa-link" aria-hidden="true"></i> Use [link to=][/link] to print a link.<br/>
+                            <i class="fa fa-picture-o" aria-hidden="true"></i> Use [img]source[/img] to paste an image.
 							<input type="submit" id="submit" name="submit" value="Add post!" />
 						</form>
 						<?php

@@ -18,9 +18,9 @@ class Verbalizer extends Post
         $this->db = $db;
     }
 
-
     /**
      * constructs a post object with a given id
+     * used to generate posts
      * @param int $id
      * @return Post $post
      */
@@ -45,6 +45,8 @@ class Verbalizer extends Post
 
     /**
      * counts all the posts in the database
+     * returns all post id's
+     * used by getPosts
      * @param boolean $hidden = false, set to true to show posts that are not public
      * @return int count of the array
      */
@@ -109,7 +111,7 @@ class Verbalizer extends Post
      * formats post content lines into paragraphs
      * @return void
      */
-    public function formatContent()
+    private function formatContent()
     {
         $string = $this->post->content;
         $string = str_replace("\r\n", "<br />", $string);
@@ -120,10 +122,10 @@ class Verbalizer extends Post
     }
 
     /**
-     * formats post date into F j, Y
+     * formats post date into F j, Y for better readability
      * @return void
      */
-    public function formatDate()
+    private function formatDate()
     {
         $date = DateTime::createFromFormat("Y-m-d H:i:s", $this->post->date);
         $this->post->date = $date->format("F j, Y");
@@ -138,7 +140,6 @@ class Verbalizer extends Post
     {
         $sql = "DELETE FROM `vb_post` WHERE id = $id";
         if ($this->db->query($sql)) {
-            // success
             header("Location: index.php");
         } else {
             return false;
@@ -166,6 +167,9 @@ class Verbalizer extends Post
         $content = str_replace("[link to=#", '<a href="', $content);
         $content = str_replace("[/link]", '</a>', $content);
         $content = str_replace("#]", '">', $content);
+
+        $content = str_replace("[img]", '<img src="', $content);
+        $content = str_replace("[/img]", '" class="post-image" />', $content);
 
         $thumb = $thumb['tmp_name'];
         $thumb = htmlspecialchars($thumb);
@@ -198,9 +202,12 @@ class Verbalizer extends Post
         $content = str_replace("[code]", '<span class="code">', $content);
         $content = str_replace("[/code]", '</span>', $content);
 
-        $content = str_replace("[link to=", '<a href="', $content);
+        $content = str_replace("[link to=#", '<a href="', $content);
         $content = str_replace("[/link]", '</a>', $content);
-        $content = str_replace("]", '">', $content);
+        $content = str_replace("#]", '">', $content);
+
+        $content = str_replace("[img]", '<img src="', $content);
+        $content = str_replace("[/img]", '" class="post-image" />', $content);
 
         $thumb = $thumb['tmp_name'];
         $thumb = htmlspecialchars($thumb);

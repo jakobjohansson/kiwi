@@ -8,6 +8,9 @@ function getCode($content)
     $content = str_replace("</a>", '[/link]', $content);
     $content = str_replace('">', '#]', $content);
 
+    $content = str_replace('<img src="', "[img]", $content);
+    $content = str_replace('" class="post-image" />', "[/img]", $content);
+
     $content = substr($content, 3);
     $content = str_replace("</p><p>", "\r\n\r\n", $content);
     $content = str_replace("<br />", "\r\n", $content);
