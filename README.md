@@ -50,6 +50,7 @@ object(Post)#6 (8) {
 - The ``auth()`` functions returns true when the user is logged in. This is handy for displaying specific content on your site.
 - ``[code]``snippets``[/code]`` will let you write html-code easily.
 - ``[link to="http://github.com"]``makes it easy to make a link.``[/link]``
+- ``[img]source[/img]`` prints an image!
 
 ##To do list
 - [ ] Enable option to limit posts and make pagination.
