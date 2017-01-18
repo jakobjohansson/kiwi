@@ -78,7 +78,6 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 					 `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 					 `authorID` int(11) DEFAULT NULL,
 					 `authorName` varchar(255) NOT NULL,
-					 `thumb` varchar(255) NOT NULL,
 					 `public` tinyint(1) NOT NULL DEFAULT '1',
 					 PRIMARY KEY (`id`),
 					 UNIQUE KEY `id` (`id`),
