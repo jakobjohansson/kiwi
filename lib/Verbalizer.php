@@ -155,7 +155,7 @@ class Verbalizer extends Post
      * @param $_FILES|null $thumb include post image
      * @return header|false
      */
-    public function updatePost($id, $public, $title, $content, $thumb = null)
+    public function updatePost($id, $public, $title, $content)
     {
         $title = trim($title);
         $title = htmlspecialchars($title);
@@ -171,12 +171,8 @@ class Verbalizer extends Post
         $content = str_replace("[img]", '<img src="', $content);
         $content = str_replace("[/img]", '" class="post-image" />', $content);
 
-        $thumb = $thumb['tmp_name'];
-        $thumb = htmlspecialchars($thumb);
-        $thumb = trim($thumb);
-
-        $stmt = $this->db->prepare("UPDATE `vb_post` SET public = ?, title = ?, content = ?, thumb = ? WHERE id=?");
-        $stmt->bind_param("isssi", $public, $title, $content, $thumb, $id);
+        $stmt = $this->db->prepare("UPDATE `vb_post` SET public = ?, title = ?, content = ? WHERE id=?");
+        $stmt->bind_param("issi", $public, $title, $content, $id);
         if ($stmt->execute()) {
             // success
             $last = $this->db->insert_id;
@@ -193,7 +189,7 @@ class Verbalizer extends Post
      * @param $_FILES|null $thumb include post image
      * @return header|false
      */
-    public function addPost($public, $title, $content, $thumb = null)
+    public function addPost($public, $title, $content)
     {
         $title = trim($title);
         $title = htmlspecialchars($title);
@@ -209,10 +205,6 @@ class Verbalizer extends Post
         $content = str_replace("[img]", '<img src="', $content);
         $content = str_replace("[/img]", '" class="post-image" />', $content);
 
-        $thumb = $thumb['tmp_name'];
-        $thumb = htmlspecialchars($thumb);
-        $thumb = trim($thumb);
-
         $authorName = $_SESSION['username'];
         $authorID = $_SESSION['id'];
 
@@ -220,8 +212,8 @@ class Verbalizer extends Post
             return false;
         }
 
-        $stmt = $this->db->prepare("INSERT INTO `vb_post` (public, title, content, authorName, authorID, thumb) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("isssis", $public, $title, $content, $authorName, $authorID, $thumb);
+        $stmt = $this->db->prepare("INSERT INTO `vb_post` (public, title, content, authorName, authorID) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("isssi", $public, $title, $content, $authorName, $authorID);
         
         if ($stmt->execute()) {
             // success

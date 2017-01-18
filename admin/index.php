@@ -25,7 +25,7 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['public'])) {
         $public = 1;
     }
-    $vb->addPost($public, $_POST['title'], $_POST['content'], $_FILES['thumb']);
+    $vb->addPost($public, $_POST['title'], $_POST['content']);
 } elseif ($page == "logout") {
     $user->logOut();
     header("Location: ".$root."index.php");
@@ -34,7 +34,7 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['public'])) {
         $public = 1;
     }
-    $vb->updatePost($id, $public, $_POST['title'], $_POST['content'], $_FILES['thumb']);
+    $vb->updatePost($id, $public, $_POST['title'], $_POST['content']);
 } elseif ($page == "remove" && isset($id)) {
     $vb->removePost($id);
 } else {
@@ -113,8 +113,6 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 							<input type="text" id="title" name="title" placeholder="e.g what a wonderful day" value="<?=$post->title?>"/>
 							<label for="content">Content</label>
 							<textarea name="content" id="content" placeholder="great inspirational quotes here"><?=getCode($post->content)?></textarea>
-							<label for="thumb">Optional image</label>
-							<input type="file" name="thumb" id="thumb" />
 							<label for="public">
                                 <i class='fa fa-globe fa-2x'></i> 
                                 <input type="checkbox" name="public" id="public" <?=is_public($post)?>/>
@@ -134,8 +132,6 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 							<input type="text" id="title" name="title" placeholder="e.g what a wonderful day" />
 							<label for="content">Content</label>
 							<textarea name="content" id="content" placeholder="great inspirational quotes here"></textarea>
-							<label for="thumb">Optional image</label>
-							<input type="file" name="thumb" id="thumb" />
 							<label for="public">
                                 <i class='fa fa-globe fa-2x'></i>
                                 <input type="checkbox" name="public" id="public" checked/>
