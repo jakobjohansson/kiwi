@@ -10,7 +10,7 @@ body {
 	font-family: "Ubuntu", sans-serif;
 	font-weight: 300;
 	font-size: 14px;
-	color: #FD1254;
+	color: #1D628B;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -52,7 +52,7 @@ input {
 
 input[type="submit"] {
 	width: 50%;
-	color: #FD1254;
+	color: #1D628B;
 	font-size: 20px;
 	margin: 0 auto;
 	border-left: 0;
@@ -60,7 +60,7 @@ input[type="submit"] {
 }
 
 a {
-	color: #FD1254;
+	color: #1D628B;
 	font-weight: 400;
 	text-align: center;
 	text-decoration: none;
@@ -72,7 +72,7 @@ a {
 
 #response {
 	display:block;
-	background-color: #FD1254;
+	background-color: #1D628B;
 	color: white;
 	width: 40%;
 	margin: 0 auto;
