@@ -21,9 +21,9 @@ if (auth()) {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link href="admin.css" rel="stylesheet" />
-		<script src="jquery.js"></script>
-		<script src="admin.js"></script>
+		<link href="css/admin.css" rel="stylesheet" />
+		<script src="js/jquery.js"></script>
+		<script src="js/admin.js"></script>
 		<title>VB - Login</title>
 	</head>
 	<body class="login">
