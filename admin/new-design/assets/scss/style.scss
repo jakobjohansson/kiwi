@@ -1,0 +1,149 @@
+@import 'bootstrap/_bootstrap.scss';
+@import 'fontawesome/_font-awesome.scss';
+@import 'buttons/_buttons.scss';
+@import 'animate/_animate.scss';
+@import url('https://fonts.googleapis.com/css?family=Exo+2:300,400,700|Nunito:300,400,700|Oxygen:300,400,700|Hind:300,400,700|Arimo:300,400,700|Droid+Sans:300,400,700|Lato:300,400,700,900|Noto+Sans:400,700|Ubuntu:300,400,700|Open+Sans:300,400,700|Roboto:300,400,700|Roboto+Condensed|Montserrat|Raleway:300,400,700');
+
+$dark: #1b2530;
+$dark-medium: #283545;
+$light: #A4A9AD;
+$highlight: #41b7b5;
+$white: #F8F9FA;
+
+html, body, main, .container-fluid, .importante, .sidebar, .content {
+    height: 100%;
+}
+
+body {
+    font-family: "Exo 2", sans-serif;
+    text-rendering: optimizeLegibility;
+    background-color: $white;
+    color: $dark-medium;
+}
+
+h1, h2 {
+    border-bottom: 1px solid $light;
+    font-size: 20px;
+    font-weight: 300;
+    padding: 0 0 20px 10px;
+    text-transform: uppercase;
+
+    &.dash {
+        border-bottom-color: $dark-medium;
+        padding: 0 10px 20px 0;
+    }
+}
+
+h3 {margin: 0;}
+
+.no-padding {
+    padding: 0;
+}
+
+.content {
+    max-height: 100%;
+    overflow-y: scroll;
+
+    input, label, textarea {
+        display: block;
+        width: 100%;
+        border: none;
+        padding: 10px;
+        outline: 0;
+    }
+
+    input, textarea {
+        border-bottom: 4px solid $highlight;
+
+        &[type="submit"] {
+            background-color: $white;
+            width: 20%;
+            margin: 0 auto;
+        }
+    }
+
+    textarea {
+        min-height: 400px;
+        resize: resize-y;
+    }
+
+    .post-thumb {
+        width: 85%;
+        border-radius: 4px;
+        padding: 15px;
+        box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 4px;
+        margin-bottom: 35px;
+
+        a {
+            display: inline-block;
+            padding: 5px 15px;
+            color: $white;
+            background-color: $light;
+            border-radius: 4px;
+            box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 4px;
+            text-decoration: none;
+
+            &:last-of-type {
+                background-color: $dark-medium;
+            }
+        }
+    }
+}
+
+.sidebar {
+    background-color: $dark;
+    color: $light;
+
+    .logo {
+        display: inline-block;
+        margin: 20px auto 0;
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        background-color: $highlight;
+        color: $white;
+        border-radius: 50%;
+        font-size: 40px;
+    }
+
+    .below-logo {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: block;
+            width:100%;
+            padding: 20px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: bold;
+            transition: background-color 0.4s;
+
+            &:hover, &.active {
+                background-color: $dark-medium;
+            }
+
+            &.active {
+                border-left: 4px solid $highlight;
+            }
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    padding: 20px 0;
+    width: 100%;
+    line-height: 40px;
+    font-size: 12px;
+    a, a:hover {
+        color: inherit;
+    }
+}
