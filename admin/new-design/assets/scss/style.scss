@@ -2,7 +2,7 @@
 @import 'fontawesome/_font-awesome.scss';
 @import 'buttons/_buttons.scss';
 @import 'animate/_animate.scss';
-@import url('https://fonts.googleapis.com/css?family=Exo+2:300,400,700|Nunito:300,400,700|Oxygen:300,400,700|Hind:300,400,700|Arimo:300,400,700|Droid+Sans:300,400,700|Lato:300,400,700,900|Noto+Sans:400,700|Ubuntu:300,400,700|Open+Sans:300,400,700|Roboto:300,400,700|Roboto+Condensed|Montserrat|Raleway:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Exo+2:300,400,700|Raleway:300,400,700');
 
 $dark: #1b2530;
 $dark-medium: #283545;
@@ -44,6 +44,10 @@ h3 {margin: 0;}
     max-height: 100%;
     overflow-y: scroll;
 
+    .row {
+        font-family: "Raleway", sans-serif;
+    }
+
     input, label, textarea {
         display: block;
         width: 100%;
@@ -53,18 +57,25 @@ h3 {margin: 0;}
     }
 
     input, textarea {
-        border-bottom: 4px solid $highlight;
+        border-left: 4px solid $highlight;
 
         &[type="submit"] {
             background-color: $white;
             width: 20%;
             margin: 0 auto;
+            border-left: none;
+            border-bottom: 4px solid $highlight;
+        }
+
+        &[type="checkbox"] {
+            display: inline-block;
+            width: auto;
         }
     }
 
     textarea {
         min-height: 400px;
-        resize: resize-y;
+        resize: vertical;
     }
 
     .post-thumb {
