@@ -181,3 +181,60 @@ footer {
         color: inherit;
     }
 }
+
+.login {
+    font-family: "Raleway", sans-serif;
+    background-color: $dark;
+
+
+    .outer {
+       background-color: $dark; 
+    }
+
+    .inner {
+        
+        padding: 10px 20px;
+        color: $light;
+
+        h1 {
+            border: none;
+        }
+
+        input, label {
+            display: block;
+            width: 100%;
+        }
+
+        input {
+            background-color: inherit;
+            border: none;
+            border-bottom: 4px solid $highlight;
+            margin-bottom: 40px;
+            outline: 0;
+            padding: 10px;
+
+            &[type="submit"] {
+                background-color: $highlight;
+                background: linear-gradient(top, $highlight, $dark);
+                background: -webkit-linear-gradient(top, $highlight, $dark);
+                color: $white;
+                width: 40%;
+                margin: 10px auto;
+                border-radius: 12px;
+                font-size: 16px;
+                font-weight: 400;
+                padding: 5px 10px;
+                border: none;
+            }
+        }
+    }
+
+    #response {
+        padding: 10px;
+        opacity: 0;
+        background-color: $highlight;
+        color: $white;
+        -webkit-transition: opacity 0.5s;
+        transition: opacity 0.5s;
+    }
+}
