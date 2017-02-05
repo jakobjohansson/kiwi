@@ -5,6 +5,9 @@
 
 Wordpress-like installation, quick and intuitive templates, non cluttered admin page.
 
+![install example image](https://retarded.fish/verbrepoimages/install.PNG)
+![admin example image](https://retarded.fish/verbrepoimages/admin.PNG)
+
 ## Guide
 In Verbalizer, there's no need to touch the index.php file. The ``views\`` folder is where all your templates go. You can however extend these possibilities by editing the statements in the index file. 
 
