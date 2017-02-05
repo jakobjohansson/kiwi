@@ -81,7 +81,7 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
                         <li data-page="logout">Log out</li>
                     </ul>
                     <footer>
-                        <a href="https://github.com/jakobjohansson/Verbalizer">Git</a> - <a href="mailto:jakobjohansson2@icloud.com">Support</a>
+                        <a href="https://github.com/jakobjohansson/Verbalizer" target="_blank">Git</a> - <a href="mailto:jakobjohansson2@icloud.com">Support</a>
                     </footer>
                 </div>
             </div>
