@@ -12,7 +12,7 @@ ob_start();
 <body class="login">
 	<div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 outer">
                 <div class="inner">
 <?php
 
@@ -134,13 +134,20 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 ?>
 	            </div>
             </div>
-        </div>  
+        </div>
+            <?php
+            if (isset($_GET['error'])) {
+                ?>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                        <div id="response">Couldn't connect to database. Try again!</div>
+                    </div>
+                </div>
+                <?php
+
+            }
+            ?>
     </div>
-	<?php
-    if (isset($_GET['error'])) {
-        echo "<div id='response'>Couldn't connect to database. Try again!</div>";
-    }
-    ?>
 </body>
 </html>
 <?php
