@@ -40,14 +40,16 @@ if (auth()) {
                         <label for="username">Username</label>
                         <input type="text" name="username" id="username" placeholder="e.g admin" />
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" />
+                        <input type="password" name="password" id="password" placeholder="bananas" />
                         <input type="submit" value="Log in" name="submit" />
                     </form>
                 </div>
 			</div>
 		</div>
         <div class="row">
-            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4" id="response">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <div id="response"></div>
+            </div>
         </div>
 	</div>
 </body>
