@@ -229,7 +229,7 @@ class User
 
         // proceed to add user
         $stmt = $db->prepare("INSERT INTO `vb_user` (name, password, aliases) VALUES (?, ?, ?)");
-        $stmt->bind_param("ss", $username, $pass, $username);
+        $stmt->bind_param("sss", $username, $pass, $username);
         if ($stmt->execute()) {
             $last = $db->insert_id;
             $_SESSION['username'] = $username;
