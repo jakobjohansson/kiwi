@@ -6,4 +6,9 @@ $(document).ready(function() {
         $(".loader li").removeClass("active");
         $(this).addClass("active");
     });
+
+    $(document).on("click", ".clicker", function() {
+        $(this).parent().children(".reveal").slideToggle();
+    });
+    
 });

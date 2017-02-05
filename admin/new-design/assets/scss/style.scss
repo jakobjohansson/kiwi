@@ -61,8 +61,8 @@ h3 {margin: 0;}
 
         &[type="submit"] {
             background-color: $white;
-            width: 20%;
-            margin: 0 auto;
+            width: auto;
+            margin: 0;
             border-left: none;
             border-bottom: 4px solid $highlight;
         }
@@ -74,16 +74,12 @@ h3 {margin: 0;}
     }
 
     textarea {
-        min-height: 400px;
+        min-height: 200px;
         resize: vertical;
     }
 
-    .post-thumb {
-        width: 85%;
-        border-radius: 4px;
-        padding: 15px;
-        box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 4px;
-        margin-bottom: 35px;
+    .posts article {
+        margin-bottom: 50px;
 
         a {
             display: inline-block;
