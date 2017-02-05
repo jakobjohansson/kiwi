@@ -60,7 +60,7 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 	<!— [if lt IE 9]>
 		<script src="assets/js/html5shiv.js"></script>
 	<![endif]—>
-	<title></title>
+	<title>Admin</title>
 </head>
 <body>
     <main>

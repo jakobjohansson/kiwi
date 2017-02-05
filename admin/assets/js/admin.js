@@ -1,6 +1,22 @@
 $(document).ready(function() {
     $(".content").load("lib/overview.php");
 
+    $(".login form").submit(function (e) {
+        e.preventDefault();
+        var form = $(this);
+        $.ajax({
+            url: form.attr("action"),
+            type: form.attr("method"),
+            data: form.serialize(),
+            success: function(data) {
+                $("#response").html(data).css("opacity", "1");
+                if(data == "Success!") {
+                    location.reload();
+                }
+            }
+        });
+    });
+
     $(".loader li").click(function() {
         if ($(this).data("page") === "site") {
             location.href = "../";
@@ -34,29 +50,14 @@ $(document).ready(function() {
                 $("#response").html(data).css("opacity", "1");
             }
         });
-    });
+    });  
 
     $(document).on("click", ".post-deleter", function(e) {
         var node = this;
         e.preventDefault();
         $.get($(this).attr("href"), null, function(success) {
-            $(node).parent("article").slideUp();
+            $(node).parent(".links").parent("article").slideUp();
         });
     });
     
-    $(".login form").submit(function (e) {
-        e.preventDefault();
-        var form = $(this);
-        $.ajax({
-            url: form.attr("action"),
-            type: form.attr("method"),
-            data: form.serialize(),
-            success: function(data) {
-                $("#response").html(data).css("opacity", "1");
-                if(data == "Success!") {
-                    location.reload();
-                }
-            }
-        });
-    });
 });
