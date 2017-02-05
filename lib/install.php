@@ -89,6 +89,11 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 					 `name` varchar(255) NOT NULL,
 					 `postcount` int(11) NOT NULL DEFAULT '0',
 					 `password` varchar(255) NOT NULL,
+                     `age` int(11) NOT NULL,
+                     `city` varchar(255) NOT NULL,
+                     `website` varchar(255) NOT NULL,
+                     `aliases` varchar(255) NOT NULL,
+                     `bio` text NOT NULL,
 					 PRIMARY KEY (`id`)
 					) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
 
