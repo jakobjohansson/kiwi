@@ -9,6 +9,7 @@ $(document).ready(function() {
 
     $(document).on("click", ".clicker", function() {
         $(this).parent().children(".reveal").slideToggle();
+        $(this).children("h4").children("i").toggleClass("fa-arrow-down fa-arrow-right");
     });
     
 });

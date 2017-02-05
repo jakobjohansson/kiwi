@@ -1,31 +1,49 @@
 <h1>Account</h1>
 <form action"#">
     <div class="row">
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-7">
             <div class="content-wrapper">
-                <div class="clicker">Bio</div>
+                <div class="clicker">
+                    <h4>Trivial <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+                </div>
                 <div class="reveal">
-                    <small>Age</small>
+                    <label>Age</label>
                     <input type="text" />
-                    <small>City</small>
+                    <label>City</label>
                     <input type="text" />
-                    <small>Website</small>
+                    <label>Website</label>
                     <input type="email" />
-                    <small>Optionally write a short introduction</small>
+                    <label>Optionally write a short introduction</label>
                     <textarea></textarea>
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-6">
+        <div class="col-xs-12 col-sm-7">
             <div class="content-wrapper">
-                <div class="clicker">Security settings</div>
+                <div class="clicker">
+                    <h4>Visual <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+                </div>
                 <div class="reveal">
-                    <small>Change your username</small>
+                    <label>Enable pagination <input type="checkbox" checked /></label>
+                    <label>Posts per page</label>
+                    <input type="number" />
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-7">
+            <div class="content-wrapper">
+                <div class="clicker">
+                    <h4>Security <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
+                </div>
+                <div class="reveal">
+                    <label>Change your username</label>
                     <input type="text" />
-                    <small>Change your password</small>
+                    <label>Change your password</label>
                     <input type="password" />
-                    <small>Repeat password</small>
+                    <label>Repeat password</label>
                     <input type="password" />
+                    <label>Deactivate blog <input type="checkbox" /></label>
+                    <small>Will redirect visitors to the "deactivate.php" template.</small>
                 </div>
             </div>
         </div>

@@ -95,6 +95,14 @@ h3 {margin: 0;}
             }
         }
     }
+
+    .content-wrapper {
+        padding: 10px;
+
+        .reveal {
+            display: none;
+        }
+    }
 }
 
 .sidebar {
