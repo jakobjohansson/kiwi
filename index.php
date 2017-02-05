@@ -1,7 +1,11 @@
 <?php
 require("lib/config.php");
 if ($id) {
-    require("views/single.php");
+    if (file_exists("views/single.php")) {
+        require("views/single.php");
+    }
 } else {
-    require("views/flow.php");
+    if (file_exists("views/flow.php")) {
+        require("views/flow.php");
+    }
 }
