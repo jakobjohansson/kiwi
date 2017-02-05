@@ -40,6 +40,12 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
         echo "Error";
     }
+} elseif ($page == "changeaccount" && $_SERVER['REQUEST_METHOD'] == "POST") {
+    if ($user->updateUserFromAdminPage($_POST)) {
+        echo "Settings updated!";
+    } else {
+        echo "An error occured.";
+    }
 } else {
     ?>
 <!DOCTYPE html>
