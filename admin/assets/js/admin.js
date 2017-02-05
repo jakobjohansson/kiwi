@@ -40,7 +40,7 @@ $(document).ready(function() {
         var node = this;
         e.preventDefault();
         $.get($(this).attr("href"), null, function(success) {
-            $(node).siblings(".delete-response").html(success).css("opacity", 1);
+            $(node).parent("article").slideUp();
         });
     });
     
