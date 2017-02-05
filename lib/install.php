@@ -6,12 +6,14 @@ ob_start();
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="style.css" rel="stylesheet" />
-	<title>Welcome to VB</title>
+	<link href="../admin/assets/css/style.css" rel="stylesheet" />
+	<title>Verbalizer</title>
 </head>
-<body>
-	<div id="wrap">
-		<main>
+<body class="login">
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3 outer">
+                <div class="inner">
 <?php
 
 // if file exists, include to show error message
@@ -27,7 +29,7 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
         ?>
 
 		<h1>Welcome to VB!</h1>
-		<p>Take some time to configure the website. This is necessary for VB to run. Enter your database settings here. It will not be saved anywhere except on your computer. If you need help regarding the settings, contact your web administrator.</p>
+		<p>Take some time to configure the website. We need your database settings. It will not be saved anywhere except on your computer. If you need help regarding the settings, contact your web administrator.</p>
 		<form action="install.php" method="post">
 			<label for="dbhost">Server</label>
 			<input type="text" name="dbhost" id="dbhost" placeholder="e.g localhost" value="localhost" />
@@ -130,13 +132,22 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 <?php 
 }
 ?>
-		</main>
-	</div>
-	<?php
-    if (isset($_GET['error'])) {
-        echo "<div id='response'>Couldn't connect to database. Try again!</div>";
-    }
-    ?>
+	            </div>
+            </div>
+        </div>
+            <?php
+            if (isset($_GET['error'])) {
+                ?>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                        <div id="response" style="opacity: 1;">Couldn't connect to database. Try again!</div>
+                    </div>
+                </div>
+                <?php
+
+            }
+            ?>
+    </div>
 </body>
 </html>
 <?php
