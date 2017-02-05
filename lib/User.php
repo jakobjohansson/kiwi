@@ -5,7 +5,7 @@ class User
     protected $id;
     protected $name;
     protected $status;
-    protected $postcount;
+    protected $postcount = 0;
     protected $loggedIn = false;
 
     // autoconstruct
@@ -14,6 +14,7 @@ class User
         $this->name = isset($_SESSION['username']) ? $_SESSION['username'] : null;
         $this->id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
         $this->loggedIn = (isset($_SESSION['username'])) ? true : false;
+        $this->setPostCount();
     }
 
     // getters
@@ -48,6 +49,17 @@ class User
         session_unset();
         session_destroy();
         $this->loggedIn = false;
+    }
+
+    public function setPostCount()
+    {
+        if ($this->loggedIn) {
+            global $db;
+            $sql = "SELECT id FROM `vb_post` WHERE authorID = $this->id";
+            $result = $db->query($sql);
+            $this->postcount = $result->num_rows;
+            $result->free();
+        }
     }
 
     public function setPassword($old, $new)

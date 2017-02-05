@@ -1,0 +1,95 @@
+<?php
+$root = "../";
+require($root.'lib/config.php');
+
+if (!auth()) {
+    header("Location: login.php");
+}
+
+if ($page == "password" && $_SERVER['REQUEST_METHOD'] == "POST") {
+    if ($_POST['new'] == $_POST['newre']) {
+        if (!$user->setPassword($_POST['old'], $_POST['new'])) {
+            echo "You entered wrong password!";
+        } else {
+            echo "Password successfully updated!";
+        }
+    } else {
+        echo "The passwords didnt match!";
+    }
+    exit;
+}
+
+if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
+    $public = 0;
+    if (isset($_POST['public'])) {
+        $public = 1;
+    }
+    echo $vb->addPost($public, $_POST['title'], $_POST['content']);
+} elseif ($page == "logout") {
+    $user->logOut();
+    header("Location: ".$root."index.php");
+} elseif ($page == "edit" && isset($id) && $_SERVER['REQUEST_METHOD'] == "POST") {
+    $public = 0;
+    if (isset($_POST['public'])) {
+        $public = 1;
+    }
+    echo $vb->updatePost($id, $public, $_POST['title'], $_POST['content']);
+} elseif ($page == "remove" && isset($id)) {
+    if ($vb->removePost($id)) {
+        echo "Deleted";
+    } else {
+        echo "Error";
+    }
+} else {
+    ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="assets/css/style.css" rel="stylesheet" />
+	<script src="assets/js/jquery.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/scripts.js"></script>
+	<!— [if lt IE 9]>
+		<script src="assets/js/html5shiv.js"></script>
+	<![endif]—>
+	<title></title>
+</head>
+<body>
+    <main>
+        <div class="container-fluid">
+            <div class="row importante">
+                <div class="col-xs-12 col-sm-10 col-sm-push-2 content">
+                </div>
+                <div class="col-xs-12 col-sm-2 col-sm-pull-10 text-center no-padding sidebar">
+                    <h2 class="text-right dash">Dashboard</h2>
+                    <div class="logo animated bounceIn">
+                    <?php
+                        echo strtoupper(substr($user->getName(), 0, 1)); ?>
+                    </div>
+                    <div class="below-logo">
+                        <?=$user->getName()?>
+                        <br/>
+                        <?=$user->getPostCount()?> posts
+                    </div>
+                    <ul class="text-right loader">
+                        <li data-page="overview" class="active">Overview</li>
+                        <li data-page="write">Write</li>
+                        <li data-page="account">Account</li>
+                        <li data-page="site">Visit site</li>
+                        <li data-page="logout">Log out</li>
+                    </ul>
+                    <footer>
+                        <a href="#">Help</a> - <a href="#">Git</a> - <a href="#">Support</a>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+<?php
+
+}
+?>

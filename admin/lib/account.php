@@ -1,3 +1,11 @@
+<?php
+$root = "../../";
+require($root.'lib/config.php');
+
+if (!auth()) {
+    header("Location: login.php");
+}
+?>
 <h1>Account</h1>
 <form action"#">
     <div class="row">

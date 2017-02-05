@@ -140,7 +140,7 @@ class Verbalizer extends Post
     {
         $sql = "DELETE FROM `vb_post` WHERE id = $id";
         if ($this->db->query($sql)) {
-            header("Location: index.php");
+            return true;
         } else {
             return false;
         }
@@ -177,7 +177,9 @@ class Verbalizer extends Post
             // success
             $last = $this->db->insert_id;
             $stmt->close();
-            header("Location: index.php");
+            return "Post updated successfully!";
+        } else {
+            return "Something went wrong. Try again!";
         }
     }
 
@@ -209,7 +211,7 @@ class Verbalizer extends Post
         $authorID = $_SESSION['id'];
 
         if (strlen($title) < 2 || strlen($content) < 10) {
-            return false;
+            return "Please adress these issues: Title needs to be over 2 characters and content needs to be over 10 characters.";
         }
 
         $stmt = $this->db->prepare("INSERT INTO `vb_post` (public, title, content, authorName, authorID) VALUES (?, ?, ?, ?, ?)");
@@ -219,7 +221,9 @@ class Verbalizer extends Post
             // success
             $last = $this->db->insert_id;
             $stmt->close();
-            header("Location: index.php");
+            return "Post added successfully!";
+        } else {
+            return "Something went wrong. Try again!";
         }
     }
 }
