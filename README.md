@@ -1,7 +1,7 @@
 # Verbalizer
 "humble effort at a blog module"
 
-## Information
+## Introduction
 
 Wordpress-like installation, quick and intuitive templates, non cluttered admin page.
 
