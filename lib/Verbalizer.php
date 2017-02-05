@@ -36,9 +36,10 @@ class Verbalizer extends Post
             foreach ($row as $key => $value) {
                 $this->post->$key = $value;
             }
+            $this->post->excerpt = $this->formatContent(substr($this->post->content, 0, 400)."... (excerpt).");
         }
         $result->free();
-        $this->formatContent();
+        $this->post->content = $this->formatContent($this->post->content);
         $this->formatDate();
         return $this->post;
     }
@@ -111,14 +112,13 @@ class Verbalizer extends Post
      * formats post content lines into paragraphs
      * @return void
      */
-    private function formatContent()
+    private function formatContent($string)
     {
-        $string = $this->post->content;
         $string = str_replace("\r\n", "<br />", $string);
         $string = str_replace("<br /><br />", "</p><p>", $string);
         $string = str_replace("{<br />", "{<br />&nbsp;&nbsp;&nbsp;&nbsp;", $string);
         $string = "<p>".$string."</p>";
-        $this->post->content = $string;
+        return $string;
     }
 
     /**

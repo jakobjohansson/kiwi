@@ -9,4 +9,5 @@ class Post
     public $authorID;
     public $authorName;
     public $content;
+    public $excerpt;
 }

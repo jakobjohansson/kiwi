@@ -11,12 +11,12 @@ if (!auth()) {
     <div class="col-xs-12 col-sm-10 col-md-8">
         <?php
         while ($vb->loopPosts(true)) {
-            $public = null;
+            $public = '<i class="fa fa-shield" aria-hidden="true"></i>';
             if ($post->public == 1) {
-                $public = "<i class='option fa fa-globe fa-2x' alt='Public post'></i>";
+                $public = null;
             }
-            echo "<article><h3>$post->title <small>$post->date</small></h3>";
-            echo "$post->content";
+            echo "<article><h3>$post->title <small>$post->date $public</small></h3>";
+            echo "$post->excerpt";
             echo "<a href='../?id=$post->id'>Permalink</a> <a href='#' class='editor' data-id='$post->id'>Edit</a> <a href='?page=remove&id=$post->id' class='post-deleter'>Delete</a> <div class='delete-response'></div></article>";
         }?>
     </div>
