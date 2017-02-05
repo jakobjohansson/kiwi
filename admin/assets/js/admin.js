@@ -2,9 +2,15 @@ $(document).ready(function() {
     $(".content").load("lib/overview.php");
 
     $(".loader li").click(function() {
-        $(".content").load("lib/" + $(this).data("page") + ".php");
-        $(".loader li").removeClass("active");
-        $(this).addClass("active");
+        if ($(this).data("page") === "site") {
+            location.href = "../";
+        } else if ($(this).data("page") === "logout") {
+            location.href = "?page=logout";
+        } else {
+            $(".content").load("lib/" + $(this).data("page") + ".php");
+            $(".loader li").removeClass("active");
+            $(this).addClass("active");
+        }
     });
 
     $(document).on("click", ".editor", function(e) {

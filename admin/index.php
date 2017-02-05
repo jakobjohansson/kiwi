@@ -50,7 +50,7 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 	<link href="assets/css/style.css" rel="stylesheet" />
 	<script src="assets/js/jquery.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/scripts.js"></script>
+	<script src="assets/js/admin.js"></script>
 	<!— [if lt IE 9]>
 		<script src="assets/js/html5shiv.js"></script>
 	<![endif]—>
@@ -81,7 +81,7 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
                         <li data-page="logout">Log out</li>
                     </ul>
                     <footer>
-                        <a href="#">Help</a> - <a href="#">Git</a> - <a href="#">Support</a>
+                        <a href="https://github.com/jakobjohansson/Verbalizer">Git</a> - <a href="mailto:jakobjohansson2@icloud.com">Support</a>
                     </footer>
                 </div>
             </div>
