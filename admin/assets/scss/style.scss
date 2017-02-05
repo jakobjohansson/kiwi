@@ -84,17 +84,19 @@ h3 {margin: 0;}
     .posts article {
         margin-bottom: 50px;
 
-        a {
-            display: inline-block;
-            padding: 5px 15px;
-            color: $white;
-            background-color: $light;
-            border-radius: 4px;
-            box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 4px;
-            text-decoration: none;
+        .links {
+            a {
+                display: inline-block;
+                padding: 5px 15px;
+                color: $white;
+                background-color: $light;
+                border-radius: 4px;
+                box-shadow: rgba(0, 0, 0, 0.4) 1px 1px 4px;
+                text-decoration: none;
 
-            &:first-of-type {
-                background-color: $dark-medium;
+                &:first-of-type {
+                    background-color: $dark-medium;
+                }
             }
         }
     }
