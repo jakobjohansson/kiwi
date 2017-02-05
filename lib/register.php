@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
         if ($error) {
             ?>
             <div class="row">
-                <div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3">
                     <div id="response" style="opacity: 1;">Username already exists / passwords don't match.</div>
                 </div>
             </div>
