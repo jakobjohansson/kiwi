@@ -6,12 +6,14 @@ ob_start();
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link href="style.css" rel="stylesheet" />
-	<title>Welcome to VB</title>
+	<link href="../admin/assets/css/style.css" rel="stylesheet" />
+	<title>Verbalizer</title>
 </head>
-<body>
-	<div id="wrap">
-		<main>
+<body class="login">
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                <div class="inner">
 <?php
 
 // if file exists, include to show error message
@@ -130,8 +132,10 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 <?php 
 }
 ?>
-		</main>
-	</div>
+	            </div>
+            </div>
+        </div>  
+    </div>
 	<?php
     if (isset($_GET['error'])) {
         echo "<div id='response'>Couldn't connect to database. Try again!</div>";
