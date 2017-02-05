@@ -7,7 +7,7 @@ if (!auth()) {
 }
 ?>
 <h1>Account</h1>
-<form action"#">
+<form action="?page=changeaccount" method="post">
     <div class="row">
         <div class="col-xs-12 col-sm-7">
             <div class="content-wrapper">
@@ -16,13 +16,13 @@ if (!auth()) {
                 </div>
                 <div class="reveal">
                     <label>Age</label>
-                    <input type="text" />
+                    <input type="text" name="age" value="<?=$user->getAge()?>"/>
                     <label>City</label>
-                    <input type="text" />
+                    <input type="text" name="city" value="<?=$user->getCity()?>"/>
                     <label>Website</label>
-                    <input type="email" />
+                    <input type="url" name="website" value="<?=$user->getWebsite()?>"/>
                     <label>Optionally write a short introduction</label>
-                    <textarea></textarea>
+                    <textarea name="bio"><?=$user->getBio()?></textarea>
                 </div>
             </div>
         </div>
@@ -32,9 +32,9 @@ if (!auth()) {
                     <h4>Visual <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
                 </div>
                 <div class="reveal">
-                    <label>Enable pagination <input type="checkbox" checked /></label>
+                    <label>Enable pagination <input type="checkbox" name="pagination" checked /></label>
                     <label>Posts per page</label>
-                    <input type="number" />
+                    <input type="number" name="postsperpage" />
                 </div>
             </div>
         </div>
@@ -45,13 +45,18 @@ if (!auth()) {
                 </div>
                 <div class="reveal">
                     <label>Change your username</label>
-                    <input type="text" />
+                    <input type="text" name="username" value="<?=$user->getName()?>"/>
+                    <small>Old names: <em>
+                        <?php
+                        foreach ($user->getAliases() as $alias) {
+                            echo $alias." ";
+                        }
+                        ?>
+                    </em></small>
                     <label>Change your password</label>
-                    <input type="password" />
+                    <input type="password" name="password" />
                     <label>Repeat password</label>
-                    <input type="password" />
-                    <label>Deactivate blog <input type="checkbox" /></label>
-                    <small>Will redirect visitors to the "deactivate.php" template.</small>
+                    <input type="password" name="passrepeat" />
                 </div>
             </div>
         </div>
