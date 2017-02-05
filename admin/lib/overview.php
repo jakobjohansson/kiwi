@@ -17,7 +17,7 @@ if (!auth()) {
             }
             echo "<article><h3>$post->title <small>$post->date $public</small></h3>";
             echo "$post->excerpt";
-            echo "<a href='../?id=$post->id'>Permalink</a> <a href='#' class='editor' data-id='$post->id'>Edit</a> <a href='?page=remove&id=$post->id' class='post-deleter'>Delete</a> <div class='delete-response'></div></article>";
+            echo "<a href='../?id=$post->id'>Permalink</a> <a href='#' class='editor' data-id='$post->id'>Edit</a> <a href='?page=remove&id=$post->id' class='post-deleter'>Trash</a></article>";
         }?>
     </div>
 </div>
