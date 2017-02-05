@@ -36,9 +36,10 @@ class Verbalizer extends Post
             foreach ($row as $key => $value) {
                 $this->post->$key = $value;
             }
+            $this->post->excerpt = $this->formatContent(substr($this->post->content, 0, 400)."... (excerpt).");
         }
         $result->free();
-        $this->formatContent();
+        $this->post->content = $this->formatContent($this->post->content);
         $this->formatDate();
         return $this->post;
     }
@@ -111,14 +112,13 @@ class Verbalizer extends Post
      * formats post content lines into paragraphs
      * @return void
      */
-    private function formatContent()
+    private function formatContent($string)
     {
-        $string = $this->post->content;
         $string = str_replace("\r\n", "<br />", $string);
         $string = str_replace("<br /><br />", "</p><p>", $string);
         $string = str_replace("{<br />", "{<br />&nbsp;&nbsp;&nbsp;&nbsp;", $string);
         $string = "<p>".$string."</p>";
-        $this->post->content = $string;
+        return $string;
     }
 
     /**
@@ -140,7 +140,7 @@ class Verbalizer extends Post
     {
         $sql = "DELETE FROM `vb_post` WHERE id = $id";
         if ($this->db->query($sql)) {
-            header("Location: index.php");
+            return true;
         } else {
             return false;
         }
@@ -177,7 +177,9 @@ class Verbalizer extends Post
             // success
             $last = $this->db->insert_id;
             $stmt->close();
-            header("Location: index.php");
+            return "Post updated successfully!";
+        } else {
+            return "Something went wrong. Try again!";
         }
     }
 
@@ -209,7 +211,7 @@ class Verbalizer extends Post
         $authorID = $_SESSION['id'];
 
         if (strlen($title) < 2 || strlen($content) < 10) {
-            return false;
+            return "Please adress these issues: Title needs to be over 2 characters and content needs to be over 10 characters.";
         }
 
         $stmt = $this->db->prepare("INSERT INTO `vb_post` (public, title, content, authorName, authorID) VALUES (?, ?, ?, ?, ?)");
@@ -219,7 +221,9 @@ class Verbalizer extends Post
             // success
             $last = $this->db->insert_id;
             $stmt->close();
-            header("Location: index.php");
+            return "Post added successfully!";
+        } else {
+            return "Something went wrong. Try again!";
         }
     }
 }
