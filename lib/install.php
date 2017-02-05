@@ -28,7 +28,7 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
     if (!isset($_POST['submit'])) {
         ?>
 
-		<h1>Welcome to VB!</h1>
+		<h1>Installing Verbalizer</h1>
 		<p>Take some time to configure the website. We need your database settings. It will not be saved anywhere except on your computer. If you need help regarding the settings, contact your web administrator.</p>
 		<form action="install.php" method="post">
 			<label for="dbhost">Server</label>
