@@ -29,6 +29,18 @@ $(document).ready(function() {
         }
     });
 
+    $(document).on("click touchstart", ".responsive-menu-button i", function() {
+        $(".sidebar").slideDown(250);
+        $(this).parent().hide();
+        $(".responsive-menu-button-close").show();
+    });
+
+    $(document).on("click touchstart", ".responsive-menu-button-close i", function() {
+        $(".sidebar").slideUp(250);
+        $(this).parent().hide();
+        $(".responsive-menu-button").show("slow");
+    });
+
     $(document).on("click touchstart", ".clicker", function() {
         $(this).parent().children(".reveal").slideToggle();
         $(this).children("h4").children("i").toggleClass("fa-arrow-down fa-arrow-right");

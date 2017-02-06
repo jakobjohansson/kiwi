@@ -63,6 +63,12 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
 	<title>Admin</title>
 </head>
 <body>
+    <div class="responsive-menu-button">
+        <i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+    </div>
+    <div class="responsive-menu-button-close">
+        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+    </div>
     <main>
         <div class="container-fluid">
             <div class="row importante">
