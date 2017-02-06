@@ -29,14 +29,14 @@ $(document).ready(function() {
         }
     });
 
-    $(document).on("click", ".editor", function(e) {
-        e.preventDefault();
-        $(".content").load("lib/edit.php?id=" + $(this).data("id"));
-    });
-
-    $(document).on("click", ".clicker", function() {
+    $(document).on("click touchstart", ".clicker", function() {
         $(this).parent().children(".reveal").slideToggle();
         $(this).children("h4").children("i").toggleClass("fa-arrow-down fa-arrow-right");
+    });
+
+    $(document).on("click touchstart", ".editor", function(e) {
+        e.preventDefault();
+        $(".content").load("lib/edit.php?id=" + $(this).data("id"));
     });
 
     $(document).on("submit", "form", function(e) {
@@ -52,7 +52,7 @@ $(document).ready(function() {
         });
     });  
 
-    $(document).on("click", ".post-deleter", function(e) {
+    $(document).on("click touchstart", ".post-deleter", function(e) {
         var node = this;
         e.preventDefault();
         $.get($(this).attr("href"), null, function(success) {
