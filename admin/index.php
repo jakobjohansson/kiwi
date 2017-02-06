@@ -85,7 +85,14 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
                         <br/>
                         <?=$user->getPostCount()?> posts
                     </div>
-                    <ul class="text-right loader">
+                    <ul class="text-right loader hidden-xs">
+                        <li data-page="overview" class="active">Overview</li>
+                        <li data-page="write">Write</li>
+                        <li data-page="account">Account</li>
+                        <li data-page="site">Visit site</li>
+                        <li data-page="logout">Log out</li>
+                    </ul>
+                    <ul class="text-right loader visible-xs-block">
                         <li data-page="overview" class="active">Overview</li>
                         <li data-page="write">Write</li>
                         <li data-page="account">Account</li>

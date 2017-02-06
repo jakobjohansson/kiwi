@@ -26,6 +26,12 @@ $(document).ready(function() {
             $(".content").load("lib/" + $(this).data("page") + ".php");
             $(".loader li").removeClass("active");
             $(this).addClass("active");
+            if ($(this).parent().hasClass("visible-xs-block")) {
+                $(".sidebar").slideUp(250);
+                $(".responsive-menu-button-close").hide();
+                $(".responsive-menu-button").show("slow");
+
+            }
         }
     });
 
