@@ -60,3 +60,4 @@ object(Post)#6 (8) {
 - [x] Image snippet.
 - [ ] Support for post thumbnails.
 - [x] Show only public posts on front end but both on admin interface.
+- [ ] Password changing in settings.
