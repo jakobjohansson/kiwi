@@ -26,15 +26,8 @@ function murder($data)
     return $data;
 }
 
-function createUser()
+function userExists($db)
 {
-    User::createUser($_POST['username'], $_POST['pass'], $_POST['passrepeat']);
-}
-
-function userExists()
-{
-    global $db;
-
     $sql = "SELECT * FROM `vb_user`";
     $result = $db->query($sql);
     if ($result->num_rows > 0) {

@@ -5,25 +5,63 @@ class Verbalizer
     protected $post;
     protected $db;
     protected $currentpost = 0;
+    public $user;
     public $pagination = false;
     public $posts_per_page = 5;
-    public $user;
+    public $active = false;
+    public $comments = false;
 
-    /**
-     * controller construction
-     * @param Post $post
-     * @param mysqli $db
-     * @return void
-     */
     public function __construct(Post $post, mysqli $db)
     {
         $this->post = $post;
         $this->db = $db;
+        $this->setMeta();
         $this->user = new User($this->db);
-        foreach ($this->user->returnPagination() as $key => $value) {
+    }
+
+    private function setMeta()
+    {
+        $sql = "SELECT vb_key, vb_value FROM `vb_meta`";
+        $result = $this->db->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            $key = $row['vb_key'];
+            $value = $row['vb_value'];
+            if ($row['vb_value'] === "false") {
+                $value = false;
+            } elseif ($row['vb_value'] === "true") {
+                $value = true;
+            }
             $this->$key = $value;
         }
-        $this->pagination = ($this->pagination == "false") ? false : true;
+        $result->free();
+    }
+
+    public function updateMeta(array $settings)
+    {
+        if (array_key_exists('pagination', $settings)) {
+            $stmt = $this->db->prepare("UPDATE `vb_meta` SET vb_value = ? WHERE vb_key = 'pagination'");
+            $stmt->bind_param("s", $settings['pagination']);
+            $stmt->execute();
+            $stmt->close();
+        }
+        if (array_key_exists('posts_per_page', $settings)) {
+            $stmt1 = $this->db->prepare("UPDATE `vb_meta` SET vb_value = ? WHERE vb_key = 'posts_per_page'");
+            $stmt1->bind_param("i", $settings['posts_per_page']);
+            $stmt1->execute();
+            $stmt1->close();
+        }
+        if (array_key_exists('comments', $settings)) {
+            $stmt2 = $this->db->prepare("UPDATE `vb_meta` SET vb_value = ? WHERE vb_key = 'comments'");
+            $stmt2->bind_param("s", $settings['comments']);
+            $stmt2->execute();
+            $stmt2->close();
+        }
+        if (array_key_exists('active', $settings)) {
+            $stmt3 = $this->db->prepare("UPDATE `vb_meta` SET vb_value = ? WHERE vb_key = 'active'");
+            $stmt3->bind_param("s", $settings['active']);
+            $stmt3->execute();
+            $stmt3->close();
+        }
     }
 
     /**

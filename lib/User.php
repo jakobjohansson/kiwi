@@ -14,7 +14,6 @@ class User
     protected $loggedIn = false;
     protected $db;
 
-    // autoconstruct
     public function __construct(mysqli $db)
     {
         $this->db = $db;
@@ -25,7 +24,6 @@ class User
         $this->setInfo();
     }
 
-    // getters
     public function getID()
     {
         return $this->id;
@@ -76,7 +74,6 @@ class User
         return $this->bio;
     }
 
-    // log out
     public function logOut()
     {
         session_unset();
@@ -149,9 +146,9 @@ class User
                 return false;
             }
         }
-        $pag = isset($form['pagination']) ? "true" : "false";
-        $stmt = $this->db->prepare("UPDATE `vb_user` SET age = ?, city = ?, website = ?, bio = ?, name = ?, posts_per_page = ?, pagination = ? WHERE id = ?");
-        $stmt->bind_param("issssisi", $form['age'], $form['city'], $form['website'], $form['bio'], $form['username'], $form['postsperpage'], $pag, $this->id);
+
+        $stmt = $this->db->prepare("UPDATE `vb_user` SET age = ?, city = ?, website = ?, bio = ?, name = ? WHERE id = ?");
+        $stmt->bind_param("issssi", $form['age'], $form['city'], $form['website'], $form['bio'], $form['username'], $this->id);
         if ($stmt->execute()) {
             $stmt->close();
             $_SESSION['username'] = $form['username'];
@@ -185,19 +182,8 @@ class User
         }
     }
 
-    public function returnPagination()
+    public function createUser($username, $pass, $passrepeat)
     {
-        $sql = "SELECT pagination, posts_per_page FROM `vb_user` WHERE id = 1";
-        $result = $this->db->query($sql);
-        return $result->fetch_assoc();
-    }
-
-    // STATICS
-
-    // create user
-    public static function createUser($username, $pass, $passrepeat)
-    {
-        global $db;
         if ($pass != $passrepeat) {
             return false;
         }
@@ -222,7 +208,7 @@ class User
 
         // check if username already exist
         $sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         if ($result->num_rows > 0) {
             return false;
             exit;
@@ -243,10 +229,8 @@ class User
         return true;
     }
 
-    // login
-    public static function login($username, $pass)
+    public function login($username, $pass)
     {
-        global $db;
         $username = trim($username);
         $pass = trim($pass);
 
@@ -254,7 +238,7 @@ class User
         $pass = htmlspecialchars($pass);
 
         $sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         if ($result->num_rows == 0) {
             return false;
         }

@@ -8,12 +8,12 @@ if (file_exists(dirname(__FILE__).'/define.php')) {
 
 $error = false;
 
-if (userExists()) {
+if (userExists($db)) {
     exit;
 }
 
 if (isset($_POST['submit'])) {
-    if (!createUser()) {
+    if ($user->createUser($_POST['username'], $_POST['pass'], $_POST['passrepeat'])) {
         $error = true;
     }
 }

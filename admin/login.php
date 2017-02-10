@@ -3,7 +3,7 @@ $root = "../";
 require($root.'lib/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (User::login($_POST['username'], $_POST['password']) == true) {
+    if ($user->login($_POST['username'], $_POST['password']) == true) {
         echo "Success!";
     } else {
         echo "Incorrect username or password.";
