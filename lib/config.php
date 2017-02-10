@@ -14,10 +14,9 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
 }
 
 // set up database
-try {
-    $db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
-} catch (Exception $e) {
-    echo $e->getMessage();
+$db = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_DATABASE);
+if ($db->connect_errno > 0) {
+    die("<p>Problem with database settings :(</p>");
 }
 
 // autoload
