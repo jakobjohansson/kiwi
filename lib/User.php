@@ -189,6 +189,7 @@ class User
     // create user
     public static function createUser($username, $pass, $passrepeat)
     {
+        global $db;
         if ($pass != $passrepeat) {
             return false;
         }
@@ -213,7 +214,7 @@ class User
 
         // check if username already exist
         $sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
-        $result = $this->db->query($sql);
+        $result = $db->query($sql);
         if ($result->num_rows > 0) {
             return false;
             exit;
@@ -237,6 +238,7 @@ class User
     // login
     public static function login($username, $pass)
     {
+        global $db;
         $username = trim($username);
         $pass = trim($pass);
 
@@ -244,7 +246,7 @@ class User
         $pass = htmlspecialchars($pass);
 
         $sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
-        $result = $this->db->query($sql);
+        $result = $db->query($sql);
         if ($result->num_rows == 0) {
             return false;
         }

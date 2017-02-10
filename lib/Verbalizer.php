@@ -8,7 +8,7 @@ class Verbalizer
     public $user;
 
     // test variables
-    protected $pagination = false;
+    protected $pagination = true;
     protected $ppp = 5;
 
     /**
@@ -104,13 +104,13 @@ class Verbalizer
     public function loopPosts($hidden = false)
     {
         if ($this->pagination) {
-            $posts = filter_var($_GET['posts'], FILTER_VALIDATE_INT);
+            $posts = isset($_GET['posts']) ? filter_var($_GET['posts'], FILTER_VALIDATE_INT) : 0;
             $size = count($this->getPosts($hidden));
             $offset = $posts * $this->ppp;
             $currents = array_slice($this->getPosts($hidden), $offset, $this->ppp);
-            if ($this->currentpost < $size) {
+            if ($this->currentpost < count($currents)) {
                 global $post;
-                $post = $this->constructPost($this->getPosts($hidden)[$this->currentpost]->id);
+                $post = $this->constructPost($currents[$this->currentpost]->id);
                 $this->currentpost++;
                 return true;
             } else {
