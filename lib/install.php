@@ -94,6 +94,8 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
                 `website` varchar(255) NOT NULL,
                 `aliases` varchar(255) NOT NULL,
                 `bio` text NOT NULL,
+                `pagination` varchar(255) NOT NULL DEFAULT 'false',
+                `posts_per_page` int(11) NOT NULL DEFAULT '5',
                 PRIMARY KEY (`id`)
                 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
 
