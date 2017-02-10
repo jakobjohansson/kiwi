@@ -8,7 +8,7 @@ if (file_exists(dirname(__FILE__).'/define.php')) {
 
 $error = false;
 
-if (userExists()) {
+if (userExists($db)) {
     exit;
 }
 

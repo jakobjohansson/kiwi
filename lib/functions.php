@@ -26,10 +26,8 @@ function murder($data)
     return $data;
 }
 
-function userExists()
+function userExists($db)
 {
-    global $db;
-
     $sql = "SELECT * FROM `vb_user`";
     $result = $db->query($sql);
     if ($result->num_rows > 0) {
