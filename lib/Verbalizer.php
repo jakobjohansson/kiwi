@@ -169,6 +169,51 @@ class Verbalizer
         }
     }
 
+    public function pageLinks($numbers = false, $next = "Next", $previous = "Previous", $first = "First", $last = "Last", $hidden = false)
+    {
+        if ($this->pagination) {
+            $posts = isset($_GET['posts']) ? filter_var($_GET['posts'], FILTER_VALIDATE_INT) : 0;
+            $size = count($this->getPosts($hidden));
+            $max = floor($size / $this->posts_per_page);
+            echo '<div class="page-links">';
+
+            if ($posts > 0) {
+                if ($posts - 1 > 0) {
+                    if (!$numbers) {
+                        echo "<a href='?posts=0'>1</a>";
+                    } else {
+                        echo "<a href='?posts=0'>$first</a>";
+                    }
+                }
+                if (!$numbers) {
+                    echo "<a href='?posts=".($posts - 1)."'>".($posts)."</a>";
+                } else {
+                    echo "<a href='?posts=".($posts - 1)."'>$previous</a>";
+                }
+            }
+
+            echo "<a href='?posts=$posts'>" . ($posts + 1) . "</a>";
+
+            if ($posts < $max) {
+                if (!$numbers) {
+                    echo "<a href='?posts=".($posts + 1)."'>" . ($posts + 2) . "</a>";
+                } else {
+                    echo "<a href='?posts=".($posts + 1)."'>$next</a>";
+                }
+
+                if ($posts + 1 < $max) {
+                    if (!$numbers) {
+                        echo "<a href='?posts=$max'>" . ($max + 1) . "</a>";
+                    } else {
+                        echo "<a href='?posts=$max'>$last</a>";
+                    }
+                }
+            }
+
+            echo '</div>';
+        }
+    }
+
     /**
      * formats post content lines into paragraphs
      * @return void
