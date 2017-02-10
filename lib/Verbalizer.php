@@ -26,6 +26,13 @@ class Verbalizer
         $this->pagination = ($this->pagination == "false") ? false : true;
     }
 
+    public function returnPagination()
+    {
+        $sql = "SELECT pagination, posts_per_page FROM `vb_user` WHERE id = 1";
+        $result = $this->db->query($sql);
+        return $result->fetch_assoc();
+    }
+    
     /**
      * constructs a post object with a given id
      * used to generate posts
