@@ -180,32 +180,32 @@ class Verbalizer
             if ($posts > 0) {
                 if ($posts - 1 > 0) {
                     if (!$numbers) {
-                        echo "<a href='?posts=0'>1</a>";
+                        echo "<a href='?posts=0' class='first'>1</a>";
                     } else {
-                        echo "<a href='?posts=0'>$first</a>";
+                        echo "<a href='?posts=0' class='first'>$first</a>";
                     }
                 }
                 if (!$numbers) {
-                    echo "<a href='?posts=".($posts - 1)."'>".($posts)."</a>";
+                    echo "<a href='?posts=".($posts - 1)."' class='previous'>".($posts)."</a>";
                 } else {
-                    echo "<a href='?posts=".($posts - 1)."'>$previous</a>";
+                    echo "<a href='?posts=".($posts - 1)."' class='previous'>$previous</a>";
                 }
             }
 
-            echo "<a href='?posts=$posts'>" . ($posts + 1) . "</a>";
+            echo "<a href='?posts=$posts' class='current'>" . ($posts + 1) . "</a>";
 
             if ($posts < $max) {
                 if (!$numbers) {
-                    echo "<a href='?posts=".($posts + 1)."'>" . ($posts + 2) . "</a>";
+                    echo "<a href='?posts=".($posts + 1)."' class='next'>" . ($posts + 2) . "</a>";
                 } else {
-                    echo "<a href='?posts=".($posts + 1)."'>$next</a>";
+                    echo "<a href='?posts=".($posts + 1)."' class='next'>$next</a>";
                 }
 
                 if ($posts + 1 < $max) {
                     if (!$numbers) {
-                        echo "<a href='?posts=$max'>" . ($max + 1) . "</a>";
+                        echo "<a href='?posts=$max' class='last'>" . ($max + 1) . "</a>";
                     } else {
-                        echo "<a href='?posts=$max'>$last</a>";
+                        echo "<a href='?posts=$max' class='last'>$last</a>";
                     }
                 }
             }
