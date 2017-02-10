@@ -71,6 +71,14 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
                 exit;
             }
 
+            $sql = "CREATE TABLE IF NOT EXISTS `vb_meta` (
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `vb_key` varchar(255) NOT NULL,
+                `vb_value` varchar(255) NOT NULL,
+                `description` text NOT NULL,
+                PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
             $sql .= "CREATE TABLE IF NOT EXISTS `vb_post` (
                 `id` int(11) NOT NULL AUTO_INCREMENT,
                 `title` varchar(255) NOT NULL,
@@ -94,10 +102,14 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
                 `website` varchar(255) NOT NULL,
                 `aliases` varchar(255) NOT NULL,
                 `bio` text NOT NULL,
-                `pagination` varchar(255) NOT NULL DEFAULT 'false',
-                `posts_per_page` int(11) NOT NULL DEFAULT '5',
                 PRIMARY KEY (`id`)
                 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
+
+            $sql .= "INSERT INTO `vb_meta` (`id`, `vb_key`, `vb_value`, `description`) VALUES
+                (1, 'active', 'true', 'Blog active or not. If not, redirecting to views/deactivated.php'),
+                (2, 'pagination', 'false', 'Set pagination on or off'),
+                (3, 'posts_per_page', '5', 'Posts per page'),
+                (4, 'comments', 'false', 'Comments enabled or disabled');";
 
             if ($db->multi_query($sql) === false) {
                 echo "<h1>Error</h1><p>An error occured while trying to add tables.</p>";
