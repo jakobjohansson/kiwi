@@ -104,6 +104,18 @@ class Verbalizer
     public function loopPosts($hidden = false)
     {
         if ($this->pagination) {
+            $posts = filter_var($_GET['posts'], FILTER_VALIDATE_INT);
+            $size = count($this->getPosts($hidden));
+            $offset = $posts * $this->ppp;
+            $currents = array_slice($this->getPosts($hidden), $offset, $this->ppp);
+            if ($this->currentpost < $size) {
+                global $post;
+                $post = $this->constructPost($this->getPosts($hidden)[$this->currentpost]->id);
+                $this->currentpost++;
+                return true;
+            } else {
+                return false;
+            }
         } else {
             $size = count($this->getPosts($hidden));
             if ($this->currentpost < $size) {
