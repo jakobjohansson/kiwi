@@ -32,9 +32,9 @@ if (!auth()) {
                     <h4>Visual <i class="fa fa-arrow-right" aria-hidden="true"></i></h4>
                 </div>
                 <div class="reveal">
-                    <label>Enable pagination <input type="checkbox" name="pagination" checked /></label>
+                    <label>Enable pagination <input type="checkbox" name="pagination" <?=$vb->pagination ? "checked" : null ?> /></label>
                     <label>Posts per page</label>
-                    <input type="number" name="postsperpage" />
+                    <input type="number" name="postsperpage" value="<?=$vb->posts_per_page?>" />
                 </div>
             </div>
         </div>

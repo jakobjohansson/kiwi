@@ -5,6 +5,8 @@ class Verbalizer
     protected $post;
     protected $db;
     protected $currentpost = 0;
+    public $pagination = false;
+    public $posts_per_page = 5;
     public $user;
 
     /**
@@ -18,6 +20,10 @@ class Verbalizer
         $this->post = $post;
         $this->db = $db;
         $this->user = new User($this->db);
+        foreach ($this->user->returnPagination() as $key => $value) {
+            $this->$key = $value;
+        }
+        $this->pagination = ($this->pagination == "false") ? false : true;
     }
 
     /**
@@ -99,14 +105,29 @@ class Verbalizer
      */
     public function loopPosts($hidden = false)
     {
-        $size = count($this->getPosts($hidden));
-        if ($this->currentpost < $size) {
-            global $post;
-            $post = $this->constructPost($this->getPosts($hidden)[$this->currentpost]->id);
-            $this->currentpost++;
-            return true;
+        if ($this->pagination) {
+            $posts = isset($_GET['posts']) ? filter_var($_GET['posts'], FILTER_VALIDATE_INT) : 0;
+            $size = count($this->getPosts($hidden));
+            $offset = $posts * $this->posts_per_page;
+            $currents = array_slice($this->getPosts($hidden), $offset, $this->posts_per_page);
+            if ($this->currentpost < count($currents)) {
+                global $post;
+                $post = $this->constructPost($currents[$this->currentpost]->id);
+                $this->currentpost++;
+                return true;
+            } else {
+                return false;
+            }
         } else {
-            return false;
+            $size = count($this->getPosts($hidden));
+            if ($this->currentpost < $size) {
+                global $post;
+                $post = $this->constructPost($this->getPosts($hidden)[$this->currentpost]->id);
+                $this->currentpost++;
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
