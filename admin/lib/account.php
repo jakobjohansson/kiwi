@@ -57,6 +57,8 @@ if (!auth()) {
                     <input type="password" name="password" />
                     <label>Repeat password</label>
                     <input type="password" name="passrepeat" />
+                    <label>Old password</label>
+                    <input type="password" name="oldpassword" />
                 </div>
             </div>
         </div>

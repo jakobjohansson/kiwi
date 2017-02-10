@@ -46,6 +46,17 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
         echo "An error occured.";
     }
+    if (!empty($_POST['oldpassword']) && !empty($_POST['password']) && !empty($_POST['passrepeat'])) {
+        if ($_POST['password'] === $_POST['passrepeat']) {
+            if ($user->setPassword($_POST['oldpassword'], $_POST['password'])) {
+                echo "<br/>Password updated!";
+            } else {
+                echo "<br/>Couldn't update password (old password couldn't be verified).";
+            }
+        } else {
+            echo "<br/>Couldn't update password cause they didn't match.";
+        }
+    }
 } else {
     ?>
 <!DOCTYPE html>
