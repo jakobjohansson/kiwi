@@ -5,11 +5,9 @@ class Verbalizer
     protected $post;
     protected $db;
     protected $currentpost = 0;
+    public $pagination = false;
+    public $posts_per_page = 5;
     public $user;
-
-    // test variables
-    protected $pagination = true;
-    protected $ppp = 5;
 
     /**
      * controller construction
@@ -22,6 +20,10 @@ class Verbalizer
         $this->post = $post;
         $this->db = $db;
         $this->user = new User($this->db);
+        foreach ($this->user->returnPagination() as $key => $value) {
+            $this->$key = $value;
+        }
+        $this->pagination = ($this->pagination == "false") ? false : true;
     }
 
     /**
@@ -106,8 +108,8 @@ class Verbalizer
         if ($this->pagination) {
             $posts = isset($_GET['posts']) ? filter_var($_GET['posts'], FILTER_VALIDATE_INT) : 0;
             $size = count($this->getPosts($hidden));
-            $offset = $posts * $this->ppp;
-            $currents = array_slice($this->getPosts($hidden), $offset, $this->ppp);
+            $offset = $posts * $this->posts_per_page;
+            $currents = array_slice($this->getPosts($hidden), $offset, $this->posts_per_page);
             if ($this->currentpost < count($currents)) {
                 global $post;
                 $post = $this->constructPost($currents[$this->currentpost]->id);
