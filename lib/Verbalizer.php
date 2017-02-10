@@ -1,10 +1,11 @@
 <?php
 
-class Verbalizer extends Post
+class Verbalizer
 {
     protected $post;
     protected $db;
     protected $currentpost = 0;
+    public $user;
 
     /**
      * controller construction
@@ -16,6 +17,7 @@ class Verbalizer extends Post
     {
         $this->post = $post;
         $this->db = $db;
+        $this->user = new User($this->db);
     }
 
     /**

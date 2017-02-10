@@ -12,10 +12,12 @@ class User
     protected $website;
     protected $postcount = 0;
     protected $loggedIn = false;
+    protected $db;
 
     // autoconstruct
-    public function __construct()
+    public function __construct(mysqli $db)
     {
+        $this->db = $db;
         $this->name = isset($_SESSION['username']) ? $_SESSION['username'] : null;
         $this->id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
         $this->loggedIn = (isset($_SESSION['username'])) ? true : false;
@@ -87,9 +89,8 @@ class User
         if (!isset($this->id)) {
             return false;
         } else {
-            global $db;
             $sql = "SELECT * FROM `vb_user` WHERE id = $this->id";
-            $result = $db->query($sql);
+            $result = $this->db->query($sql);
             if ($result->num_rows == 0) {
                 return false;
             }
@@ -107,9 +108,8 @@ class User
     public function setPostCount()
     {
         if ($this->loggedIn) {
-            global $db;
             $sql = "SELECT id FROM `vb_post` WHERE authorID = $this->id";
-            $result = $db->query($sql);
+            $result = $this->db->query($sql);
             $this->postcount = $result->num_rows;
             $result->free();
         }
@@ -117,13 +117,11 @@ class User
 
     public function setPassword($old, $new)
     {
-        global $db;
-
         $old = trim($old);
         $new = trim($new);
 
         $sql = "SELECT password FROM `vb_user` WHERE id = ".$this->getID();
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         $row = $result->fetch_object();
 
         if (!password_verify($old, $row->password)) {
@@ -131,7 +129,7 @@ class User
         }
         $result->free();
 
-        $stmt = $db->prepare("UPDATE `vb_user` SET password = ? WHERE id = ".$this->getID());
+        $stmt = $this->db->prepare("UPDATE `vb_user` SET password = ? WHERE id = ".$this->getID());
         $stmt->bind_param("s", $new);
         $new = password_hash($new, PASSWORD_DEFAULT);
         if ($stmt->execute()) {
@@ -151,8 +149,7 @@ class User
                 return false;
             }
         }
-        global $db;
-        $stmt = $db->prepare("UPDATE `vb_user` SET age = ?, city = ?, website = ?, bio = ?, name = ? WHERE id = ?");
+        $stmt = $this->db->prepare("UPDATE `vb_user` SET age = ?, city = ?, website = ?, bio = ?, name = ? WHERE id = ?");
         $stmt->bind_param("issssi", $form['age'], $form['city'], $form['website'], $form['bio'], $form['username'], $this->id);
         if ($stmt->execute()) {
             $stmt->close();
@@ -167,8 +164,7 @@ class User
 
     public function updateUserName($new)
     {
-        global $db;
-        $stmt = $db->prepare("UPDATE `vb_post` SET authorName = ? WHERE authorID = ?");
+        $stmt = $this->db->prepare("UPDATE `vb_post` SET authorName = ? WHERE authorID = ?");
         $stmt->bind_param("si", $new, $this->id);
         $stmt->execute();
         $stmt->close();
@@ -178,9 +174,8 @@ class User
     public function updateAliases($new)
     {
         if (!in_array($new, $this->aliases)) {
-            global $db;
             $this->aliases[] = $new;
-            $stmt = $db->prepare("UPDATE `vb_user` SET aliases = ? WHERE id = ?");
+            $stmt = $this->db->prepare("UPDATE `vb_user` SET aliases = ? WHERE id = ?");
             $stmt->bind_param("si", $alias, $this->id);
             $alias = implode(",", $this->aliases);
             $stmt->execute();
@@ -194,8 +189,6 @@ class User
     // create user
     public static function createUser($username, $pass, $passrepeat)
     {
-        global $db;
-
         if ($pass != $passrepeat) {
             return false;
         }
@@ -220,7 +213,7 @@ class User
 
         // check if username already exist
         $sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         if ($result->num_rows > 0) {
             return false;
             exit;
@@ -228,10 +221,10 @@ class User
         $result->free();
 
         // proceed to add user
-        $stmt = $db->prepare("INSERT INTO `vb_user` (name, password, aliases) VALUES (?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO `vb_user` (name, password, aliases) VALUES (?, ?, ?)");
         $stmt->bind_param("sss", $username, $pass, $username);
         if ($stmt->execute()) {
-            $last = $db->insert_id;
+            $last = $this->db->insert_id;
             $_SESSION['username'] = $username;
             $_SESSION['id'] = $last;
             // success, redirect to welcome page
@@ -244,8 +237,6 @@ class User
     // login
     public static function login($username, $pass)
     {
-        global $db;
-
         $username = trim($username);
         $pass = trim($pass);
 
@@ -253,7 +244,7 @@ class User
         $pass = htmlspecialchars($pass);
 
         $sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         if ($result->num_rows == 0) {
             return false;
         }

@@ -29,14 +29,14 @@ function __autoload($class)
 // load functions from a seperate file
 require(dirname(__FILE__).'/functions.php');
 
-// load user
-$user = new User();
-
 // set up stuff
 $post = new Post();
 $vb = new Verbalizer($post, $db);
+$user = $vb->user;
+
 $page = isset($_GET['page']) ? murder($_GET['page']) : false;
 $id = isset($_GET['id']) ? murder($_GET['id']) : false;
+
 if ($id) {
     if (!$post = $vb->constructPost($id)) {
         header("Location: ?");
