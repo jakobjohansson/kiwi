@@ -26,11 +26,6 @@ function murder($data)
     return $data;
 }
 
-function createUser()
-{
-    User::createUser($_POST['username'], $_POST['pass'], $_POST['passrepeat']);
-}
-
 function userExists()
 {
     global $db;

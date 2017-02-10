@@ -14,7 +14,6 @@ class User
     protected $loggedIn = false;
     protected $db;
 
-    // autoconstruct
     public function __construct(mysqli $db)
     {
         $this->db = $db;
@@ -25,7 +24,6 @@ class User
         $this->setInfo();
     }
 
-    // getters
     public function getID()
     {
         return $this->id;
@@ -76,7 +74,6 @@ class User
         return $this->bio;
     }
 
-    // log out
     public function logOut()
     {
         session_unset();
@@ -185,12 +182,8 @@ class User
         }
     }
 
-    // STATICS
-
-    // create user
-    public static function createUser($username, $pass, $passrepeat)
+    public function createUser($username, $pass, $passrepeat)
     {
-        global $db;
         if ($pass != $passrepeat) {
             return false;
         }
@@ -215,7 +208,7 @@ class User
 
         // check if username already exist
         $sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         if ($result->num_rows > 0) {
             return false;
             exit;
@@ -236,10 +229,8 @@ class User
         return true;
     }
 
-    // login
-    public static function login($username, $pass)
+    public function login($username, $pass)
     {
-        global $db;
         $username = trim($username);
         $pass = trim($pass);
 
@@ -247,7 +238,7 @@ class User
         $pass = htmlspecialchars($pass);
 
         $sql = "SELECT * FROM `vb_user` WHERE name = '$username'";
-        $result = $db->query($sql);
+        $result = $this->db->query($sql);
         if ($result->num_rows == 0) {
             return false;
         }

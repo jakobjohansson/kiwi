@@ -13,7 +13,7 @@ if (userExists()) {
 }
 
 if (isset($_POST['submit'])) {
-    if (!createUser()) {
+    if ($user->createUser($_POST['username'], $_POST['pass'], $_POST['passrepeat'])) {
         $error = true;
     }
 }
