@@ -103,7 +103,7 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
                 `aliases` varchar(255) NOT NULL,
                 `bio` text NOT NULL,
                 PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
+                ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;";
 
             $sql .= "INSERT INTO `vb_meta` (`id`, `vb_key`, `vb_value`, `description`) VALUES
                 (1, 'active', 'true', 'Blog active or not. If not, redirecting to views/deactivated.php'),
