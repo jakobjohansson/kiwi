@@ -2,7 +2,9 @@
 require("lib/config.php");
 
 if (!$vb->active && !$user->isAuth()) {
-    header("Location: views/deactivated.php");
+    if (file_exists("views/deactivated.php")) {
+        require("views/deactivated.php");
+    }
 } else {
     if ($id) {
         if (file_exists("views/single.php")) {
