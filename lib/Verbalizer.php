@@ -7,6 +7,10 @@ class Verbalizer
     protected $currentpost = 0;
     public $user;
 
+    // test variables
+    protected $pagination = false;
+    protected $ppp = 5;
+
     /**
      * controller construction
      * @param Post $post
