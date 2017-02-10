@@ -48,11 +48,11 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
         // execute after button is pressed
         $dbhost = filter_var($_POST['dbhost'], FILTER_SANITIZE_STRING);
         $dbuser = filter_var($_POST['dbuser'], FILTER_SANITIZE_STRING);
-        $dbpass = filter_var($_POST['dbpass'], FILTER_SANITIZE_STRING);
+        $dbpass = trim($_POST['dbpass']);
         $dbdb = filter_var($_POST['dbdb'], FILTER_SANITIZE_STRING);
 
         // needs to do some string regexp here probably
-        if (empty($dbhost) || empty($dbuser) || empty($dbpass) || empty($dbdb)) {
+        if (empty($dbhost) || empty($dbuser) || empty($dbdb)) {
             echo "<h1>Error</h1><p>All fields need to be filled out.</p>";
             exit;
         }
@@ -71,33 +71,31 @@ if (!defined("DB_HOST") || !defined("DB_USER") || !defined("DB_PASS") || !define
                 exit;
             }
 
-            $sql = "DROP TABLE IF EXISTS `vb_post`; DROP TABLE IF EXISTS `vb_user`;";
+            $sql .= "CREATE TABLE IF NOT EXISTS `vb_post` (
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `title` varchar(255) NOT NULL,
+                `content` text NOT NULL,
+                `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                `authorID` int(11) DEFAULT NULL,
+                `authorName` varchar(255) NOT NULL,
+                `public` tinyint(1) NOT NULL DEFAULT '1',
+                PRIMARY KEY (`id`),
+                UNIQUE KEY `id` (`id`),
+                KEY `id_2` (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;";
 
-            $sql .= "CREATE TABLE `vb_post` (
-					 `id` int(11) NOT NULL AUTO_INCREMENT,
-					 `title` varchar(255) NOT NULL,
-					 `content` text NOT NULL,
-					 `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-					 `authorID` int(11) DEFAULT NULL,
-					 `authorName` varchar(255) NOT NULL,
-					 `public` tinyint(1) NOT NULL DEFAULT '1',
-					 PRIMARY KEY (`id`),
-					 UNIQUE KEY `id` (`id`),
-					 KEY `id_2` (`id`)
-					) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;";
-
-            $sql .= "CREATE TABLE `vb_user` (
-					 `id` int(11) NOT NULL AUTO_INCREMENT,
-					 `name` varchar(255) NOT NULL,
-					 `postcount` int(11) NOT NULL DEFAULT '0',
-					 `password` varchar(255) NOT NULL,
-                     `age` int(11) NOT NULL,
-                     `city` varchar(255) NOT NULL,
-                     `website` varchar(255) NOT NULL,
-                     `aliases` varchar(255) NOT NULL,
-                     `bio` text NOT NULL,
-					 PRIMARY KEY (`id`)
-					) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
+            $sql .= "CREATE TABLE IF NOT EXISTS `vb_user` (
+                `id` int(11) NOT NULL AUTO_INCREMENT,
+                `name` varchar(255) NOT NULL,
+                `postcount` int(11) NOT NULL DEFAULT '0',
+                `password` varchar(255) NOT NULL,
+                `age` int(11) NOT NULL,
+                `city` varchar(255) NOT NULL,
+                `website` varchar(255) NOT NULL,
+                `aliases` varchar(255) NOT NULL,
+                `bio` text NOT NULL,
+                PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8";
 
             if ($db->multi_query($sql) === false) {
                 echo "<h1>Error</h1><p>An error occured while trying to add tables.</p>";
