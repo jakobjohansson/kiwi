@@ -5,9 +5,11 @@ class Verbalizer
     protected $post;
     protected $db;
     protected $currentpost = 0;
+    public $user;
     public $pagination = false;
     public $posts_per_page = 5;
-    public $user;
+    public $active = true;
+    public $comments = false;
 
     /**
      * controller construction
@@ -19,20 +21,30 @@ class Verbalizer
     {
         $this->post = $post;
         $this->db = $db;
-        $this->user = new User($this->db);
-        foreach ($this->user->returnPagination() as $key => $value) {
-            $this->$key = $value;
+        $this->setMeta();
+        if (!$this->active) {
+            header("views/deactivated.php");
         }
-        $this->pagination = ($this->pagination == "false") ? false : true;
+        $this->user = new User($this->db);
     }
 
-    public function returnPagination()
+    private function setMeta()
     {
-        $sql = "SELECT pagination, posts_per_page FROM `vb_user` WHERE id = 1";
+        $sql = "SELECT * FROM `vb_meta`";
         $result = $this->db->query($sql);
-        return $result->fetch_assoc();
+        while ($row = $result->fetch_assoc()) {
+            if ($row['vb_value'] == "true") {
+                $value = true;
+            } elseif ($row['vb_value'] == "false") {
+                $value = false;
+            } else {
+                $value = $row['vb_value'];
+            }
+            $this->$row['vb_key'] = $value;
+        }
+        $result->free();
     }
-    
+
     /**
      * constructs a post object with a given id
      * used to generate posts
