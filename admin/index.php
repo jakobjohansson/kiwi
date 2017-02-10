@@ -57,6 +57,34 @@ if ($page == "add" && $_SERVER['REQUEST_METHOD'] == "POST") {
             echo "<br/>Couldn't update password cause they didn't match.";
         }
     }
+
+    // check if meta settings are changed
+    $pagination = isset($_POST['pagination']) ? "true" : "false";
+    $posts_per_page = $_POST['postsperpage'];
+    $comments = isset($_POST['comments']) ? "true" : "false";
+    $deactivate = isset($_POST['deactivate']) ? "false" : "true";
+
+    $settings = [];
+
+    if ($pagination !== $vb->pagination) {
+        $settings['pagination'] = $pagination;
+    }
+    
+    if ($posts_per_page !== $vb->posts_per_page) {
+        $settings['posts_per_page'] = $posts_per_page;
+    }
+
+    if ($comments !== $vb->comments) {
+        $settings['comments'] = $comments;
+    }
+
+    if ($deactivate !== $vb->active) {
+        $settings['active'] = $deactivate;
+    }
+
+    if (count($settings) > 0) {
+        $vb->updateMeta($settings);
+    }
 } else {
     ?>
 <!DOCTYPE html>
