@@ -3,3 +3,9 @@ lib/define.php
 *.scssc
 *.rb
 *.scss
+
+views/flow.php
+
+views/single.php
+
+views/deactivated.php
