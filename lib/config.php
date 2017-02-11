@@ -2,7 +2,7 @@
 
 // set some universal settings
 session_start();
-define("VB_DEBUG", true);
+define("VB_DEBUG", false);
 error_reporting(VB_DEBUG ? -1 : 0);
 
 if (file_exists(dirname(__FILE__).'/define.php')) {
