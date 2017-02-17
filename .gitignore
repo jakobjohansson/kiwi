@@ -3,7 +3,7 @@ lib/define.php
 *.scssc
 *.rb
 *.scss
-
+.DS_Store
 views/flow.php
 
 views/single.php
