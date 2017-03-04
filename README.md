@@ -1,4 +1,4 @@
-# Verbalizer
+# Verbalizer [![Build Status](https://travis-ci.org/jakobjohansson/Verbalizer.svg?branch=master)](https://travis-ci.org/jakobjohansson/Verbalizer)
 "humble effort at a blog module"
 
 ## Introduction
