@@ -11,7 +11,7 @@ Wordpress-like installation, quick and intuitive templates, non cluttered admin 
 ## Guide
 In Verbalizer, there's no need to touch the index.php file. The ``views\`` folder is where all your templates go. You can however extend these possibilities by editing the statements in the index file. 
 
-###Flow.php
+### Flow.php
 Flow.php is the front page. This is cover-up for all kinds of pages.
 By making the while loop shown below, you can access all your posts:
 ```php
@@ -22,7 +22,7 @@ while ($vb->loopPosts()) {
 }
 ```
 
-###Single.php
+### Single.php
 The permalink, or single post page.
 In here, the $post object variable will be containing the post of the current GET-id.
 This makes it very easy to display your post.
@@ -49,7 +49,7 @@ object(Post)#6 (8) {
 }
 ```
 
-###Handy features
+### Handy features
 - The ``auth()`` functions returns true when the user is logged in. This is handy for displaying specific content on your site.
 - ``[code]``snippets``[/code]`` will let you write html-code easily.
 - ``[link to="http://github.com"]``makes it easy to make a link.``[/link]``
