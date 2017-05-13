@@ -15,4 +15,4 @@ Version 2.0 will be a total revamp on the codebase. Some initial tasks and keywo
 - [x] Set up SQL tables for easily extending the project.
 
 ### Currently working on
-- Installing page design
+- Installing page api
