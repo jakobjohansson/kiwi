@@ -1,5 +1,5 @@
-# Verbalizer
-"humble effort at a blog module"
+# kiwi
+Verbalizer is now kiwi.
 
 ## Introduction
 
