@@ -1,3 +1,5 @@
 <?php
-
-$router->get('install', 'Installer/initiate');
+/**
+ * Routes file
+ * Create your own custom routes in here, at the end of this file.
+ */
