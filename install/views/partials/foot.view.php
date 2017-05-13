@@ -1,5 +1,5 @@
         </div>
     </div>
-    <script src="/stock/installer/installer.js"></script>
+    <script src="/install/assets/installer.js"></script>
 </body>
 </html>

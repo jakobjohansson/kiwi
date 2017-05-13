@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="/stock/installer/installer.css" rel="stylesheet">
+    <link href="/install/assets/installer.css" rel="stylesheet">
     <title>kiwi - install</title>
 </head>
 <body>
