@@ -2,15 +2,15 @@
 
 class Installer
 {
-    private static $path = 'install/';
     /**
-     * Initiate the installer.
+     * The path to the install folder.
      *
-     * @return void
+     * @var string
      */
-    public static function initiate()
+    private static $path = 'install/';
+
+    public function index()
     {
         require static::$path . 'index.view.php';
-        exit;
     }
 }

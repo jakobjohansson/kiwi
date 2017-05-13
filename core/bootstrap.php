@@ -1,12 +1,11 @@
 <?php
 
-use kiwi\Filesystem;
 use kiwi\Request;
 use kiwi\Connection;
-use kiwi\Installer;
+use kiwi\Filesystem;
 
 if (!Filesystem::find('config.php')) {
-    return Installer::initiate();
+    return Request::redirect('/install');
 }
 
 return new Query(

@@ -65,10 +65,11 @@ class Router
      */
     protected function fire($controller, $method)
     {
+        $controller = "\\kiwi\\{$controller}";
         $controller = new $controller;
         if (!method_exists($controller, $method)) {
             throw new Exception(
-                   "{$method} doesn't exist in {$controller}."
+                   "The {$method} method doesn't exist."
                );
         }
         return $controller->$method();
