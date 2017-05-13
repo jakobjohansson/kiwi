@@ -6,7 +6,7 @@ class Request
     /**
      * Returns full URI.
      *
-     * @return String URI
+     * @return string URI
      */
     public static function uri()
     {
@@ -18,7 +18,7 @@ class Request
     /**
      * Fetch the request method.
      *
-     * @return String Request method
+     * @return string Request method
      */
     public static function method()
     {
