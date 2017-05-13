@@ -2,5 +2,5 @@
 
 interface InputInterface
 {
-    public function field();
+    public static function field($key);
 }
