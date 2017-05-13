@@ -1,7 +1,10 @@
 .form-holder {
+    @include form-max-width;
+
     label {
         font-size: 14px;
         display: block;
+        font-weight: 600;
 
         &.inline {
             display: inline-block;
@@ -17,6 +20,7 @@
         color: $dark;
         outline: 0;
         font-family: inherit;
+        font-size: 14px;
 
         &[type="submit"] {
             width: auto;

@@ -11,19 +11,18 @@
         <div class="col center full">
             <h1>kiwi</h1>
             <div class="form-holder">
-                <p>So to start with we need your database settings before we move on.</p>
+                <p>Great! The connection is established, tables are migrated, now we just need to make you an administrator!</p>
                 <form class="text-left col" action="createuser.html">
-                    <label>host</label>
-                    <input type="text" placeholder="localhost" required>
                     <label>username</label>
-                    <input type="text" placeholder="root" required>
+                    <input type="text" required>
+                    <label>email</label>
+                    <input type="email" required>
                     <label>password</label>
-                    <input type="password">
-                    <label>database name</label>
-                    <input type="text" placeholder="kiwi" required>
+                    <input type="password" required>
+                    <label>repeat password</label>
+                    <input type="password" required>
                     <div class="buttons self-right">
-                        <input type="submit" class="button" value="Test connection">
-                        <input type="submit" class="button continue" value="Continue">
+                        <input type="submit" class="button continue" value="Create user">
                     </div>
                 </form>
             </div>
