@@ -8,4 +8,6 @@ if (!Filesystem::find('config.php')) {
     return Request::redirect('install/');
 }
 
-return Connection::create(require 'config.php');
+return new Query(
+    Connection::create(require 'config.php')
+);
