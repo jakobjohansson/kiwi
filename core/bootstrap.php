@@ -1,6 +1,5 @@
 <?php
 
-use kiwi\Request;
 use kiwi\Connection;
 use kiwi\Filesystem;
 
