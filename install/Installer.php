@@ -30,6 +30,37 @@ class Installer
     }
 
     /**
+     * Process the database settings
+     *
+     * @return [type] [description]
+     */
+    public function postDatabase()
+    {
+    }
+
+    /**
+     * Format and send test connection results
+     *
+     * @return [type] [description]
+     */
+    public function postTestConnection()
+    {
+        $connection = Connection::testConnection(Json::all());
+
+        if ($connection) {
+            echo JsonFormatter::make([
+                'status' => $connection,
+                'message' => 'Connection working!'
+            ]);
+        } else {
+            echo JsonFormatter::make([
+                'status' => $connection,
+                'message' => 'Unable to connect.'
+            ]);
+        }
+    }
+
+    /**
      * Show the view for creating the administrator.
      *
      * @return void

@@ -24,4 +24,25 @@ class Connection
             die($e->getMessage());
         }
     }
+
+    /**
+     * Test the connection to the database
+     *
+     * @param  array  $params array of credentials
+     * @return boolean true|false
+     */
+    public static function testConnection(array $params)
+    {
+        try {
+            new PDO(
+                $params['host'].';dbname='.$params['name'],
+                $params['username'],
+                $params['password'],
+                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+            );
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }
