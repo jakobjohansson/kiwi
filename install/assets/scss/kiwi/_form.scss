@@ -1,0 +1,28 @@
+.form-holder {
+    label {
+        font-size: 14px;
+        display: block;
+
+        &.inline {
+            display: inline-block;
+        }
+    }
+
+    input {
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+        opacity: 0.9;
+        color: $dark;
+        outline: 0;
+        font-family: inherit;
+
+        &[type="submit"] {
+            width: auto;
+            display: inline-block;
+        }
+    }
+
+    textarea {}
+}
