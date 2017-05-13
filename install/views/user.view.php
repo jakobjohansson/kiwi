@@ -12,7 +12,7 @@
             <h1>kiwi</h1>
             <div class="form-holder">
                 <p>Great! The connection is established, tables are migrated, now we just need to make you an administrator!</p>
-                <form class="text-left col" action="success.html">
+                <form class="text-left col" action="/install/success">
                     <label>username</label>
                     <input type="text" required>
                     <label>email</label>

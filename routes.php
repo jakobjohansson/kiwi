@@ -5,3 +5,6 @@
  */
 
 $router->get('install', 'Installer/initiate');
+$router->get('install/database', 'Installer/getDatabaseView');
+$router->get('install/user', 'Installer/getUserView');
+$router->get('install/success', 'Installer/getSuccessView');

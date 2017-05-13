@@ -12,7 +12,7 @@
             <h1>kiwi</h1>
             <div class="form-holder">
                 <p>So to start with we need your database settings before we move on.</p>
-                <form class="text-left col" action="createuser.html">
+                <form class="text-left col" action="/install/user">
                     <label>host</label>
                     <input type="text" placeholder="localhost" required>
                     <label>username</label>
