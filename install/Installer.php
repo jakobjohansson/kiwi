@@ -80,7 +80,13 @@ class Installer
     {
     }
 
-    public function requireFile($file)
+    /**
+     * Helper method to include header and footer and view suffix on main file.
+     *
+     * @param  string $file the file name without view.php
+     * @return void
+     */
+    private function requireFile($file)
     {
         require static::$path . 'partials/head.view.php';
         require static::$path . $file . '.view.php';
