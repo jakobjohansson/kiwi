@@ -9,7 +9,12 @@ class Installer
      */
     private static $path = 'install/';
 
-    public function index()
+    /**
+     * Initiate the installer
+     *
+     * @return void
+     */
+    public function initiate()
     {
         require static::$path . 'index.view.php';
     }
