@@ -4,3 +4,5 @@
 require 'vendor/autoload.php';
 
 $go = require 'core/bootstrap.php';
+
+Router::loadRoutes('routes.php')->delegate();
