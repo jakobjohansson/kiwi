@@ -2,7 +2,10 @@
 
 // use composer in development mode
 require 'vendor/autoload.php';
+require 'core/bootstrap.php';
 
-$go = require 'core/bootstrap.php';
-
-Router::loadRoutes('routes.php')->delegate();
+try {
+    kiwi\Router::loadRoutes('routes.php')->delegate();
+} catch (Exception $e) {
+    echo $e->getMessage();
+}

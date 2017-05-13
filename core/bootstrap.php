@@ -3,9 +3,10 @@
 use kiwi\Filesystem;
 use kiwi\Request;
 use kiwi\Connection;
+use kiwi\Installer;
 
 if (!Filesystem::find('config.php')) {
-    return Request::redirect('install/');
+    return Installer::initiate();
 }
 
 return new Query(
