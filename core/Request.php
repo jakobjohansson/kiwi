@@ -24,4 +24,15 @@ class Request
     {
         return $_SERVER['REQUEST_METHOD'];
     }
+
+    /**
+     * Redirect the user.
+     *
+     * @param  string $path the path to redirect
+     * @return header
+     */
+    public static function redirect($path)
+    {
+        return header("Location: $path");
+    }
 }
