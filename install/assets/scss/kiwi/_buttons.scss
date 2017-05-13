@@ -1,0 +1,26 @@
+.button {
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: inherit;
+    color: $dark;
+    background-color: $light;
+    opacity: 0.9;
+    padding: 10px 20px;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.1) 2px 2px 4px;
+
+    &:hover {
+        color: $accent;
+    }
+
+    &.continue {
+        background-color: $continue;
+        color: $light;
+    }
+
+    &.abort {
+        background-color: $abort;
+        color: $light;
+    }
+}
