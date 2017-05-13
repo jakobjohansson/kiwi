@@ -16,7 +16,7 @@ class Installer
      */
     public function initiate()
     {
-        require static::$path . 'index.view.php';
+        $this->requireFile('index');
     }
 
     /**
@@ -26,16 +26,27 @@ class Installer
      */
     public function getDatabaseView()
     {
-        require static::$path . 'connection.view.php';
+        $this->requireFile('connection');
     }
 
     /**
-     * Process the database settings
+     * Show the view for creating the administrator.
      *
-     * @return [type] [description]
+     * @return void
      */
-    public function postDatabase()
+    public function getUserView()
     {
+        $this->requireFile('user');
+    }
+
+    /**
+     * Show the success view
+     *
+     * @return void
+     */
+    public function getSuccessView()
+    {
+        $this->requireFile('success');
     }
 
     /**
@@ -61,22 +72,18 @@ class Installer
     }
 
     /**
-     * Show the view for creating the administrator.
+     * Process the database settings
      *
-     * @return void
+     * @return [type] [description]
      */
-    public function getUserView()
+    public function postDatabase()
     {
-        require static::$path . 'user.view.php';
     }
 
-    /**
-     * Show the success view
-     *
-     * @return void
-     */
-    public function getSuccessView()
+    public function requireFile($file)
     {
-        require static::$path . 'success.view.php';
+        require static::$path . 'partials/head.view.php';
+        require static::$path . $file . '.view.php';
+        require static::$path . 'partials/foot.view.php';
     }
 }
