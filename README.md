@@ -1,56 +1,12 @@
 # Verbalizer
-"humble effort at a blog module"
+Develop branch which always contains the latest changes.
 
-## Introduction
-
-Wordpress-like installation, quick and intuitive templates, non cluttered admin page.
-
-![install example image](http://retarded.fish/verbrepoimages/install.PNG?)
-![admin example image](http://retarded.fish/verbrepoimages/dashboard.PNG?)
-
-## Guide
-In Verbalizer, there's no need to touch the index.php file. The ``views\`` folder is where all your templates go. You can however extend these possibilities by editing the statements in the index file. 
-
-### Flow.php
-Flow.php is the front page. This is cover-up for all kinds of pages.
-By making the while loop shown below, you can access all your posts:
-```php
-while ($vb->loopPosts()) {
-    echo $post->title;
-    echo $post->content;
-    echo $post->date;
-}
-```
-
-### Single.php
-The permalink, or single post page.
-In here, the $post object variable will be containing the post of the current GET-id.
-This makes it very easy to display your post.
-```php
-var_dump($post);
-
-object(Post)#6 (8) {
-    ["id"]=>
-    string(2) "16"
-    ["title"]=>
-    string(11) "Sample post"
-    ["date"]=>
-    string(16) "December 4, 2016"
-    ["public"]=>
-    string(1) "1"
-    ["thumb"]=>
-    string(0) ""
-    ["authorID"]=>
-    string(1) "1"
-    ["authorName"]=>
-    string(5) "admin"
-    ["content"]=>
-    string(161) "Hello."
-}
-```
-
-### Handy features
-- The ``auth()`` functions returns true when the user is logged in. This is handy for displaying specific content on your site.
-- ``[code]``snippets``[/code]`` will let you write html-code easily.
-- ``[link to="http://github.com"]``makes it easy to make a link.``[/link]``
-- ``[img]source[/img]`` prints an image!
+## 2.0
+Version 2.0 will be a total revamp on the codebase. Some initial tasks and keywords:
+- Easy to extend.
+- Thorough ajax system for admin page.
+- Flexbox in admin page.
+- Adding users and setting their privileges.
+- New types of posts.
+- Comments.
+- Clean up install page.
