@@ -11,7 +11,7 @@
         <div class="col center full">
             <h1>kiwi</h1>
             <p>Trying out kiwi? Good choice. We just need a few minutes of your time to configurate the install.</p>
-            <a href="/step/1" class="button">Get started</a>
+            <button class="button">Get started</button>
         </div>
     </div>
 </body>
