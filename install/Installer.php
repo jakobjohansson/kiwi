@@ -49,12 +49,12 @@ class Installer
 
         if ($connection) {
             echo JsonFormatter::make([
-                'status' => $connection,
+                'status' => "success",
                 'message' => 'Connection working!'
             ]);
         } else {
             echo JsonFormatter::make([
-                'status' => $connection,
+                'status' => "error",
                 'message' => 'Unable to connect.'
             ]);
         }

@@ -15,7 +15,11 @@ document.getElementById("testConnection")
 
         xhr.onreadystatechange = function() {
             if (this.readyState === 4) {
-                console.log(xhr.response);
+                var response = JSON.parse(xhr.response);
+                document.getElementById("flash")
+                    .className = response.status;
+                document.getElementById("flash")
+                    .textContent = response.message;
             }
         }
 
