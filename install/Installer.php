@@ -10,6 +10,13 @@ class Installer
     private static $path = 'install/views/';
 
     /**
+     * Database connection.
+     *
+     * @var PDO
+     */
+    private $pdo;
+
+    /**
      * Initiate the installer
      *
      * @return void
@@ -138,5 +145,7 @@ class Installer
      */
     private function migrate()
     {
+        // Let's make an ugly temporary connection to the database.
+        $this->pdo = Connection::make(require 'config.php');
     }
 }

@@ -9,5 +9,5 @@ if (!Filesystem::find('config.php')) {
 }
 
 return new Query(
-    Connection::create(require 'config.php')
+    Connection::make(require 'config.php')
 );

@@ -11,7 +11,7 @@ class Connection
      * @param  array  $params Array of credentials to the database
      * @return PDO         Connection
      */
-    public static function create(array $params)
+    public static function make(array $params)
     {
         try {
             return new PDO(
