@@ -9,7 +9,7 @@ class RecursiveRemover
      */
     public function init()
     {
-        $this->removeFiles('install/');
+        $this->removeFiles('install');
         return Request::redirect('/');
     }
 
@@ -21,7 +21,7 @@ class RecursiveRemover
      */
     private function removeFiles($dir)
     {
-        $files = scandir($dir);
+        $files = array_diff(scandir($dir), ['.', '..']);
         foreach ($files as $file) {
             (is_dir("$dir/$file")) ? $this->removeFiles("$dir/$file") : unlink("$dir/$file");
         }
