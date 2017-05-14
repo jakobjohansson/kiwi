@@ -16,13 +16,6 @@ CREATE TABLE `site_meta` (
 LOCK TABLES `site_meta` WRITE;
 /*!40000 ALTER TABLE `site_meta` DISABLE KEYS */;
 
-INSERT INTO `site_meta` (`meta_id`, `key`, `value`)
-VALUES
-    (1,'name','kiwi'),
-    (2,'description','an optional description of the site'),
-    (3,'public','true'),
-    (4,'theme','kiwi-default');
-
 /*!40000 ALTER TABLE `site_meta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46,10 +39,6 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-
-INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `avatar`, `role`)
-VALUES
-    (1,'admin','admin@admin.com','password',NULL,4);
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -99,10 +88,6 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-
-INSERT INTO `items` (`item_id`, `type_id`, `user_id`, `title`, `body`, `belongs_to_id`)
-VALUES
-	(1,1,1,'This is an example post','Welcome to kiwi',NULL);
 
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
