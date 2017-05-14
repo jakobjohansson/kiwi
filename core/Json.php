@@ -31,7 +31,6 @@ class Json implements InputInterface
             $sendback[$key] = Sanitizer::input($json[$key]);
         }
 
-
         return $sendback;
     }
 }

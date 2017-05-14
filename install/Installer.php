@@ -52,7 +52,7 @@ class Installer
     /**
      * Format and send test connection results
      *
-     * @return [type] [description]
+     * @return JsonFormatter
      */
     public function postTestConnection()
     {
@@ -72,7 +72,7 @@ class Installer
     }
 
     /**
-     * Process the database settings
+     * Process the database settings and put them in the config file.
      *
      * @return [type] [description]
      */

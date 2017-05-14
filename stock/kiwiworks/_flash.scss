@@ -3,9 +3,11 @@
     font-size: 14px;
     padding: 10px 20px;
     border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.2) 1px 1px 4px;
 
     &.success {
         display: inline-block;
+        background-color: $success;
     }
 
     &.error {
