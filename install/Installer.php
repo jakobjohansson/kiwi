@@ -100,9 +100,9 @@ class Installer
             Filesystem::write($str, 'config.php');
 
             return Request::redirect('/install/user');
-        } else {
-            return Request::redirect('/install/database');
         }
+
+        return Request::redirect('/install/database');
     }
 
     /**
