@@ -98,8 +98,23 @@ class Installer
             Input::field('name'));
 
             Filesystem::write($str, 'config.php');
+
+            return Request::redirect('/install/user');
         } else {
-            echo "rip";
+            return Request::redirect('/install/database');
+        }
+    }
+
+    /**
+     * Adds the administrator user to the database.
+     *
+     * @return Request::redirect()
+     */
+    public function postUserView()
+    {
+        if (Validation::password('password', 'password_confirm')) {
+            // First migrate the tables
+            $this->migrate();
         }
     }
 
@@ -114,5 +129,14 @@ class Installer
         require static::$path . 'partials/head.view.php';
         require static::$path . $file . '.view.php';
         require static::$path . 'partials/foot.view.php';
+    }
+
+    /**
+     * Migrate tables to database.
+     *
+     * @return boolean
+     */
+    private function migrate()
+    {
     }
 }

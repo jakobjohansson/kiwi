@@ -1,14 +1,14 @@
             <div class="form-holder">
-                <p>Great! The connection is established, tables are migrated, now we just need to make you an administrator!</p>
-                <form class="text-left col" action="/install/success">
+                <p>Great! The connection is established, now we just need to make you an administrator!</p>
+                <form class="text-left col" action="/install/user" method="POST">
                     <label>username</label>
-                    <input type="text" required>
+                    <input type="text" name="username" required>
                     <label>email</label>
-                    <input type="email" required>
+                    <input type="email" name="email" required>
                     <label>password</label>
-                    <input type="password" required>
+                    <input type="password" name="password" required>
                     <label>repeat password</label>
-                    <input type="password" required>
+                    <input type="password" name="password_confirm" required>
                     <div class="buttons self-right">
                         <input type="submit" class="button continue" value="Create user">
                     </div>
