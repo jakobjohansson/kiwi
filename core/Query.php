@@ -44,8 +44,8 @@ class Query
             ':' . implode(', :', array_keys($parameters))
         );
         try {
-            $statement = $this->pdo->prepare($sql);
-            $statement->execute($parameters);
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($parameters);
         } catch (\Exception $e) {
             //
         }
