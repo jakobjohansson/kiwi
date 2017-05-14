@@ -23,7 +23,7 @@ document.getElementById("testConnection")
             }
         }
 
-        xhr.open('POST', '/install/test', true);
+        xhr.open('POST', '/test', true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.send(JSON.stringify(data));
     });

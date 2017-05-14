@@ -84,6 +84,9 @@ class Router
     public static function loadRoutes($file)
     {
         $router = new static;
+        if (Filesystem::find('install/routes.php')) {
+            $file = 'install/routes.php';
+        }
         require $file;
         return $router;
     }
