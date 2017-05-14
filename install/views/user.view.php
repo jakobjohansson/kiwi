@@ -1,6 +1,6 @@
             <div class="form-holder">
                 <p>Great! The connection is established, now we just need to make you an administrator!</p>
-                <form class="text-left col" action="/install/user" method="POST">
+                <form class="text-left col" action="/user" method="POST">
                     <label>username</label>
                     <input type="text" name="username" required>
                     <label>email</label>
