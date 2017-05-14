@@ -1,14 +1,13 @@
 <?php
 
-use kiwi\Filesystem;
-use kiwi\Request;
 use kiwi\Connection;
-use kiwi\Installer;
+use kiwi\Query;
+use kiwi\Filesystem;
 
 if (!Filesystem::find('config.php')) {
-    return Installer::initiate();
+    return;
 }
 
 return new Query(
-    Connection::create(require 'config.php')
+    Connection::make(require 'config.php')
 );
