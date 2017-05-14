@@ -129,6 +129,8 @@ class Installer
         if (Validation::password(Input::field('password'), Input::field('password_confirm'))) {
             // First migrate the tables
             $this->initiateMigration();
+            // Then redirect to success page
+            return Request::redirect('/success');
         }
     }
 
