@@ -9,7 +9,7 @@ class RecursiveRemover
      */
     public function init()
     {
-        removeFiles('install/');
+        $this->removeFiles('install/');
         return Request::redirect('/');
     }
 
