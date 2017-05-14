@@ -1,18 +1,11 @@
 <?php
-require("lib/config.php");
 
-if (!$vb->active && !$user->isAuth()) {
-    if (file_exists("views/deactivated.php")) {
-        require("views/deactivated.php");
-    }
-} else {
-    if ($id) {
-        if (file_exists("views/single.php")) {
-            require("views/single.php");
-        }
-    } else {
-        if (file_exists("views/flow.php")) {
-            require("views/flow.php");
-        }
-    }
+// use composer in development mode
+require 'vendor/autoload.php';
+require 'core/bootstrap.php';
+
+try {
+    kiwi\Router::loadRoutes('routes.php')->delegate();
+} catch (Exception $e) {
+    echo $e->getMessage();
 }

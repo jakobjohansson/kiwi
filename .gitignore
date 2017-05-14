@@ -1,11 +1,5 @@
-views/
-lib/define.php
+vendor/
+
+config.php
+
 *.scssc
-*.rb
-*.scss
-.DS_Store
-views/flow.php
-
-views/single.php
-
-views/deactivated.php
