@@ -74,10 +74,33 @@ class Installer
     /**
      * Process the database settings and put them in the config file.
      *
-     * @return [type] [description]
+     * @return Request::redirect
      */
     public function postDatabase()
     {
+        if (Connection::testConnection(Input::all('POST'))) {
+            // format and write
+            $str = sprintf("
+                <?php\n
+                return [
+                    'host' => '%s',
+                    'username' => '%s',
+                    'password' => '%s',
+                    'name' => '%s',
+                    'options' => [
+                        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                    ]
+                ];
+            ",
+            Input::field('host'),
+            Input::field('username'),
+            Input::field('password'),
+            Input::field('name'));
+
+            Filesystem::write($str, 'config.php');
+        } else {
+            echo "rip";
+        }
     }
 
     /**

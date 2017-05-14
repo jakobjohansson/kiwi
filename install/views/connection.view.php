@@ -1,6 +1,6 @@
             <div class="form-holder">
                 <p>So to start with we need your database settings before we move on.</p>
-                <form class="text-left col" action="/install/user" name="connectionForm">
+                <form class="text-left col" action="/install/database" method="POST" name="connectionForm">
                     <label>host</label>
                     <input type="text" id="host" name="host" placeholder="localhost" required>
                     <label>username</label>

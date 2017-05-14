@@ -16,12 +16,13 @@ class Filesystem
     /**
      * Write to a file in the project directory.
      *
-     * @param  mixed $file     file path
      * @param  mixed $contents contents to write
+     * @param  mixed $file     file path
      * @param  array  $settings file write settings
      * @return boolean           true|false
      */
-    public static function write($file, $contents, array $settings)
+    public static function write($contents, $file, array $settings = null)
     {
+        file_put_contents($file, $contents);
     }
 }
