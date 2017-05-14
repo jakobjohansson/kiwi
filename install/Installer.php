@@ -113,10 +113,10 @@ class Installer
 
             Filesystem::write($str, 'config.php');
 
-            return Request::redirect('/install/user');
+            return Request::redirect('/user');
         }
 
-        return Request::redirect('/install/database');
+        return Request::redirect('/database');
     }
 
     /**
