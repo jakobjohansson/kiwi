@@ -1,4 +1,6 @@
-<?php namespace kiwi;
+<?php
+
+namespace kiwi;
 
 class Installer
 {
@@ -10,7 +12,7 @@ class Installer
     private static $views = 'install/views/';
 
     /**
-     * The path to the migrations folder
+     * The path to the migrations folder.
      *
      * @var string
      */
@@ -24,7 +26,7 @@ class Installer
     private $pdo;
 
     /**
-     * Initiate the installer
+     * Initiate the installer.
      *
      * @return void
      */
@@ -34,7 +36,7 @@ class Installer
     }
 
     /**
-     * Show the view for the database settings
+     * Show the view for the database settings.
      *
      * @return void
      */
@@ -54,7 +56,7 @@ class Installer
     }
 
     /**
-     * Show the success view
+     * Show the success view.
      *
      * @return void
      */
@@ -64,7 +66,7 @@ class Installer
     }
 
     /**
-     * Format and send test connection results
+     * Format and send test connection results.
      *
      * @return JsonFormatter
      */
@@ -74,13 +76,13 @@ class Installer
 
         if ($connection) {
             echo JsonFormatter::make([
-                'status' => "success",
-                'message' => 'Connection working!'
+                'status'  => 'success',
+                'message' => 'Connection working!',
             ]);
         } else {
             echo JsonFormatter::make([
-                'status' => "error",
-                'message' => 'Unable to connect.'
+                'status'  => 'error',
+                'message' => 'Unable to connect.',
             ]);
         }
     }
@@ -137,18 +139,19 @@ class Installer
     /**
      * Helper method to include header and footer and view suffix on main file.
      *
-     * @param  string $file the file name without view.php
+     * @param string $file the file name without view.php
+     *
      * @return void
      */
     private function requireFile($file)
     {
-        require static::$views . 'partials/head.view.php';
-        require static::$views . $file . '.view.php';
-        require static::$views . 'partials/foot.view.php';
+        require static::$views.'partials/head.view.php';
+        require static::$views.$file.'.view.php';
+        require static::$views.'partials/foot.view.php';
     }
 
     /**
-     * Initiate the migration
+     * Initiate the migration.
      *
      * @return [type] [description]
      */
@@ -163,30 +166,30 @@ class Installer
     /**
      * Migrate tables to database.
      *
-     * @return boolean
+     * @return bool
      */
     private function migrateTables()
     {
-        $this->pdo->query(require static::$migs . 'site_meta.php');
-        $this->pdo->query(require static::$migs . 'users.php');
-        $this->pdo->query(require static::$migs . 'types.php');
-        $this->pdo->query(require static::$migs . 'items.php');
+        $this->pdo->query(require static::$migs.'site_meta.php');
+        $this->pdo->query(require static::$migs.'users.php');
+        $this->pdo->query(require static::$migs.'types.php');
+        $this->pdo->query(require static::$migs.'items.php');
     }
 
     /**
-     * Creates the admin user and initial info
+     * Creates the admin user and initial info.
      *
-     * @return boolean
+     * @return bool
      */
     private function migrateInitialInfo()
     {
-        $this->pdo->query(require static::$migs . 'site_meta_inserts.php');
-        $this->pdo->query(require static::$migs . 'types_inserts.php');
+        $this->pdo->query(require static::$migs.'site_meta_inserts.php');
+        $this->pdo->query(require static::$migs.'types_inserts.php');
 
-        $stmt = $this->pdo->prepare("
+        $stmt = $this->pdo->prepare('
             INSERT INTO `users` (`username`, `email`, `password`, `avatar`, `role`)
             VALUES (:username, :email, :password, NULL, 4);
-        ");
+        ');
 
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':email', $email);
@@ -198,6 +201,6 @@ class Installer
 
         $stmt->execute();
 
-        $this->pdo->query(require static::$migs . 'items_inserts.php');
+        $this->pdo->query(require static::$migs.'items_inserts.php');
     }
 }

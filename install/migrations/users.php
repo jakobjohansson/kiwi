@@ -1,4 +1,6 @@
-<?php return "CREATE TABLE IF NOT EXISTS `users` (
+<?php
+
+return "CREATE TABLE IF NOT EXISTS `users` (
             `user_id` int(11) NOT NULL AUTO_INCREMENT,
             `username` varchar(16) NOT NULL,
             `email` varchar(255) DEFAULT NULL,

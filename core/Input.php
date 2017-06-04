@@ -1,12 +1,14 @@
-<?php namespace kiwi;
+<?php
+
+namespace kiwi;
 
 class Input implements InputInterface
 {
-
     /**
-     * Returns a sanitized POST field
+     * Returns a sanitized POST field.
      *
-     * @param  string $key the input field
+     * @param string $key the input field
+     *
      * @return string
      */
     public static function field($key)
@@ -15,9 +17,10 @@ class Input implements InputInterface
     }
 
     /**
-     * Returns a sanitized GET field
+     * Returns a sanitized GET field.
      *
-     * @param  string $key the input field
+     * @param string $key the input field
+     *
      * @return string
      */
     public static function query($key)
@@ -26,10 +29,11 @@ class Input implements InputInterface
     }
 
     /**
-     * Sanitize all the fields in a GET|POST collection
+     * Sanitize all the fields in a GET|POST collection.
      *
-     * @param  string $type GET|POST
-     * @return array        Sanitized array.
+     * @param string $type GET|POST
+     *
+     * @return array Sanitized array.
      */
     public static function all($type)
     {

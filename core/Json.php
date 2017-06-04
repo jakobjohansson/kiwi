@@ -1,26 +1,29 @@
-<?php namespace kiwi;
+<?php
+
+namespace kiwi;
 
 class Json implements InputInterface
 {
-
     /**
-     * Returns a sanitized JSON field
+     * Returns a sanitized JSON field.
      *
-     * @param  string $key the input field
+     * @param string $key the input field
+     *
      * @return string
      */
     public static function field($key)
     {
         $json = json_decode(file_get_contents('php://input'), true);
+
         return Sanitizer::input($json[$key]);
     }
 
-
     /**
-     * Sanitize all the fields in a JSON collection
+     * Sanitize all the fields in a JSON collection.
      *
-     * @param  string $type JSON
-     * @return array        Sanitized array.
+     * @param string $type JSON
+     *
+     * @return array Sanitized array.
      */
     public static function all()
     {

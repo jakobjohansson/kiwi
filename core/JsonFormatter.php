@@ -1,4 +1,6 @@
-<?php namespace kiwi;
+<?php
+
+namespace kiwi;
 
 class JsonFormatter implements FormatterInterface
 {
