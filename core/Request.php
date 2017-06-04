@@ -1,8 +1,9 @@
-<?php namespace kiwi;
+<?php
+
+namespace kiwi;
 
 class Request
 {
-
     /**
      * Returns full URI.
      *
@@ -28,7 +29,8 @@ class Request
     /**
      * Redirect the user.
      *
-     * @param  string $path the path to redirect
+     * @param string $path the path to redirect
+     *
      * @return header
      */
     public static function redirect($path)

@@ -1,23 +1,25 @@
-<?php namespace kiwi;
+<?php
+
+namespace kiwi;
 
 class Router
 {
-
     /**
-     * The registered routes
+     * The registered routes.
      *
      * @var array
      */
     protected $routes = [
-        'GET' => [],
-        'POST' => []
+        'GET'  => [],
+        'POST' => [],
     ];
 
     /**
      * Register a GET route.
      *
-     * @param  string $path    the URI to the route
-     * @param  string $handler the controller/method handler
+     * @param string $path    the URI to the route
+     * @param string $handler the controller/method handler
+     *
      * @return void
      */
     public function get($path, $handler)
@@ -28,8 +30,9 @@ class Router
     /**
      * Register a POST route.
      *
-     * @param  string $path    the URI to the route
-     * @param  string $handler the controller/method handler
+     * @param string $path    the URI to the route
+     * @param string $handler the controller/method handler
+     *
      * @return void
      */
     public function post($path, $handler)
@@ -39,7 +42,7 @@ class Router
 
     /**
      * Check if the route is registered.
-     * If so, delegate to the fire() method
+     * If so, delegate to the fire() method.
      *
      * @return Router/Fire
      */
@@ -57,37 +60,41 @@ class Router
     }
 
     /**
-     * Fire a controller method
+     * Fire a controller method.
      *
-     * @param  string $controller the name of the controller
-     * @param  string $method     the name of the method
+     * @param string $controller the name of the controller
+     * @param string $method     the name of the method
+     *
      * @return Controller/method
      */
     protected function fire($controller, $method)
     {
         $controller = "\\kiwi\\{$controller}";
-        $controller = new $controller;
+        $controller = new $controller();
         if (!method_exists($controller, $method)) {
             throw new Exception(
                    "The {$method} method doesn't exist."
                );
         }
+
         return $controller->$method();
     }
 
     /**
-     * Load a routes file and new up the Router
+     * Load a routes file and new up the Router.
      *
-     * @param  string $file the Routes file
+     * @param string $file the Routes file
+     *
      * @return Router
      */
     public static function loadRoutes($file)
     {
-        $router = new static;
+        $router = new static();
         if (Filesystem::find('install/routes.php')) {
             $file = 'install/routes.php';
         }
         require $file;
+
         return $router;
     }
 }

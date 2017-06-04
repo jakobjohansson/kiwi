@@ -1,12 +1,15 @@
-<?php namespace kiwi;
+<?php
+
+namespace kiwi;
 
 class Filesystem
 {
     /**
      * Find a file in the project directory.
      *
-     * @param  string $file The file path
-     * @return boolean       true|false
+     * @param string $file The file path
+     *
+     * @return bool true|false
      */
     public static function find($file)
     {
@@ -16,10 +19,11 @@ class Filesystem
     /**
      * Write to a file in the project directory.
      *
-     * @param  mixed $contents contents to write
-     * @param  mixed $file     file path
-     * @param  array  $settings file write settings
-     * @return boolean           true|false
+     * @param mixed $contents contents to write
+     * @param mixed $file     file path
+     * @param array $settings file write settings
+     *
+     * @return bool true|false
      */
     public static function write($contents, $file, array $settings = null)
     {

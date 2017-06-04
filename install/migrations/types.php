@@ -1,4 +1,6 @@
-<?php return "CREATE TABLE `types` (
+<?php
+
+return "CREATE TABLE `types` (
             `type_id` int(11) NOT NULL AUTO_INCREMENT,
             `name` varchar(45) NOT NULL,
             PRIMARY KEY (`type_id`),

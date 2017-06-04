@@ -1,4 +1,6 @@
-<?php return "CREATE TABLE IF NOT EXISTS `site_meta` (
+<?php
+
+return "CREATE TABLE IF NOT EXISTS `site_meta` (
             `meta_id` int(11) NOT NULL AUTO_INCREMENT,
             `key` varchar(255) NOT NULL DEFAULT '',
             `value` varchar(255) NOT NULL DEFAULT '',

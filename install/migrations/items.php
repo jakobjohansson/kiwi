@@ -1,4 +1,6 @@
-<?php return "CREATE TABLE IF NOT EXISTS `items` (
+<?php
+
+return "CREATE TABLE IF NOT EXISTS `items` (
             `item_id` int(11) NOT NULL AUTO_INCREMENT,
             `type_id` int(11) DEFAULT NULL,
             `user_id` int(11) DEFAULT NULL,
