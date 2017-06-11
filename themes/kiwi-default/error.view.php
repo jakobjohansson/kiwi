@@ -15,7 +15,7 @@
                     <div class="column is-half is-offset-one-quarter">
                         <h1 class="title">Woops!</h1>
                         <p class="field">Something went wrong. The server sent the following message:</p>
-                        <p class="field"><?=$exception->getMessage();?></p>
+                        <p class="field"><?=$exception->getMessage(); ?></p>
                         <p class="field">
                             <a href="javascript:history.back();" class="button is-info">Go back</a>
                         </p>
