@@ -2,6 +2,6 @@
 
 namespace kiwi;
 
-abstract class Controller {
-
+abstract class Controller
+{
 }
