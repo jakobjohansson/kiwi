@@ -8,10 +8,10 @@ class ErrorHandler
     /**
      * Render the error page.
      *
-     * @param  Exception $e
+     * @param  Exception $exception
      * @param Query $query
      */
-    public static function renderErrorView(Exception $e, Query $query = null) {
+    public static function renderErrorView(Exception $exception, Query $query = null) {
 
         if ($query) {
             $customErrorFile = 'themes/' . Config::get('theme', $query) . '/404.view.php';

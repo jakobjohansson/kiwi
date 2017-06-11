@@ -6,6 +6,6 @@ $query = require 'core/bootstrap.php';
 
 try {
     kiwi\Router::loadRoutes('routes.php')->delegate();
-} catch (Exception $e) {
-    return kiwi\ErrorHandler::renderErrorView($e, $query);
+} catch (Exception $exception) {
+    return kiwi\ErrorHandler::renderErrorView($exception, $query);
 }
