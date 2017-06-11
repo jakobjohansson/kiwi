@@ -73,7 +73,7 @@ class Installer
     public function postTestConnection()
     {
         $connection = Connection::testConnection(Json::all());
-        
+
         $response = JsonFormatter::make([
                 'status'  => 'error',
                 'message' => 'Unable to connect.',
@@ -85,7 +85,7 @@ class Installer
                 'message' => 'Connection working!',
             ]);
         }
-        
+
         echo $response;
     }
 
