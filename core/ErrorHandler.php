@@ -4,17 +4,16 @@ namespace kiwi;
 
 class ErrorHandler
 {
-
     /**
      * Render the error page.
      *
-     * @param  Exception $exception
-     * @param Query $query
+     * @param Exception $exception
+     * @param Query     $query
      */
-    public static function renderErrorView(Exception $exception, Query $query = null) {
-
+    public static function renderErrorView(Exception $exception, Query $query = null)
+    {
         if ($query) {
-            $customErrorFile = 'themes/' . Config::get('theme', $query) . '/404.view.php';
+            $customErrorFile = 'themes/'.Config::get('theme', $query).'/404.view.php';
 
             if (file_exists($customErrorFile)) {
                 return require $customErrorFile;
