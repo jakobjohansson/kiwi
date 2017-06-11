@@ -2,6 +2,6 @@
 
 namespace kiwi;
 
-class BlogController extends Controller {
-
+class BlogController extends Controller
+{
 }
