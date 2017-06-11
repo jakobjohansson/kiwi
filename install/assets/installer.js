@@ -10,7 +10,7 @@ document.getElementById("testConnection")
                 .value,
             name: document.getElementById('name')
                 .value
-        }
+        };
         var xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function() {
@@ -21,7 +21,7 @@ document.getElementById("testConnection")
                 document.getElementById("flash")
                     .textContent = response.message;
             }
-        }
+        };
 
         xhr.open('POST', '/test', true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
