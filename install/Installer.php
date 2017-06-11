@@ -68,23 +68,25 @@ class Installer
     /**
      * Format and send test connection results.
      *
-     * @return JsonFormatter
+     * @return void
      */
     public function postTestConnection()
     {
         $connection = Connection::testConnection(Json::all());
+        
+        $response = JsonFormatter::make([
+                'status'  => 'error',
+                'message' => 'Unable to connect.',
+        ]);
 
         if ($connection) {
-            echo JsonFormatter::make([
+            JsonFormatter::make([
                 'status'  => 'success',
                 'message' => 'Connection working!',
             ]);
-        } else {
-            echo JsonFormatter::make([
-                'status'  => 'error',
-                'message' => 'Unable to connect.',
-            ]);
         }
+        
+        echo $response;
     }
 
     /**
