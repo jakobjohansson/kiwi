@@ -1,10 +1,9 @@
 <?php
 
 /**
-* Temporary install routes.
-* These will be deleted after a successful installation.
-*/
-
+ * Temporary install routes.
+ * These will be deleted after a successful installation.
+ */
 $router->get('', 'Installer/initiate');
 $router->post('test', 'Installer/postTestConnection');
 $router->get('database', 'Installer/getDatabaseView');
