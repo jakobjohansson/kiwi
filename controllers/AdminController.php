@@ -2,4 +2,6 @@
 
 namespace kiwi;
 
-class AdminController extends Controller {}
+class AdminController extends Controller
+{
+}

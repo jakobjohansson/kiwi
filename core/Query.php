@@ -2,7 +2,7 @@
 
 namespace kiwi;
 
-use \PDO;
+use PDO;
 
 class Query
 {
@@ -19,11 +19,12 @@ class Query
     }
 
     /**
-     * Fetch a record from a table
+     * Fetch a record from a table.
      *
-     * @param  string $table
-     * @param  mixed $properties
-     * @param  array $where
+     * @param string $table
+     * @param mixed  $properties
+     * @param array  $where
+     *
      * @return mixed
      */
     public function select($table, $properties, $where = null)
@@ -35,8 +36,8 @@ class Query
         $sql = "select {$properties} from {$table}";
 
         if ($where) {
-            $where[0] = "`" . $where[0] . "`";
-            $where[2] = "'" . $where[2] . "'";
+            $where[0] = '`'.$where[0].'`';
+            $where[2] = "'".$where[2]."'";
             $where = implode($where, ' ');
             $sql .= " WHERE {$where}";
         }
