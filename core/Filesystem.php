@@ -21,11 +21,10 @@ class Filesystem
      *
      * @param mixed $contents contents to write
      * @param mixed $file     file path
-     * @param array $settings file write settings
      *
      * @return bool true|false
      */
-    public static function write($contents, $file, array $settings = null)
+    public static function write($contents, $file)
     {
         file_put_contents($file, $contents);
     }
