@@ -1,16 +1,54 @@
-            <div class="form-holder">
-                <p>Great! The connection is established, now we just need to make you an administrator!</p>
-                <form class="text-left col" action="/user" method="POST">
-                    <label>username</label>
-                    <input type="text" name="username" required>
-                    <label>email</label>
-                    <input type="email" name="email" required>
-                    <label>password</label>
-                    <input type="password" name="password" required>
-                    <label>repeat password</label>
-                    <input type="password" name="password_confirm" required>
-                    <div class="buttons self-right">
-                        <input type="submit" class="button continue" value="Create user">
+<div class="columns">
+    <div class="column is-offset-one-third is-one-third">
+
+        <p class="field">
+            Great! The connection is established, now we just need to make you an administrator!
+        </p>
+
+        <form action="/user" method="POST">
+
+        <div class="field">
+            <p class="control">
+                <label>username</label>
+                <input class="input" type="text" name="username" required>
+            </p>
+        </div>
+
+        <div class="field">
+            <p class="control">
+                <label>email</label>
+                <input class="input" type="email" name="email" required>
+            </p>
+        </div>
+
+        <div class="field">
+            <p class="control">
+                <label>password</label>
+                <input class="input" type="password" name="password" required>
+            </p>
+        </div>
+
+        <div class="field">
+            <p class="control">
+                <label>repeat password</label>
+                <input class="input" type="password" name="password_confirm" required>
+            </p>
+        </div>
+
+        <div class="field">
+            <div class="level">
+                <div class="level-left"></div>
+                <div class="level-right">
+                    <div class="level-item">
+                        <p class="control">
+                            <input type="submit" class="button is-info" value="Create user">
+                        </p>
                     </div>
-                </form>
+                </div>
             </div>
+        </div>
+
+        </form>
+
+    </div>
+</div>
