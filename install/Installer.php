@@ -153,7 +153,7 @@ class Installer
     /**
      * Initiate the migration.
      *
-     * @return [type] [description]
+     * @return void
      */
     private function initiateMigration()
     {
@@ -166,7 +166,7 @@ class Installer
     /**
      * Migrate tables to database.
      *
-     * @return bool
+     * @return void
      */
     private function migrateTables()
     {
@@ -179,7 +179,7 @@ class Installer
     /**
      * Creates the admin user and initial info.
      *
-     * @return bool
+     * @return void
      */
     private function migrateInitialInfo()
     {
