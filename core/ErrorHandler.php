@@ -13,13 +13,13 @@ class ErrorHandler
     public static function renderErrorView(Exception $exception, Query $query = null)
     {
         if ($query) {
-            $customErrorFile = 'themes/'.Config::get('theme', $query).'/404.view.php';
+            $customErrorFile = 'themes/'.Config::get('theme', $query).'/error.view.php';
 
             if (file_exists($customErrorFile)) {
                 return require $customErrorFile;
             }
         }
 
-        return require 'themes/kiwi-default/404.view.php';
+        return require 'themes/kiwi-default/error.view.php';
     }
 }
