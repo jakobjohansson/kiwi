@@ -80,7 +80,7 @@ class Installer
         ]);
 
         if ($connection) {
-            JsonFormatter::make([
+            $response = JsonFormatter::make([
                 'status'  => 'success',
                 'message' => 'Connection working!',
             ]);
