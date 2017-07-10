@@ -10,7 +10,7 @@ class ErrorHandler
      * @param Exception $exception
      * @param Query     $query
      */
-    public static function renderErrorView(Exception $exception, Query $query = null)
+    public static function renderErrorView(\Exception $exception, Query $query = null)
     {
         if ($query) {
             $customErrorFile = 'themes/'.Meta::get('theme', $query).'/error.view.php';

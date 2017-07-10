@@ -3,6 +3,7 @@
 namespace kiwi;
 
 use PDO;
+use PDOException;
 
 class Query
 {
@@ -42,10 +43,14 @@ class Query
             $sql .= " WHERE {$where}";
         }
 
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        try {
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_COLUMN);
+            return $stmt->fetch(PDO::FETCH_COLUMN);
+        } catch (PDOException $exception) {
+            ErrorHandler::renderErrorView($exception);
+        }
     }
 
     /**

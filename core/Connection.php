@@ -25,7 +25,7 @@ class Connection
                 $params['options']
             );
         } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception, null);
+            ErrorHandler::renderErrorView($exception);
         }
     }
 
