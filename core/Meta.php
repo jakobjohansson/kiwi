@@ -8,7 +8,7 @@ class Meta
      * Fetch a meta value.
      *
      * @param string $property
-     * @param Query $query
+     * @param Query  $query
      *
      * @return mixed
      */
