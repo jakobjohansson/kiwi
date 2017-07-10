@@ -14,6 +14,6 @@ class Meta
      */
     public static function get($property, Query $query)
     {
-        return $query->select('meta', 'value', ['key', '=', $property]);
+        return $query->select('site_meta', 'value', ['key', '=', $property]);
     }
 }
