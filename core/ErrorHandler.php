@@ -13,7 +13,7 @@ class ErrorHandler
     public static function renderErrorView(Exception $exception, Query $query = null)
     {
         if ($query) {
-            $customErrorFile = 'themes/'.Config::get('theme', $query).'/error.view.php';
+            $customErrorFile = 'themes/'.Meta::get('theme', $query).'/error.view.php';
 
             if (file_exists($customErrorFile)) {
                 return require $customErrorFile;
