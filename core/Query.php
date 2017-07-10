@@ -49,7 +49,7 @@ class Query
 
             return $stmt->fetch(PDO::FETCH_COLUMN);
         } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception);
+            ErrorHandler::renderErrorView($exception, $this);
         }
     }
 
@@ -62,10 +62,14 @@ class Query
      */
     public function selectAll($table)
     {
-        $stmt = $this->pdo->prepare("select * from {$table}");
-        $stmt->execute();
+        try {
+            $stmt = $this->pdo->prepare("select * from {$table}");
+            $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_CLASS);
+            return $stmt->fetchAll(PDO::FETCH_CLASS);
+        } catch (PDOException $exception) {
+            ErrorHandler::renderErrorView($exception, $this);
+        }
     }
 
     /**
@@ -87,8 +91,8 @@ class Query
         try {
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($parameters);
-        } catch (\Exception $exception) {
-            //
+        } catch (PDOException $exception) {
+            ErrorHandler::renderErrorView($exception, $this);
         }
     }
 }
