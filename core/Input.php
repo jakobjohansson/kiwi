@@ -44,12 +44,12 @@ class Input implements InputInterface
                 foreach ($_POST as $key => $value) {
                     $sendback[$key] = Sanitizer::input($_POST[$key]);
                 }
-            break;
+                break;
             case 'GET':
                 foreach ($_GET as $key => $value) {
                     $sendback[$key] = Sanitizer::input($_GET[$key]);
                 }
-            break;
+                break;
         }
 
         return $sendback;

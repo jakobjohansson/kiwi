@@ -98,8 +98,8 @@ class Installer
     {
         if (Connection::testConnection(Input::all('POST'))) {
             // format and write
-            $str = sprintf("
-                <?php\n
+            $str = sprintf(
+                "<?php\n
                 return [
                     'host' => '%s',
                     'username' => '%s',
@@ -109,11 +109,12 @@ class Installer
                         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
                     ]
                 ];
-            ",
-            Input::field('host'),
-            Input::field('username'),
-            Input::field('password'),
-            Input::field('name'));
+                ",
+                Input::field('host'),
+                Input::field('username'),
+                Input::field('password'),
+                Input::field('name')
+            );
 
             Filesystem::write($str, 'config.php');
 

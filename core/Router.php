@@ -53,8 +53,11 @@ class Router
             $this->routes[Request::method()]
         )) {
             return $this->fire(
-                   ...explode('/', $this->routes[Request::method()][Request::uri()])
-               );
+                ...explode(
+                    '/',
+                    $this->routes[Request::method()][Request::uri()]
+                )
+            );
         }
         throw new Exception('Route not defined.');
     }
@@ -73,8 +76,8 @@ class Router
         $controller = new $controller();
         if (!method_exists($controller, $method)) {
             throw new Exception(
-                   "The {$method} method doesn't exist."
-               );
+                "The {$method} method doesn't exist."
+            );
         }
 
         return $controller->$method();
