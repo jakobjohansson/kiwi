@@ -68,18 +68,4 @@ class Filesystem
 
         return $folder == getcwd() ? true : rmdir($folder);
     }
-
-    /**
-     * Removes the installation folder.
-     * Only to be used after a successful installation.
-     *
-     * @method removeInstaller
-     * @return Request::redirect
-     */
-    public static function removeInstaller()
-    {
-        self::removeFolder('install');
-
-        return Request::redirect('/');
-    }
 }
