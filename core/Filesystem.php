@@ -28,4 +28,58 @@ class Filesystem
     {
         file_put_contents($file, $contents);
     }
+
+    /**
+     * Remove a file.
+     * @method remove
+     * @param  string $path the file path
+     * @return unlink
+     */
+    public static function remove($path)
+    {
+        return unlink($path);
+    }
+
+    /**
+     * Scan a folder of its files, skipping wildcards.
+     *
+     * @method scanFolder
+     * @param  string     $folder the folder path
+     * @return array
+     */
+    public static function scanFolder($folder)
+    {
+        return array_diff(scandir($folder), ['.', '..']);
+    }
+
+    /**
+     * Recurse through a folder, removing everything inside it,
+     * as well as the folder itself.
+     *
+     * @method removeFolder
+     * @param  string       $folder the folder path
+     * @return bool
+     */
+    public static function removeFolder($folder)
+    {
+        foreach (self::scanFolder($folder) as $file) {
+            is_dir("$folder/$file") ? self::removeFolder("$folder/$file") : self::remove("$folder/$file");
+        }
+
+        return $folder == getcwd() ? true : rmdir($folder);
+    }
+
+    /**
+     * Removes the installation folder.
+     * Only to be used after a successful installation.
+     *
+     * @method removeInstaller
+     * @return Request::redirect
+     */
+    public static function removeInstaller()
+    {
+        self::removeFolder('install');
+
+        return Request::redirect('/');
+    }
 }

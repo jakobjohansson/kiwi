@@ -11,4 +11,4 @@ $router->post('database', 'Installer/postDatabase');
 $router->get('user', 'Installer/getUserView');
 $router->post('user', 'Installer/postUserView');
 $router->get('success', 'Installer/getSuccessView');
-$router->get('remove', 'RecursiveRemover/init');
+$router->get('remove', 'Filesystem/removeInstaller');
