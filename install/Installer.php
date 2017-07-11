@@ -19,6 +19,12 @@ class Installer
     private static $migs = 'install/migrations/';
 
     /**
+     * The path to the seeds folder.
+     * @var string
+     */
+    private static $seeds = 'install/seeds/';
+
+    /**
      * Database connection.
      *
      * @var PDO
@@ -186,8 +192,8 @@ class Installer
      */
     private function migrateInitialInfo()
     {
-        $this->pdo->query(require static::$migs.'site_meta_inserts.php');
-        $this->pdo->query(require static::$migs.'types_inserts.php');
+        $this->pdo->query(require static::$seeds.'site_meta.php');
+        $this->pdo->query(require static::$seeds.'types.php');
 
         $stmt = $this->pdo->prepare('
             INSERT INTO `users` (`username`, `email`, `password`, `avatar`, `role`)
@@ -204,6 +210,6 @@ class Installer
 
         $stmt->execute();
 
-        $this->pdo->query(require static::$migs.'items_inserts.php');
+        $this->pdo->query(require static::$seeds.'items.php');
     }
 }
