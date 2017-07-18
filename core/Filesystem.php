@@ -31,8 +31,11 @@ class Filesystem
 
     /**
      * Remove a file.
+     *
      * @method remove
-     * @param  string $path the file path
+     *
+     * @param string $path the file path
+     *
      * @return unlink
      */
     public static function remove($path)
@@ -44,7 +47,9 @@ class Filesystem
      * Scan a folder of its files, skipping wildcards.
      *
      * @method scanFolder
-     * @param  string     $folder the folder path
+     *
+     * @param string $folder the folder path
+     *
      * @return array
      */
     public static function scanFolder($folder)
@@ -57,7 +62,9 @@ class Filesystem
      * as well as the folder itself.
      *
      * @method removeFolder
-     * @param  string       $folder the folder path
+     *
+     * @param string $folder the folder path
+     *
      * @return bool
      */
     public static function removeFolder($folder)
