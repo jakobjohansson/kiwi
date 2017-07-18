@@ -20,6 +20,7 @@ class Installer
 
     /**
      * The path to the seeds folder.
+     *
      * @var string
      */
     private static $seeds = 'install/seeds/';
