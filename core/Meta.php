@@ -16,4 +16,16 @@ class Meta
     {
         return $query->select('site_meta', 'value', ['key', '=', $property]);
     }
+
+    public static function getAll($query)
+    {
+        $result = $query->selectAll('site_meta');
+        $app = [];
+
+        foreach ($result as $row) {
+            $app[$row['key']] = $row['value'];
+        }
+
+        return $app;
+    }
 }

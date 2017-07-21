@@ -66,7 +66,7 @@ class Query
             $stmt = $this->pdo->prepare("select * from {$table}");
             $stmt->execute();
 
-            return $stmt->fetchAll(PDO::FETCH_CLASS);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $exception) {
             ErrorHandler::renderErrorView($exception, $this);
         }

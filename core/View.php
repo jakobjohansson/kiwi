@@ -4,9 +4,14 @@ namespace kiwi;
 
 class View
 {
-    public static function render($view, $query)
+    public static function render($view, $query, $extracts = null)
     {
-        $theme = Meta::get('theme', $query);
-        return require "themes/{$theme}/{$view}.view.php";
+        $app = Meta::getAll($query);
+
+        if ($extracts) {
+            extract($extracts);
+        }
+
+        return require "themes/{$app['theme']}/{$view}.view.php";
     }
 }
