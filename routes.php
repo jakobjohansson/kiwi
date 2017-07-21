@@ -5,5 +5,5 @@
  */
 
 $router->get('', 'PageController/index');
-$router->get('/blog', 'BlogController/index');
-$router->get('/admin', 'AdminController/index');
+$router->get('blog', 'BlogController/index');
+$router->get('admin', 'AdminController/index');

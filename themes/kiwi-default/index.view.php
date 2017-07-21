@@ -38,6 +38,9 @@ require 'partials/head.view.php';
                 <h1 class="title">
                     <?=$app['name'] ?>
                 </h1>
+                <h2 class="subtitle">
+                    <?=$app['description']?>
+                </h2>
             </main>
         </div>
     </div>
