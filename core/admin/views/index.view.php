@@ -50,10 +50,10 @@
                                 <div class="field">
                                     <p class="control">
                                         <label>Theme</label>
-                                        <select class="select">
+                                        <select class="input">
                                             <?php
                                             foreach ($themes as $theme) {
-                                                echo "<option class='option' name='{$theme}'>
+                                                echo "<option class='select' name='{$theme}'>
                                                     {$theme}
                                                 </option>";
                                             }

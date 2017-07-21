@@ -18,4 +18,14 @@ class Sanitizer
 
         return $input;
     }
+
+    public static function digits($input)
+    {
+        // TODO: Return digits only from a string.
+    }
+
+    public static function letters($input)
+    {
+        // TODO: Return letters only from a string.
+    }
 }
