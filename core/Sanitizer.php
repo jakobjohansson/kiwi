@@ -19,11 +19,23 @@ class Sanitizer
         return $input;
     }
 
+    /**
+     * Return digits only from a string.
+     * @method digits
+     * @param  string $input
+     * @return string
+     */
     public static function digits($input)
     {
         // TODO: Return digits only from a string.
     }
 
+    /**
+     * Return letters only from a string.
+     * @method letters
+     * @param  mixed  $input
+     * @return mixed
+     */
     public static function letters($input)
     {
         // TODO: Return letters only from a string.
