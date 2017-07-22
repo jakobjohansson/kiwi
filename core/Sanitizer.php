@@ -21,8 +21,11 @@ class Sanitizer
 
     /**
      * Return digits only from a string.
+     *
      * @method digits
-     * @param  string $input
+     *
+     * @param string $input
+     *
      * @return string
      */
     public static function digits($input)
@@ -32,8 +35,11 @@ class Sanitizer
 
     /**
      * Return letters only from a string.
+     *
      * @method letters
-     * @param  mixed  $input
+     *
+     * @param mixed $input
+     *
      * @return mixed
      */
     public static function letters($input)

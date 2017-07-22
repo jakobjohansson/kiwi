@@ -6,8 +6,11 @@ class Response
 {
     /**
      * Return a json response.
+     *
      * @method json
-     * @param  mixed $payload
+     *
+     * @param mixed $payload
+     *
      * @return Json
      */
     public function json($payload)
@@ -18,8 +21,11 @@ class Response
 
     /**
      * Return a status code.
+     *
      * @method status
-     * @param  integer $code
+     *
+     * @param int $code
+     *
      * @return Response
      */
     public function status($code)

@@ -6,10 +6,13 @@ class View
 {
     /**
      * Render a view.
+     *
      * @method render
-     * @param  string $view
-     * @param  Query $query
-     * @param  Array $extracts
+     *
+     * @param string $view
+     * @param Query  $query
+     * @param array  $extracts
+     *
      * @return View
      */
     public static function render($view, Query $query, array $extracts = null)
@@ -26,10 +29,13 @@ class View
 
     /**
      * Render a view not located in a theme.
+     *
      * @method renderCustom
-     * @param  string       $path
-     * @param  Query        $query
-     * @param  Array       $extracts
+     *
+     * @param string $path
+     * @param Query  $query
+     * @param array  $extracts
+     *
      * @return View
      */
     public static function renderCustom($path, Query $query, array $extracts = null)
@@ -46,8 +52,10 @@ class View
 
     /**
      * Retrieve the available themes.
+     *
      * @method getThemeLinks
-     * @return Array
+     *
+     * @return array
      */
     public static function getThemeLinks()
     {
