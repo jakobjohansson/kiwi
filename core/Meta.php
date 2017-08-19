@@ -2,24 +2,23 @@
 
 namespace kiwi;
 
-class Meta
+class Meta extends Model
 {
     /**
      * Fetch a meta value.
      *
      * @param string $property
-     * @param Query  $query
      *
      * @return mixed
      */
-    public static function get($property, Query $query)
+    public static function get($property)
     {
-        return $query->select('site_meta', 'value', ['key', '=', $property]);
+        return static::$query->select('site_meta', 'value', ['key', '=', $property]);
     }
 
-    public static function getAll($query)
+    public static function getAll()
     {
-        $result = $query->selectAll('site_meta');
+        $result = static::$query->selectAll('site_meta');
         $app = [];
 
         foreach ($result as $row) {

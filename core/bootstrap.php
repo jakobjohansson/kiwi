@@ -2,12 +2,10 @@
 
 use kiwi\Connection;
 use kiwi\Filesystem;
-use kiwi\Query;
+use kiwi\Model;
 
 if (!Filesystem::find('config.php')) {
     return;
 }
 
-return new Query(
-    Connection::make(require 'config.php')
-);
+Model::boot(Connection::make(require 'config.php'));

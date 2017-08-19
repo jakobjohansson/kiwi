@@ -10,15 +10,13 @@ class View
      * @method render
      *
      * @param string $view
-     * @param Query  $query
      * @param array  $extracts
      *
      * @return View
      */
-    public static function render($view, Query $query, array $extracts = null)
+    public static function render($view, array $extracts = null)
     {
-        // TODO: Remove the need for Query.
-        $app = Meta::getAll($query);
+        $app = Meta::getAll();
 
         if ($extracts) {
             extract($extracts);
@@ -33,15 +31,13 @@ class View
      * @method renderCustom
      *
      * @param string $path
-     * @param Query  $query
      * @param array  $extracts
      *
      * @return View
      */
-    public static function renderCustom($path, Query $query, array $extracts = null)
+    public static function renderCustom($path, array $extracts = null)
     {
-        // TODO: Remove the need for Query.
-        $app = Meta::getAll($query);
+        $app = Meta::getAll();
 
         if ($extracts) {
             extract($extracts);

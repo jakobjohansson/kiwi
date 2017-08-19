@@ -46,14 +46,13 @@ class Router
      *
      * @return Router/Fire
      */
-    public function delegate($query)
+    public function delegate()
     {
         if (array_key_exists(
             Request::uri(),
             $this->routes[Request::method()]
         )) {
             return $this->fire(
-                $query,
                 ...explode(
                     '/',
                     $this->routes[Request::method()][Request::uri()]
@@ -71,10 +70,10 @@ class Router
      *
      * @return Controller/method
      */
-    protected function fire($query, $controller, $method)
+    protected function fire($controller, $method)
     {
         $controller = "\\kiwi\\{$controller}";
-        $controller = new $controller($query);
+        $controller = new $controller();
         if (!method_exists($controller, $method)) {
             throw new Exception(
                 "The {$method} method doesn't exist."
