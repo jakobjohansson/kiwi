@@ -29,29 +29,22 @@ class Input implements InputInterface
     }
 
     /**
-     * Sanitize all the fields in a GET|POST collection.
-     *
-     * @param string $type GET|POST
+     * Returns all GET and POST variables in a collection.
      *
      * @return array Sanitized array.
      */
-    public static function all($type)
+    public static function all()
     {
-        $sendback = [];
+        $collection = [];
 
-        switch ($type) {
-            case 'POST':
-                foreach ($_POST as $key => $value) {
-                    $sendback[$key] = Sanitizer::input($_POST[$key]);
-                }
-                break;
-            case 'GET':
-                foreach ($_GET as $key => $value) {
-                    $sendback[$key] = Sanitizer::input($_GET[$key]);
-                }
-                break;
+        foreach ($_POST as $key => $value) {
+            $collection[$key] = Sanitizer::input($_POST[$key]);
         }
 
-        return $sendback;
+        foreach ($_GET as $key => $value) {
+            $collection[$key] = Sanitizer::input($_GET[$key]);
+        }
+
+        return $collection;
     }
 }
