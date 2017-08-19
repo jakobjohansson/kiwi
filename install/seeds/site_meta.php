@@ -3,6 +3,6 @@
 return "INSERT INTO `site_meta` (`key`, `value`)
     VALUES
     ('name','kiwi'),
-    ('description','an optional description of the site'),
+    ('description','because it's better than apples'),
     ('public','true'),
-    ('theme','kiwi-default');";
+    ('theme','kiwi17');";
