@@ -8,6 +8,6 @@ class Post extends Model
 
     public static function all()
     {
-        return static::builder()->selectAll('items', Post::class, ['item_id', '=', static::$type]);
+        return static::builder()->selectAll('items', self::class, ['item_id', '=', static::$type]);
     }
 }
