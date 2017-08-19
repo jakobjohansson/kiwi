@@ -4,5 +4,4 @@ namespace kiwi;
 
 abstract class Model
 {
-    
 }
