@@ -2,6 +2,8 @@
 
 namespace kiwi;
 
+use PDO;
+
 class Meta extends Model
 {
     /**
@@ -13,12 +15,13 @@ class Meta extends Model
      */
     public static function get($property)
     {
-        return static::$query->select('site_meta', 'value', ['key', '=', $property]);
+        return static::builder()->select('site_meta', 'value', ['key', '=', $property]);
     }
 
     public static function getAll()
     {
-        $result = static::$query->selectAll('site_meta');
+        $builder = static::builder();
+        $result = $builder->setFormat(PDO::FETCH_ASSOC)->selectAll('site_meta');
         $app = [];
 
         foreach ($result as $row) {

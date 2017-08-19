@@ -14,9 +14,17 @@ class Query
      */
     protected $pdo;
 
+    protected $format = PDO::FETCH_CLASS;
+
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
+    }
+
+    public function setFormat($format)
+    {
+        $this->format = $format;
+        return $this;
     }
 
     /**
@@ -28,7 +36,7 @@ class Query
      *
      * @return mixed
      */
-    public function select($table, $properties, $where = null)
+    public function select($table, $properties, array $where = null)
     {
         if (is_array($properties)) {
             $properties = implode($properties, ',');
@@ -47,7 +55,7 @@ class Query
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
 
-            return $stmt->fetch(PDO::FETCH_COLUMN);
+            return $stmt->fetch($this->format);
         } catch (PDOException $exception) {
             ErrorHandler::renderErrorView($exception, $this);
         }
@@ -60,13 +68,26 @@ class Query
      *
      * @return array array of objects
      */
-    public function selectAll($table)
+    public function selectAll($table, $class = null, array $where = null)
     {
         try {
-            $stmt = $this->pdo->prepare("select * from {$table}");
+            $sql = "select * from {$table}";
+
+            if ($where) {
+                $where[0] = '`'.$where[0].'`';
+                $where[2] = "'".$where[2]."'";
+                $where = implode($where, ' ');
+                $sql .= " WHERE {$where}";
+            }
+
+            $stmt = $this->pdo->prepare($sql);
             $stmt->execute();
 
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if ($class) {
+                return $stmt->fetchAll($this->format, $class);
+            }
+
+            return $stmt->fetchAll($this->format);
         } catch (PDOException $exception) {
             ErrorHandler::renderErrorView($exception, $this);
         }

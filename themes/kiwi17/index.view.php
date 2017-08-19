@@ -21,13 +21,19 @@
 
     <section class="section">
         <div class="container">
-            <h3 class="subtitle is-4">Hello world</h3>
-            <div class="content">
-                <p>This is basically an article.</p>
-            </div>
-            <footer>
-                <small>Written by jakob.</small>
-            </footer>
+            <?php
+
+            foreach ($posts as $post) { ?>
+                <h3 class="subtitle is-4"><?=$post->title;?></h3>
+                <div class="content">
+                    <?=$post->body;?>
+                </div>
+                <footer>
+                    <small><?=$post->created_at?></small>
+                </footer>
+            <?php
+            }
+            ?>
         </div>
     </section>
     <section class="section">

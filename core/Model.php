@@ -5,10 +5,15 @@ namespace kiwi;
 abstract class Model
 {
 
-    public static $query;
+    public static $connection;
 
-    public static function boot($query)
+    public static function boot($connection)
     {
-        static::$query = new Query($query);
+        static::$connection = $connection;
+    }
+
+    public static function builder()
+    {
+        return new Query(static::$connection);
     }
 }
