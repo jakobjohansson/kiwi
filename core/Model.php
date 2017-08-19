@@ -4,7 +4,6 @@ namespace kiwi;
 
 abstract class Model
 {
-
     public static $connection;
 
     public static function boot($connection)

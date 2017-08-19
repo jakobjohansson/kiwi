@@ -23,10 +23,11 @@
         <div class="container">
             <?php
 
-            foreach ($posts as $post) { ?>
-                <h3 class="subtitle is-4"><?=$post->title;?></h3>
+            foreach ($posts as $post) {
+                ?>
+                <h3 class="subtitle is-4"><?=$post->title; ?></h3>
                 <div class="content">
-                    <?=$post->body;?>
+                    <?=$post->body; ?>
                 </div>
                 <footer>
                     <small><?=$post->created_at?></small>
