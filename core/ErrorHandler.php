@@ -21,6 +21,6 @@ class ErrorHandler
             }
         }
 
-        return require 'themes/kiwi-default/error.view.php';
+        return require 'themes/kiwi17/error.view.php';
     }
 }
