@@ -176,7 +176,7 @@ class Installer
     private function initiateMigration()
     {
         // Let's make an ugly temporary connection to the database.
-        $this->pdo = Connection::make(require 'config.php');
+        $this->pdo = Connection::make(require 'App'.DIRECTORY_SEPARATOR.'config.php');
         $this->migrateTables();
         $this->migrateInitialInfo();
     }
