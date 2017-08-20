@@ -8,6 +8,7 @@ use kiwi\Http\Input;
 use kiwi\Http\Json;
 use kiwi\Http\Request;
 use kiwi\Http\Validation;
+use kiwi\System\Filesystem;
 
 class Installer
 {
