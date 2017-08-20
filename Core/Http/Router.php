@@ -102,8 +102,8 @@ class Router
     public static function loadRoutes($file)
     {
         $router = new static();
-        if (Filesystem::find('Install' . DIRECTORY_SEPARATOR . 'routes.php')) {
-            $file = 'Install' . DIRECTORY_SEPARATOR . 'routes.php';
+        if (Filesystem::find('Install'.DIRECTORY_SEPARATOR.'routes.php')) {
+            $file = 'Install'.DIRECTORY_SEPARATOR.'routes.php';
         }
         require $file;
 
