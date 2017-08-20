@@ -75,7 +75,7 @@ class Router
      */
     protected function fire($controller, $method)
     {
-        $controller = "\\kiwi\\{$controller}";
+        $controller = "\\kiwi\\Http\\{$controller}";
         $controller = new $controller();
         if (!method_exists($controller, $method)) {
             throw new Exception(
@@ -96,8 +96,8 @@ class Router
     public static function loadRoutes($file)
     {
         $router = new static();
-        if (Filesystem::find('install/routes.php')) {
-            $file = 'install/routes.php';
+        if (Filesystem::find('Install' . DIRECTORY_SEPARATOR . 'routes.php')) {
+            $file = 'Install' . DIRECTORY_SEPARATOR . 'routes.php';
         }
         require $file;
 
