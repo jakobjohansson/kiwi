@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi;
+namespace kiwi\Error;
 
 class Exception extends \Exception
 {
