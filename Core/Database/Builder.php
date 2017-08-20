@@ -4,6 +4,7 @@ namespace kiwi\Database;
 
 use PDO;
 use PDOException;
+use kiwi\Error\ErrorHandler;
 
 class Builder
 {

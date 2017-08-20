@@ -2,6 +2,8 @@
 
 namespace kiwi\System;
 
+use kiwi\Http\Request;
+
 class RecursiveRemover
 {
     /**

@@ -13,6 +13,6 @@ abstract class Model
 
     public static function builder()
     {
-        return new Query(static::$connection);
+        return new Builder(static::$connection);
     }
 }

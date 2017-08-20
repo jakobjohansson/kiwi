@@ -2,7 +2,7 @@
 
 namespace kiwi\Http;
 
-use kiwi\Http\Contracts\InputInterface as InputInterface;
+use kiwi\Http\Contracts\InputInterface;
 
 class Input implements InputInterface
 {

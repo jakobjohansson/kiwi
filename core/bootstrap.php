@@ -1,8 +1,8 @@
 <?php
 
-use kiwi\Connection;
-use kiwi\Filesystem;
-use kiwi\Model;
+use kiwi\Database\Connection;
+use kiwi\System\Filesystem;
+use kiwi\Http\Model;
 
 if (!Filesystem::find('config.php')) {
     return;
