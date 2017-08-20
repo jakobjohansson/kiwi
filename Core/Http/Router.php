@@ -75,7 +75,7 @@ class Router
      */
     protected function fire($controller, $method)
     {
-        $controller = "\\kiwi\\Http\\{$controller}";
+        $controller = "\\kiwi\\{$controller}";
         $controller = new $controller();
         if (!method_exists($controller, $method)) {
             throw new Exception(
