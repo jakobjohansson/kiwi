@@ -2,6 +2,8 @@
 
 namespace kiwi\Http;
 
+use kiwi\Database\Post;
+
 class PageController extends Controller
 {
     public function index()
