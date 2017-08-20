@@ -3,9 +3,9 @@
 namespace kiwi;
 
 use kiwi\Database\Connection;
-use kiwi\Http\JsonFormatter;
 use kiwi\Http\Input;
 use kiwi\Http\Json;
+use kiwi\Http\JsonFormatter;
 use kiwi\Http\Request;
 use kiwi\Http\Validation;
 
