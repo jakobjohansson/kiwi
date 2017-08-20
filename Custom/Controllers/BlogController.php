@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi;
+namespace kiwi\Http;
 
 class BlogController extends Controller
 {

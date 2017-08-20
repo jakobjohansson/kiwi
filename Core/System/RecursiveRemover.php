@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi;
+namespace kiwi\System;
 
 class RecursiveRemover
 {
