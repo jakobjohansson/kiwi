@@ -1,11 +1,11 @@
 <?php
 
-namespace kiwi;
+namespace kiwi\Database;
 
 use PDO;
 use PDOException;
 
-class Query
+class Builder
 {
     /**
      * PDO instance.

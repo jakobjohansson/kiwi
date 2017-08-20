@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi;
+namespace kiwi\Database;
 
 abstract class Model
 {
