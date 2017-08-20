@@ -2,9 +2,9 @@
 
 namespace kiwi\Database;
 
+use kiwi\Error\ErrorHandler;
 use PDO;
 use PDOException;
-use kiwi\Error\ErrorHandler;
 
 class Builder
 {
