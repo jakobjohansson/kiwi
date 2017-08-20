@@ -75,7 +75,13 @@ class Router
      */
     protected function fire($controller, $method)
     {
-        $controller = "\\kiwi\\{$controller}";
+        if (strpos($controller, '@') !== false) {
+            $controller = explode('@', $controller);
+            $controller = "\\kiwi\\{$controller[1]}";
+        } else {
+            $controller = "\\kiwi\\Http\\{$controller}";
+        }
+
         $controller = new $controller();
         if (!method_exists($controller, $method)) {
             throw new Exception(
