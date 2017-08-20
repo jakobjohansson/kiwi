@@ -22,7 +22,9 @@ class View
             extract($extracts);
         }
 
-        return require "themes/{$app['theme']}/{$view}.view.php";
+        return require "Custom" . DIRECTORY_SEPARATOR .
+            "themes" . DIRECTORY_SEPARATOR . "{$app['theme']}" .
+            DIRECTORY_SEPARATOR . "{$view}.view.php";
     }
 
     /**
