@@ -2,6 +2,8 @@
 
 namespace kiwi\Http;
 
+use kiwi\Database\Meta;
+
 class View
 {
     /**
