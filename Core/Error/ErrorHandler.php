@@ -11,12 +11,12 @@ class ErrorHandler
      */
     public static function renderErrorView(\Exception $exception)
     {
-        $customErrorFile = 'themes/'.Meta::get('theme').'/error.view.php';
+        $customErrorFile = 'App'.DIRECTORY_SEPARATOR.'Themes'.DIRECTORY_SEPARATOR.Meta::get('theme').DIRECTORY_SEPARATOR.'error.view.php';
 
         if (file_exists($customErrorFile)) {
             return require $customErrorFile;
         }
 
-        return require 'themes/kiwi17/error.view.php';
+        return require 'App'.DIRECTORY_SEPARATOR.'Themes'.DIRECTORY_SEPARATOR.'kiwi17'.DIRECTORY_SEPARATOR.'error.view.php';
     }
 }

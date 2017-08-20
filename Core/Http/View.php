@@ -22,8 +22,8 @@ class View
             extract($extracts);
         }
 
-        return require 'Custom'.DIRECTORY_SEPARATOR.
-            'themes'.DIRECTORY_SEPARATOR."{$app['theme']}".
+        return require 'App'.DIRECTORY_SEPARATOR.
+            'Themes'.DIRECTORY_SEPARATOR."{$app['theme']}".
             DIRECTORY_SEPARATOR."{$view}.view.php";
     }
 
@@ -57,6 +57,6 @@ class View
      */
     public static function getThemeLinks()
     {
-        return Filesystem::scanFolder('themes');
+        return Filesystem::scanFolder('App'.DIRECTORY_SEPARATOR.'Themes');
     }
 }
