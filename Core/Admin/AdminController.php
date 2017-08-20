@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi\Admin;
+namespace kiwi\Http;
 
 class AdminController extends Controller
 {
