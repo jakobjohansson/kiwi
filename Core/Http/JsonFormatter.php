@@ -1,6 +1,8 @@
 <?php
 
-namespace kiwi;
+namespace kiwi\Http;
+
+use kiwi\Http\Contracts\FormatterInterface;
 
 class JsonFormatter implements FormatterInterface
 {
