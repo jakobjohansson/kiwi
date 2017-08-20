@@ -131,7 +131,7 @@ class Installer
                 Input::field('name')
             );
 
-            Filesystem::write($str, 'config.php');
+            Filesystem::write($str, 'App'.DIRECTORY_SEPARATOR.'config.php');
 
             return Request::redirect('/user');
         }
