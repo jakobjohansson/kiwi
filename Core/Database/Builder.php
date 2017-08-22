@@ -23,6 +23,7 @@ class Builder
 
     /**
      * Predefined fetch format.
+     *
      * @var PDO
      */
     protected $format = PDO::FETCH_CLASS;
@@ -41,6 +42,7 @@ class Builder
 
     /**
      * Run the query.
+     *
      * @method run
      */
     public function run()
@@ -50,12 +52,15 @@ class Builder
 
     /**
      * Add a where clause to the query.
+     *
      * @method where
+     *
      * @return $this
      */
     public function where($one, $operator, $two)
     {
         $this->clauses[] = [$one, $operator, $two];
+
         return $this;
     }
 
