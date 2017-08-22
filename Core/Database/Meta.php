@@ -21,6 +21,7 @@ class Meta extends Model
     public static function getAll()
     {
         $builder = static::builder();
+        
         $result = $builder->select('*')
             ->from('site_meta')
             ->format(PDO::FETCH_ASSOC)
