@@ -8,6 +8,12 @@ use PDOException;
 
 class Builder
 {
+    protected $statement;
+
+    protected $clauses;
+
+    protected $table;
+
     /**
      * PDO instance.
      *
@@ -15,6 +21,10 @@ class Builder
      */
     protected $pdo;
 
+    /**
+     * Predefined fetch format.
+     * @var PDO
+     */
     protected $format = PDO::FETCH_CLASS;
 
     public function __construct($pdo)
@@ -26,6 +36,41 @@ class Builder
     {
         $this->format = $format;
 
+        return $this;
+    }
+
+    /**
+     * Run the query.
+     * @method run
+     */
+    public function run()
+    {
+        return $this;
+    }
+
+    /**
+     * Add a where clause to the query.
+     * @method where
+     * @return $this
+     */
+    public function where($one, $operator, $two)
+    {
+        $this->clauses[] = [$one, $operator, $two];
+        return $this;
+    }
+
+    public function all()
+    {
+        return $this;
+    }
+
+    public function latest()
+    {
+        return $this;
+    }
+
+    public function first()
+    {
         return $this;
     }
 
