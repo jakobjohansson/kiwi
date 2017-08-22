@@ -2,9 +2,7 @@
 
 namespace kiwi\Database;
 
-use kiwi\Error\ErrorHandler;
 use PDO;
-use PDOException;
 
 class Builder
 {
@@ -24,32 +22,38 @@ class Builder
 
     /**
      * SQL statement.
+     *
      * @var string
      */
     protected $statement;
 
     /**
      * Array of where clauses.
+     *
      * @var array
      */
     protected $clauses;
 
     /**
      * The table to be queried.
+     *
      * @var string
      */
     protected $table;
 
     /**
      * The properties to query.
+     *
      * @var string
      */
     protected $properties = '*';
 
     /**
      * Creates a new Builder intance.
+     *
      * @method __construct
-     * @param  PDO      $pdo
+     *
+     * @param PDO $pdo
      */
     public function __construct($pdo)
     {
@@ -58,8 +62,11 @@ class Builder
 
     /**
      * Setter for the PDO format to use.
+     *
      * @method format
-     * @param  string $format
+     *
+     * @param string $format
+     *
      * @return $this
      */
     public function format($format)
@@ -71,8 +78,11 @@ class Builder
 
     /**
      * Set the table to query.
+     *
      * @method from
-     * @param  string $table
+     *
+     * @param string $table
+     *
      * @return $this
      */
     public function from($table)
@@ -103,7 +113,6 @@ class Builder
      */
     public function run()
     {
-
         return $this;
     }
 }
