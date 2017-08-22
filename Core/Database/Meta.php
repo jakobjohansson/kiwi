@@ -15,7 +15,10 @@ class Meta extends Model
      */
     public static function get($property)
     {
-        return static::builder()->select('site_meta', 'value', ['key', '=', $property]);
+        return static::builder()->column('value')
+            ->from('site_meta')
+            ->where('key', '=', $property)
+            ->run();
     }
 
     public static function getAll()
