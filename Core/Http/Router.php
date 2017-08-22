@@ -3,6 +3,7 @@
 namespace kiwi\Http;
 
 use kiwi\System\Filesystem;
+use kiwi\Error\HttpException;
 
 class Router
 {
@@ -62,7 +63,7 @@ class Router
             );
         }
 
-        throw new Exception('Route not defined.');
+        throw new HttpException('Route not defined.');
     }
 
     /**
