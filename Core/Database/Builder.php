@@ -59,6 +59,7 @@ class Builder
 
     /**
      * Whether to fetch column only or not.
+     *
      * @var bool
      */
     protected $columnOnly = false;
@@ -161,8 +162,11 @@ class Builder
 
     /**
      * Retrieve only a single column from a query.
+     *
      * @method column
-     * @param  string $property
+     *
+     * @param string $property
+     *
      * @return $this
      */
     public function column($property)
