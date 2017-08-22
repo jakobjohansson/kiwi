@@ -1,8 +1,7 @@
 <?php
 
 // use composer in development mode
-require 'vendor/autoload.php';
-require 'Core'.DIRECTORY_SEPARATOR.'bootstrap.php';
+require 'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 
 try {
     kiwi\Http\Router::loadRoutes('App'.DIRECTORY_SEPARATOR.'routes.php')->delegate();
