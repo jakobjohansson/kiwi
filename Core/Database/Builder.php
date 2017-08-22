@@ -8,12 +8,6 @@ use PDOException;
 
 class Builder
 {
-    protected $statement;
-
-    protected $clauses;
-
-    protected $table;
-
     /**
      * PDO instance.
      *
@@ -28,12 +22,47 @@ class Builder
      */
     protected $format = PDO::FETCH_CLASS;
 
+    /**
+     * SQL statement.
+     * @var string
+     */
+    protected $statement;
+
+    /**
+     * Array of where clauses.
+     * @var array
+     */
+    protected $clauses;
+
+    /**
+     * The table to be queried.
+     * @var string
+     */
+    protected $table;
+
+    /**
+     * The properties to query.
+     * @var string
+     */
+    protected $properties = '*';
+
+    /**
+     * Creates a new Builder intance.
+     * @method __construct
+     * @param  PDO      $pdo
+     */
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
     }
 
-    public function setFormat($format)
+    /**
+     * Setter for the PDO format to use.
+     * @method format
+     * @param  string $format
+     * @return $this
+     */
+    public function format($format)
     {
         $this->format = $format;
 
@@ -41,12 +70,15 @@ class Builder
     }
 
     /**
-     * Run the query.
-     *
-     * @method run
+     * Set the table to query.
+     * @method from
+     * @param  string $table
+     * @return $this
      */
-    public function run()
+    public function from($table)
     {
+        $this->table = $table;
+
         return $this;
     }
 
@@ -64,109 +96,14 @@ class Builder
         return $this;
     }
 
-    public function all()
-    {
-        return $this;
-    }
-
-    public function latest()
-    {
-        return $this;
-    }
-
-    public function first()
-    {
-        return $this;
-    }
-
     /**
-     * Fetch a record from a table.
+     * Run the query.
      *
-     * @param string $table
-     * @param mixed  $properties
-     * @param array  $where
-     *
-     * @return mixed
+     * @method run
      */
-    public function select($table, $properties, array $where = null)
+    public function run()
     {
-        if (is_array($properties)) {
-            $properties = implode($properties, ',');
-        }
 
-        $sql = "select {$properties} from {$table}";
-
-        if ($where) {
-            $where[0] = '`'.$where[0].'`';
-            $where[2] = "'".$where[2]."'";
-            $where = implode($where, ' ');
-            $sql .= " WHERE {$where}";
-        }
-
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
-
-            return $stmt->fetch($this->format);
-        } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception, $this);
-        }
-    }
-
-    /**
-     * Fetch all records from a table.
-     *
-     * @param string $table the table to select from
-     *
-     * @return array array of objects
-     */
-    public function selectAll($table, $class = null, array $where = null)
-    {
-        try {
-            $sql = "select * from {$table}";
-
-            if ($where) {
-                $where[0] = '`'.$where[0].'`';
-                $where[2] = "'".$where[2]."'";
-                $where = implode($where, ' ');
-                $sql .= " WHERE {$where}";
-            }
-
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
-
-            if ($class) {
-                return $stmt->fetchAll($this->format, $class);
-            }
-
-            return $stmt->fetchAll($this->format);
-        } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception, $this);
-        }
-    }
-
-    /**
-     * Insert records into a table.
-     *
-     * @param string $table      The table name
-     * @param array  $parameters Array of contents
-     *
-     * @return void
-     */
-    public function insert($table, array $parameters)
-    {
-        $sql = sprintf(
-            'insert into %s (%s) values (%s)',
-            $table,
-            implode(', ', array_keys($parameters)),
-            ':'.implode(', :', array_keys($parameters))
-        );
-
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute($parameters);
-        } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception, $this);
-        }
+        return $this;
     }
 }
