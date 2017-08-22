@@ -58,6 +58,12 @@ class Builder
     protected $properties = '*';
 
     /**
+     * Whether to fetch column only or not.
+     * @var bool
+     */
+    protected $columnOnly = false;
+
+    /**
      * Creates a new Builder intance.
      *
      * @method __construct
@@ -154,6 +160,23 @@ class Builder
     }
 
     /**
+     * Retrieve only a single column from a query.
+     * @method column
+     * @param  string $property
+     * @return $this
+     */
+    public function column($property)
+    {
+        $this->properties = $property;
+
+        $this->setSelectQuery();
+
+        $this->columnOnly = true;
+
+        return $this;
+    }
+
+    /**
      * Chain and run the query.
      *
      * @method run
@@ -169,6 +192,10 @@ class Builder
 
             if ($this->expect) {
                 return $statement->fetchAll($this->format, $this->expect);
+            }
+
+            if ($this->columnOnly) {
+                return $statement->fetchColumn();
             }
 
             return $statement->fetchAll($this->format);
