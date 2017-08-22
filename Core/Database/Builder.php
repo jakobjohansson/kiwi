@@ -23,6 +23,12 @@ class Builder
     protected $format = PDO::FETCH_CLASS;
 
     /**
+     * The expected class to return.
+     * @var string
+     */
+    protected $expect;
+
+    /**
      * SQL query.
      * @var string
      */
@@ -65,6 +71,19 @@ class Builder
     public function format($format)
     {
         $this->format = $format;
+
+        return $this;
+    }
+
+    /**
+     * Set the expected class response.
+     * @method expect
+     * @param   $class
+     * @return $this
+     */
+    public function expect($class)
+    {
+        $this->expect = $class;
 
         return $this;
     }
@@ -129,11 +148,11 @@ class Builder
             $statement = $this->pdo->prepare($this->query);
             $statement->execute();
 
-            if ($class) {
-                return $stmt->fetchAll($this->format, $class);
+            if ($this->expect) {
+                return $statement->fetchAll($this->format, $this->expect);
             }
 
-            return $stmt->fetchAll($this->format);
+            return $statement->fetchAll($this->format);
         } catch (PDOException $exception) {
             ErrorHandler::renderErrorView($exception);
         }
@@ -155,17 +174,17 @@ class Builder
      */
     private function getProcessedWhereClauses()
     {
-        $count = count($this->where);
+        $count = count($this->clauses);
 
         if (!$count) {
             return null;
         }
 
-        $output = " WHERE `{$where[0][0]}` {$where[0][1]} '{$where[0][2]}'";
+        $output = " WHERE `{$this->clauses[0][0]}` {$this->clauses[0][1]} '{$this->clauses[0][2]}'";
 
         if ($count > 1) {
             for ($i = 1; $i < $count; $i++) {
-                $output .= " AND `{$where[$i][0]}` {$where[$i][1]} '{$where[$i][2]}'";
+                $output .= " AND `{$this->clauses[$i][0]}` {$this->clauses[$i][1]} '{$this->clauses[$i][2]}'";
             }
         }
 
