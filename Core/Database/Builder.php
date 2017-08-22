@@ -23,10 +23,10 @@ class Builder
     protected $format = PDO::FETCH_CLASS;
 
     /**
-     * SQL statement.
+     * SQL query.
      * @var string
      */
-    protected $statement;
+    protected $query;
 
     /**
      * Array of where clauses.
@@ -97,13 +97,78 @@ class Builder
     }
 
     /**
-     * Run the query.
+     * Select the properties to run in the query.
+     * @method select
+     * @param  mixed $properties
+     * @return $this
+     */
+    public function select($properties)
+    {
+        if (is_array($properties)) {
+            $properties = $properties = implode($properties, ', ');
+        }
+
+        $this->properties = $properties;
+
+        $this->setSelectQuery();
+
+        return $this;
+    }
+
+    /**
+     * Chain and run the query.
      *
      * @method run
      */
     public function run()
     {
+        $this->query .= $this->table;
+        $this->query .= $this->getProcessedWhereClauses();
 
-        return $this;
+        try {
+            $statement = $this->pdo->prepare($this->query);
+            $statement->execute();
+
+            if ($class) {
+                return $stmt->fetchAll($this->format, $class);
+            }
+
+            return $stmt->fetchAll($this->format);
+        } catch (PDOException $exception) {
+            ErrorHandler::renderErrorView($exception);
+        }
+    }
+
+    /**
+     * Sets an initial select query.
+     * @method setSelectquery
+     */
+    private function setSelectQuery()
+    {
+        $this->query = "SELECT {$this->properties} FROM ";
+    }
+
+    /**
+     * Process the where clauses, concatenating them into a string.
+     * @method getProcessedWhereClauses
+     * @return string
+     */
+    private function getProcessedWhereClauses()
+    {
+        $count = count($this->where);
+
+        if (!$count) {
+            return null;
+        }
+
+        $output = " WHERE `{$where[0][0]}` {$where[0][1]} '{$where[0][2]}'";
+
+        if ($count > 1) {
+            for ($i = 1; $i < $count; $i++) {
+                $output .= " AND `{$where[$i][0]}` {$where[$i][1]} '{$where[$i][2]}'";
+            }
+        }
+
+        return $output;
     }
 }
