@@ -2,6 +2,8 @@
 
 namespace kiwi\Error;
 
+use kiwi\Database\Meta;
+
 class ErrorHandler
 {
     /**

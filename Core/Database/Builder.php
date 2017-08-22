@@ -8,12 +8,6 @@ use PDOException;
 
 class Builder
 {
-    protected $statement;
-
-    protected $clauses;
-
-    protected $table;
-
     /**
      * PDO instance.
      *
@@ -28,12 +22,63 @@ class Builder
      */
     protected $format = PDO::FETCH_CLASS;
 
+    /**
+     * The expected class to return.
+     *
+     * @var string
+     */
+    protected $expect;
+
+    /**
+     * SQL query.
+     *
+     * @var string
+     */
+    protected $query;
+
+    /**
+     * Array of where clauses.
+     *
+     * @var array
+     */
+    protected $clauses;
+
+    /**
+     * The table to be queried.
+     *
+     * @var string
+     */
+    protected $table;
+
+    /**
+     * The properties to query.
+     *
+     * @var string
+     */
+    protected $properties = '*';
+
+    /**
+     * Creates a new Builder intance.
+     *
+     * @method __construct
+     *
+     * @param PDO $pdo
+     */
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
     }
 
-    public function setFormat($format)
+    /**
+     * Setter for the PDO format to use.
+     *
+     * @method format
+     *
+     * @param string $format
+     *
+     * @return $this
+     */
+    public function format($format)
     {
         $this->format = $format;
 
@@ -41,12 +86,34 @@ class Builder
     }
 
     /**
-     * Run the query.
+     * Set the expected class response.
      *
-     * @method run
+     * @method expect
+     *
+     * @param   $class
+     *
+     * @return $this
      */
-    public function run()
+    public function expect($class)
     {
+        $this->expect = $class;
+
+        return $this;
+    }
+
+    /**
+     * Set the table to query.
+     *
+     * @method from
+     *
+     * @param string $table
+     *
+     * @return $this
+     */
+    public function from($table)
+    {
+        $this->table = $table;
+
         return $this;
     }
 
@@ -64,109 +131,85 @@ class Builder
         return $this;
     }
 
-    public function all()
-    {
-        return $this;
-    }
-
-    public function latest()
-    {
-        return $this;
-    }
-
-    public function first()
-    {
-        return $this;
-    }
-
     /**
-     * Fetch a record from a table.
+     * Select the properties to run in the query.
      *
-     * @param string $table
-     * @param mixed  $properties
-     * @param array  $where
+     * @method select
      *
-     * @return mixed
+     * @param mixed $properties
+     *
+     * @return $this
      */
-    public function select($table, $properties, array $where = null)
+    public function select($properties)
     {
         if (is_array($properties)) {
-            $properties = implode($properties, ',');
+            $properties = $properties = implode($properties, ', ');
         }
 
-        $sql = "select {$properties} from {$table}";
+        $this->properties = $properties;
 
-        if ($where) {
-            $where[0] = '`'.$where[0].'`';
-            $where[2] = "'".$where[2]."'";
-            $where = implode($where, ' ');
-            $sql .= " WHERE {$where}";
-        }
+        $this->setSelectQuery();
+
+        return $this;
+    }
+
+    /**
+     * Chain and run the query.
+     *
+     * @method run
+     */
+    public function run()
+    {
+        $this->query .= $this->table;
+        $this->query .= $this->getProcessedWhereClauses();
 
         try {
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
+            $statement = $this->pdo->prepare($this->query);
+            $statement->execute();
 
-            return $stmt->fetch($this->format);
+            if ($this->expect) {
+                return $statement->fetchAll($this->format, $this->expect);
+            }
+
+            return $statement->fetchAll($this->format);
         } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception, $this);
+            ErrorHandler::renderErrorView($exception);
         }
     }
 
     /**
-     * Fetch all records from a table.
+     * Sets an initial select query.
      *
-     * @param string $table the table to select from
-     *
-     * @return array array of objects
+     * @method setSelectquery
      */
-    public function selectAll($table, $class = null, array $where = null)
+    private function setSelectQuery()
     {
-        try {
-            $sql = "select * from {$table}";
-
-            if ($where) {
-                $where[0] = '`'.$where[0].'`';
-                $where[2] = "'".$where[2]."'";
-                $where = implode($where, ' ');
-                $sql .= " WHERE {$where}";
-            }
-
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
-
-            if ($class) {
-                return $stmt->fetchAll($this->format, $class);
-            }
-
-            return $stmt->fetchAll($this->format);
-        } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception, $this);
-        }
+        $this->query = "SELECT {$this->properties} FROM ";
     }
 
     /**
-     * Insert records into a table.
+     * Process the where clauses, concatenating them into a string.
      *
-     * @param string $table      The table name
-     * @param array  $parameters Array of contents
+     * @method getProcessedWhereClauses
      *
-     * @return void
+     * @return string
      */
-    public function insert($table, array $parameters)
+    private function getProcessedWhereClauses()
     {
-        $sql = sprintf(
-            'insert into %s (%s) values (%s)',
-            $table,
-            implode(', ', array_keys($parameters)),
-            ':'.implode(', :', array_keys($parameters))
-        );
+        $count = count($this->clauses);
 
-        try {
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute($parameters);
-        } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception, $this);
+        if (!$count) {
+            return;
         }
+
+        $output = " WHERE `{$this->clauses[0][0]}` {$this->clauses[0][1]} '{$this->clauses[0][2]}'";
+
+        if ($count > 1) {
+            for ($i = 1; $i < $count; $i++) {
+                $output .= " AND `{$this->clauses[$i][0]}` {$this->clauses[$i][1]} '{$this->clauses[$i][2]}'";
+            }
+        }
+
+        return $output;
     }
 }
