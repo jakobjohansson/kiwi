@@ -20,6 +20,6 @@ try {
     Router::loadRoutes(
         'App'.DIRECTORY_SEPARATOR.'routes.php'
     )->delegate();
-} catch (Exception $exception) {
-    return ErrorHandler::renderErrorView($exception);
+} catch (Exception $e) {
+    return ErrorHandler::renderErrorView($e);
 }

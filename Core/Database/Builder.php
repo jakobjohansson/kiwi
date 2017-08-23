@@ -203,8 +203,8 @@ class Builder
             }
 
             return $statement->fetchAll($this->format);
-        } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception);
+        } catch (PDOException $e) {
+            ErrorHandler::renderErrorView($e);
         }
     }
 

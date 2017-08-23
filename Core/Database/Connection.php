@@ -24,8 +24,8 @@ class Connection
                 $params['password'],
                 $params['options']
             );
-        } catch (PDOException $exception) {
-            ErrorHandler::renderErrorView($exception);
+        } catch (PDOException $e) {
+            ErrorHandler::renderErrorView($e);
         }
     }
 
@@ -48,7 +48,7 @@ class Connection
             );
 
             return true;
-        } catch (PDOException $exception) {
+        } catch (PDOException $e) {
             return false;
         }
     }

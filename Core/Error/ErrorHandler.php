@@ -9,9 +9,9 @@ class ErrorHandler
     /**
      * Render the error page.
      *
-     * @param Exception $exception
+     * @param Exception $e
      */
-    public static function renderErrorView(\Exception $exception)
+    public static function renderErrorView(\Exception $e)
     {
         $customErrorFile = 'App'.DIRECTORY_SEPARATOR.'Themes'.DIRECTORY_SEPARATOR.Meta::get('theme').DIRECTORY_SEPARATOR.'error.view.php';
 
