@@ -9,8 +9,6 @@ class JsonFormatter implements FormatterInterface
     /**
      * Turn a resource into JSON.
      *
-     * @method make
-     *
      * @param mixed $value
      *
      * @return mixed
@@ -22,8 +20,6 @@ class JsonFormatter implements FormatterInterface
 
     /**
      * Translate JSON into a readable resource.
-     *
-     * @method get
      *
      * @param mixed $value
      *

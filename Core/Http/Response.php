@@ -7,8 +7,6 @@ class Response
     /**
      * Return a json response.
      *
-     * @method json
-     *
      * @param mixed $payload
      *
      * @return Json
@@ -21,8 +19,6 @@ class Response
 
     /**
      * Return a status code.
-     *
-     * @method status
      *
      * @param int $code
      *

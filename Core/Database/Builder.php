@@ -67,8 +67,6 @@ class Builder
     /**
      * Creates a new Builder intance.
      *
-     * @method __construct
-     *
      * @param PDO $pdo
      */
     public function __construct($pdo)
@@ -78,8 +76,6 @@ class Builder
 
     /**
      * Setter for the PDO format to use.
-     *
-     * @method format
      *
      * @param string $format
      *
@@ -95,8 +91,6 @@ class Builder
     /**
      * Set the expected class response.
      *
-     * @method expect
-     *
      * @param   $class
      *
      * @return $this
@@ -110,8 +104,6 @@ class Builder
 
     /**
      * Set the table to query.
-     *
-     * @method from
      *
      * @param string $table
      *
@@ -127,8 +119,6 @@ class Builder
     /**
      * Add a where clause to the query.
      *
-     * @method where
-     *
      * @return $this
      */
     public function where($one, $operator, $two)
@@ -140,8 +130,6 @@ class Builder
 
     /**
      * Select the properties to run in the query.
-     *
-     * @method select
      *
      * @param mixed $properties
      *
@@ -163,8 +151,6 @@ class Builder
     /**
      * Retrieve only a single column from a query.
      *
-     * @method column
-     *
      * @param string $property
      *
      * @return $this
@@ -182,8 +168,7 @@ class Builder
 
     /**
      * Chain and run the query.
-     *
-     * @method run
+     * @return PDO::Statement
      */
     public function run()
     {
@@ -210,8 +195,6 @@ class Builder
 
     /**
      * Sets an initial select query.
-     *
-     * @method setSelectquery
      */
     private function setSelectQuery()
     {
@@ -220,8 +203,6 @@ class Builder
 
     /**
      * Process the where clauses, concatenating them into a string.
-     *
-     * @method getProcessedWhereClauses
      *
      * @return string
      */

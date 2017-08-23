@@ -22,8 +22,6 @@ class Sanitizer
     /**
      * Return digits only from a string.
      *
-     * @method digits
-     *
      * @param string $input
      *
      * @return string
@@ -35,8 +33,6 @@ class Sanitizer
 
     /**
      * Return letters only from a string.
-     *
-     * @method letters
      *
      * @param mixed $input
      *

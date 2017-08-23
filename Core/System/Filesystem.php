@@ -32,8 +32,6 @@ class Filesystem
     /**
      * Remove a file.
      *
-     * @method remove
-     *
      * @param string $path the file path
      *
      * @return unlink
@@ -45,8 +43,6 @@ class Filesystem
 
     /**
      * Scan a folder of its files, skipping wildcards.
-     *
-     * @method scanFolder
      *
      * @param string $folder the folder path
      *
@@ -60,8 +56,6 @@ class Filesystem
     /**
      * Recurse through a folder, removing everything inside it,
      * as well as the folder itself.
-     *
-     * @method removeFolder
      *
      * @param string $folder the folder path
      *

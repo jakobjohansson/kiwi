@@ -10,8 +10,6 @@ class View
     /**
      * Render a view.
      *
-     * @method render
-     *
      * @param string $view
      * @param array  $extracts
      *
@@ -33,8 +31,6 @@ class View
     /**
      * Render a view not located in a theme.
      *
-     * @method renderCustom
-     *
      * @param string $path
      * @param array  $extracts
      *
@@ -53,8 +49,6 @@ class View
 
     /**
      * Retrieve the available themes.
-     *
-     * @method getThemeLinks
      *
      * @return array
      */
