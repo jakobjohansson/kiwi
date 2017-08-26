@@ -20,6 +20,7 @@ class Kernel
 
     /**
      * Check for files and boot the kernel.
+     *
      * @return void
      */
     public function boot()
@@ -37,6 +38,7 @@ class Kernel
 
     /**
      * Run the router and handle the request.
+     *
      * @return void
      */
     public function run()

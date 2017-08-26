@@ -168,6 +168,7 @@ class Builder
 
     /**
      * Chain and run the query.
+     *
      * @return PDO::Statement
      */
     public function run()
