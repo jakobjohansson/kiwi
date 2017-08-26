@@ -6,14 +6,17 @@ class Container
 {
     /**
      * Value registry.
-     * @var Array
+     *
+     * @var array
      */
     private static $registry = [];
 
     /**
      * Bind a value to the container.
-     * @param  string $key
-     * @param  mixed $value
+     *
+     * @param string $key
+     * @param mixed  $value
+     *
      * @return void
      */
     public static function bind($key, $value)
@@ -23,7 +26,9 @@ class Container
 
     /**
      * Resolve a value out of the container.
-     * @param  string $key
+     *
+     * @param string $key
+     *
      * @return mixed
      */
     public static function resolve($key)
