@@ -1,6 +1,6 @@
 {
     "autoload": {
         "classmap": ["./"],
-        "files": ["Core/bootstrap.php", "Core/helpers.php"]
+        "files": ["Core/helpers.php"]
     }
 }
