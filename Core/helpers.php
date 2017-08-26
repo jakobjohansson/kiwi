@@ -12,3 +12,17 @@ if (!function_exists('dd')) {
         die();
     }
 }
+
+if (!function_exists('resolve')) {
+    function resolve($key)
+    {
+        return \kiwi\Container::resolve($key);
+    }
+}
+
+if (!function_exists('bind')) {
+    function bind($key, $value)
+    {
+        \kiwi\Container::bind($key, $value);
+    }
+}
