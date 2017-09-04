@@ -85,7 +85,7 @@ class Router
 
         $controller = new $controller();
         if (!method_exists($controller, $method)) {
-            throw new Exception(
+            throw new HttpException(
                 "The {$method} method doesn't exist."
             );
         }
