@@ -2,17 +2,13 @@
 
 namespace kiwi\Database;
 
+use kiwi\Container;
+
 abstract class Model
 {
-    public static $connection;
-
-    public static function boot($connection)
-    {
-        static::$connection = $connection;
-    }
 
     public static function builder()
     {
-        return new Builder(static::$connection);
+        return new Builder(Container::resolve('connection'));
     }
 }

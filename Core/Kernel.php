@@ -3,7 +3,7 @@
 namespace kiwi;
 
 use kiwi\Database\Connection;
-use kiwi\Database\Model;
+use kiwi\Database\Builder;
 use kiwi\Error\ErrorHandler;
 use kiwi\Http\Router;
 use kiwi\System\Filesystem;
@@ -16,6 +16,7 @@ class Kernel
     public function __construct()
     {
         $this->boot();
+        $this->bindDefaultDependencies();
     }
 
     /**
@@ -23,17 +24,12 @@ class Kernel
      *
      * @return void
      */
-    public function boot()
+    private function boot()
     {
+        // TODO: exit the app if config doesn't exist.
         if (!Filesystem::find('App'.DIRECTORY_SEPARATOR.'config.php')) {
             return;
         }
-
-        Model::boot(
-            Connection::make(
-                require 'App'.DIRECTORY_SEPARATOR.'config.php'
-            )
-        );
     }
 
     /**
@@ -50,5 +46,14 @@ class Kernel
         } catch (\Exception $e) {
             return ErrorHandler::renderErrorView($e);
         }
+    }
+
+    /**
+     * Binds the needed dependencies to the container.
+     * @return void
+     */
+    private function bindDefaultDependencies()
+    {
+        Container::bind('connection', Connection::make(require 'App'.DIRECTORY_SEPARATOR.'config.php'));
     }
 }
