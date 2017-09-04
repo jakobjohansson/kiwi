@@ -19,7 +19,7 @@ class View
     {
         $app = Container::resolve('app');
 
-        extract($extracts);
+        extract($extracts, EXTR_SKIP);
 
         return require 'App'.DIRECTORY_SEPARATOR.
             'Themes'.DIRECTORY_SEPARATOR."{$app->theme}".
@@ -38,7 +38,7 @@ class View
     {
         $app = Container::resolve('app');
 
-        extract($extracts);
+        extract($extracts, EXTR_SKIP);
 
         return require "$path";
     }
