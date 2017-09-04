@@ -12,7 +12,7 @@ class AdminController extends Controller
             'core/admin/views/index.view.php',
             [
                 'posts' => Post::all(),
-                'page' => 'browse'
+                'page'  => 'browse',
             ]
         );
     }
@@ -22,7 +22,7 @@ class AdminController extends Controller
         View::renderCustom(
             'core/admin/views/create.view.php',
             [
-                'page' => 'write'
+                'page' => 'write',
             ]
         );
     }
