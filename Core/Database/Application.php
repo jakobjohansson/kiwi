@@ -1,8 +1,9 @@
 <?php
 
-namespace kiwi\Database;
+namespace kiwi;
 
 use PDO;
+use kiwi\Database\Model;
 
 class Application extends Model
 {
@@ -14,7 +15,7 @@ class Application extends Model
         $properties = $this->getAll();
 
         foreach ($properties as $property) {
-            $this['meta_key'] = $property['meta_value'];
+            $this['key'] = $property['value'];
         }
     }
 
