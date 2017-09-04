@@ -26,9 +26,8 @@ class Kernel
      */
     private function boot()
     {
-        // TODO: exit the app if config doesn't exist.
         if (!Filesystem::find('App'.DIRECTORY_SEPARATOR.'config.php')) {
-            return;
+            throw new Error\RuntimeException('Config file not found.');
         }
     }
 
@@ -49,7 +48,7 @@ class Kernel
     }
 
     /**
-     * Binds the needed dependencies to the container.
+     * Bind the needed dependencies to the container.
      *
      * @return void
      */
