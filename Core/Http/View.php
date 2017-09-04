@@ -15,13 +15,11 @@ class View
      *
      * @return View
      */
-    public static function render($view, array $extracts = null)
+    public static function render($view, array $extracts = [])
     {
         $app = Container::resolve('app');
 
-        if ($extracts) {
-            extract($extracts);
-        }
+        extract($extracts);
 
         return require 'App'.DIRECTORY_SEPARATOR.
             'Themes'.DIRECTORY_SEPARATOR."{$app->theme}".
@@ -36,13 +34,11 @@ class View
      *
      * @return View
      */
-    public static function renderCustom($path, array $extracts = null)
+    public static function renderCustom($path, array $extracts = [])
     {
         $app = Container::resolve('app');
 
-        if ($extracts) {
-            extract($extracts);
-        }
+        extract($extracts);
 
         return require "$path";
     }
