@@ -25,6 +25,18 @@ class Container
     }
 
     /**
+     * Bind an array of values to the container.
+     * @param  array  $binds
+     * @return void
+     */
+    public static function bindArray(array $binds)
+    {
+        foreach ($binds as $key => $value) {
+            self::bind($key, $value);
+        }
+    }
+
+    /**
      * Resolve a value out of the container.
      *
      * @param string $key
