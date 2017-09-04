@@ -7,13 +7,25 @@ use PDO;
 class Application extends Model
 {
     /**
+     * Create a new application instance.
+     */
+    public function __construct()
+    {
+        $properties = $this->getAll();
+
+        foreach ($properties as $property) {
+            $this['meta_key'] = $property['meta_value'];
+        }
+    }
+
+    /**
      * Fetch a meta value.
      *
      * @param string $property
      *
      * @return mixed
      */
-    public static function get($property)
+    public function get($property)
     {
         return static::builder()->column('value')
             ->from('site_meta')
@@ -21,21 +33,13 @@ class Application extends Model
             ->run();
     }
 
-    public static function getAll()
+    public function getAll()
     {
         $builder = static::builder();
 
-        $result = $builder->select('*')
+        return $builder->select('*')
             ->from('site_meta')
             ->format(PDO::FETCH_ASSOC)
             ->run();
-
-        $app = [];
-
-        foreach ($result as $row) {
-            $app[$row['key']] = $row['value'];
-        }
-
-        return $app;
     }
 }
