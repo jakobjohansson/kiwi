@@ -50,6 +50,7 @@ class Kernel
 
     /**
      * Binds the needed dependencies to the container.
+     *
      * @return void
      */
     private function bindDefaultDependencies()
