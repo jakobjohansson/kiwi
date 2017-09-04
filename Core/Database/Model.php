@@ -37,4 +37,18 @@ abstract class Model implements \ArrayAccess
     {
         unset($this->attributes[$offset]);
     }
+
+    public function __get($property)
+    {
+        if (array_key_exists($property, $this->attributes)) {
+            return $this->attributes[$property];
+        }
+
+        return null;
+    }
+
+    public function __set($property, $value)
+    {
+        $this->attributes[$property] = $value;
+    }
 }

@@ -15,7 +15,7 @@ class Application extends Model
         $properties = $this->getAll();
 
         foreach ($properties as $property) {
-            $this['key'] = $property['value'];
+            $this[$property['key']] = $property['value'];
         }
     }
 
