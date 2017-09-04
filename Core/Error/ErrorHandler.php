@@ -13,12 +13,12 @@ class ErrorHandler
      */
     public static function renderErrorView(\Exception $e)
     {
-        $app = Container::resolve('app');
+        if ($app = Container::resolve('app')) {
+            $customErrorFile = 'App'.DIRECTORY_SEPARATOR.'Themes'.DIRECTORY_SEPARATOR.$app->theme.DIRECTORY_SEPARATOR.'error.view.php';
 
-        $customErrorFile = 'App'.DIRECTORY_SEPARATOR.'Themes'.DIRECTORY_SEPARATOR.$app->theme.DIRECTORY_SEPARATOR.'error.view.php';
-
-        if (file_exists($customErrorFile)) {
-            return require $customErrorFile;
+            if (file_exists($customErrorFile)) {
+                return require $customErrorFile;
+            }
         }
 
         return require 'App'.DIRECTORY_SEPARATOR.'Themes'.DIRECTORY_SEPARATOR.'kiwi17'.DIRECTORY_SEPARATOR.'error.view.php';
