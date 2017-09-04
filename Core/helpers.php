@@ -6,9 +6,9 @@
 if (!function_exists('dd')) {
     function dd($param)
     {
-        echo '<pre>';
+        echo '<pre><code>';
         var_dump($param);
-        echo '</pre>';
+        echo '</code></pre>';
         die();
     }
 }
