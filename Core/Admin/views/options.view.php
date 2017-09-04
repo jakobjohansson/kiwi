@@ -9,13 +9,13 @@
                 <div class="field">
                     <p class="control">
                         <label>Site name</label>
-                        <input type="text" class="input" value="<?=$app->name;?>"/>
+                        <input type="text" class="input" value="<?=$app->name; ?>"/>
                     </p>
                 </div>
                 <div class="field">
                     <p class="control">
                         <label>Site description</label>
-                        <input type="text" class="input" value="<?=$app->description;?>" />
+                        <input type="text" class="input" value="<?=$app->description; ?>" />
                     </p>
                 </div>
                 <div class="field">
