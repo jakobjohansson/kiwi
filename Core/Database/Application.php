@@ -2,8 +2,8 @@
 
 namespace kiwi;
 
-use PDO;
 use kiwi\Database\Model;
+use PDO;
 
 class Application extends Model
 {

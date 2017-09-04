@@ -3,7 +3,6 @@
 namespace kiwi;
 
 use kiwi\Database\Connection;
-use kiwi\Database\Builder;
 use kiwi\Error\ErrorHandler;
 use kiwi\Http\Router;
 use kiwi\System\Filesystem;
