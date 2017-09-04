@@ -45,6 +45,6 @@ class Container
      */
     public static function resolve($key)
     {
-        return static::$registry[$key];
+        return static::$registry[$key] ?? null;
     }
 }
