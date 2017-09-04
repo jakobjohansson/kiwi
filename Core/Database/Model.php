@@ -8,12 +8,14 @@ abstract class Model implements \ArrayAccess
 {
     /**
      * Attributes set by ArrayAccess or magic methods.
+     *
      * @var array
      */
     public $attributes = [];
 
     /**
      * Return a new instance of the Builder class.
+     *
      * @return Builder
      */
     public static function builder()
@@ -25,6 +27,7 @@ abstract class Model implements \ArrayAccess
      * Check if an offset exists when using ArrayAccess.
      *
      * @param mixed $offset
+     *
      * @return bool
      */
     public function offsetExists($offset)
@@ -34,6 +37,7 @@ abstract class Model implements \ArrayAccess
 
     /**
      * Get an attribute when using ArrayAccess.
+     *
      * @param mixed $offset
      */
     public function offsetGet($offset)
@@ -43,8 +47,10 @@ abstract class Model implements \ArrayAccess
 
     /**
      * Set an attribute when using ArrayAccess.
+     *
      * @param mixed $offset
      * @param mixed $value
+     *
      * @return void
      */
     public function offsetSet($offset, $value)
@@ -58,6 +64,7 @@ abstract class Model implements \ArrayAccess
 
     /**
      * Unset an attribute when using ArrayAccess.
+     *
      * @param mixed $offset
      */
     public function offsetUnset($offset)
@@ -67,7 +74,9 @@ abstract class Model implements \ArrayAccess
 
     /**
      * Dynamically get an attribute on the object.
-     * @param  mixed $property
+     *
+     * @param mixed $property
+     *
      * @return mixed
      */
     public function __get($property)
@@ -75,12 +84,11 @@ abstract class Model implements \ArrayAccess
         if (array_key_exists($property, $this->attributes)) {
             return $this->attributes[$property];
         }
-
-        return null;
     }
 
     /**
      * Dynamically set an attribute on the object.
+     *
      * @param mixed $property
      * @param mixed $value
      */
