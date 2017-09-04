@@ -2,7 +2,7 @@
 
 namespace kiwi\Error;
 
-use kiwi\Database\Meta;
+use kiwi\Container;
 
 class ErrorHandler
 {
@@ -13,7 +13,9 @@ class ErrorHandler
      */
     public static function renderErrorView(\Exception $e)
     {
-        $customErrorFile = 'App'.DIRECTORY_SEPARATOR.'Themes'.DIRECTORY_SEPARATOR.Meta::get('theme').DIRECTORY_SEPARATOR.'error.view.php';
+        $app = Container::resolve('app');
+
+        $customErrorFile = 'App'.DIRECTORY_SEPARATOR.'Themes'.DIRECTORY_SEPARATOR.$app->theme.DIRECTORY_SEPARATOR.'error.view.php';
 
         if (file_exists($customErrorFile)) {
             return require $customErrorFile;

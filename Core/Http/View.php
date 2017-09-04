@@ -2,8 +2,8 @@
 
 namespace kiwi\Http;
 
-use kiwi\Database\Meta;
 use kiwi\System\Filesystem;
+use kiwi\Container;
 
 class View
 {
@@ -17,14 +17,14 @@ class View
      */
     public static function render($view, array $extracts = null)
     {
-        $app = Meta::getAll();
+        $app = Container::resolve('app');
 
         if ($extracts) {
             extract($extracts);
         }
 
         return require 'App'.DIRECTORY_SEPARATOR.
-            'Themes'.DIRECTORY_SEPARATOR."{$app['theme']}".
+            'Themes'.DIRECTORY_SEPARATOR."{$app->theme}".
             DIRECTORY_SEPARATOR."{$view}.view.php";
     }
 
@@ -38,7 +38,7 @@ class View
      */
     public static function renderCustom($path, array $extracts = null)
     {
-        $app = Meta::getAll();
+        $app = Container::resolve('app');
 
         if ($extracts) {
             extract($extracts);
