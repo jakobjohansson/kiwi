@@ -4,7 +4,7 @@ namespace kiwi\Database;
 
 use PDO;
 
-class Meta extends Model
+class Application extends Model
 {
     /**
      * Fetch a meta value.

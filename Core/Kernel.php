@@ -55,5 +55,7 @@ class Kernel
     private function bindDefaultDependencies()
     {
         Container::bind('connection', Connection::make(require 'App'.DIRECTORY_SEPARATOR.'config.php'));
+
+        Container::bind('app', new Application());
     }
 }
