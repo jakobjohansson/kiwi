@@ -15,7 +15,6 @@ class Kernel
     public function __construct()
     {
         $this->boot();
-        $this->bindDefaultDependencies();
     }
 
     /**
@@ -25,9 +24,15 @@ class Kernel
      */
     private function boot()
     {
+        if (class_exists('kiwi\\Installer')) {
+            return;
+        }
+
         if (!Filesystem::find('App'.DIRECTORY_SEPARATOR.'config.php')) {
             throw new Error\RuntimeException('Config file not found.');
         }
+
+        $this->bindDefaultDependencies();
     }
 
     /**
