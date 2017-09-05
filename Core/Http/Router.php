@@ -3,7 +3,6 @@
 namespace kiwi\Http;
 
 use kiwi\Error\HttpException;
-use kiwi\System\Filesystem;
 
 class Router
 {
