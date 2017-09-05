@@ -15,7 +15,7 @@ class AdminController extends Controller
     public function index()
     {
         View::renderAdminView(
-            'index'
+            'index',
             [
                 'posts' => Post::all(),
             ]
