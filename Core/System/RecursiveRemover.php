@@ -14,19 +14,8 @@ class RecursiveRemover
     public function init()
     {
         $this->removeFiles('install');
-        $this->dumpAutoload();
 
         return Request::redirect('/');
-    }
-
-    /**
-     * Use composer to dump the autoload.
-     *
-     * @return void
-     */
-    private function dumpAutoload()
-    {
-        exec('composer dumpautoload');
     }
 
     /**

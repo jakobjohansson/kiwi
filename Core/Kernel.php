@@ -5,7 +5,6 @@ namespace kiwi;
 use kiwi\Database\Connection;
 use kiwi\Error\ErrorHandler;
 use kiwi\Http\Router;
-use kiwi\System\Filesystem;
 
 class Kernel
 {
@@ -24,9 +23,7 @@ class Kernel
      */
     private function boot()
     {
-        if (!Filesystem::find('App'.DIRECTORY_SEPARATOR.'config.php')) {
-            throw new Error\RuntimeException('Config file not found.');
-        }
+        // TODO: initiate loader here.
 
         $this->bindDefaultDependencies();
     }
