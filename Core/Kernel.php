@@ -15,9 +15,9 @@ class Kernel
      */
     public static function run()
     {
-        Loader::run();
-
         try {
+            Loader::run();
+            
             Router::loadRoutes(
                 'App'.DIRECTORY_SEPARATOR.'routes.php'
             )->delegate();
