@@ -40,7 +40,7 @@ class Kernel
                 'App'.DIRECTORY_SEPARATOR.'routes.php'
             )->delegate();
         } catch (\Exception $e) {
-            return ErrorHandler::renderErrorView($e);
+            return ErrorHandler::render($e);
         }
     }
 
