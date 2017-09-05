@@ -34,12 +34,8 @@ class Migration
             PRIMARY KEY (`item_id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Contains all posts on the site.';";
 
-
         return "INSERT INTO `items` (`id`, `title`, `body`)
             VALUES
             (1,'Hello World!','Welcome to kiwi! This is the first post');";
-
     }
-
-
 }
