@@ -22,7 +22,7 @@
         <tbody>
             <?php
             foreach ($users as $user) {
-                echo "<tr>";
+                echo '<tr>';
 
                 echo "<td>{$user->username}</td>";
                 echo "<td>{$user->email}</td>";
@@ -30,7 +30,7 @@
                 echo "<td>{$user->created_at}</td>";
                 echo "<td><a href=''>Edit</a></td>";
 
-                echo "</tr>";
+                echo '</tr>';
             }
             ?>
         </tbody>
