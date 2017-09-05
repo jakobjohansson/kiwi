@@ -12,6 +12,7 @@ class Post extends Model
 
         return $builder->select('*')
             ->from('items')
+            ->with('users')
             ->expect(self::class)
             ->where('item_id', '=', static::$type)
             ->run();

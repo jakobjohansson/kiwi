@@ -65,6 +65,12 @@ class Builder
     protected $columnOnly = false;
 
     /**
+     * The table joins.
+     * @var array
+     */
+    protected $joins = [];
+
+    /**
      * Creates a new Builder intance.
      *
      * @param PDO $pdo
@@ -167,6 +173,19 @@ class Builder
     }
 
     /**
+     * Set a table to concatenate with (join).
+     *
+     * @param  string $join
+     * @return $this
+     */
+    public function with($join)
+    {
+        $this->joins[] = $join;
+
+        return $this;
+    }
+
+    /**
      * Chain and run the query.
      *
      * @return PDO::Statement
@@ -174,6 +193,7 @@ class Builder
     public function run()
     {
         $this->query .= $this->table;
+        $this->applyJoins();
         $this->query .= $this->getProcessedWhereClauses();
 
         try {
@@ -200,6 +220,22 @@ class Builder
     private function setSelectQuery()
     {
         $this->query = "SELECT {$this->properties} FROM ";
+    }
+
+    /**
+     * Apply joins if there are any.
+     *
+     * @return void
+     */
+    private function applyJoins()
+    {
+        if (!count($this->joins)) {
+            return;
+        }
+
+        foreach ($this->joins as $join) {
+            $this->query .= " INNER JOIN {$join}";
+        }
     }
 
     /**
