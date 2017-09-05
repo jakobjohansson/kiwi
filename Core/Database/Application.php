@@ -12,7 +12,7 @@ class Application extends Model
      */
     public function __construct()
     {
-        $properties = $this->getAll();
+        $properties = $this->all();
 
         foreach ($properties as $property) {
             $this[$property['key']] = $property['value'];
@@ -20,21 +20,10 @@ class Application extends Model
     }
 
     /**
-     * Fetch a meta value.
-     *
-     * @param string $property
-     *
-     * @return mixed
+     * Return the site meta.
+     * @return array
      */
-    public function get($property)
-    {
-        return static::builder()->column('value')
-            ->from('site_meta')
-            ->where('key', '=', $property)
-            ->run();
-    }
-
-    public function getAll()
+    public function all()
     {
         $builder = static::builder();
 
