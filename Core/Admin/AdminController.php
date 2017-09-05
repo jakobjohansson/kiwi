@@ -3,6 +3,7 @@
 namespace kiwi\Http;
 
 use kiwi\Database\Post;
+use kiwi\Database\User;
 
 class AdminController extends Controller
 {
@@ -23,6 +24,17 @@ class AdminController extends Controller
             'core/admin/views/create.view.php',
             [
                 'page' => 'write',
+            ]
+        );
+    }
+
+    public function users()
+    {
+        View::renderCustom(
+            'core/admin/views/users.view.php',
+            [
+                'users' => User::all(),
+                'page' => 'users'
             ]
         );
     }
