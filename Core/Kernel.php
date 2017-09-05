@@ -2,7 +2,6 @@
 
 namespace kiwi;
 
-use kiwi\Database\Connection;
 use kiwi\Error\ErrorHandler;
 use kiwi\Http\Router;
 
@@ -14,6 +13,14 @@ class Kernel
     public function __construct()
     {
         $this->boot();
+
+        try {
+            Router::loadRoutes(
+                'App'.DIRECTORY_SEPARATOR.'routes.php'
+            )->delegate();
+        } catch (\Throwable $e) {
+            ErrorHandler::render($e);
+        }
     }
 
     /**
@@ -27,18 +34,12 @@ class Kernel
     }
 
     /**
-     * Run the router and handle the request.
+     * Fancy constructor.
      *
-     * @return void
+     * @return Kernel
      */
-    public function run()
+    public static function run()
     {
-        try {
-            Router::loadRoutes(
-                'App'.DIRECTORY_SEPARATOR.'routes.php'
-            )->delegate();
-        } catch (\Exception $e) {
-            return ErrorHandler::render($e);
-        }
+        return new static();
     }
 }
