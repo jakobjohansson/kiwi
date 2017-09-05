@@ -24,8 +24,6 @@ class Kernel
     private function boot()
     {
         // TODO: initiate loader here.
-
-        $this->bindDefaultDependencies();
     }
 
     /**
@@ -42,18 +40,5 @@ class Kernel
         } catch (\Exception $e) {
             return ErrorHandler::render($e);
         }
-    }
-
-    /**
-     * Bind the needed dependencies to the container.
-     *
-     * @return void
-     */
-    private function bindDefaultDependencies()
-    {
-        // TODO: bind from .env
-        Container::bind('connection', Connection::make(require 'App'.DIRECTORY_SEPARATOR.'config.php'));
-
-        Container::bind('app', new Application());
     }
 }
