@@ -78,7 +78,7 @@ class Router
     {
         $controller = "\\kiwi\\Http\\{$controller}";
         $controller = new $controller();
-        
+
         if (!method_exists($controller, $method)) {
             throw new HttpException(
                 "The {$method} method doesn't exist."
@@ -98,10 +98,6 @@ class Router
     public static function loadRoutes($file)
     {
         $router = new static();
-
-        if (Filesystem::find('Install'.DIRECTORY_SEPARATOR.'routes.php')) {
-            $file = 'Install'.DIRECTORY_SEPARATOR.'routes.php';
-        }
 
         require $file;
 
