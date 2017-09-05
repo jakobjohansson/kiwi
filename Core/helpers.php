@@ -40,3 +40,10 @@ if (!function_exists('isRoute')) {
         return kiwi\Http\Request::uri() === $route;
     }
 }
+
+if (!function_exists('env')) {
+    function env($name)
+    {
+        return getenv($name);
+    }
+}
