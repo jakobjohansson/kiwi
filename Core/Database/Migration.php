@@ -24,11 +24,22 @@ class Migration
 
     private function seedTables()
     {
-        $this->pdo->query(require static::$seeds.'site_meta.php');
-        $this->pdo->query(require static::$seeds.'types.php');
+        return "CREATE TABLE IF NOT EXISTS `posts` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `title` varchar(255) DEFAULT NULL,
+            `body` text,
+            `public` tinyint(4) DEFAULT '1',
+            `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+            `updated_at` timestamp NULL DEFAULT NULL,
+            PRIMARY KEY (`item_id`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Contains all posts on the site.';";
 
-        // TODO: Do admin user here.
 
-        $this->pdo->query(require static::$seeds.'items.php');
+        return "INSERT INTO `items` (`id`, `title`, `body`)
+            VALUES
+            (1,'Hello World!','Welcome to kiwi! This is the first post');";
+
     }
+
+
 }
