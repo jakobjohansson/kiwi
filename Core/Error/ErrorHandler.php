@@ -9,7 +9,7 @@ class ErrorHandler
      *
      * @param Exception $e
      */
-    public static function render(\Exception $e)
+    public static function render(\Throwable $e)
     {
         require 'App'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'error.view.php';
     }
