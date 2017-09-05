@@ -6,9 +6,14 @@ class Migration
 {
     private $migrationsPath;
 
+    public static function refresh()
+    {
+
+    }
+
     private function refreshMigration()
     {
-        
+
     }
 
     private function migrateTables()
