@@ -26,3 +26,10 @@ if (!function_exists('bind')) {
         \kiwi\Container::bind($key, $value);
     }
 }
+
+if (!function_exists('route')) {
+    function route()
+    {
+        return kiwi\Http\Request::uri();
+    }
+}
