@@ -51,7 +51,10 @@
                 </div>
             </div>
 
+            <div class="field">
+                <progress class="progress is-info" value="25" max="100">25%</progress>
+            </div>
+            
         </form>
-
     </div>
 </div>

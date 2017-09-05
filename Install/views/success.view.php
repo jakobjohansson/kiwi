@@ -9,5 +9,8 @@
             <a href="/remove" class="button is-info">Finish install</a>
         </p>
 
+        <div class="field">
+            <progress class="progress is-info" value="75" max="100">75%</progress>
+        </div>
     </div>
 </div>
