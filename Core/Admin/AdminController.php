@@ -38,4 +38,15 @@ class AdminController extends Controller
             ]
         );
     }
+
+    public function options()
+    {
+        View::renderCustom(
+            'core/admin/views/options.view.php',
+            [
+                'page' => 'options',
+                'themes' => View::getThemeLinks()
+            ]
+        );
+    }
 }

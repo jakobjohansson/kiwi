@@ -16,6 +16,7 @@
                 <th>
                     Created at
                 </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
                 echo "<td>{$user->email}</td>";
                 echo "<td>{$user->role}</td>";
                 echo "<td>{$user->created_at}</td>";
+                echo "<td><a href=''>Edit</a></td>";
 
                 echo "</tr>";
             }
