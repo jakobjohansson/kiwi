@@ -107,7 +107,7 @@ class Router
         if (Filesystem::find('Install'.DIRECTORY_SEPARATOR.'routes.php')) {
             $file = 'Install'.DIRECTORY_SEPARATOR.'routes.php';
         }
-        
+
         require $file;
 
         $router->registerAdminRoutes();
