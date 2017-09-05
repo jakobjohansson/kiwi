@@ -33,3 +33,10 @@ if (!function_exists('route')) {
         return kiwi\Http\Request::uri();
     }
 }
+
+if (!function_exists('isRoute')) {
+    function isRoute($route)
+    {
+        return kiwi\Http\Request::uri() === $route;
+    }
+}
