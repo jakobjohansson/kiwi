@@ -20,17 +20,29 @@ class View
     }
 
     /**
+     * Render an admin view.
+     *
+     * @param  string $view
+     * @param  array  $extracts
+     */
+    public static function renderAdminView($view, array $extracts = [])
+    {
+        $view = 'core/admin/views/' . $view;
+        self::renderCustom($view, $extracts);
+    }
+
+    /**
      * Render a view not located in a theme.
      *
-     * @param string $path
+     * @param string $view
      * @param array  $extracts
      *
      * @return View
      */
-    public static function renderCustom($path, array $extracts = [])
+    public static function renderCustom($view, array $extracts = [])
     {
         extract($extracts, EXTR_SKIP);
 
-        require "$path";
+        require "{$path}.view.php";
     }
 }
