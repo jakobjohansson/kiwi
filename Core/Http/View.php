@@ -16,18 +16,18 @@ class View
     {
         extract($extracts, EXTR_SKIP);
 
-        require 'App'.DIRECTORY_SEPARATOR."Views".DIRECTORY_SEPARATOR."{$view}.view.php";
+        require 'App'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR."{$view}.view.php";
     }
 
     /**
      * Render an admin view.
      *
-     * @param  string $view
-     * @param  array  $extracts
+     * @param string $view
+     * @param array  $extracts
      */
     public static function renderAdminView($view, array $extracts = [])
     {
-        $view = 'core/admin/views/' . $view;
+        $view = 'core/admin/views/'.$view;
         self::renderCustom($view, $extracts);
     }
 
