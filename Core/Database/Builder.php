@@ -66,6 +66,7 @@ class Builder
 
     /**
      * The table joins.
+     *
      * @var array
      */
     protected $joins = [];
@@ -175,7 +176,8 @@ class Builder
     /**
      * Set a table to concatenate with (join).
      *
-     * @param  string $join
+     * @param string $join
+     *
      * @return $this
      */
     public function with($join)
