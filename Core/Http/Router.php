@@ -76,14 +76,9 @@ class Router
      */
     protected function fire($controller, $method)
     {
-        if (strpos($controller, '@') !== false) {
-            $controller = explode('@', $controller);
-            $controller = "\\kiwi\\{$controller[1]}";
-        } else {
-            $controller = "\\kiwi\\Http\\{$controller}";
-        }
-
+        $controller = "\\kiwi\\Http\\{$controller}";
         $controller = new $controller();
+        
         if (!method_exists($controller, $method)) {
             throw new HttpException(
                 "The {$method} method doesn't exist."
