@@ -21,10 +21,14 @@
         <tbody>
             <?php
             foreach ($users as $user) {
+                echo "<tr>";
+
                 echo "<td>{$user->username}</td>";
                 echo "<td>{$user->email}</td>";
                 echo "<td>{$user->role}</td>";
                 echo "<td>{$user->created_at}</td>";
+
+                echo "</tr>";
             }
             ?>
         </tbody>
