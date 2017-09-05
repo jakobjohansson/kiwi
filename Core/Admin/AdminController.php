@@ -7,6 +7,11 @@ use kiwi\Database\User;
 
 class AdminController extends Controller
 {
+    /**
+     * Render the index page.
+     *
+     * @return void
+     */
     public function index()
     {
         View::renderCustom(
@@ -18,6 +23,11 @@ class AdminController extends Controller
         );
     }
 
+    /**
+     * Render the write page.
+     *
+     * @return void
+     */
     public function create()
     {
         View::renderCustom(
@@ -28,6 +38,11 @@ class AdminController extends Controller
         );
     }
 
+    /**
+     * Render the users page.
+     *
+     * @return void
+     */
     public function users()
     {
         View::renderCustom(
@@ -39,6 +54,11 @@ class AdminController extends Controller
         );
     }
 
+    /**
+     * Render the options page.
+     *
+     * @return void
+     */
     public function options()
     {
         View::renderCustom(
