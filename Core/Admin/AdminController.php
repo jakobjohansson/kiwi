@@ -34,7 +34,7 @@ class AdminController extends Controller
             'core/admin/views/users.view.php',
             [
                 'users' => User::all(),
-                'page' => 'users'
+                'page'  => 'users',
             ]
         );
     }
