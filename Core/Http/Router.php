@@ -103,11 +103,29 @@ class Router
     public static function loadRoutes($file)
     {
         $router = new static();
+
         if (Filesystem::find('Install'.DIRECTORY_SEPARATOR.'routes.php')) {
             $file = 'Install'.DIRECTORY_SEPARATOR.'routes.php';
         }
+        
         require $file;
 
+        $router->registerAdminRoutes();
+
         return $router;
+    }
+
+    /**
+     * Register admin routes here instead of bloating the routes file.
+     *
+     * @return void
+     */
+    public function registerAdminRoutes()
+    {
+        $this->get('admin', 'AdminController/index');
+        $this->get('admin/write', 'AdminController/create');
+        $this->post('admin/write', 'AdminController/store');
+        $this->get('admin/users', 'AdminController/users');
+        $this->get('admin/options', 'AdminController/options');
     }
 }
