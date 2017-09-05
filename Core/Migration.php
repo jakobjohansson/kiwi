@@ -8,7 +8,6 @@ class Migration
 
     private function refreshMigration()
     {
-        
     }
 
     private function migrateTables()
