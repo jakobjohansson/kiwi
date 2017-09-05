@@ -20,10 +20,10 @@
             <nav class="tabs is-boxed">
                 <div class="container">
                     <ul>
-                        <li <?php echo $page === 'browse' ? 'class="is-active"' : null ?>><a href="/admin">Browse</a></li>
-                        <li <?php echo $page === 'write' ? 'class="is-active"' : null ?>><a href="/admin/write">Write</a></li>
-                        <li <?php echo $page === 'users' ? 'class="is-active"' : null ?>><a href="/admin/users">Users</a></li>
-                        <li <?php echo $page === 'options' ? 'class="is-active"' : null ?>><a href="/admin/options">Options</a></li>
+                        <li <?php echo route() === 'admin' ? 'class="is-active"' : null ?>><a href="/admin">Browse</a></li>
+                        <li <?php echo route() === 'admin/write' ? 'class="is-active"' : null ?>><a href="/admin/write">Write</a></li>
+                        <li <?php echo route() === 'admin/users' ? 'class="is-active"' : null ?>><a href="/admin/users">Users</a></li>
+                        <li <?php echo route() === 'admin/options' ? 'class="is-active"' : null ?>><a href="/admin/options">Options</a></li>
                     </ul>
                 </div>
             </nav>

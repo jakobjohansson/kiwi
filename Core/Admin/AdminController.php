@@ -18,7 +18,6 @@ class AdminController extends Controller
             'core/admin/views/index.view.php',
             [
                 'posts' => Post::all(),
-                'page'  => 'browse',
             ]
         );
     }
@@ -30,12 +29,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        View::renderCustom(
-            'core/admin/views/create.view.php',
-            [
-                'page' => 'write',
-            ]
-        );
+        View::renderCustom('core/admin/views/create.view.php');
     }
 
     /**
@@ -49,7 +43,6 @@ class AdminController extends Controller
             'core/admin/views/users.view.php',
             [
                 'users' => User::all(),
-                'page'  => 'users',
             ]
         );
     }
@@ -64,7 +57,6 @@ class AdminController extends Controller
         View::renderCustom(
             'core/admin/views/options.view.php',
             [
-                'page'   => 'options',
                 'themes' => View::getThemeLinks(),
             ]
         );
