@@ -21,6 +21,7 @@ class Application extends Model
 
     /**
      * Return the site meta.
+     *
      * @return array
      */
     public function all()
