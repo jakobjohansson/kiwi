@@ -34,7 +34,7 @@ class AdminController extends Controller
             'core/admin/views/users.view.php',
             [
                 'users' => User::all(),
-                'page' => 'users'
+                'page'  => 'users',
             ]
         );
     }
@@ -44,8 +44,8 @@ class AdminController extends Controller
         View::renderCustom(
             'core/admin/views/options.view.php',
             [
-                'page' => 'options',
-                'themes' => View::getThemeLinks()
+                'page'   => 'options',
+                'themes' => View::getThemeLinks(),
             ]
         );
     }
