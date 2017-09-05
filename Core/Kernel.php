@@ -3,8 +3,8 @@
 namespace kiwi;
 
 use kiwi\Error\ErrorHandler;
-use kiwi\System\Loader;
 use kiwi\Http\Router;
+use kiwi\System\Loader;
 
 class Kernel
 {
@@ -17,7 +17,7 @@ class Kernel
     {
         try {
             Loader::run();
-            
+
             Router::loadRoutes(
                 'App'.DIRECTORY_SEPARATOR.'routes.php'
             )->delegate();

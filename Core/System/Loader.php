@@ -72,7 +72,7 @@ class Loader
      * Set an environment variable.
      *
      * @param string $key
-     * @param mixed $value
+     * @param mixed  $value
      */
     private function setEnvironmentVariable($key, $value)
     {
