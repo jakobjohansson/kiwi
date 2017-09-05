@@ -11,6 +11,6 @@ class ErrorHandler
      */
     public static function render(\Exception $e)
     {
-         require 'App'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'error.view.php';
+        require 'App'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'error.view.php';
     }
 }
