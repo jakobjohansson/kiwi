@@ -3,16 +3,19 @@
 namespace kiwi;
 
 use kiwi\Error\ErrorHandler;
+use kiwi\System\Loader;
 use kiwi\Http\Router;
 
 class Kernel
 {
     /**
-     * Construct a new Kernel instance.
+     * Fancy constructor.
+     *
+     * @return Kernel
      */
-    public function __construct()
+    public static function run()
     {
-        $this->boot();
+        Loader::run();
 
         try {
             Router::loadRoutes(
@@ -21,25 +24,5 @@ class Kernel
         } catch (\Throwable $e) {
             ErrorHandler::render($e);
         }
-    }
-
-    /**
-     * Check for files and boot the kernel.
-     *
-     * @return void
-     */
-    private function boot()
-    {
-        // TODO: initiate loader here.
-    }
-
-    /**
-     * Fancy constructor.
-     *
-     * @return Kernel
-     */
-    public static function run()
-    {
-        return new static();
     }
 }
