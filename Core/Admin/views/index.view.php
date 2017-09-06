@@ -4,10 +4,10 @@
     <?php
     foreach ($posts as $post) {
         ?>
-        <h2 class="title"><?php echo $post->title?></h2>
-        <h3>Written <?php echo $post->created_at; ?>.</h3>
+        <h2 class="title"><?=$post->title?></h2>
+        <h3>Written <?=$post->created_at; ?>.</h3>
         <div class="content">
-            <?php echo $post->body ?>
+            <?=$post->body ?>
         </div>
         <?php
     }
