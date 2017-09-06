@@ -26,9 +26,6 @@
                         <li <?php echo isRoute('admin/write') ? 'class="is-active"' : null ?>>
                             <a href="/admin/write">Write</a>
                         </li>
-                        <li <?php echo isRoute('admin/options') ? 'class="is-active"' : null ?>>
-                            <a href="/admin/options">Options</a>
-                        </li>
                     </ul>
                 </div>
             </nav>
