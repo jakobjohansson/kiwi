@@ -22,7 +22,7 @@ class Connection
                 $params['host'].';dbname='.$params['name'],
                 $params['username'],
                 $params['password'],
-                $params['options']
+                [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
             );
         } catch (PDOException $e) {
             ErrorHandler::renderErrorView($e);

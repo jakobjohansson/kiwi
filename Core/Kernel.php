@@ -5,6 +5,7 @@ namespace kiwi;
 use kiwi\Error\ErrorHandler;
 use kiwi\Http\Router;
 use kiwi\System\Loader;
+use kiwi\Database\Connection;
 
 class Kernel
 {
@@ -16,7 +17,7 @@ class Kernel
     public static function run()
     {
         try {
-            Loader::run();
+            static::loadEnvironment();
 
             Router::loadRoutes(
                 'App'.DIRECTORY_SEPARATOR.'routes.php'
@@ -24,5 +25,17 @@ class Kernel
         } catch (\Throwable $e) {
             ErrorHandler::render($e);
         }
+    }
+
+    public static function loadEnvironment()
+    {
+        Loader::run();
+
+        Container::bind('database', Connection::make([
+            'host' => getenv('DATABASE_HOST'),
+            'username' => getenv('DATABASE_USER'),
+            'password' => getenv('DATABASE_PASS'),
+            'name' => getenv('DATABASE_NAME')
+        ]));
     }
 }
