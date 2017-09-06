@@ -37,12 +37,12 @@ class Kernel
         Loader::run();
 
         Container::bind('connection', Connection::make([
-            'host'     => getenv('DATABASE_HOST'),
-            'username' => getenv('DATABASE_USER'),
-            'password' => getenv('DATABASE_PASS'),
-            'name'     => getenv('DATABASE_NAME'),
+            'host'     => env('DATABASE_HOST'),
+            'username' => env('DATABASE_USER'),
+            'password' => env('DATABASE_PASS'),
+            'name'     => env('DATABASE_NAME'),
         ]));
 
-        Container::bind('app', new Application(getenv('APP_NAME'), getenv('APP_DESCRIPTION')));
+        Container::bind('app', new Application(env('APP_NAME'), env('APP_DESCRIPTION')));
     }
 }
