@@ -3,6 +3,7 @@
 namespace kiwi\Database;
 
 use kiwi\Container;
+use kiwi\Http\Request;
 
 class Migration
 {
@@ -85,5 +86,9 @@ class Migration
         );
 
         $query->execute();
+
+        $this->pdo = null;
+
+        Request::redirect('/');
     }
 }
