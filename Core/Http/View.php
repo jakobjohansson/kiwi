@@ -2,8 +2,6 @@
 
 namespace kiwi\Http;
 
-use kiwi\Container;
-
 class View
 {
     /**
@@ -37,8 +35,9 @@ class View
     /**
      * Extract variables, apply $app and include the view.
      *
-     * @param  string $view
-     * @param  array  $extracts
+     * @param string $view
+     * @param array  $extracts
+     *
      * @return void
      */
     public static function finish($view, array $extracts = [])
