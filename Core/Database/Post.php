@@ -4,8 +4,11 @@ namespace kiwi\Database;
 
 class Post extends Model
 {
-    public static $type = 1;
-
+    /**
+     * Get all posts in descending order.
+     *
+     * @return array
+     */
     public static function all()
     {
         $builder = static::builder();
@@ -16,10 +19,15 @@ class Post extends Model
             ->get();
     }
 
+    /**
+     * Save a post to the database.
+     *
+     * @return PDOStatement
+     */
     public function save()
     {
-        return $builder->insert()
-            ->to('posts');
-
+        return $builder->insert($this)
+            ->to('posts')
+            ->run();
     }
 }
