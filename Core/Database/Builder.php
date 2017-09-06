@@ -155,6 +155,12 @@ class Builder
         return $this;
     }
 
+    /**
+     * Prepare a insert query.
+     *
+     * @param  Object $entity
+     * @return $this
+     */
     public function insert($entity)
     {
         $keys = array_keys($entity->attributes);
@@ -170,16 +176,17 @@ class Builder
         return $this;
     }
 
+    /**
+     * Set which table to insert to.
+     *
+     * @param  string $table
+     * @return $this
+     */
     public function to($table)
     {
         $this->table = $table;
 
         return $this;
-    }
-
-    private function setInsertQuery()
-    {
-        $this->query = "INSERT INTO `" . $this->table . "` (`" . $this->query;
     }
 
     /**
@@ -243,6 +250,11 @@ class Builder
         }
     }
 
+    /**
+     * Run a query.
+     *
+     * @return void
+     */
     public function run()
     {
         $this->setInsertQuery();
@@ -257,6 +269,14 @@ class Builder
     private function setSelectQuery()
     {
         $this->query = "SELECT {$this->properties} FROM ";
+    }
+
+    /**
+     * Set an initial insert query.
+     */
+    private function setInsertQuery()
+    {
+        $this->query = "INSERT INTO `" . $this->table . "` (`" . $this->query;
     }
 
     /**
