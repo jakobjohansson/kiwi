@@ -16,11 +16,9 @@ class View
      */
     public static function render($view, array $extracts = [])
     {
-        $app = Container::resolve('app');
+        $view = 'App'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.$view;
 
-        extract($extracts, EXTR_SKIP);
-
-        require 'App'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR."{$view}.view.php";
+        self::finish($view, $extracts);
     }
 
     /**
@@ -32,18 +30,18 @@ class View
     public static function renderAdminView($view, array $extracts = [])
     {
         $view = 'core/admin/views/'.$view;
-        self::renderCustom($view, $extracts);
+
+        self::finish($view, $extracts);
     }
 
     /**
-     * Render a view not located in a theme.
+     * Extract variables, apply $app and include the view.
      *
-     * @param string $view
-     * @param array  $extracts
-     *
-     * @return View
+     * @param  string $view
+     * @param  array  $extracts
+     * @return void
      */
-    public static function renderCustom($view, array $extracts = [])
+    public static function finish($view, array $extracts = [])
     {
         $app = Container::resolve('app');
 
