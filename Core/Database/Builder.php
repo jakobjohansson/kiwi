@@ -158,20 +158,21 @@ class Builder
     /**
      * Prepare a insert query.
      *
-     * @param  Object $entity
+     * @param object $entity
+     *
      * @return $this
      */
     public function insert($entity)
     {
         $keys = array_keys($entity->attributes);
 
-        $this->query .= implode("`, `", $keys) . "`";
+        $this->query .= implode('`, `', $keys).'`';
 
         $this->query .= ") VALUES ('";
 
-        $this->query .= implode("', '", $entity->attributes) . "'";
+        $this->query .= implode("', '", $entity->attributes)."'";
 
-        $this->query .= ");";
+        $this->query .= ');';
 
         return $this;
     }
@@ -179,7 +180,8 @@ class Builder
     /**
      * Set which table to insert to.
      *
-     * @param  string $table
+     * @param string $table
+     *
      * @return $this
      */
     public function to($table)
@@ -276,7 +278,7 @@ class Builder
      */
     private function setInsertQuery()
     {
-        $this->query = "INSERT INTO `" . $this->table . "` (`" . $this->query;
+        $this->query = 'INSERT INTO `'.$this->table.'` (`'.$this->query;
     }
 
     /**
