@@ -31,7 +31,7 @@ class Kernel
     {
         Loader::run();
 
-        Container::bind('database', Connection::make([
+        Container::bind('connection', Connection::make([
             'host' => getenv('DATABASE_HOST'),
             'username' => getenv('DATABASE_USER'),
             'password' => getenv('DATABASE_PASS'),
