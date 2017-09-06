@@ -28,7 +28,7 @@ class Kernel
     }
 
     /**
-     * Load the environment variables
+     * Load the environment variables.
      *
      * @return void
      */
