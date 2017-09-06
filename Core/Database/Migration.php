@@ -59,7 +59,7 @@ class Migration
     }
 
     /**
-     * Refresh the migration
+     * Refresh the migration.
      *
      * @return void
      */
