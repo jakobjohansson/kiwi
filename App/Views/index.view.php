@@ -11,10 +11,10 @@
     <section class="section">
         <div class="container">
             <h1 class="title">
-                <?=$app->name ?>
+                <?=app()->name ?>
             </h1>
             <h2 class="subtitle">
-                <?=$app->description?>
+                <?=app()->description?>
             </h2>
         </div>
     </section>

@@ -43,8 +43,6 @@ class View
      */
     public static function finish($view, array $extracts = [])
     {
-        $app = Container::resolve('app');
-
         extract($extracts, EXTR_SKIP);
 
         require "{$view}.view.php";

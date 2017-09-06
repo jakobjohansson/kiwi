@@ -51,6 +51,6 @@ if (!function_exists('env')) {
 if (!function_exists('app')) {
     function app()
     {
-        return Container::resolve('app');
+        return kiwi\Container::resolve('app');
     }
 }

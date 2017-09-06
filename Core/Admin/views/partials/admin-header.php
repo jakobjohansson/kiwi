@@ -11,7 +11,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    <?=$app->name?>
+                    <?=app()->name?>
                 </h1>
                 <h2 class="subtitle">Dashboard</h2>
             </div>
