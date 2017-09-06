@@ -2,8 +2,6 @@
 
 namespace kiwi\Database;
 
-use kiwi\Http\Request;
-
 class Post extends Model
 {
     /**
@@ -33,7 +31,5 @@ class Post extends Model
         $builder->insert($this)
             ->to('posts')
             ->run();
-
-        Request::redirect('/');
     }
 }

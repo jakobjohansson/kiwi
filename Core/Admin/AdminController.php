@@ -39,6 +39,8 @@ class AdminController extends Controller
         $post->title = Input::field('title');
 
         $post->save();
+
+        Request::redirect('/admin');
     }
 
     /**
