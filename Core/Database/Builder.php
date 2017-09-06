@@ -212,7 +212,7 @@ class Builder
 
             return $statement->fetchAll($this->format);
         } catch (PDOException $e) {
-            ErrorHandler::renderErrorView($e);
+            ErrorHandler::render($e);
         }
     }
 

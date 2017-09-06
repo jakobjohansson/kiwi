@@ -25,7 +25,7 @@ class Connection
                 [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
             );
         } catch (PDOException $e) {
-            ErrorHandler::renderErrorView($e);
+            ErrorHandler::render($e);
         }
     }
 }
