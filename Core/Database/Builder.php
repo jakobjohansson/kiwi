@@ -188,11 +188,11 @@ class Builder
     }
 
     /**
-     * Chain and run the query.
+     * Chain and run a select query.
      *
      * @return PDO::Statement
      */
-    public function run()
+    public function get()
     {
         $this->query .= $this->table;
         $this->applyJoins();

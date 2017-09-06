@@ -13,6 +13,13 @@ class Post extends Model
         return $builder->select('*')
             ->from('posts')
             ->expect(self::class)
-            ->run();
+            ->get();
+    }
+
+    public function save()
+    {
+        return $builder->insert()
+            ->to('posts');
+
     }
 }
