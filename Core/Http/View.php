@@ -2,6 +2,8 @@
 
 namespace kiwi\Http;
 
+use kiwi\Container;
+
 class View
 {
     /**
@@ -14,6 +16,8 @@ class View
      */
     public static function render($view, array $extracts = [])
     {
+        $app = Container::resolve('app');
+
         extract($extracts, EXTR_SKIP);
 
         require 'App'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR."{$view}.view.php";
@@ -41,6 +45,8 @@ class View
      */
     public static function renderCustom($view, array $extracts = [])
     {
+        $app = Container::resolve('app');
+
         extract($extracts, EXTR_SKIP);
 
         require "{$path}.view.php";

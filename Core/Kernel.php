@@ -42,5 +42,7 @@ class Kernel
             'password' => getenv('DATABASE_PASS'),
             'name'     => getenv('DATABASE_NAME'),
         ]));
+
+        Container::bind('app', new Application(getenv('APP_NAME'), getenv('APP_DESCRIPTION')));
     }
 }
