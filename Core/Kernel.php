@@ -27,6 +27,11 @@ class Kernel
         }
     }
 
+    /**
+     * Load the environment variables
+     *
+     * @return void
+     */
     public static function loadEnvironment()
     {
         Loader::run();
