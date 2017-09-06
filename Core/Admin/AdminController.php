@@ -3,7 +3,6 @@
 namespace kiwi\Http;
 
 use kiwi\Database\Post;
-use kiwi\Database\User;
 
 class AdminController extends Controller
 {
