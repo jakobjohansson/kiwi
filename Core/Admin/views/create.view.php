@@ -1,7 +1,7 @@
 <?php require __DIR__.'/partials/admin-header.php'; ?>
 
 <div class="column is-offset-3 is-6">
-    <form>
+    <form method="post" action="write">
         <div class="field">
             <label class="label">Title</label>
             <div class="control">

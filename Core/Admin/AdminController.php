@@ -31,6 +31,16 @@ class AdminController extends Controller
         View::renderAdminView('create');
     }
 
+    public function store()
+    {
+        $post = new Post();
+
+        $post->body = Input::field('body');
+        $post->title = Input::field('title');
+
+        $post->save();
+    }
+
     /**
      * Render the options page.
      *

@@ -157,24 +157,29 @@ class Builder
 
     public function insert($entity)
     {
-        $this->query = "INSERT INTO " . $this->getTableNamefromClass($entity) . ' (';
-
         $keys = array_keys($entity->attributes);
 
-        $this->query .= implode(', ', $keys);
+        $this->query .= implode("`, `", $keys) . "`";
 
-        $this->query .= ") VALUES (";
+        $this->query .= ") VALUES ('";
 
-        $this->query .= implode(', ', $entity->attributes);
+        $this->query .= implode("', '", $entity->attributes) . "'";
 
         $this->query .= ");";
 
-        dd($this->query);
+        return $this;
     }
 
-    private function getTableNamefromClass($class)
+    public function to($table)
     {
-        return get_class($class) . 's';
+        $this->table = $table;
+
+        return $this;
+    }
+
+    private function setInsertQuery()
+    {
+        $this->query = "INSERT INTO `" . $this->table . "` (`" . $this->query;
     }
 
     /**
@@ -236,6 +241,14 @@ class Builder
         } catch (PDOException $e) {
             ErrorHandler::render($e);
         }
+    }
+
+    public function run()
+    {
+        $this->setInsertQuery();
+        $statement = $this->pdo->prepare($this->query);
+
+        $statement->execute();
     }
 
     /**

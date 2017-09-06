@@ -26,6 +26,8 @@ class Post extends Model
      */
     public function save()
     {
+        $builder = static::builder();
+        
         return $builder->insert($this)
             ->to('posts')
             ->run();
