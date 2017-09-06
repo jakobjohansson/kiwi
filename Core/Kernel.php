@@ -2,10 +2,10 @@
 
 namespace kiwi;
 
+use kiwi\Database\Connection;
 use kiwi\Error\ErrorHandler;
 use kiwi\Http\Router;
 use kiwi\System\Loader;
-use kiwi\Database\Connection;
 
 class Kernel
 {
@@ -32,10 +32,10 @@ class Kernel
         Loader::run();
 
         Container::bind('connection', Connection::make([
-            'host' => getenv('DATABASE_HOST'),
+            'host'     => getenv('DATABASE_HOST'),
             'username' => getenv('DATABASE_USER'),
             'password' => getenv('DATABASE_PASS'),
-            'name' => getenv('DATABASE_NAME')
+            'name'     => getenv('DATABASE_NAME'),
         ]));
     }
 }
