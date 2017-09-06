@@ -49,6 +49,6 @@ class View
 
         extract($extracts, EXTR_SKIP);
 
-        require "{$path}.view.php";
+        require "{$view}.view.php";
     }
 }
