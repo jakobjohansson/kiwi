@@ -6,30 +6,62 @@ use kiwi\Container;
 
 class Migration
 {
+    /**
+     * The PDO instance.
+     *
+     * @var PDO
+     */
     private $pdo;
 
-    private $droppable = [];
+    /**
+     * The tables to be dropped.
+     *
+     * @var array
+     */
+    private $droppable = ['posts'];
 
+    /**
+     * Creates a new Migration instance.
+     *
+     * @param PDO $pdo
+     */
     public function __construct(\PDO $pdo)
     {
         $this->pdo = $pdo;
         $this->drop()->migrate();
     }
 
+    /**
+     * Return a new instance.
+     *
+     * @return static
+     */
     public static function refresh()
     {
         return new static(Container::resolve('connection'));
     }
 
+    /**
+     * Drop all the tables if they exist.
+     *
+     * @return $this
+     */
     private function drop()
     {
-        $query = $this->pdo->query('DROP TABLE IF EXISTS `posts`');
+        foreach ($this->droppable as $droppable) {
+            $query = $this->pdo->query('DROP TABLE IF EXISTS '.$droppable);
 
-        $query->execute();
+            $query->execute();
+        }
 
         return $this;
     }
 
+    /**
+     * Refresh the migration
+     *
+     * @return void
+     */
     private function migrate()
     {
         $query = $this->pdo->query(
