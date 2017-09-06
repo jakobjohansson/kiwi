@@ -5,7 +5,7 @@
  */
 
  $router->get('migrate', function () {
-     Migrate::refresh();
+     kiwi\Database\Migration::refresh();
  });
 
-$router->get('', 'PageController/index');
+ $router->get('', 'PageController/index');

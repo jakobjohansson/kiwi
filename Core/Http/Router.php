@@ -54,11 +54,14 @@ class Router
             Request::uri(),
             $this->routes[Request::method()]
         )) {
+            $action = $this->routes[Request::method()][Request::uri()];
+
+            if (is_callable($action)) {
+                return $action();
+            }
+
             return $this->fire(
-                ...explode(
-                    '/',
-                    $this->routes[Request::method()][Request::uri()]
-                )
+                ...explode('/', $action)
             );
         }
 
