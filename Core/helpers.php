@@ -47,3 +47,10 @@ if (!function_exists('env')) {
         return getenv($name);
     }
 }
+
+if (!function_exists('app')) {
+    function app()
+    {
+        return Container::resolve('app');
+    }
+}
