@@ -155,6 +155,28 @@ class Builder
         return $this;
     }
 
+    public function insert($entity)
+    {
+        $this->query = "INSERT INTO " . $this->getTableNamefromClass($entity) . ' (';
+
+        $keys = array_keys($entity->attributes);
+
+        $this->query .= implode(', ', $keys);
+
+        $this->query .= ") VALUES (";
+
+        $this->query .= implode(', ', $entity->attributes);
+
+        $this->query .= ");";
+
+        dd($this->query);
+    }
+
+    private function getTableNamefromClass($class)
+    {
+        return get_class($class) . 's';
+    }
+
     /**
      * Retrieve only a single column from a query.
      *
