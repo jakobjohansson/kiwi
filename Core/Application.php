@@ -18,6 +18,11 @@ class Application
      */
     public $description;
 
+    /**
+     * The auth object.
+     *
+     * @var Auth
+     */
     public $auth;
 
     /**
@@ -25,6 +30,7 @@ class Application
      *
      * @param string $name
      * @param string $description
+     * @param Auth $auth
      */
     public function __construct($name, $description, Auth $auth)
     {

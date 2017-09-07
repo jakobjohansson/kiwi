@@ -18,7 +18,7 @@ class Kernel
     public static function run()
     {
         try {
-            static::loadEnvironment();
+            static::loadDependencies();
 
             Router::loadRoutes(
                 'App'.DIRECTORY_SEPARATOR.'routes.php'
@@ -29,11 +29,11 @@ class Kernel
     }
 
     /**
-     * Load the environment variables.
+     * Load the environment configuration and dependencies.
      *
      * @return void
      */
-    public static function loadEnvironment()
+    public static function loadDependencies()
     {
         Loader::run();
 
