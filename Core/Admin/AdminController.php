@@ -7,6 +7,11 @@ use kiwi\Error\AuthException;
 
 class AdminController extends Controller
 {
+    /**
+     * Go through middleware before accessing routes.
+     *
+     * @throws AuthException
+     */
     public function middleware()
     {
         if (!auth()->check()) {
@@ -39,6 +44,11 @@ class AdminController extends Controller
         View::renderAdminView('create');
     }
 
+    /**
+     * Store a post in the database.
+     *
+     * @return void
+     */
     public function store()
     {
         $post = new Post();
