@@ -3,9 +3,17 @@
 namespace kiwi\Http;
 
 use kiwi\Database\Post;
+use kiwi\Error\AuthException;
 
 class AdminController extends Controller
 {
+    public function middleware()
+    {
+        if (!auth()->check()) {
+            throw new AuthException('You are not authorized to access this page.');
+        }
+    }
+
     /**
      * Render the index page.
      *
