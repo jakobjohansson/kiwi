@@ -4,13 +4,13 @@ namespace kiwi\Http;
 
 class Session
 {
-
     /**
      * Create a new Session instance.
      */
     public function __construct()
     {
         session_start();
+
         return $this;
     }
 
@@ -22,14 +22,16 @@ class Session
      */
     public function set($key, $value)
     {
-        $_SESSION[$key] =$value;
+        $_SESSION[$key] = $value;
+
         return $this;
     }
 
     /**
      * Get a session value.
      *
-     * @param  string $key
+     * @param string $key
+     *
      * @return mixed
      */
     public function get($key)

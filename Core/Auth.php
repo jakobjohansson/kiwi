@@ -45,8 +45,9 @@ class Auth
     /**
      * Attempt to login.
      *
-     * @param  string $username
-     * @param  string $password
+     * @param string $username
+     * @param string $password
+     *
      * @return bool
      */
     public function attempt($username, $password)
@@ -61,8 +62,9 @@ class Auth
     /**
      * Check if credentials match.
      *
-     * @param  string $username
-     * @param  string $password
+     * @param string $username
+     * @param string $password
+     *
      * @return bool
      */
     private function matchCredentials($username, $password)

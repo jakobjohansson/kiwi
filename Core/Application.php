@@ -30,7 +30,7 @@ class Application
      *
      * @param string $name
      * @param string $description
-     * @param Auth $auth
+     * @param Auth   $auth
      */
     public function __construct($name, $description, Auth $auth)
     {
