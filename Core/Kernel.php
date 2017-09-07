@@ -5,6 +5,7 @@ namespace kiwi;
 use kiwi\Database\Connection;
 use kiwi\Error\ErrorHandler;
 use kiwi\Http\Router;
+use kiwi\Http\Session;
 use kiwi\System\Loader;
 
 class Kernel
@@ -44,5 +45,7 @@ class Kernel
         ]));
 
         Container::bind('app', new Application(env('APP_NAME'), env('APP_DESCRIPTION')));
+
+        Container::bind('auth', new Auth(Session::make()));
     }
 }
