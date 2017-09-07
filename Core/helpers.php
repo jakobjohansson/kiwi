@@ -54,3 +54,10 @@ if (!function_exists('app')) {
         return kiwi\Container::resolve('app');
     }
 }
+
+if (!function_exists('auth')) {
+    function auth()
+    {
+        return app()->auth;
+    }
+}

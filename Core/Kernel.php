@@ -44,8 +44,6 @@ class Kernel
             'name'     => env('DATABASE_NAME'),
         ]));
 
-        Container::bind('app', new Application(env('APP_NAME'), env('APP_DESCRIPTION')));
-
-        Container::bind('auth', new Auth(Session::make()));
+        Container::bind('app', new Application(env('APP_NAME'), env('APP_DESCRIPTION'), new Auth(Session::make())));
     }
 }
