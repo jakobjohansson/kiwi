@@ -57,9 +57,10 @@ abstract class Model implements \ArrayAccess
     {
         if (is_null($offset)) {
             $this->attributes[] = $value;
-        } else {
-            $this->attributes[$offset] = $value;
+            return;
         }
+        
+        $this->attributes[$offset] = $value;
     }
 
     /**
