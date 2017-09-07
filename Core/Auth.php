@@ -2,6 +2,8 @@
 
 namespace kiwi;
 
+use kiwi\Http\Session;
+
 class Auth
 {
     private $status = false;
@@ -31,6 +33,6 @@ class Auth
     {
         $this->status = true;
 
-        $this->session->make('auth', true);
+        $this->session->set('auth', true);
     }
 }
