@@ -13,6 +13,13 @@ class Auth
     public function __construct(Session $session)
     {
         $this->session = $session;
+
+        $this->status = $this->session->get('auth');
+    }
+
+    public function check()
+    {
+        return $this->status;
     }
 
     public function attempt($username, $password)

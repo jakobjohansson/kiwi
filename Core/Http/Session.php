@@ -19,7 +19,12 @@ class Session
 
     public function get($key)
     {
-        return $_SESSION[$key];
+        return $_SESSION[$key] ?? false;
+    }
+
+    public function destroy()
+    {
+        session_destroy();
     }
 
     public static function make()
