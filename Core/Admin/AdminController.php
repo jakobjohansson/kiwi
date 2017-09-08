@@ -3,7 +3,6 @@
 namespace kiwi\Http;
 
 use kiwi\Database\Post;
-use kiwi\Error\AuthException;
 
 class AdminController extends Controller
 {
@@ -11,12 +10,11 @@ class AdminController extends Controller
      * Dont access without authorizing.
      *
      * @return void
-     * @throws AuthException
      */
     public function middleware()
     {
         if (!auth()->check()) {
-            throw new AuthException('You are not authorized to access this route.');
+            Request::redirect('/login');
         }
     }
 
