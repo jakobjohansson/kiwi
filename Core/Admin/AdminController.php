@@ -3,10 +3,23 @@
 namespace kiwi\Http;
 
 use kiwi\Database\Post;
-use kiwi\Database\User;
+use kiwi\Error\AuthException;
 
 class AdminController extends Controller
 {
+    /**
+     * Dont access without authorizing.
+     *
+     * @return void
+     * @throws AuthException
+     */
+    public function middleware()
+    {
+        if (!auth()->check()) {
+            throw new AuthException('You are not authorized to access this route.');
+        }
+    }
+
     /**
      * Render the index page.
      *
