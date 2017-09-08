@@ -81,4 +81,14 @@ class Auth
 
         $this->session->set('auth', true);
     }
+
+    /**
+     * Destroy the session, logging the user out.
+     *
+     * @return void
+     */
+    public function destroy()
+    {
+        $this->session->destroy();
+    }
 }

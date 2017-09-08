@@ -105,6 +105,8 @@ class Router
 
         $router->registerAdminRoutes();
 
+        $router->registerAuthRoutes();
+
         return $router;
     }
 
@@ -118,5 +120,17 @@ class Router
         $this->get('admin', 'AdminController/index');
         $this->get('admin/write', 'AdminController/create');
         $this->post('admin/write', 'AdminController/store');
+    }
+
+    /**
+     * Register auth routes.
+     *
+     * @return void
+     */
+    public function registerAuthRoutes()
+    {
+        $this->get('login', 'AuthController/login');
+        $this->post('login', 'AuthController/attempt');
+        $this->get('logout', 'AuthController/logout');
     }
 }
