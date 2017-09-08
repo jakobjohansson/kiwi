@@ -2,9 +2,6 @@
 
 namespace kiwi\Http;
 
-use kiwi\Database\Post;
-use kiwi\Error\AuthException;
-
 class AuthController extends Controller
 {
     /**
@@ -34,7 +31,7 @@ class AuthController extends Controller
 
         View::renderAdminView('login', [
             'username' => Input::field('username'),
-            'password' => Input::field('password')
+            'password' => Input::field('password'),
         ]);
     }
 
