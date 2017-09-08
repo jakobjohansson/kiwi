@@ -26,6 +26,9 @@
                         <li <?=isRoute('admin/write') ? 'class="is-active"' : null ?>>
                             <a href="/admin/write">Write</a>
                         </li>
+                        <li>
+                            <a href="/logout">Log out</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
