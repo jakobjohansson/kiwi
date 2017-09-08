@@ -10,8 +10,9 @@ class AdminController extends Controller
     /**
      * Dont access without authorizing.
      *
-     * @return void
      * @throws AuthException
+     *
+     * @return void
      */
     public function middleware()
     {
