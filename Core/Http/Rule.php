@@ -7,8 +7,9 @@ class Rule
     /**
      * Set a minimum string length rule.
      *
-     * @param  string $string
-     * @param  int $offset
+     * @param string $string
+     * @param int    $offset
+     *
      * @return bool
      */
     public static function min($string, $offset)
@@ -19,8 +20,9 @@ class Rule
     /**
      * Set a maximum string length rule.
      *
-     * @param  string $string
-     * @param  int $offset
+     * @param string $string
+     * @param int    $offset
+     *
      * @return bool
      */
     public static function max($string, $offset)
@@ -31,7 +33,8 @@ class Rule
     /**
      * Set a required rule.
      *
-     * @param  string $string
+     * @param string $string
+     *
      * @return bool
      */
     public static function required($string)
