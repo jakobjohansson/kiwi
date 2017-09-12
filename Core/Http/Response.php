@@ -26,6 +26,6 @@ class Response
      */
     public function status($code)
     {
-        // TODO: Return a status code and exit the application.
+        http_response_code($code);
     }
 }
