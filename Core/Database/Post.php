@@ -26,6 +26,7 @@ class Post extends Model
      */
     public function save()
     {
+        $this->runValidation();
         $builder = static::builder();
 
         $builder->insert($this)
