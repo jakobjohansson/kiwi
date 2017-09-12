@@ -47,7 +47,6 @@ class Request
      */
     public static function back()
     {
-        // TODO: send back values aswell.
         resolve('session')->set('errors', resolve('bag')->errors);
 
         self::redirect('/'.self::uri());
