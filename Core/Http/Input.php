@@ -12,7 +12,6 @@ class Input implements InputInterface
      * @param string $key the input field
      * @param mixed $rules
      *
-     * @throws ValidationException
      * @return string
      */
     public static function field($key, $rules = null)
