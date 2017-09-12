@@ -27,10 +27,6 @@ class Application
 
     /**
      * Create a new Application instance.
-     *
-     * @param string $name
-     * @param string $description
-     * @param Auth   $auth
      */
     public function __construct()
     {
