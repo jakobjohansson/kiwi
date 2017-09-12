@@ -2,7 +2,6 @@
 
 namespace kiwi\Database;
 
-use kiwi\Container;
 use kiwi\Http\Request;
 
 abstract class Model implements \ArrayAccess

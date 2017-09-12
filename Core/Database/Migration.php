@@ -2,7 +2,6 @@
 
 namespace kiwi\Database;
 
-use kiwi\Container;
 use kiwi\Http\Request;
 
 class Migration
