@@ -7,14 +7,38 @@ use kiwi\Http\Contracts\InputInterface;
 class Input implements InputInterface
 {
     /**
-     * Returns a sanitized POST field.
+     * Returns a sanitized and validated POST field.
      *
      * @param string $key the input field
+     * @param mixed $rules
      *
+     * @throws ValidationException
      * @return string
      */
-    public static function field($key)
+    public static function field($key, $rules = null)
     {
+        if (!is_array($rules)) {
+            $rules = [$rules];
+        }
+
+        $bag = resolve('ValidationBag');
+
+        foreach ($rules as $rule => $message) {
+            $rule = explode(':', $rule);
+
+            if (method_exists(Rule::class, $rule[0])) {
+                if (isset($rule[1])) {
+                    if (!call_user_func_array([Rule::class, $rule[0]], [Sanitizer::input($_POST[$key]), $rule[1]])) {
+                        $bag->$key = $message;
+                    }
+                } else {
+                    if (!call_user_func_array([Rule::class, $rule[0]], [Sanitizer::input($_POST[$key])])) {
+                        $bag->$key = $message;
+                    }
+                }
+            }
+        }
+
         return Sanitizer::input($_POST[$key]);
     }
 

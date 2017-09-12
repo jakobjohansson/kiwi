@@ -4,6 +4,7 @@ namespace kiwi;
 
 use kiwi\Database\Connection;
 use kiwi\Error\ErrorHandler;
+use kiwi\Http\ValidationBag;
 use kiwi\Http\Router;
 use kiwi\Http\Session;
 use kiwi\System\Loader;
@@ -57,5 +58,7 @@ class Kernel
                 )
             )
         );
+
+        Container::bind('ValidationBag', new ValidationBag());
     }
 }
