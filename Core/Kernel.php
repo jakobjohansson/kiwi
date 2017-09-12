@@ -48,17 +48,19 @@ class Kernel
             ])
         );
 
+        Container::bind('session', Session::make());
+
+        Container::bind('bag', new ValidationBag());
+
         Container::bind(
             'app',
             new Application(
                 env('APP_NAME'),
                 env('APP_DESCRIPTION'),
                 new Auth(
-                    Session::make()
+                    Container::resolve('session')
                 )
             )
         );
-
-        Container::bind('ValidationBag', new ValidationBag());
     }
 }
