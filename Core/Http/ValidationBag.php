@@ -11,6 +11,16 @@ class ValidationBag implements \ArrayAccess
      */
     public $errors = [];
 
+    public function __construct()
+    {
+        if ($errors = resolve('session')->get('errors')) {
+            $this->errors = $errors;
+            resolve('session')->unset('errors');
+        }
+
+        return $this;
+    }
+
     /**
      * Check if an offset exists when using ArrayAccess.
      *
