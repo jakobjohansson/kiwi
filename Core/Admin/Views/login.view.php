@@ -10,9 +10,9 @@
     <section class="hero is-fullheight is-bold is-danger">
         <div class="hero-body has-text-centered">
             <div class="container">
-                <h1 class="title is-1">login brah</h1>
+                <h1 class="title is-1">login</h1>
                 <div class="columns">
-                    <div class="column is-one-quarter is-offset-7">
+                    <div class="column is-4 is-offset-4">
                         <form method="post">
                             <div class="field">
                                 <div class="control">
@@ -25,7 +25,18 @@
                                 </div>
                             </div>
                             <div class="field has-text-right">
-                                <input type="submit" class="button is-info" value="Login"/>
+                                <div class="level">
+                                    <div class="level-left">
+                                        <?php
+                                        if (isset($error)) {
+                                            echo "<p class='help'>$error</p>";
+                                        }
+                                        ?>
+                                    </div>
+                                    <div class="level-right">
+                                        <input type="submit" class="button is-info" value="Login"/>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
