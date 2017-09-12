@@ -4,9 +4,9 @@ namespace kiwi;
 
 use kiwi\Database\Connection;
 use kiwi\Error\ErrorHandler;
-use kiwi\Http\ValidationBag;
 use kiwi\Http\Router;
 use kiwi\Http\Session;
+use kiwi\Http\ValidationBag;
 use kiwi\System\Loader;
 
 class Kernel
