@@ -21,7 +21,7 @@ class Container
      */
     public static function bind($key, $value)
     {
-        self::$registry[$key] = $value;
+        self::$registry[$key] = $value::make();
     }
 
     /**

@@ -32,10 +32,20 @@ class Application
      * @param string $description
      * @param Auth   $auth
      */
-    public function __construct($name, $description, Auth $auth)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->description = $description;
-        $this->auth = $auth;
+        $this->name = env('APP_NAME');
+        $this->description = env('APP_DESCRIPTION');
+        $this->auth = resolve('auth');
+    }
+
+    /**
+     * Fancy constructor.
+     *
+     * @return self
+     */
+    public static function make()
+    {
+        return new self();
     }
 }

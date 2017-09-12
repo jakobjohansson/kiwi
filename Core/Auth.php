@@ -2,8 +2,6 @@
 
 namespace kiwi;
 
-use kiwi\Http\Session;
-
 class Auth
 {
     /**
@@ -25,9 +23,9 @@ class Auth
      *
      * @param Session $session
      */
-    public function __construct(Session $session)
+    public function __construct()
     {
-        $this->session = $session;
+        $this->session = resolve('session');
 
         $this->status = $this->session->get('auth');
     }
@@ -92,5 +90,15 @@ class Auth
     public function destroy()
     {
         $this->session->destroy();
+    }
+
+    /**
+     * Fancy constructor.
+     *
+     * @return self
+     */
+    public static function make()
+    {
+        return new self();
     }
 }

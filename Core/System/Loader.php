@@ -91,10 +91,10 @@ class Loader
     /**
      * Fancy constructor.
      *
-     * @return Loader
+     * @return self
      */
     public static function run()
     {
-        return new static();
+        return new self();
     }
 }

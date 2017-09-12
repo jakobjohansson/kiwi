@@ -99,7 +99,7 @@ class Router
      */
     public static function loadRoutes($file)
     {
-        $router = new static();
+        $router = new self();
 
         require $file;
 

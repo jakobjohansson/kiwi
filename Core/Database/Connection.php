@@ -10,18 +10,16 @@ class Connection
     /**
      * Create a PDO connection.
      *
-     * @param array $params
-     *
      * @return PDO
      */
-    public static function make(array $params)
+    public static function make()
     {
         try {
             return new PDO(
                 'mysql:host=' .
-                $params['host'] . ';dbname=' . $params['name'],
-                $params['username'],
-                $params['password'],
+                env('DATABASE_HOST') . ';dbname=' . env('DATABASE_NAME'),
+                env('DATABASE_USER'),
+                env('DATABASE_PASS'),
                 [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
             );
         } catch (PDOException $e) {

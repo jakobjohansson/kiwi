@@ -96,4 +96,14 @@ class ValidationBag implements \ArrayAccess
     {
         $this->errors[$property][] = $value;
     }
+
+    /**
+     * Fancy constructor.
+     *
+     * @return self
+     */
+    public static function make()
+    {
+        return new self();
+    }
 }

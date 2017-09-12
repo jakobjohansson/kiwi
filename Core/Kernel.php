@@ -3,11 +3,8 @@
 namespace kiwi;
 
 use kiwi\Http\Router;
-use kiwi\Http\Session;
 use kiwi\System\Loader;
 use kiwi\Error\ErrorHandler;
-use kiwi\Http\ValidationBag;
-use kiwi\Database\Connection;
 
 class Kernel
 {
@@ -38,20 +35,12 @@ class Kernel
     {
         Loader::run();
 
-        bind('session', Session::make());
-        bind('bag', new ValidationBag());
-
-        bind('connection', Connection::make([
-            'host'     => env('DATABASE_HOST'),
-            'username' => env('DATABASE_USER'),
-            'password' => env('DATABASE_PASS'),
-            'name'     => env('DATABASE_NAME'),
-        ]));
-
-        bind('app', new Application(
-            env('APP_NAME'),
-            env('APP_DESCRIPTION'),
-            new Auth(resolve('session'))
-        ));
+        Container::bindArray([
+            'connection' => Database\Connection::class,
+            'session' => Http\Session::class,
+            'bag' => Http\ValidationBag::class,
+            'auth' => Auth::class,
+            'app' => Application::class
+        ]);
     }
 }
