@@ -24,6 +24,21 @@ abstract class Model implements \ArrayAccess
     }
 
     /**
+     * Run specified validation.
+     *
+     * @return void
+     */
+    protected function runValidation()
+    {
+        $bag = resolve('ValidationBag');
+
+        if (count($bag->errors)) {
+            dd($bag);
+            // TODO: render errors here.
+        }
+    }
+
+    /**
      * Check if an offset exists when using ArrayAccess.
      *
      * @param mixed $offset
