@@ -4,10 +4,10 @@
  * kiwi helpers file.
  */
 if (!function_exists('dd')) {
-    function dd($param)
+    function dd(...$params)
     {
         echo '<pre><code>';
-        var_dump($param);
+        var_dump(...$params);
         echo '</code></pre>';
         die();
     }

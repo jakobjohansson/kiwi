@@ -1,6 +1,4 @@
 vendor/
 
 .env
-
-*.scssc
 .DS_Store
