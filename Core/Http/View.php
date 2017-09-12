@@ -27,7 +27,7 @@ class View
      */
     public static function renderAdminView($view, array $extracts = [])
     {
-        $view = 'Core'.DIRECTORY_SEPARATOR.'Admin'.DIRECTORY_SEPARATOR.'Views'DIRECTORY_SEPARATOR.$view;
+        $view = 'Core'.DIRECTORY_SEPARATOR.'Admin'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.$view;
 
         self::finish($view, $extracts);
     }
