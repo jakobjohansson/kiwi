@@ -39,6 +39,6 @@ class Rule
      */
     public static function required($string)
     {
-        return ! empty($string);
+        return !empty($string);
     }
 }

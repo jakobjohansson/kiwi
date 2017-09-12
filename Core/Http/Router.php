@@ -81,7 +81,7 @@ class Router
         $controller = "\\kiwi\\Http\\{$controller}";
         $controller = new $controller();
 
-        if (! method_exists($controller, $method)) {
+        if (!method_exists($controller, $method)) {
             throw new HttpException(
                 "The {$method} method doesn't exist."
             );
