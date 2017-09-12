@@ -10,36 +10,33 @@
 
     <section class="section">
         <div class="container">
-            <h1 class="title">
-                <?=app()->name ?>
-            </h1>
-            <h2 class="subtitle">
-                <?=app()->description?>
-            </h2>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <?php
-
-            foreach ($posts as $post) {
+            <div class="column is-6 is-offset-3">
+                <h1 class="title">
+                    <?=app()->name ?>
+                </h1>
+                <h2 class="subtitle">
+                    <?=app()->description?>
+                </h2>
+                <hr />
+            </div>
+            <div class="column is-6 is-offset-3">
+                <?php
+                foreach ($posts as $post) {
+                    ?>
+                    <h3 class="subtitle is-4"><?=$post->title; ?></h3>
+                    <div class="content">
+                        <?=$post->body; ?>
+                    </div>
+                    <footer>
+                        <small>Written <?=$post->created_at?>.</small>
+                    </footer>
+                <?php
+                }
                 ?>
-                <h3 class="subtitle is-4"><?=$post->title; ?></h3>
-                <div class="content">
-                    <?=$post->body; ?>
-                </div>
-                <footer>
-                    <small><?=$post->created_at?></small>
-                </footer>
-            <?php
-            }
-            ?>
-        </div>
-    </section>
-    <section class="section">
-        <div class="container">
-            <a href="admin">admin</a>
+            </div>
+            <div class="column is-6 is-offset-3">
+                <a href="admin">admin</a>
+            </div>
         </div>
     </section>
 </body>
