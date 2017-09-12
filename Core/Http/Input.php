@@ -9,8 +9,8 @@ class Input implements InputInterface
     /**
      * Returns a sanitized and validated POST field.
      *
-     * @param string $key the input field
-     * @param mixed $rules
+     * @param string $key   the input field
+     * @param mixed  $rules
      *
      * @return string
      */
