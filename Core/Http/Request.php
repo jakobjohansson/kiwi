@@ -49,6 +49,6 @@ class Request
     {
         resolve('session')->set('errors', resolve('bag')->errors);
 
-        self::redirect('/' . Request::uri());
+        self::redirect('/'.self::uri());
     }
 }
