@@ -50,7 +50,7 @@ class Migration
     private function drop()
     {
         foreach ($this->droppable as $droppable) {
-            $query = $this->pdo->query('DROP TABLE IF EXISTS '.$droppable);
+            $query = $this->pdo->query('DROP TABLE IF EXISTS ' . $droppable);
 
             $query->execute();
         }
