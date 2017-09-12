@@ -81,7 +81,7 @@ class Migration
         $query = $this->pdo->prepare(
             "INSERT INTO `posts` (`title`, `body`)
                 VALUES
-                ('Hello World!','This is kiwi, a minimalistic and lightweight blog framework.<br /><br /> Kiwi strips away redundant features, yet houses a handful of tools like customizable page controllers, fluent query builder API, templating engine, extendable database models, form handling and error handling.<br/><br/>A complete developer guide can be found at <a href=\"https://github.com/jakobjohansson/kiwi/wiki\">the kiwi repository</a>.');"
+                ('Hello World!','" . $this->post() . "');"
         );
 
         $query->execute();
@@ -89,5 +89,22 @@ class Migration
         $this->pdo = null;
 
         Request::redirect('/');
+    }
+
+    /**
+     * Create the first post.
+     *
+     * @return string
+     */
+    private function post()
+    {
+        return '
+            This is kiwi, a minimalistic and lightweight blog framework.<br /><br />
+            Kiwi strips away redundant features, yet houses a handful of tools like customizable page controllers,
+            fluent query builder API, templating engine, extendable database models,
+            form handling and error handling.<br/><br/>
+            A complete developer guide can be found at
+            <a href=\"https://github.com/jakobjohansson/kiwi/wiki\">the kiwi repository</a>.
+        ';
     }
 }
