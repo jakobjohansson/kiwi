@@ -6,7 +6,7 @@ class Rule
 {
     public static function min($string, $offset)
     {
-        return strlen($string) > $offset;
+        return strlen($string) >= $offset;
     }
 
     public static function max($string, $offset)
