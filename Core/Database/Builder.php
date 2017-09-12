@@ -166,11 +166,11 @@ class Builder
     {
         $keys = array_keys($entity->attributes);
 
-        $this->query .= implode('`, `', $keys).'`';
+        $this->query .= implode('`, `', $keys) . '`';
 
         $this->query .= ") VALUES ('";
 
-        $this->query .= implode("', '", $entity->attributes)."'";
+        $this->query .= implode("', '", $entity->attributes) . "'";
 
         $this->query .= ');';
 
@@ -278,7 +278,7 @@ class Builder
      */
     private function setInsertQuery()
     {
-        $this->query = 'INSERT INTO `'.$this->table.'` (`'.$this->query;
+        $this->query = 'INSERT INTO `' . $this->table . '` (`' . $this->query;
     }
 
     /**

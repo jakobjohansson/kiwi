@@ -18,8 +18,8 @@ class Connection
     {
         try {
             return new PDO(
-                'mysql:host='.
-                $params['host'].';dbname='.$params['name'],
+                'mysql:host=' .
+                $params['host'] . ';dbname=' . $params['name'],
                 $params['username'],
                 $params['password'],
                 [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]

@@ -22,7 +22,7 @@ class Kernel
             self::loadDependencies();
 
             Router::loadRoutes(
-                'App'.DIRECTORY_SEPARATOR.'routes.php'
+                'App' . DIRECTORY_SEPARATOR . 'routes.php'
             )->delegate();
         } catch (\Throwable $e) {
             ErrorHandler::render($e);
