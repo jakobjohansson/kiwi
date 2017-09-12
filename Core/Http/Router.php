@@ -19,8 +19,8 @@ class Router
     /**
      * Register a GET route.
      *
-     * @param string $path    the URI to the route
-     * @param string $handler the controller/method handler
+     * @param string $path
+     * @param string $handler
      *
      * @return void
      */
@@ -32,8 +32,8 @@ class Router
     /**
      * Register a POST route.
      *
-     * @param string $path    the URI to the route
-     * @param string $handler the controller/method handler
+     * @param string $path
+     * @param string $handler
      *
      * @return void
      */
@@ -46,7 +46,7 @@ class Router
      * Check if the route is registered.
      * If so, delegate to the fire() method.
      *
-     * @return Router/Fire
+     * @return $this->fire
      */
     public function delegate()
     {
@@ -71,8 +71,8 @@ class Router
     /**
      * Fire a controller method.
      *
-     * @param string $controller the name of the controller
-     * @param string $method     the name of the method
+     * @param string $controller
+     * @param string $method
      *
      * @return Controller/method
      */
@@ -93,7 +93,7 @@ class Router
     /**
      * Load a routes file and new up the Router.
      *
-     * @param string $file the Routes file
+     * @param string $file
      *
      * @return Router
      */

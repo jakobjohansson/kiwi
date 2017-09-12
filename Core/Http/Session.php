@@ -6,6 +6,8 @@ class Session
 {
     /**
      * Create a new Session instance.
+     *
+     * @return $this
      */
     public function __construct()
     {
@@ -19,6 +21,8 @@ class Session
      *
      * @param string $key
      * @param string $value
+     *
+     * @return $this
      */
     public function set($key, $value)
     {
@@ -43,6 +47,8 @@ class Session
      * Unset a session key.
      *
      * @param mixed $key
+     *
+     * @return void
      */
     public function unset($key)
     {

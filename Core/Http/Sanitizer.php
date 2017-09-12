@@ -9,7 +9,7 @@ class Sanitizer
      *
      * @param string $input
      *
-     * @return string clean $input
+     * @return string
      */
     public static function input($input)
     {

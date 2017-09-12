@@ -7,9 +7,9 @@ use kiwi\Http\Contracts\InputInterface;
 class Input implements InputInterface
 {
     /**
-     * Returns a sanitized and validated POST field.
+     * Return a sanitized and validated POST field.
      *
-     * @param string $key   the input field
+     * @param string $key
      * @param mixed  $rules
      *
      * @return string
@@ -43,9 +43,9 @@ class Input implements InputInterface
     }
 
     /**
-     * Returns a sanitized GET field.
+     * Return a sanitized GET field.
      *
-     * @param string $key the input field
+     * @param string $key
      *
      * @return string
      */
@@ -55,9 +55,9 @@ class Input implements InputInterface
     }
 
     /**
-     * Returns all GET and POST variables in a collection.
+     * Return all GET and POST variables in a collection.
      *
-     * @return array Sanitized array.
+     * @return array
      */
     public static function all()
     {

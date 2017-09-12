@@ -7,7 +7,7 @@ class Filesystem
     /**
      * Find a file in the project directory.
      *
-     * @param string $file The file path
+     * @param string $file
      *
      * @return bool true|false
      */
@@ -19,20 +19,20 @@ class Filesystem
     /**
      * Write to a file in the project directory.
      *
-     * @param mixed $contents contents to write
-     * @param mixed $file     file path
+     * @param mixed $content
+     * @param mixed $file
      *
-     * @return bool true|false
+     * @return bool
      */
-    public static function write($contents, $file)
+    public static function write($content, $file)
     {
-        file_put_contents($file, $contents);
+        file_put_contents($file, $content);
     }
 
     /**
      * Remove a file.
      *
-     * @param string $path the file path
+     * @param string $path
      *
      * @return unlink
      */
@@ -44,7 +44,7 @@ class Filesystem
     /**
      * Scan a folder of its files, skipping wildcards.
      *
-     * @param string $folder the folder path
+     * @param string $folder
      *
      * @return array
      */
@@ -57,7 +57,7 @@ class Filesystem
      * Recurse through a folder, removing everything inside it,
      * as well as the folder itself.
      *
-     * @param string $folder the folder path
+     * @param string $folder
      *
      * @return bool
      */

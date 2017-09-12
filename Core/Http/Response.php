@@ -9,7 +9,7 @@ class Response
      *
      * @param mixed $payload
      *
-     * @return Json
+     * @return void
      */
     public function json($payload)
     {
@@ -22,7 +22,7 @@ class Response
      *
      * @param int $code
      *
-     * @return Response
+     * @return void
      */
     public function status($code)
     {

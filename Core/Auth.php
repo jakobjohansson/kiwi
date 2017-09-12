@@ -74,6 +74,8 @@ class Auth
 
     /**
      * Set the session and auth status.
+     *
+     * @return void
      */
     private function setAuth()
     {

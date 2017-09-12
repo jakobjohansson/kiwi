@@ -5,9 +5,9 @@ namespace kiwi\Http;
 class Request
 {
     /**
-     * Returns full URI.
+     * Return full URI.
      *
-     * @return string URI
+     * @return string
      */
     public static function uri()
     {
@@ -20,7 +20,7 @@ class Request
     /**
      * Fetch the request method.
      *
-     * @return string Request method
+     * @return string
      */
     public static function method()
     {
@@ -30,7 +30,7 @@ class Request
     /**
      * Redirect the user.
      *
-     * @param string $path the path to redirect
+     * @param string $path
      *
      * @return void
      */

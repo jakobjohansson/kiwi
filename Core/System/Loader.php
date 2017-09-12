@@ -58,6 +58,8 @@ class Loader
 
     /**
      * Loop the lines and call a variable setter.
+     *
+     * @return void
      */
     private function setEnvironment()
     {
@@ -73,6 +75,8 @@ class Loader
      *
      * @param string $key
      * @param mixed  $value
+     *
+     * @return void
      */
     private function setEnvironmentVariable($key, $value)
     {

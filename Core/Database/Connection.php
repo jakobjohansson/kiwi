@@ -8,11 +8,11 @@ use PDOException;
 class Connection
 {
     /**
-     * Creates a PDO connection.
+     * Create a PDO connection.
      *
-     * @param array $params Array of credentials to the database
+     * @param array $params
      *
-     * @return PDO Connection
+     * @return PDO
      */
     public static function make(array $params)
     {

@@ -33,7 +33,7 @@ class View
     }
 
     /**
-     * Extract variables, apply $app and include the view.
+     * Extract variables, apply $app error bag and include the view.
      *
      * @param string $view
      * @param array  $extracts

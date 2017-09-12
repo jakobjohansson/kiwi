@@ -7,9 +7,9 @@ use kiwi\Http\Contracts\InputInterface;
 class Json implements InputInterface
 {
     /**
-     * Returns a sanitized JSON field.
+     * Return a sanitized JSON field.
      *
-     * @param string $key the input field
+     * @param string $key
      *
      * @return string
      */
@@ -23,9 +23,9 @@ class Json implements InputInterface
     /**
      * Sanitize all the fields in a JSON collection.
      *
-     * @param string $type JSON
+     * @param string $type
      *
-     * @return array Sanitized array.
+     * @return array
      */
     public static function all()
     {
