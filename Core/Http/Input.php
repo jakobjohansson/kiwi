@@ -21,7 +21,7 @@ class Input implements InputInterface
             $rules = [$rules];
         }
 
-        $bag = resolve('ValidationBag');
+        $bag = resolve('bag');
 
         foreach ($rules as $rule => $message) {
             $rule = explode(':', $rule);
