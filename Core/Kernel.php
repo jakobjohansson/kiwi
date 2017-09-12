@@ -19,7 +19,7 @@ class Kernel
     public static function run()
     {
         try {
-            static::loadDependencies();
+            self::loadDependencies();
 
             Router::loadRoutes(
                 'App'.DIRECTORY_SEPARATOR.'routes.php'

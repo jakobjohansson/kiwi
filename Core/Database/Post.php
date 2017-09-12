@@ -11,7 +11,7 @@ class Post extends Model
      */
     public static function all()
     {
-        $builder = static::builder();
+        $builder = self::builder();
 
         return $builder->select('*')
             ->from('posts')
@@ -27,7 +27,7 @@ class Post extends Model
     public function save()
     {
         $this->runValidation();
-        $builder = static::builder();
+        $builder = self::builder();
 
         $builder->insert($this)
             ->to('posts')

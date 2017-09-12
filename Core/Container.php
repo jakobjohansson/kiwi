@@ -21,7 +21,7 @@ class Container
      */
     public static function bind($key, $value)
     {
-        static::$registry[$key] = $value;
+        self::$registry[$key] = $value;
     }
 
     /**
@@ -47,6 +47,6 @@ class Container
      */
     public static function resolve($key)
     {
-        return static::$registry[$key] ?? null;
+        return self::$registry[$key] ?? null;
     }
 }
