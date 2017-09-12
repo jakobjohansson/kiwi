@@ -39,7 +39,7 @@ class Migration
      */
     public static function refresh()
     {
-        return new static(Container::resolve('connection'));
+        return new self(resolve('connection'));
     }
 
     /**

@@ -21,7 +21,7 @@ abstract class Model implements \ArrayAccess
      */
     public static function builder()
     {
-        return new Builder(Container::resolve('connection'));
+        return new Builder(resolve('connection'));
     }
 
     /**
