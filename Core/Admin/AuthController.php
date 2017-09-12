@@ -32,7 +32,7 @@ class AuthController extends Controller
         View::renderAdminView('login', [
             'username' => Input::field('username'),
             'password' => Input::field('password'),
-            'error' => 'Invalid username or password.'
+            'error'    => 'Invalid username or password.'
         ]);
     }
 
