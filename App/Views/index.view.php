@@ -20,19 +20,21 @@
                 <hr />
             </div>
             <div class="column is-6 is-offset-3">
-                <?php
-                foreach ($posts as $post) {
+                <div class="content">
+                    <?php
+                    foreach ($posts as $post) {
+                        ?>
+                        <h3 class="subtitle is-4"><?=$post->title; ?></h3>
+                        <div class="content">
+                            <?=$post->body; ?>
+                        </div>
+                        <footer>
+                            <small>Written <?=$post->created_at?>.</small>
+                        </footer>
+                    <?php
+                    }
                     ?>
-                    <h3 class="subtitle is-4"><?=$post->title; ?></h3>
-                    <div class="content">
-                        <?=$post->body; ?>
-                    </div>
-                    <footer>
-                        <small>Written <?=$post->created_at?>.</small>
-                    </footer>
-                <?php
-                }
-                ?>
+                </div>
             </div>
             <div class="column is-6 is-offset-3">
                 <a href="admin">admin</a>
