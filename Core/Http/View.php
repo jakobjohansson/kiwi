@@ -44,7 +44,7 @@ class View
     {
         extract($extracts, EXTR_SKIP);
 
-        $errors = resolve('bag')->errors;
+        $errors = resolve('bag');
 
         require "{$view}.view.php";
     }

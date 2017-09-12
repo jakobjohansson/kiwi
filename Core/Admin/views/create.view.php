@@ -7,12 +7,26 @@
             <div class="control">
                 <input type="text" class="input" name="title" placeholder="Title" />
             </div>
+            <?php
+            if ($errors->title) {
+                foreach ($errors->title as $error) {
+                    echo "<p class='help is-danger'>$error</p>";
+                }
+            }
+            ?>
         </div>
         <div class="field">
             <label class="label">Body</label>
             <div class="control">
                 <textarea class="textarea" rows="10" name="body"></textarea>
             </div>
+            <?php
+            if ($errors->body) {
+                foreach ($errors->body as $error) {
+                    echo "<p class='help is-danger'>$error</p>";
+                }
+            }
+            ?>
         </div>
         <div class="field is-grouped is-grouped-right">
             <div class="control">
