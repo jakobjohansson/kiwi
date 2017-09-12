@@ -13,7 +13,7 @@ class AdminController extends Controller
      */
     public function middleware()
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             Request::redirect('/login');
         }
     }
