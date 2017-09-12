@@ -32,10 +32,23 @@ class Request
      *
      * @param string $path the path to redirect
      *
-     * @return header
+     * @return void
      */
     public static function redirect($path)
     {
-        return header("Location: $path");
+        header("Location: $path");
+        exit;
+    }
+
+    /**
+     * Put validation bag in session and redirect back.
+     *
+     * @return void
+     */
+    public static function back()
+    {
+        resolve('session')->set('errors', resolve('bag')->errors);
+
+        self::redirect('/' . Request::uri());
     }
 }
