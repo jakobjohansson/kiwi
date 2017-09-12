@@ -17,6 +17,7 @@ class Input implements InputInterface
      */
     public static function field($key, $rules = null)
     {
+        // TODO: refactor this method.
         if (!is_array($rules)) {
             $rules = [$rules];
         }
