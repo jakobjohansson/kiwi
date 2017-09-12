@@ -32,7 +32,7 @@ class Loader
      */
     private function getLines()
     {
-        if (!Filesystem::find('.env')) {
+        if (! Filesystem::find('.env')) {
             throw new EnvironmentException('No environment file found.');
         }
 

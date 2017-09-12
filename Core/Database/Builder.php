@@ -2,9 +2,9 @@
 
 namespace kiwi\Database;
 
-use kiwi\Error\ErrorHandler;
 use PDO;
 use PDOException;
+use kiwi\Error\ErrorHandler;
 
 class Builder
 {
@@ -288,7 +288,7 @@ class Builder
      */
     private function applyJoins()
     {
-        if (!count($this->joins)) {
+        if (! count($this->joins)) {
             return;
         }
 
@@ -306,7 +306,7 @@ class Builder
     {
         $count = count($this->clauses);
 
-        if (!$count) {
+        if (! $count) {
             return;
         }
 
