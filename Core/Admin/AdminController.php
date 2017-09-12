@@ -52,8 +52,21 @@ class AdminController extends Controller
     {
         $post = new Post();
 
-        $post->title = Input::field('title');
-        $post->body = Input::field('body');
+        $post->title = Input::field(
+            'title',
+            [
+                'required' => "The title is required.",
+                'min:3' => "The title need to be atleast 3 characters long."
+            ]
+        );
+
+        $post->body = Input::field(
+            'body',
+            [
+                'required' => "The body field is required.",
+                'min:5' => "The body needs to be atleast 5 characters long."
+            ]
+        );
 
         $post->save();
 
