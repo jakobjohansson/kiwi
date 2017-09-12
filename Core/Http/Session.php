@@ -36,7 +36,17 @@ class Session
      */
     public function get($key)
     {
-        return $_SESSION[$key] ?? false;
+        return $_SESSION[$key] ?? null;
+    }
+
+    /**
+     * Unset a session key.
+     *
+     * @param mixed $key
+     */
+    public function unset($key)
+    {
+        unset($_SESSION[$key]);
     }
 
     /**
