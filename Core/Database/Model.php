@@ -3,6 +3,7 @@
 namespace kiwi\Database;
 
 use kiwi\Container;
+use kiwi\Http\Request;
 
 abstract class Model implements \ArrayAccess
 {
@@ -30,11 +31,10 @@ abstract class Model implements \ArrayAccess
      */
     protected function runValidation()
     {
-        $bag = resolve('ValidationBag');
+        $bag = resolve('bag');
 
         if (count($bag->errors)) {
-            dd($bag);
-            // TODO: render errors here.
+            Request::back();
         }
     }
 
