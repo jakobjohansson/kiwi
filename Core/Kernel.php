@@ -38,29 +38,20 @@ class Kernel
     {
         Loader::run();
 
-        Container::bind(
-            'connection',
-            Connection::make([
-                'host'     => env('DATABASE_HOST'),
-                'username' => env('DATABASE_USER'),
-                'password' => env('DATABASE_PASS'),
-                'name'     => env('DATABASE_NAME'),
-            ])
-        );
+        bind('session', Session::make());
+        bind('bag', new ValidationBag());
 
-        Container::bind('session', Session::make());
+        bind('connection', Connection::make([
+            'host'     => env('DATABASE_HOST'),
+            'username' => env('DATABASE_USER'),
+            'password' => env('DATABASE_PASS'),
+            'name'     => env('DATABASE_NAME'),
+        ]));
 
-        Container::bind('bag', new ValidationBag());
-
-        Container::bind(
-            'app',
-            new Application(
-                env('APP_NAME'),
-                env('APP_DESCRIPTION'),
-                new Auth(
-                    Container::resolve('session')
-                )
-            )
-        );
+        bind('app', new Application(
+            env('APP_NAME'),
+            env('APP_DESCRIPTION'),
+            new Auth(resolve('session'))
+        ));
     }
 }
