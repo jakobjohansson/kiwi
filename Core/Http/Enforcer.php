@@ -133,7 +133,8 @@ class Enforcer
      *
      * @param mixed $parameter
      */
-    private function setParameters($parameter = null) {
+    private function setParameters($parameter = null)
+    {
         $this->parameters = [$this->value];
 
         if ($parameter) {
