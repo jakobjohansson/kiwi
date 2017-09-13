@@ -86,21 +86,21 @@ class Enforcer
      */
     private function enforceRule($rule, $message)
     {
-        $rule = explode(':', $rule);
+        list($method, $parameter) = explode(':', $rule);
 
-        if (!method_exists(Rule::class, $rule[0])) {
+        if (!method_exists(Rule::class, $method)) {
             return;
         }
 
-        $use = [Rule::class, $rule[0]];
+        $handler = [Rule::class, $method];
 
-        $parameters = [Sanitizer::input($_POST[$this->key])];
+        $parameters = [$this->value];
 
-        if (isset($rule[1])) {
-            $parameters[] = $rule[1];
+        if (isset($parameter)) {
+            $parameters[] = $parameter;
         }
 
-        if (!call_user_func_array($use, $parameters)) {
+        if (!call_user_func_array($handler, $parameters)) {
             $this->bag[$this->key] = $message;
         }
     }
