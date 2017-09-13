@@ -16,27 +16,8 @@ class Input implements InputInterface
      */
     public static function field($key, $rules = null)
     {
-        // TODO: refactor this method.
-        if (!is_array($rules)) {
-            $rules = [$rules];
-        }
-
-        $bag = resolve('bag');
-
-        foreach ($rules as $rule => $message) {
-            $rule = explode(':', $rule);
-
-            if (method_exists(Rule::class, $rule[0])) {
-                if (isset($rule[1])) {
-                    if (!call_user_func_array([Rule::class, $rule[0]], [Sanitizer::input($_POST[$key]), $rule[1]])) {
-                        $bag->$key = $message;
-                    }
-                } else {
-                    if (!call_user_func_array([Rule::class, $rule[0]], [Sanitizer::input($_POST[$key])])) {
-                        $bag->$key = $message;
-                    }
-                }
-            }
+        if ($rules) {
+            Enforcer::check($key, $rules);
         }
 
         return Sanitizer::input($_POST[$key]);
