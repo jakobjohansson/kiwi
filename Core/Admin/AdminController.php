@@ -82,8 +82,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::from($id);
-        dd($post);
+        $post = new Post($id);
         $post->delete();
     }
 }

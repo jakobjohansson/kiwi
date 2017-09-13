@@ -5,6 +5,18 @@ namespace kiwi\Database;
 class Post extends Model
 {
     /**
+     * Create a new Post instance.
+     *
+     * @param int $id
+     */
+    public function __construct($id = null)
+    {
+        if ($id) {
+            $this->id = $id;
+        }
+    }
+
+    /**
      * Fetch a post from an id.
      *
      * @param int $id
@@ -17,7 +29,7 @@ class Post extends Model
             ->from('posts')
             ->expect(self::class)
             ->where('id', '=', $id)
-            ->get();
+            ->get()[0];
     }
 
     /**

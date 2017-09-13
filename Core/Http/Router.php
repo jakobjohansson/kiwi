@@ -61,8 +61,6 @@ class Router
         }
 
         $this->checkWildcards();
-
-        throw new HttpException('Route not defined.');
     }
 
     /**
@@ -99,6 +97,8 @@ class Router
 
             return $this->fire($controller, $method, $parameter);
         }
+
+        throw new HttpException('Route not defined.');
     }
 
     /**
