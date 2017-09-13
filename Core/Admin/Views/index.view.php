@@ -5,7 +5,7 @@
     foreach ($posts as $post) {
         ?>
         <h2 class="title"><?=$post->title?></h2>
-        <h3>Written <?=$post->created_at; ?>. <a href="/admin/delete/<?=$post->id?>">Delete</a></h3>
+        <h3>Written <?=$post->created_at; ?>. <a href="/admin/edit/<?=$post->id?>">Edit</a> <a href="/admin/delete/<?=$post->id?>">Delete</a></h3>
         <div class="content">
             <?=$post->body ?>
         </div>
