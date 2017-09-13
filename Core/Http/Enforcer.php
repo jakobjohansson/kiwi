@@ -80,8 +80,9 @@ class Enforcer
     /**
      * Enforce a rule, sending errors to ValidationBag.
      *
-     * @param  string $rule
-     * @param  string $message
+     * @param string $rule
+     * @param string $message
+     *
      * @return mixed
      */
     private function enforceRule($rule, $message)
