@@ -2,6 +2,8 @@
 
 namespace kiwi\Http;
 
+use kiwi\Error\HttpException;
+
 class Enforcer
 {
     /**
@@ -31,6 +33,20 @@ class Enforcer
      * @var ValidationBag
      */
     private $bag;
+
+    /**
+     * The handler command.
+     *
+     * @var array
+     */
+    private $handler = [];
+
+    /**
+     * The handler parameters.
+     *
+     * @var array
+     */
+    private $parameters = [];
 
     /**
      * Create a new Enforcer instance.
@@ -89,20 +105,39 @@ class Enforcer
     {
         list($method, $parameter) = explode(':', $rule);
 
-        if (!method_exists(Rule::class, $method)) {
-            return;
-        }
+        $this->setHandler($method);
 
-        $handler = [Rule::class, $method];
+        $this->setParameters($parameter);
 
-        $parameters = [$this->value];
-
-        if (isset($parameter)) {
-            $parameters[] = $parameter;
-        }
-
-        if (!call_user_func_array($handler, $parameters)) {
+        if (!call_user_func_array($this->handler, $this->parameters)) {
             $this->bag[$this->key] = $message;
+        }
+    }
+
+    /**
+     * Set a rule handler.
+     *
+     * @param string $method
+     */
+    private function setHandler($method)
+    {
+        if (!method_exists(Rule::class, $method)) {
+            throw new HttpException("The {$method} rule doesn't exist.");
+        }
+
+        $this->handler = [Rule::class, $method];
+    }
+
+    /**
+     * Set the handler parameters.
+     *
+     * @param mixed $parameter
+     */
+    private function setParameters($parameter = null) {
+        $this->parameters = [$this->value];
+
+        if ($parameter) {
+            $this->parameters[] = $parameter;
         }
     }
 }
