@@ -191,7 +191,7 @@ class Builder
      */
     public function descending()
     {
-        $this->order = " ORDER BY id DESC";
+        $this->order = ' ORDER BY id DESC';
 
         return $this;
     }
@@ -203,7 +203,7 @@ class Builder
      */
     public function ascending()
     {
-        $this->order = " ORDER BY id ASC";
+        $this->order = ' ORDER BY id ASC';
 
         return $this;
     }
