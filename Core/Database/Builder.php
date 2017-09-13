@@ -187,8 +187,9 @@ class Builder
     /**
      * Delete a model from a table.
      *
-     * @param  Model  $model
-     * @param  string $table
+     * @param Model  $model
+     * @param string $table
+     *
      * @return void
      */
     public function delete(Model $model, $table)
