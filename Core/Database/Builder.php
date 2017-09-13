@@ -185,6 +185,22 @@ class Builder
     }
 
     /**
+     * Delete a model from a table.
+     *
+     * @param  Model  $model
+     * @param  string $table
+     * @return void
+     */
+    public function delete(Model $model, $table)
+    {
+        $statement = $this->pdo->prepare("DELETE FROM $table WHERE id = :id");
+        $statement->bindParam(':id', $id);
+        $id = $model->id;
+
+        $statement->execute();
+    }
+
+    /**
      * Set the order to descending.
      *
      * @return $this

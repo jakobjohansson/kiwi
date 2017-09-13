@@ -84,5 +84,7 @@ class AdminController extends Controller
     {
         $post = new Post($id);
         $post->delete();
+
+        Request::redirect('/admin');
     }
 }

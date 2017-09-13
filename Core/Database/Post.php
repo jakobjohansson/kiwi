@@ -72,6 +72,6 @@ class Post extends Model
     {
         $builder = self::builder();
 
-        $builder->delete($this)->from('posts');
+        $builder->delete($this, 'posts');
     }
 }
