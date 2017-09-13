@@ -5,6 +5,21 @@ namespace kiwi\Database;
 class Post extends Model
 {
     /**
+     * Fetch a post from an id.
+     *
+     * @param int $id
+     */
+    public static function from($id) {
+        $builder = self::builder();
+
+        return $builder->select('*')
+            ->from('posts')
+            ->expect(self::class)
+            ->where('id', '=', $id)
+            ->get();
+    }
+
+    /**
      * Get all posts in descending order.
      *
      * @return array
@@ -32,5 +47,15 @@ class Post extends Model
         $builder->insert($this)
             ->to('posts')
             ->run();
+    }
+
+    /**
+     * Delete the current post.
+     *
+     * @return void
+     */
+    public function delete()
+    {
+
     }
 }

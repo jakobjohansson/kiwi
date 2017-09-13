@@ -72,4 +72,16 @@ class AdminController extends Controller
 
         Request::redirect('/admin');
     }
+
+    /**
+     * Delete a post.
+     *
+     * @param  int $id
+     * @return void
+     */
+    public function destroy($id) {
+        $post = Post::from($id);
+        dd($post);
+        $post->delete();
+    }
 }

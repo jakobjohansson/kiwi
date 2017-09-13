@@ -153,7 +153,7 @@ class Router
         $this->get('admin', 'AdminController/index');
         $this->get('admin/write', 'AdminController/create');
         $this->post('admin/write', 'AdminController/store');
-        $this->get('admin/delete/{id}', 'AdminController/delete');
+        $this->get('admin/delete/{id}', 'AdminController/destroy');
     }
 
     /**
