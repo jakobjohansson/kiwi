@@ -77,20 +77,31 @@ class Enforcer
         }
     }
 
+    /**
+     * Enforce a rule, sending errors to ValidationBag.
+     *
+     * @param  string $rule
+     * @param  string $message
+     * @return mixed
+     */
     private function enforceRule($rule, $message)
     {
         $rule = explode(':', $rule);
 
-        if (method_exists(Rule::class, $rule[0])) {
-            if (isset($rule[1])) {
-                if (!call_user_func_array([Rule::class, $rule[0]], [Sanitizer::input($_POST[$this->key]), $rule[1]])) {
-                    $this->bag[$this->key] = $message;
-                }
-            } else {
-                if (!call_user_func_array([Rule::class, $rule[0]], [Sanitizer::input($_POST[$this->key])])) {
-                    $this->bag[$this->key] = $message;
-                }
-            }
+        if (!method_exists(Rule::class, $rule[0])) {
+            return;
+        }
+
+        $use = [Rule::class, $rule[0]];
+
+        $parameters = [Sanitizer::input($_POST[$this->key])];
+
+        if (isset($rule[1])) {
+            $parameters[] = $rule[1];
+        }
+
+        if (!call_user_func_array($use, $parameters)) {
+            $this->bag[$this->key] = $message;
         }
     }
 }
