@@ -60,7 +60,45 @@ class Router
             return $this->fire(...explode('/', $action));
         }
 
+        $this->checkWildcards();
+
         throw new HttpException('Route not defined.');
+    }
+
+    /**
+     * If no static routes are hitting, check for wildcards.
+     *
+     * @return $this->fire
+     */
+    private function checkWildcards()
+    {
+        // check for regexp matches
+        foreach ($this->routes[Request::method()] as $route => $action) {
+            if (is_callable($action)) {
+                continue;
+            }
+
+            if (!$pos = strpos($route, '{')) {
+                continue;
+            }
+
+            $clean = substr($route, 0, $pos);
+            if (strpos(Request::uri(), $clean) === false) {
+                continue;
+            }
+
+            $actual = substr(Request::uri(), strpos(Request::uri(), $clean));
+
+            $parameter = str_replace($clean, '', $actual);
+
+            // fire $action($parameter)
+            //dd($clean, $route, $actual, $parameter);
+
+            $controller = explode('/', $action)[0];
+            $method = explode('/', $action)[1];
+
+            return $this->fire($controller, $method, $parameter);
+        }
     }
 
     /**
@@ -71,7 +109,7 @@ class Router
      *
      * @return Controller/method
      */
-    protected function fire($controller, $method)
+    protected function fire($controller, $method, $parameters = null)
     {
         $controller = "\\kiwi\\Http\\{$controller}";
         $controller = new $controller();
@@ -82,7 +120,7 @@ class Router
             );
         }
 
-        return $controller->$method();
+        return $controller->$method($parameters);
     }
 
     /**
