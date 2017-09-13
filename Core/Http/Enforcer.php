@@ -103,11 +103,13 @@ class Enforcer
      */
     private function enforceRule($rule, $message)
     {
-        list($method, $parameter) = explode(':', $rule);
+        if (strpos($rule, ':') !== false) {
+            list($method, $parameter) = explode(':', $rule);
+        }
 
-        $this->setHandler($method);
+        $this->setHandler($method ?? $rule);
 
-        $this->setParameters($parameter);
+        $this->setParameters($parameter ?? null);
 
         if (!call_user_func_array($this->handler, $this->parameters)) {
             $this->bag[$this->key] = $message;
