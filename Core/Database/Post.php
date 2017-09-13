@@ -74,4 +74,18 @@ class Post extends Model
 
         $builder->delete($this, 'posts');
     }
+
+    /**
+     * Update the post.
+     *
+     * @return void
+     */
+    public function update()
+    {
+        $builder = self::builder();
+
+        $this->updated_at = date("Y-m-d H:i:s");
+
+        $builder->update($this, 'posts');
+    }
 }
