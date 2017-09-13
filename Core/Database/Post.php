@@ -9,7 +9,8 @@ class Post extends Model
      *
      * @param int $id
      */
-    public static function from($id) {
+    public static function from($id)
+    {
         $builder = self::builder();
 
         return $builder->select('*')
@@ -56,6 +57,5 @@ class Post extends Model
      */
     public function delete()
     {
-
     }
 }

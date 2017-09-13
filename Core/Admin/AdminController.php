@@ -76,10 +76,12 @@ class AdminController extends Controller
     /**
      * Delete a post.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return void
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $post = Post::from($id);
         dd($post);
         $post->delete();
