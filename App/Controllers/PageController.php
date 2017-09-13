@@ -3,6 +3,7 @@
 namespace kiwi\Http;
 
 use kiwi\Database\Post;
+use kiwi\Error\HttpException;
 
 class PageController extends Controller
 {
@@ -23,6 +24,12 @@ class PageController extends Controller
      */
     public function show($id)
     {
-        View::render('post', ['post' => Post::from($id)]);
+        $post = Post::from($id);
+
+        if (!$post) {
+            throw new HttpException("That post doesn't exist.");
+        }
+
+        View::render('post', ['post' => $post[0]]);
     }
 }

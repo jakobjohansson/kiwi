@@ -29,7 +29,7 @@ class Post extends Model
             ->from('posts')
             ->expect(self::class)
             ->where('id', '=', $id)
-            ->get()[0];
+            ->get();
     }
 
     /**
@@ -44,6 +44,7 @@ class Post extends Model
         return $builder->select('*')
             ->from('posts')
             ->expect(self::class)
+            ->descending()
             ->get();
     }
 
