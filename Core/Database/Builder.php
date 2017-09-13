@@ -202,6 +202,34 @@ class Builder
     }
 
     /**
+     * Update an entity.
+     *
+     * @param  Model  $model
+     * @param  string $table
+     * @return void
+     */
+    public function update(Model $model, $table)
+    {
+        $query = "UPDATE $table SET";
+
+        foreach ($model->attributes as $key => $value) {
+            if (is_null($value)) {
+                $value = "NULL";
+            }
+
+            $query .= " " . $key . "='" . $value . "',";
+        }
+
+        $query = rtrim($query, ",");
+
+        $query .= " WHERE id = " . $model->id;
+
+        $statement = $this->pdo->prepare($query);
+
+        $statement->execute();
+    }
+
+    /**
      * Set the order to descending.
      *
      * @return $this
