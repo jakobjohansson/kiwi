@@ -87,4 +87,46 @@ class AdminController extends Controller
 
         Request::redirect('/admin');
     }
+
+    /**
+     * Show the form for editing a post.
+     *
+     * @param  int $id
+     * @return void
+     */
+    public function edit($id)
+    {
+        View::RenderAdminView('edit', ['post' => Post::from($id)[0]]);
+    }
+
+    /**
+     * Update a post.
+     *
+     * @param  int $id
+     * @return void
+     */
+    public function update($id)
+    {
+        $post = Post::from($id)[0];
+
+        $post->title = Input::field(
+            'title',
+            [
+                'required' => 'The title is required.',
+                'min:3'    => 'The title need to be atleast 3 characters long.',
+            ]
+        );
+
+        $post->body = Input::field(
+            'body',
+            [
+                'required' => 'The body field is required.',
+                'min:5'    => 'The body needs to be atleast 5 characters long.',
+            ]
+        );
+
+        $post->update();
+
+        Request::redirect('/admin');
+    }
 }
