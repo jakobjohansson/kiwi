@@ -36,7 +36,7 @@ class Enforcer
      * Create a new Enforcer instance.
      *
      * @param mixed $key
-     * @param array  $rules
+     * @param array $rules
      */
     public function __construct($key, array $rules)
     {
@@ -51,11 +51,13 @@ class Enforcer
     /**
      * Fancy constructor.
      *
-     * @param  mixed $key
-     * @param  mixed $rules
+     * @param mixed $key
+     * @param mixed $rules
+     *
      * @return self
      */
-    public static function check($key, $rules) {
+    public static function check($key, $rules)
+    {
         if (!is_array($rules)) {
             $rules = [$rules];
         }
