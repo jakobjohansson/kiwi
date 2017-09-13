@@ -10,3 +10,4 @@
  });
 
  $router->get('', 'PageController/index');
+ $router->get('post/{id}', 'PageController/show');

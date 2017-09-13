@@ -21,23 +21,17 @@
             </div>
             <div class="column is-6 is-offset-3">
                 <div class="content">
-                    <?php
-                    foreach ($posts as $post) {
-                        ?>
-                        <h3 class="subtitle is-4"><a href="/post/<?=$post->id?>"><?=$post->title; ?></a></h3>
-                        <div class="content">
-                            <?=$post->body; ?>
-                        </div>
-                        <footer>
-                            <small>Written <?=$post->created_at?>.</small>
-                        </footer>
-                    <?php
-                    }
-                    ?>
+                    <h3 class="subtitle is-4"><?=$post->title; ?></h3>
+                    <div class="content">
+                        <?=$post->body; ?>
+                    </div>
+                    <footer>
+                        <small>Written <?=$post->created_at?>.</small>
+                    </footer>
                 </div>
             </div>
             <div class="column is-6 is-offset-3">
-                <a href="admin">admin</a>
+                <a href="/admin">admin</a>
             </div>
         </div>
     </section>
