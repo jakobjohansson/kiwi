@@ -50,19 +50,14 @@ class Router
      */
     public function delegate()
     {
-        if (array_key_exists(
-            Request::uri(),
-            $this->routes[Request::method()]
-        )) {
+        if (array_key_exists(Request::uri(), $this->routes[Request::method()])) {
             $action = $this->routes[Request::method()][Request::uri()];
 
             if (is_callable($action)) {
                 return $action();
             }
 
-            return $this->fire(
-                ...explode('/', $action)
-            );
+            return $this->fire(...explode('/', $action));
         }
 
         throw new HttpException('Route not defined.');
