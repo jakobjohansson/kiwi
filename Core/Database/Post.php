@@ -85,7 +85,7 @@ class Post extends Model
         $this->runValidation();
         $builder = self::builder();
 
-        $this->updated_at = date("Y-m-d H:i:s");
+        $this->updated_at = date('Y-m-d H:i:s');
 
         $builder->update($this, 'posts');
     }

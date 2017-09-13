@@ -204,8 +204,9 @@ class Builder
     /**
      * Update an entity.
      *
-     * @param  Model  $model
-     * @param  string $table
+     * @param Model  $model
+     * @param string $table
+     *
      * @return void
      */
     public function update(Model $model, $table)
@@ -214,15 +215,15 @@ class Builder
 
         foreach ($model->attributes as $key => $value) {
             if (is_null($value)) {
-                $value = "NULL";
+                $value = 'NULL';
             }
 
-            $query .= " " . $key . "='" . $value . "',";
+            $query .= ' ' . $key . "='" . $value . "',";
         }
 
-        $query = rtrim($query, ",");
+        $query = rtrim($query, ',');
 
-        $query .= " WHERE id = " . $model->id;
+        $query .= ' WHERE id = ' . $model->id;
 
         $statement = $this->pdo->prepare($query);
 

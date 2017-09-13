@@ -91,7 +91,8 @@ class AdminController extends Controller
     /**
      * Show the form for editing a post.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return void
      */
     public function edit($id)
@@ -102,7 +103,8 @@ class AdminController extends Controller
     /**
      * Update a post.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return void
      */
     public function update($id)
