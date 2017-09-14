@@ -45,7 +45,8 @@ class Rule
     /**
      * Set a email validation rule.
      *
-     * @param  string $string
+     * @param string $string
+     *
      * @return bool
      */
     public static function email($string)
