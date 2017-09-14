@@ -41,4 +41,15 @@ class Rule
     {
         return !empty($string);
     }
+
+    /**
+     * Set a email validation rule.
+     *
+     * @param  string $string
+     * @return bool
+     */
+    public static function email($string)
+    {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
 }
