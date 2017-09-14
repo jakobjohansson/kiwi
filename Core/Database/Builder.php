@@ -68,10 +68,7 @@ class Builder
      */
     public function fetch($model, $id = null)
     {
-        //$this->setTableNameFromModel($model);
-        $this->table = $model::$table;
-
-        $this->expect = $model;
+        $this->setTableNameFromModel($model);
 
         $this->query = "SELECT * FROM $this->table";
 
@@ -101,8 +98,6 @@ class Builder
     {
         $this->setTableNameFromModel($model);
 
-        $this->expect = get_class($model);
-
         $attributes = implode(', ', array_keys($model->attributes));
 
         $values = '';
@@ -129,10 +124,7 @@ class Builder
      */
     public function update(Model $model)
     {
-        //$this->table = strtolower(get_class($model)) . 's';
         $this->setTableNameFromModel($model);
-
-        $this->expect = get_class($model);
 
         $values = implode('=?, ', array_keys($model->attributes));
 
@@ -156,7 +148,6 @@ class Builder
     public function remove(Model $model)
     {
         $this->setTableNameFromModel($model);
-        $this->expect = get_class($model);
         $this->query = "DELETE FROM $this->table WHERE id=?";
         $this->binds[] = $model->id;
 
@@ -166,13 +157,15 @@ class Builder
     /**
      * Set the table name from a models name.
      *
-     * @param Model $model
+     * @param string $model
      *
      * @return void
      */
-    private function setTableNameFromModel(Model $model)
+    private function setTableNameFromModel($model)
     {
-        $this->table = strtolower((new \ReflectionClass($model))->getShortName()) . 's';
+        $class = new \ReflectionClass($model);
+        $this->expect = $class->getName();
+        $this->table = strtolower($class->getShortName()) . 's';
     }
 
     /**
