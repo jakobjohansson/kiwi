@@ -30,7 +30,7 @@ class ValidationBag implements \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        return in_array($this->errors, $offset);
+        return in_array($offset, $this->errors);
     }
 
     /**
