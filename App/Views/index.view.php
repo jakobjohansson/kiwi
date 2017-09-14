@@ -26,7 +26,7 @@
                         ?>
                         <h3 class="subtitle is-4"><a href="/post/<?=$post->id?>"><?=$post->title?></a></h3>
                         <div class="content">
-                            <?=$post->body?>
+                            <?=nl2br($post->body)?>
                         </div>
                         <footer>
                             <small>Written <?=$post->created_at?>.</small>

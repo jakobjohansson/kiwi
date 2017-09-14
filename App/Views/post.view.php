@@ -23,7 +23,7 @@
                 <div class="content">
                     <h3 class="subtitle is-4"><?=$post->title?></h3>
                     <div class="content">
-                        <?=$post->body?>
+                        <?=nl2br($post->body)?>
                     </div>
                     <footer>
                         <small>Written <?=$post->created_at?>.</small>
