@@ -48,6 +48,11 @@ class Builder
      */
     private $expect;
 
+    /**
+     * Create a new Builder instance.
+     *
+     * @param PDO $pdo
+     */
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
