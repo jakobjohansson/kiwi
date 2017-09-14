@@ -37,18 +37,18 @@ class Injector
      *
      * @var string
      */
-    private $httpParameters;
+    private $httpParameter;
 
     /**
      * Create a new Injector instance.
      *
      * @param string $class
      * @param string $methodName
-     * @param string $httpParameters
+     * @param string $httpParameter
      */
-    public function __construct($class, $methodName, $httpParameters)
+    public function __construct($class, $methodName, $httpParameter)
     {
-        $this->httpParameters = $httpParameters;
+        $this->httpParameter = $httpParameter;
 
         $this
             ->setReflectionClass($class)
@@ -134,7 +134,7 @@ class Injector
      */
     public function resolve()
     {
-        $resolve = $this->type::from($this->httpParameters);
+        $resolve = $this->type::from($this->httpParameter);
 
         return $resolve;
     }
