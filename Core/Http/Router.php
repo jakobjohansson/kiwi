@@ -2,7 +2,6 @@
 
 namespace kiwi\Http;
 
-use kiwi\Injector;
 use kiwi\Error\HttpException;
 
 class Router
