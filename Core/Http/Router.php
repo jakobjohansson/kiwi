@@ -114,9 +114,6 @@ class Router
     {
         $controller = "\\kiwi\\Http\\{$controller}";
 
-        // Test the injector
-        $injector = new Injector($controller, $method, $parameters);
-
         $controller = new $controller();
 
         if (!method_exists($controller, $method)) {
@@ -125,7 +122,7 @@ class Router
             );
         }
 
-        return $controller->$method($injector->resolve());
+        return $controller->$method($parameters);
     }
 
     /**

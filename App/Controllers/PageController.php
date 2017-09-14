@@ -22,9 +22,9 @@ class PageController extends Controller
      *
      * @return void
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        //$post = Post::from($id);
+        $post = Post::from($id);
 
         if (!$post) {
             throw new HttpException("That post doesn't exist.");
