@@ -17,11 +17,11 @@ class Injector
     public function __construct($class, $methodName, $httpParameters)
     {
         $this->httpParameters = $httpParameters;
-        $this->reflection = new \ReflectionClass(new $class);
+        $this->reflection = new \ReflectionClass(new $class());
 
         $methods = $this->reflection->getMethods();
 
-        array_walk($methods, function($method) use ($methodName) {
+        array_walk($methods, function ($method) use ($methodName) {
             if ($method->name === $methodName) {
                 $this->method = $method;
                 $this->parameters = $method->getParameters();
@@ -38,6 +38,7 @@ class Injector
     public function resolve()
     {
         $resolve = $this->type::from($this->httpParameters);
+
         return $resolve;
     }
 }
