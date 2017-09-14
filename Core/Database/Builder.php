@@ -73,7 +73,7 @@ class Builder
         $this->query = "SELECT * FROM $this->table";
 
         if (is_null($id)) {
-            $this->query .= " ORDER BY id DESC";
+            $this->query .= ' ORDER BY id DESC';
             $this->createStatement();
 
             return $this->statement->fetchAll();
