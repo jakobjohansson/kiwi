@@ -4,8 +4,6 @@ namespace kiwi\Database;
 
 class Post extends Model
 {
-    public static $table = 'posts';
-
     /**
      * Create a new Post instance.
      *
