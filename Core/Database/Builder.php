@@ -41,10 +41,11 @@ class Builder
 
         if (is_null($id)) {
             $this->createStatement();
+
             return $this->statement->fetchAll();
         }
 
-        $this->query .= " WHERE id = ?";
+        $this->query .= ' WHERE id = ?';
         $this->binds[] = $id;
 
         $this->createStatement();
@@ -91,12 +92,11 @@ class Builder
         $this->binds = array_values($model->attributes);
         $this->binds[] = $model->id;
 
-
         $this->createStatement();
-
     }
 
-    public function remove(Model $model) {
+    public function remove(Model $model)
+    {
         $this->setTableNameFromModel($model);
         $this->expect = get_class($model);
         $this->query = "DELETE FROM $this->table WHERE id=?";

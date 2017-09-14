@@ -25,7 +25,7 @@ class PageController extends Controller
     public function show($id)
     {
         $post = Post::from($id);
-        
+
         if (!$post) {
             throw new HttpException("That post doesn't exist.");
         }
