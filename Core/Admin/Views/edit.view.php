@@ -5,7 +5,7 @@
         <div class="field">
             <label class="label">Title</label>
             <div class="control">
-                <input type="text" class="input" name="title" placeholder="Title" value="<?=$title ?? $post->title?>"/>
+                <input type="text" class="input" name="title" placeholder="Title" value="<?=$post->title?>"/>
             </div>
             <?php
             if ($errors->title) {
@@ -18,7 +18,7 @@
         <div class="field">
             <label class="label">Body</label>
             <div class="control">
-                <textarea class="textarea" rows="10" name="body"><?=$body ?? $post->body?></textarea>
+                <textarea class="textarea" rows="10" name="body"><?=$post->body?></textarea>
             </div>
             <?php
             if ($errors->body) {
