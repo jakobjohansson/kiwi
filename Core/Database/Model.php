@@ -38,7 +38,7 @@ abstract class Model implements \ArrayAccess
      */
     public function offsetExists($offset)
     {
-        return in_array($this->attributes, $offset);
+        return in_array($offset, $this->attributes);
     }
 
     /**
