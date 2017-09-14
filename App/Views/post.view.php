@@ -12,7 +12,7 @@
         <div class="container">
             <div class="column is-6 is-offset-3">
                 <h1 class="title">
-                    <a href="/"><?=app()->name ?></a>
+                    <a href="/"><?=app()->name?></a>
                 </h1>
                 <h2 class="subtitle">
                     <?=app()->description?>
@@ -21,9 +21,9 @@
             </div>
             <div class="column is-6 is-offset-3">
                 <div class="content">
-                    <h3 class="subtitle is-4"><?=$post->title; ?></h3>
+                    <h3 class="subtitle is-4"><?=$post->title?></h3>
                     <div class="content">
-                        <?=$post->body; ?>
+                        <?=$post->body?>
                     </div>
                     <footer>
                         <small>Written <?=$post->created_at?>.</small>

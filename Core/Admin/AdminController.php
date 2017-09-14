@@ -25,12 +25,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        View::renderAdminView(
-            'index',
-            [
-                'posts' => Post::all(),
-            ]
-        );
+        View::renderAdminView('index', ['posts' => Post::all()]);
     }
 
     /**

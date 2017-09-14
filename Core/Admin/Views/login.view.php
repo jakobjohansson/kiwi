@@ -16,12 +16,12 @@
                         <form method="post">
                             <div class="field">
                                 <div class="control">
-                                    <input type="text" class="input is-danger" placeholder="username" name="username" <?php echo isset($username) ? "value='$username'" : null; ?>/>
+                                    <input type="text" class="input is-danger" placeholder="username" name="username" <?=isset($username) ? "value='$username'" : null?>/>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input type="password" class="input is-danger" placeholder="password" name="password" <?php echo isset($password) ? "value='$password'" : null; ?>/>
+                                    <input type="password" class="input is-danger" placeholder="password" name="password" <?=isset($password) ? "value='$password'" : null?>/>
                                 </div>
                             </div>
                             <div class="field has-text-right">
