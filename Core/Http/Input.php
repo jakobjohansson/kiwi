@@ -17,7 +17,7 @@ class Input implements InputInterface
     public static function field($key, $rules = null)
     {
         if ($rules) {
-            Enforcer::check($key, $rules);
+            Warden::inspect($key, $rules);
         }
 
         return Sanitizer::input($_POST[$key]);

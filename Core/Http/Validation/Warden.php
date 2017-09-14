@@ -4,7 +4,7 @@ namespace kiwi\Http;
 
 use kiwi\Error\HttpException;
 
-class Enforcer
+class Warden
 {
     /**
      * The field key.
@@ -72,7 +72,7 @@ class Enforcer
      *
      * @return self
      */
-    public static function check($key, $rules)
+    public static function inspect($key, $rules)
     {
         if (!is_array($rules)) {
             $rules = [$rules];
