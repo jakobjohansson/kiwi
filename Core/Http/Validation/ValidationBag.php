@@ -11,6 +11,13 @@ class ValidationBag implements \ArrayAccess
      */
     public $errors = [];
 
+    /**
+     * Saved values.
+     *
+     * @var array
+     */
+    public $values = [];
+
     public function __construct()
     {
         if ($errors = resolve('session')->get('errors')) {

@@ -113,6 +113,7 @@ class Warden
 
         if (!call_user_func_array($this->handler, $this->parameters)) {
             $this->bag[$this->key] = $message;
+            $this->bag->values[$this->key] = $this->value;
         }
     }
 
