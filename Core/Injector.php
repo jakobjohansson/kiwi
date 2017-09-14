@@ -56,8 +56,8 @@ class Injector
             ->setReflectionParameter()
             ->setParameterType();
 
-        if (!is_null($this->type) && $this->typeIsBuiltIn()) {
-            $type = $type->__toString();
+        if (!is_null($this->type) && !$this->typeIsBuiltIn()) {
+            $this->type = $this->type->__toString();
         }
     }
 
@@ -106,9 +106,11 @@ class Injector
     {
         $methods = $this->class->getMethods();
 
-        $this->method = array_filter($methods, function ($method) use ($methodName) {
+        $methods = array_filter($methods, function ($method) use ($methodName) {
             return $method->name === $methodName;
         });
+
+        $this->method = array_shift($methods);
 
         return $this;
     }
