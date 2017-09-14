@@ -13,16 +13,39 @@ class Builder
      */
     private $pdo;
 
+    /**
+     * The table to perform the query on.
+     *
+     * @var string
+     */
     private $table;
 
+    /**
+     * The query to run.
+     *
+     * @var string
+     */
     private $query;
 
-    private $mode;
-
+    /**
+     * The bound values.
+     *
+     * @var array
+     */
     private $binds = [];
 
+    /**
+     * The query statement to run.
+     *
+     * @var PDO::Statement
+     */
     private $statement;
 
+    /**
+     * The class to expect.
+     *
+     * @var string
+     */
     private $expect;
 
     public function __construct(PDO $pdo)
@@ -30,6 +53,13 @@ class Builder
         $this->pdo = $pdo;
     }
 
+    /**
+     * Fetch models from the database.
+     *
+     * @param  string $model
+     * @param  int $id
+     * @return object
+     */
     public function fetch($model, $id = null)
     {
         //$this->setTableNameFromModel($model);
@@ -53,6 +83,12 @@ class Builder
         return $this->statement->fetch();
     }
 
+    /**
+     * Save a model to the database.
+     *
+     * @param  Model  $model
+     * @return void
+     */
     public function save(Model $model)
     {
         $this->setTableNameFromModel($model);
@@ -76,6 +112,12 @@ class Builder
         $this->createStatement();
     }
 
+    /**
+     * Update a model.
+     *
+     * @param  Model  $model
+     * @return void
+     */
     public function update(Model $model)
     {
         //$this->table = strtolower(get_class($model)) . 's';
@@ -95,6 +137,12 @@ class Builder
         $this->createStatement();
     }
 
+    /**
+     * Remove a model from the database.
+     *
+     * @param  Model  $model
+     * @return void
+     */
     public function remove(Model $model)
     {
         $this->setTableNameFromModel($model);
@@ -105,17 +153,28 @@ class Builder
         $this->createStatement();
     }
 
+    /**
+     * Set the table name from a models name.
+     *
+     * @param Model $model
+     * @return void
+     */
+    private function setTableNameFromModel(Model $model)
+    {
+        $this->table = strtolower((new \ReflectionClass($model))->getShortName()) . 's';
+    }
+
+    /**
+     * Create the final statement.
+     *
+     * @return PDO::Statement
+     */
     private function createStatement()
     {
         $this->statement = $this->pdo->prepare($this->query);
 
         $this->statement->setFetchMode(PDO::FETCH_CLASS, $this->expect);
 
-        $this->statement->execute($this->binds);
-    }
-
-    private function setTableNameFromModel($model)
-    {
-        $this->table = strtolower((new \ReflectionClass($model))->getShortName()) . 's';
+        return $this->statement->execute($this->binds);
     }
 }
