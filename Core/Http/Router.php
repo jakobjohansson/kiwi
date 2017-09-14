@@ -3,6 +3,7 @@
 namespace kiwi\Http;
 
 use kiwi\Error\HttpException;
+use kiwi\Injector;
 
 class Router
 {
@@ -112,6 +113,10 @@ class Router
     protected function fire($controller, $method, $parameters = null)
     {
         $controller = "\\kiwi\\Http\\{$controller}";
+
+        // Test the injector
+        $injector = new Injector($controller, $method, $parameters);
+
         $controller = new $controller();
 
         if (!method_exists($controller, $method)) {
@@ -120,7 +125,7 @@ class Router
             );
         }
 
-        return $controller->$method($parameters);
+        return $controller->$method($injector->resolve());
     }
 
     /**
