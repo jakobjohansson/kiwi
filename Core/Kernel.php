@@ -37,7 +37,7 @@ class Kernel
 
         Container::bindArray([
             'connection' => Database\Connection::class,
-            'session'    => Http\Session::class,
+            'session'    => System\Session::class,
             'bag'        => Http\ValidationBag::class,
             'auth'       => Auth::class,
             'app'        => Application::class

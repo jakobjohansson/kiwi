@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi\Http;
+namespace kiwi\System;
 
 class Session
 {
