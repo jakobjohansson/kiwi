@@ -50,13 +50,11 @@ class Injector
     {
         $this->httpParameters = $httpParameters;
 
-        $this->setReflectionClass($class)->setReflectionMethod($methodName)->setReflectionParameter();
-
-        if (!count($this->parameters)) {
-            return false;
-        }
-
-        $this->setParameterType();
+        $this
+            ->setReflectionClass($class)
+            ->setReflectionMethod($methodName)
+            ->setReflectionParameter()
+            ->setParameterType();
 
         if (!is_null($this->type) && $this->typeIsBuiltIn()) {
             $type = $type->__toString();
@@ -88,11 +86,13 @@ class Injector
     /**
      * Set the parameter.
      *
-     * @return void
+     * @return $this
      */
     private function setReflectionParameter()
     {
-        $this->parameters = $this->method->getParameters()[0];
+        $this->parameter = $this->method->getParameters()[0];
+
+        return $this;
     }
 
     /**
@@ -106,7 +106,7 @@ class Injector
     {
         $methods = $this->class->getMethods();
 
-        $this->method = array_filter($methods, function ($method) {
+        $this->method = array_filter($methods, function ($method) use ($methodName) {
             return $method->name === $methodName;
         });
 
