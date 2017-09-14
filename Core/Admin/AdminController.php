@@ -97,7 +97,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        View::RenderAdminView('edit', ['post' => Post::from($id)[0]]);
+        View::RenderAdminView('edit', ['post' => Post::from($id)]);
     }
 
     /**
@@ -109,7 +109,7 @@ class AdminController extends Controller
      */
     public function update($id)
     {
-        $post = Post::from($id)[0];
+        $post = Post::from($id);
 
         $post->title = Input::field(
             'title',
