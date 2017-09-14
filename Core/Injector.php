@@ -120,7 +120,8 @@ class Injector
      *
      * @return $this
      */
-    private function setReflectionClass($class) {
+    private function setReflectionClass($class)
+    {
         $this->class = new \ReflectionClass(new $class());
 
         return $this;
