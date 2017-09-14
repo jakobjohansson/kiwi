@@ -135,7 +135,7 @@ class Injector
     public function resolve()
     {
         if (is_null($this->type)) {
-            return null;
+            return;
         }
 
         return $this->type::from($this->httpParameter);
