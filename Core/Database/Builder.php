@@ -56,8 +56,9 @@ class Builder
     /**
      * Fetch models from the database.
      *
-     * @param  string $model
-     * @param  int $id
+     * @param string $model
+     * @param int    $id
+     *
      * @return object
      */
     public function fetch($model, $id = null)
@@ -86,7 +87,8 @@ class Builder
     /**
      * Save a model to the database.
      *
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return void
      */
     public function save(Model $model)
@@ -115,7 +117,8 @@ class Builder
     /**
      * Update a model.
      *
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return void
      */
     public function update(Model $model)
@@ -140,7 +143,8 @@ class Builder
     /**
      * Remove a model from the database.
      *
-     * @param  Model  $model
+     * @param Model $model
+     *
      * @return void
      */
     public function remove(Model $model)
@@ -157,6 +161,7 @@ class Builder
      * Set the table name from a models name.
      *
      * @param Model $model
+     *
      * @return void
      */
     private function setTableNameFromModel(Model $model)
