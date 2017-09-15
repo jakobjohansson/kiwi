@@ -98,7 +98,7 @@ class Migration
      */
     private function post()
     {
-        return 'This is kiwi, a minimalistic and lightweight blog framework.\n\nKiwi strips away redundant features, yet houses a handful of tools like customizable page controllers, fluent query builder API, templating engine, extendable database models, form handling and error handling.\n\nA complete developer guide can be found at <a href=\"https://github.com/jakobjohansson/kiwi/wiki\">the kiwi repository</a>.
+        return 'This is kiwi, a minimalistic and lightweight blog framework.\n\nKiwi strips away redundant features, yet houses a handful of tools like customizable page controllers, fluent query builder API, templating engine, extendable database models, form- and error handling, and a dependency injection container.\n\nA complete developer guide can be found at <a href=\"https://github.com/jakobjohansson/kiwi/wiki\">the kiwi repository</a>.
         ';
     }
 }
