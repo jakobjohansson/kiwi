@@ -2,7 +2,7 @@
 
 namespace kiwi\System\Templating\Compilers;
 
-class ExpressionCompiler
+class ExpressionCompiler implements CompilerInterface
 {
     /**
      * The regular expression to look for.
@@ -28,8 +28,6 @@ class ExpressionCompiler
         $this->content = $content;
 
         $this->setExpression();
-
-        $this->run();
     }
 
     /**
@@ -39,6 +37,9 @@ class ExpressionCompiler
      */
     public function run()
     {
+        $this->content = preg_replace_callback($this->expression, function($matches) {
+            return sprintf("<?php echo %s; ?>", $matches[1]);
+        }, $this->content);
     }
 
     /**
@@ -48,7 +49,7 @@ class ExpressionCompiler
      */
     private function setExpression()
     {
-        $this->expression = '';
+        $this->expression = '/\{(.+)\}/';
     }
 
     /**
@@ -58,6 +59,8 @@ class ExpressionCompiler
      */
     public function getCompiledContent()
     {
+        $this->run();
+
         return $this->content;
     }
 }

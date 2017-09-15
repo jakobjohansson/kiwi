@@ -83,7 +83,7 @@ class Engine
     public function addCompilers(array $compilers)
     {
         foreach ($compilers as $compiler) {
-            $this->addCompiler = $compiler;
+            $this->addCompiler(new $compiler($this->content));
         }
     }
 
@@ -95,7 +95,6 @@ class Engine
     public function compile()
     {
         foreach ($this->compilers as $compiler) {
-            $compiler = new $compiler($this->content);
             $this->content = $compiler->getCompiledContent();
         }
 
