@@ -12,7 +12,7 @@
         <div class="container">
             <div class="column is-6 is-offset-3">
                 <h1 class="title">
-                    <a href="/"><?=app()->name?></a>
+                    <a href="/">{app()->name}</a>
                 </h1>
                 <h2 class="subtitle">
                     <?=app()->description?>
