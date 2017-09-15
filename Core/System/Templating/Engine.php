@@ -11,6 +11,11 @@ class Engine
      */
     private $file;
 
+    /**
+     * Create a new Engine instance.
+     *
+     * @param string $file
+     */
     public function __construct($file)
     {
         $this->file = $file;
