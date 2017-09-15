@@ -3,6 +3,7 @@
 namespace kiwi\System\Templating;
 
 use kiwi\System\Templating\Compilers\CompilerInterface;
+use kiwi\System\Filesystem;
 
 class Engine
 {
@@ -56,13 +57,14 @@ class Engine
      */
     private function storePathContent()
     {
-        ob_start();
-
-        extract($this->extracts, EXTR_SKIP);
-
-        include $this->path;
-
-        $this->content = ob_get_clean();
+        // ob_start();
+        //
+        // extract($this->extracts, EXTR_SKIP);
+        //
+        // include $this->path;
+        //
+        // $this->content = ob_get_clean();
+        $this->content = file_get_contents($this->path);
     }
 
     /**
@@ -98,6 +100,12 @@ class Engine
             $this->content = $compiler->getCompiledContent();
         }
 
-        echo $this->content;
+        $this->addContentToStorage();
+
+    }
+
+    private function addContentToStorage()
+    {
+        Filesystem::write($this->content, "App/Storage/" . basename($this->path));
     }
 }

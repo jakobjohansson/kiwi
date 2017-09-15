@@ -3,6 +3,7 @@
 namespace kiwi\Http;
 
 use kiwi\System\Templating\Engine;
+use kiwi\System\Filesystem;
 
 class View
 {
@@ -16,8 +17,6 @@ class View
      */
     public static function render($view, array $extracts = [])
     {
-        $view = 'App' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $view;
-
         self::finish($view, $extracts);
     }
 
@@ -44,9 +43,14 @@ class View
      */
     public static function finish($view, array $extracts = [])
     {
-        $extract['errors'] = resolve('bag');
+        $extracts['errors'] = resolve('bag');
 
-        $engine = new Engine("{$view}.view.php", $extracts);
+        if (Filesystem::find("App/Storage/{$view}.view.php")) {
+            extract($extracts);
+            return require "App/Storage/{$view}.view.php";
+        }
+
+        $engine = new Engine("App/Views/{$view}.view.php", $extracts);
 
         $engine->compile();
     }
