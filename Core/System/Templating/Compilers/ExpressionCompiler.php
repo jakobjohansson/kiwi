@@ -46,6 +46,6 @@ class ExpressionCompiler
      */
     private function setExpression()
     {
-        $this->expression = "";
+        $this->expression = '';
     }
 }
