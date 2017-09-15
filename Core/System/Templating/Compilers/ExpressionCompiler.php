@@ -37,8 +37,8 @@ class ExpressionCompiler implements CompilerInterface
      */
     public function run()
     {
-        $this->content = preg_replace_callback($this->expression, function($matches) {
-            return sprintf("<?php echo %s; ?>", $matches[1]);
+        $this->content = preg_replace_callback($this->expression, function ($matches) {
+            return sprintf('<?php echo %s; ?>', $matches[1]);
         }, $this->content);
     }
 
