@@ -4,41 +4,142 @@ namespace kiwi;
 
 class Injector
 {
+    /**
+     * The reflected class.
+     *
+     * @var ReflectionClass
+     */
     private $class;
 
+    /**
+     * The reflected method.
+     *
+     * @var ReflectionMethod
+     */
     private $method;
 
-    private $parameters;
+    /**
+     * The reflected parameter.
+     *
+     * @var ReflectionParameter
+     */
+    private $parameter;
 
+    /**
+     * The reflected type.
+     *
+     * @var ReflectionType
+     */
     private $type;
 
-    private $httpParameters;
+    /**
+     * The original parameter.
+     *
+     * @var string
+     */
+    private $httpParameter;
 
-    public function __construct($class, $methodName, $httpParameters)
+    /**
+     * Create a new Injector instance.
+     *
+     * @param string $class
+     * @param string $methodName
+     * @param string $httpParameter
+     */
+    public function __construct($class, $methodName, $httpParameter)
     {
-        $this->httpParameters = $httpParameters;
-        $this->reflection = new \ReflectionClass(new $class());
+        $this->httpParameter = $httpParameter;
 
-        $methods = $this->reflection->getMethods();
+        $this
+            ->setReflectionClass($class)
+            ->setReflectionMethod($methodName)
+            ->setReflectionParameter()
+            ->setParameterType();
 
-        array_walk($methods, function ($method) use ($methodName) {
-            if ($method->name === $methodName) {
-                $this->method = $method;
-                $this->parameters = $method->getParameters();
-            }
-        });
-
-        foreach ($this->parameters as $parameter) {
-            if ($parameter->hasType()) {
-                $this->type = $parameter->getType()->__toString();
-            }
+        if (!is_null($this->type) && !$this->typeIsBuiltIn()) {
+            $this->type = $this->type->__toString();
         }
     }
 
+    /**
+     * Check if the type is built in.
+     *
+     * @return bool
+     */
+    private function typeIsBuiltIn()
+    {
+        return $this->type->isBuiltin();
+    }
+
+    /**
+     * Set the parameter type.
+     *
+     * @return void
+     */
+    private function setParameterType()
+    {
+        if ($this->parameter->hasType()) {
+            $this->type = $this->parameter->getType();
+        }
+    }
+
+    /**
+     * Set the parameter.
+     *
+     * @return $this
+     */
+    private function setReflectionParameter()
+    {
+        $this->parameter = $this->method->getParameters()[0];
+
+        return $this;
+    }
+
+    /**
+     * Set the method.
+     *
+     * @param string $methodName
+     *
+     * @return $this
+     */
+    private function setReflectionMethod($methodName)
+    {
+        $methods = $this->class->getMethods();
+
+        $methods = array_filter($methods, function ($method) use ($methodName) {
+            return $method->name === $methodName;
+        });
+
+        $this->method = array_shift($methods);
+
+        return $this;
+    }
+
+    /**
+     * Set the class.
+     *
+     * @param string $class
+     *
+     * @return $this
+     */
+    private function setReflectionClass($class)
+    {
+        $this->class = new \ReflectionClass(new $class());
+
+        return $this;
+    }
+
+    /**
+     * Resolve the class out of the Injector.
+     *
+     * @return object
+     */
     public function resolve()
     {
-        $resolve = $this->type::from($this->httpParameters);
+        if (is_null($this->type)) {
+            return;
+        }
 
-        return $resolve;
+        return $this->type::from($this->httpParameter);
     }
 }
