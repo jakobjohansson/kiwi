@@ -2,6 +2,8 @@
 
 namespace kiwi\Http;
 
+use kiwi\System\Templating\Engine;
+
 class View
 {
     /**
@@ -42,10 +44,12 @@ class View
      */
     public static function finish($view, array $extracts = [])
     {
-        extract($extracts, EXTR_SKIP);
+        $extract['errors'] = resolve('bag');
 
-        $errors = resolve('bag');
+        $engine = new Engine("{$view}.view.php", $extracts);
 
-        require "{$view}.view.php";
+        $engine->compile();
+
+        //require "{$view}.view.php";
     }
 }
