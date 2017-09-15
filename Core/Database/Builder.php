@@ -98,17 +98,11 @@ class Builder
     {
         $this->setTableNameFromModel($model);
 
-        $attributes = implode(', ', array_keys($model->attributes));
+        $values = implode('=?, ', array_keys($model->attributes));
 
-        $values = '';
+        $values .= '=?';
 
-        foreach ($model->attributes as $attribute) {
-            $values .= '?, ';
-        }
-
-        $values = rtrim($values, ', ');
-
-        $this->query = "INSERT INTO $this->table ($attributes) VALUES ($values)";
+        $this->query = "INSERT INTO $this->table SET $values";
 
         $this->binds = array_values($model->attributes);
 
