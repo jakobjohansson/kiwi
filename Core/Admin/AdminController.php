@@ -86,26 +86,24 @@ class AdminController extends Controller
     /**
      * Show the form for editing a post.
      *
-     * @param int $id
+     * @param Post $post
      *
      * @return void
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        View::RenderAdminView('edit', ['post' => Post::from($id)]);
+        View::RenderAdminView('edit', ['post' => $post]);
     }
 
     /**
      * Update a post.
      *
-     * @param int $id
+     * @param Post $post
      *
      * @return void
      */
-    public function update($id)
+    public function update(Post $post)
     {
-        $post = Post::from($id);
-
         $post->title = Input::field(
             'title',
             [

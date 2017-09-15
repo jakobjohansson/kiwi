@@ -3,6 +3,7 @@
 namespace kiwi\Http;
 
 use kiwi\Error\HttpException;
+use kiwi\Injector;
 
 class Router
 {
@@ -89,13 +90,15 @@ class Router
 
             $parameter = str_replace($clean, '', $actual);
 
-            // fire $action($parameter)
-            //dd($clean, $route, $actual, $parameter);
-
             $controller = explode('/', $action)[0];
             $method = explode('/', $action)[1];
 
-            return $this->fire($controller, $method, $parameter);
+            // Since wildcards accept a parameter,
+            // We can inject it automatically.
+            $injector = new Injector("\\kiwi\\Http\\" . $controller, $method, $parameter);
+            $resolve = $injector->resolve() ?? $parameter;
+
+            return $this->fire($controller, $method, $resolve);
         }
 
         throw new HttpException('Route not defined.');

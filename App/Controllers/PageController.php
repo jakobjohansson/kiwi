@@ -20,12 +20,12 @@ class PageController extends Controller
     /**
      * Render a specific post page.
      *
+     * @param Post $post
+     *
      * @return void
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::from($id);
-
         if (!$post) {
             throw new HttpException("That post doesn't exist.");
         }
