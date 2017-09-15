@@ -35,7 +35,7 @@ class View
     }
 
     /**
-     * Extract variables, apply error bag and include the view.
+     * Extract variables, apply error bag and compile the view.
      *
      * @param string $view
      * @param array  $extracts
@@ -49,7 +49,5 @@ class View
         $engine = new Engine("{$view}.view.php", $extracts);
 
         $engine->compile();
-
-        //require "{$view}.view.php";
     }
 }

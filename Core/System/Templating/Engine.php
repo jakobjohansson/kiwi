@@ -21,6 +21,13 @@ class Engine
     private $content;
 
     /**
+     * The compiled content.
+     *
+     * @var string
+     */
+    private $compiledContent;
+
+    /**
      * An array holding the values sent by the user.
      *
      * @var array
@@ -45,6 +52,8 @@ class Engine
         $this->extracts = $extracts;
 
         $this->storePathContent();
+
+        $this->addCompilers(CompilerMap::get());
     }
 
     /**
@@ -95,5 +104,7 @@ class Engine
         foreach ($this->compilers as $compiler) {
             $compiler->run();
         }
+
+        echo $this->compiledContent;
     }
 }
