@@ -2,8 +2,8 @@
 
 namespace kiwi\System\Templating;
 
-use kiwi\System\Templating\Compilers\CompilerInterface;
 use kiwi\System\Filesystem;
+use kiwi\System\Templating\Compilers\CompilerInterface;
 
 class Engine
 {
@@ -101,11 +101,10 @@ class Engine
         }
 
         $this->addContentToStorage();
-
     }
 
     private function addContentToStorage()
     {
-        Filesystem::write($this->content, "App/Storage/" . basename($this->path));
+        Filesystem::write($this->content, 'App/Storage/' . basename($this->path));
     }
 }

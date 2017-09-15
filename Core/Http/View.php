@@ -2,8 +2,8 @@
 
 namespace kiwi\Http;
 
-use kiwi\System\Templating\Engine;
 use kiwi\System\Filesystem;
+use kiwi\System\Templating\Engine;
 
 class View
 {
@@ -47,6 +47,7 @@ class View
 
         if (Filesystem::find("App/Storage/{$view}.view.php")) {
             extract($extracts);
+
             return require "App/Storage/{$view}.view.php";
         }
 
