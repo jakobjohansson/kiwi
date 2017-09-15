@@ -2,8 +2,8 @@
 
 namespace kiwi\Http;
 
-use kiwi\Error\HttpException;
 use kiwi\Injector;
+use kiwi\Error\HttpException;
 
 class Router
 {
@@ -95,7 +95,7 @@ class Router
 
             // Since wildcards accept a parameter,
             // We can inject it automatically.
-            $injector = new Injector("\\kiwi\\Http\\" . $controller, $method, $parameter);
+            $injector = new Injector('\\kiwi\\Http\\' . $controller, $method, $parameter);
             $resolve = $injector->resolve() ?? $parameter;
 
             return $this->fire($controller, $method, $resolve);
