@@ -21,13 +21,6 @@ class Engine
     private $content;
 
     /**
-     * The compiled content.
-     *
-     * @var string
-     */
-    private $compiledContent;
-
-    /**
      * An array holding the values sent by the user.
      *
      * @var array
@@ -102,9 +95,10 @@ class Engine
     public function compile()
     {
         foreach ($this->compilers as $compiler) {
-            $compiler->run();
+            $compiler = new $compiler($this->content);
+            $this->content = $compiler->getCompiledContent();
         }
 
-        echo $this->compiledContent;
+        echo $this->content;
     }
 }

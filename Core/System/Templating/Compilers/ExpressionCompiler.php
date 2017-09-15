@@ -28,6 +28,8 @@ class ExpressionCompiler
         $this->content = $content;
 
         $this->setExpression();
+
+        $this->run();
     }
 
     /**
@@ -35,7 +37,7 @@ class ExpressionCompiler
      *
      * @return void
      */
-    public function compile()
+    public function run()
     {
     }
 
@@ -47,5 +49,15 @@ class ExpressionCompiler
     private function setExpression()
     {
         $this->expression = '';
+    }
+
+    /**
+     * Return the compiled content.
+     *
+     * @return string
+     */
+    public function getCompiledContent()
+    {
+        return $this->content;
     }
 }
