@@ -71,30 +71,31 @@ class Router
      */
     private function checkWildcards()
     {
-        // check for regexp matches
         foreach ($this->routes[Request::method()] as $route => $action) {
-            if (is_callable($action)) {
-                continue;
-            }
 
-            if (!$pos = strpos($route, '{')) {
+            // If the route handler is a Closure or wildcard symbols don't exist,
+            // Then proceed to check next route.
+            if (is_callable($action) || !$pos = strpos($route, '{')) {
                 continue;
             }
 
             $clean = substr($route, 0, $pos);
+
+            // This far we found a wildcard,
+            // Check if it actually contains the route we're looking for.
             if (strpos(Request::uri(), $clean) === false) {
                 continue;
             }
 
             $actual = substr(Request::uri(), strpos(Request::uri(), $clean));
 
-            $parameter = str_replace($clean, '', $actual);
-
             $controller = explode('/', $action)[0];
             $method = explode('/', $action)[1];
+            $parameter = str_replace($clean, '', $actual);
 
             // Since wildcards accept a parameter,
-            // We can inject it automatically.
+            // We will inject it automatically,
+            // Providing it's a non built in type.
             $injector = new Injector('\\kiwi\\Http\\' . $controller, $method, $parameter);
             $resolve = $injector->resolve() ?? $parameter;
 
