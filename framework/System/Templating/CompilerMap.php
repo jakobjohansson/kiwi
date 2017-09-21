@@ -14,7 +14,8 @@ class CompilerMap
         return [
             \kiwi\System\Templating\Compilers\ExpressionCompiler::class,
             \kiwi\System\Templating\Compilers\ForeachCompiler::class,
-            \kiwi\System\Templating\Compilers\IncludeCompiler::class
+            \kiwi\System\Templating\Compilers\IncludeCompiler::class,
+            \kiwi\System\Templating\Compilers\ConditionalCompiler::class
         ];
     }
 }

@@ -27,11 +27,9 @@
                             <div class="field has-text-right">
                                 <div class="level">
                                     <div class="level-left">
-                                        <?php
-                                        if (isset($error)) {
-                                            echo "<p class='help'>$error</p>";
-                                        }
-                                        ?>
+                                        @if (isset($error))
+                                            <p class='help'>{{$error}}</p>
+                                        @endif
                                     </div>
                                     <div class="level-right">
                                         <input type="submit" class="button is-info" value="Login"/>
