@@ -9,7 +9,7 @@ class ExpressionCompiler implements CompilerInterface
      *
      * @var string
      */
-    private $expression;
+    private $expression = '/\{(.+)\}/';
 
     /**
      * The content to compile.
@@ -26,8 +26,6 @@ class ExpressionCompiler implements CompilerInterface
     public function __construct($content)
     {
         $this->content = $content;
-
-        $this->setExpression();
     }
 
     /**
@@ -40,16 +38,6 @@ class ExpressionCompiler implements CompilerInterface
         $this->content = preg_replace_callback($this->expression, function ($matches) {
             return sprintf('<?php echo %s; ?>', $matches[1]);
         }, $this->content);
-    }
-
-    /**
-     * Set the expression.
-     *
-     * @return void
-     */
-    private function setExpression()
-    {
-        $this->expression = '/\{(.+)\}/';
     }
 
     /**
