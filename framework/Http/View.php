@@ -17,7 +17,7 @@ class View
      */
     public static function render($view, array $extracts = [])
     {
-        self::finish($view . '.view.php', $extracts);
+        self::finish('app.Views.' . $view, $extracts);
     }
 
     /**
@@ -28,13 +28,7 @@ class View
      */
     public static function renderAdminView($view, array $extracts = [])
     {
-        $extracts['errors'] = resolve('bag');
-
-        $view = 'framework' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $view;
-
-        extract($extracts);
-
-        return require $view . '.view.php';
+        self::finish('framework.Admin.Views' . $view, $extracts);
     }
 
     /**
@@ -45,18 +39,17 @@ class View
      *
      * @return void
      */
-    public static function finish($view, array $extracts = [])
+    public static function finish($path, array $extracts = [])
     {
-        $extracts['errors'] = resolve('bag');
-
-        if (!Filesystem::find("cache/{$view}")) {
-            $engine = new Engine("app/Views/{$view}");
+        if (!Filesystem::find("cache/{$path} . '.view.php'")) {
+            $engine = new Engine($path);
 
             $engine->compile();
         }
 
+        $extracts['errors'] = resolve('bag');
         extract($extracts);
 
-        return require "cache/{$view}";
+        return require "cache/{$path}.view.php";
     }
 }
