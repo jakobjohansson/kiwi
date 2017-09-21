@@ -105,6 +105,6 @@ class Engine
 
     private function addContentToStorage()
     {
-        Filesystem::write($this->content, 'App/Storage/' . basename($this->path));
+        Filesystem::write($this->content, 'cache/' . basename($this->path));
     }
 }
