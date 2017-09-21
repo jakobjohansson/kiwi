@@ -11,6 +11,6 @@ class ErrorHandler
      */
     public static function render(\Throwable $e)
     {
-        require 'App' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . 'error.view.php';
+        require 'app' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . 'error.view.php';
     }
 }
