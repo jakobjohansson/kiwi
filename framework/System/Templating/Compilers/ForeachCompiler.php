@@ -23,7 +23,7 @@ class ForeachCompiler implements CompilerInterface
      *
      * @return void
      */
-    public function run()
+    public function compile()
     {
         $this->content = preg_replace_callback($this->expression, function ($matches) {
             return sprintf('<?php foreach (%s as %s) { ?>', $matches[1], $matches[2]);
@@ -35,14 +35,15 @@ class ForeachCompiler implements CompilerInterface
     }
 
     /**
-     * Return the compiled content.
+     * Run the compiler and return the processed content.
      *
+     * @param  string $content
      * @return string
      */
-    public function compile($content)
+    public function run($content)
     {
         $this->content = $content;
-        $this->run();
+        $this->compile();
 
         return $this->content;
     }

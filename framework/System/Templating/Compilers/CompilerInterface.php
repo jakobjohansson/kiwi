@@ -4,7 +4,7 @@ namespace kiwi\System\Templating\Compilers;
 
 interface CompilerInterface
 {
-    public function run();
+    public function compile();
 
-    public function compile($content);
+    public function run($content);
 }

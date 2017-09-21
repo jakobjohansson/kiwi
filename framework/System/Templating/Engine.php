@@ -12,7 +12,7 @@ class Engine
      *
      * @var string
      */
-    private $file;
+    private $path;
 
     /**
      * The file content.
@@ -20,13 +20,6 @@ class Engine
      * @var string
      */
     private $content;
-
-    /**
-     * An array holding the values sent by the user.
-     *
-     * @var array
-     */
-    private $extracts = [];
 
     /**
      * An array holding the compilers.
@@ -40,10 +33,9 @@ class Engine
      *
      * @param string $path
      */
-    public function __construct($path, array $extracts = null)
+    public function __construct($path)
     {
         $this->path = $path;
-        $this->extracts = $extracts;
 
         $this->storePathContent();
 
@@ -57,13 +49,6 @@ class Engine
      */
     private function storePathContent()
     {
-        // ob_start();
-        //
-        // extract($this->extracts, EXTR_SKIP);
-        //
-        // include $this->path;
-        //
-        // $this->content = ob_get_clean();
         $this->content = file_get_contents($this->path);
     }
 
@@ -97,7 +82,7 @@ class Engine
     public function compile()
     {
         foreach ($this->compilers as $compiler) {
-            $this->content = $compiler->compile($this->content);
+            $this->content = $compiler->run($this->content);
         }
 
         $this->addContentToStorage();
