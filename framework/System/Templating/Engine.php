@@ -49,7 +49,9 @@ class Engine
      */
     private function storePathContent()
     {
-        $this->content = file_get_contents($this->path);
+        $this->content = file_get_contents(
+            str_replace('.', '/', $this->path) . '.view.php'
+        );
     }
 
     /**
@@ -95,6 +97,6 @@ class Engine
      */
     private function writeCache()
     {
-        Filesystem::write($this->content, 'cache/' . basename($this->path));
+        Filesystem::write($this->content, 'cache/' . $this->path . '.view.php');
     }
 }
