@@ -2,7 +2,7 @@
 
 namespace kiwi\Http;
 
-use kiwi\Filesystem;
+use kiwi\Filesystem\Filesystem;
 use kiwi\Templating\Engine;
 
 class View

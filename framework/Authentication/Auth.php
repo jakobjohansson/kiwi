@@ -20,8 +20,6 @@ class Auth
 
     /**
      * Create a new Auth instance.
-     *
-     * @param Session $session
      */
     public function __construct()
     {

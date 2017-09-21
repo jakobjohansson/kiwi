@@ -2,7 +2,7 @@
 
 namespace kiwi\Templating;
 
-use kiwi\Filesystem;
+use kiwi\Filesystem\Filesystem;
 use kiwi\Templating\Compilers\CompilerInterface;
 
 class Engine
