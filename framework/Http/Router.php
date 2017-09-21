@@ -54,7 +54,7 @@ class Router
         if (array_key_exists(Request::uri(), $this->routes[Request::method()])) {
             $action = $this->routes[Request::method()][Request::uri()];
 
-            if (is_callable($action)) {
+            if ($action instanceof \Closure) {
                 return $action();
             }
 
