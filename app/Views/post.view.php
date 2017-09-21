@@ -12,21 +12,21 @@
         <div class="container">
             <div class="column is-6 is-offset-3">
                 <h1 class="title">
-                    <a href="/"><?=app()->name?></a>
+                    <a href="/">{{app()->name}}</a>
                 </h1>
                 <h2 class="subtitle">
-                    <?=app()->description?>
+                    {{app()->description}}
                 </h2>
                 <hr />
             </div>
             <div class="column is-6 is-offset-3">
                 <div class="content">
-                    <h3 class="subtitle is-4"><?=$post->title?></h3>
+                    <h3 class="subtitle is-4">{{$post->title}}</h3>
                     <div class="content">
-                        <?=nl2br($post->body)?>
+                        {{nl2br($post->body)}}
                     </div>
                     <footer>
-                        <small>Written <?=$post->created_at?>.</small>
+                        <small>Written {{$post->created_at}}.</small>
                     </footer>
                 </div>
             </div>
