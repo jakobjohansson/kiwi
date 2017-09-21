@@ -12,10 +12,10 @@ class CompilerMap
     public static function get()
     {
         return [
-            \kiwi\Templating\Compilers\IncludeCompiler::class,
-            \kiwi\Templating\Compilers\ExpressionCompiler::class,
-            \kiwi\Templating\Compilers\ForeachCompiler::class,
-            \kiwi\Templating\Compilers\ConditionalCompiler::class
+            Compilers\IncludeCompiler::class,
+            Compilers\ExpressionCompiler::class,
+            Compilers\ForeachCompiler::class,
+            Compilers\ConditionalCompiler::class
         ];
     }
 }
