@@ -80,6 +80,12 @@ class Loader
      */
     private function setEnvironmentVariable($key, $value)
     {
+        if ($value === "true") {
+            $value = true;
+        } elseif ($value === "false") {
+            $value = false;
+        }
+
         if (function_exists('putenv')) {
             putenv("$key=$value");
         }

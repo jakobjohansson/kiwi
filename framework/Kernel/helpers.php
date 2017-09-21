@@ -44,7 +44,7 @@ if (!function_exists('isRoute')) {
 if (!function_exists('env')) {
     function env($name)
     {
-        return getenv($name);
+        return $_ENV[$name];
     }
 }
 
