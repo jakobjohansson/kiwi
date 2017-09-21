@@ -1,9 +1,9 @@
 <?php
 
-namespace kiwi\System\Templating;
+namespace kiwi\Templating;
 
-use kiwi\System\Filesystem;
-use kiwi\System\Templating\Compilers\CompilerInterface;
+use kiwi\Filesystem;
+use kiwi\Templating\Compilers\CompilerInterface;
 
 class Engine
 {

@@ -1,15 +1,17 @@
 <?php
 
-namespace kiwi\System\Templating\Compilers;
+namespace kiwi\Templating\Compilers;
 
-class ExpressionCompiler implements CompilerInterface
+use kiwi\Filesystem;
+
+class IncludeCompiler implements CompilerInterface
 {
     /**
      * The regular expression to look for.
      *
      * @var string
      */
-    private $expression = '/\{{2}(.+)\}{2}/';
+    private $expression = '/\@include\((.+)\)/';
 
     /**
      * The content to compile.
@@ -26,7 +28,9 @@ class ExpressionCompiler implements CompilerInterface
     public function compile()
     {
         $this->content = preg_replace_callback($this->expression, function ($matches) {
-            return sprintf('<?php echo %s; ?>', $matches[1]);
+            return Filesystem::read(
+                str_replace('.', '/', $matches[1]) . '.view.php'
+            );
         }, $this->content);
     }
 

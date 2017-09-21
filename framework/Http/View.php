@@ -2,8 +2,8 @@
 
 namespace kiwi\Http;
 
-use kiwi\System\Filesystem;
-use kiwi\System\Templating\Engine;
+use kiwi\Filesystem;
+use kiwi\Templating\Engine;
 
 class View
 {

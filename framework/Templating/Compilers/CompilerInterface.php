@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi\System\Templating\Compilers;
+namespace kiwi\Templating\Compilers;
 
 interface CompilerInterface
 {

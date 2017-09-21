@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi\System;
+namespace kiwi\Filesystem;
 
 class Filesystem
 {
