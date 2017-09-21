@@ -51,6 +51,6 @@ class Rule
      */
     public static function email($string)
     {
-        return filter_var($email, FILTER_VALIDATE_EMAIL);
+        return filter_var($string, FILTER_VALIDATE_EMAIL);
     }
 }
