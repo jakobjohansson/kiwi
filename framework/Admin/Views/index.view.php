@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/partials/admin-header.php'; ?>
+@include(framework.Admin.Views.partials.admin-header)
 
 <div class="column is-offset-3 is-6">
     <?php
@@ -14,4 +14,4 @@
     ?>
 </div>
 
-<?php require __DIR__ . '/partials/admin-footer.php'; ?>
+@include(framework.Admin.Views.partials.admin-footer)
