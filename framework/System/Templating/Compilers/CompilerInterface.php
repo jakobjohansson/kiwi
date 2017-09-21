@@ -6,5 +6,5 @@ interface CompilerInterface
 {
     public function run();
 
-    public function getCompiledContent();
+    public function compile($content);
 }

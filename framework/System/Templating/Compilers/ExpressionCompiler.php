@@ -9,7 +9,7 @@ class ExpressionCompiler implements CompilerInterface
      *
      * @var string
      */
-    private $expression = '/\{(.+)\}/';
+    private $expression = '/\{{2}(.+)\}{2}/';
 
     /**
      * The content to compile.
@@ -17,16 +17,6 @@ class ExpressionCompiler implements CompilerInterface
      * @var string
      */
     private $content;
-
-    /**
-     * Create a new ExpressionCompiler instance.
-     *
-     * @param string $content
-     */
-    public function __construct($content)
-    {
-        $this->content = $content;
-    }
 
     /**
      * Compile the content.
@@ -40,13 +30,9 @@ class ExpressionCompiler implements CompilerInterface
         }, $this->content);
     }
 
-    /**
-     * Return the compiled content.
-     *
-     * @return string
-     */
-    public function getCompiledContent()
+    public function compile($content)
     {
+        $this->content = $content;
         $this->run();
 
         return $this->content;

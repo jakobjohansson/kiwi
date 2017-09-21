@@ -9,7 +9,7 @@ class ForeachCompiler implements CompilerInterface
      *
      * @var string
      */
-    private $expression;
+    private $expression = '/\@foreach\s\((.+)\sas\s(.+)\)/';
 
     /**
      * The content to compile.
@@ -19,16 +19,6 @@ class ForeachCompiler implements CompilerInterface
     private $content;
 
     /**
-     * Create a new ForeachCompiler instance.
-     *
-     * @param string $content
-     */
-    public function __construct($content)
-    {
-        $this->content = $content;
-    }
-
-    /**
      * Compile the content.
      *
      * @return void
@@ -36,7 +26,11 @@ class ForeachCompiler implements CompilerInterface
     public function run()
     {
         $this->content = preg_replace_callback($this->expression, function ($matches) {
-            return sprintf('<?php echo %s; ?>', $matches[1]);
+            return sprintf('<?php foreach (%s as %s) { ?>', $matches[1], $matches[2]);
+        }, $this->content);
+
+        $this->content = preg_replace_callback('/\@endforeach/', function () {
+            return '<?php } ?>';
         }, $this->content);
     }
 
@@ -45,8 +39,9 @@ class ForeachCompiler implements CompilerInterface
      *
      * @return string
      */
-    public function getCompiledContent()
+    public function compile($content)
     {
+        $this->content = $content;
         $this->run();
 
         return $this->content;
