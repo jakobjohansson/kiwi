@@ -20,10 +20,10 @@
             <nav class="tabs is-boxed">
                 <div class="container">
                     <ul>
-                        <li {{isRoute('admin') ? 'class="is-active"' : null }}>
+                        <li{{isRoute('admin') ? ' class="is-active"' : null }}>
                             <a href="/admin">Browse</a>
                         </li>
-                        <li {{isRoute('admin/write') ? 'class="is-active"' : null }}>
+                        <li{{isRoute('admin/write') ? ' class="is-active"' : null }}>
                             <a href="/admin/write">Write</a>
                         </li>
                         <li>
