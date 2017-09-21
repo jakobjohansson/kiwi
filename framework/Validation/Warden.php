@@ -122,6 +122,7 @@ class Warden
      * @param string $method
      *
      * @throws HttpException
+     * @return void
      */
     private function setHandler($method)
     {
@@ -136,6 +137,7 @@ class Warden
      * Set the handler parameters.
      *
      * @param mixed $parameter
+     * @return void
      */
     private function setParameters($parameter = null)
     {

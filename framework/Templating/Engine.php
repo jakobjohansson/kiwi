@@ -45,7 +45,7 @@ class Engine
     /**
      * Store the file's content into a string.
      *
-     * @return $this
+     * @return void
      */
     private function storePathContent()
     {
@@ -58,6 +58,8 @@ class Engine
      * Add a compiler to the engine.
      *
      * @param CompilerInterface $compiler
+     *
+     * @return void
      */
     public function addCompiler(CompilerInterface $compiler)
     {

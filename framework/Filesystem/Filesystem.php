@@ -22,7 +22,7 @@ class Filesystem
      * @param mixed $content
      * @param mixed $file
      *
-     * @return bool
+     * @return void
      */
     public static function write($content, $file)
     {

@@ -93,6 +93,8 @@ class ValidationBag implements \ArrayAccess
      *
      * @param mixed $property
      * @param mixed $value
+     *
+     * @return void
      */
     public function __set($property, $value)
     {

@@ -6,6 +6,8 @@ abstract class Controller
 {
     /**
      * Create a new Controller instance.
+     *
+     * @return $this->middleware
      */
     public function __construct()
     {
