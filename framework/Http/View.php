@@ -28,7 +28,7 @@ class View
      */
     public static function renderAdminView($view, array $extracts = [])
     {
-        self::finish('framework.Admin.Views' . $view, $extracts);
+        self::finish('framework.Admin.Views.' . $view, $extracts);
     }
 
     /**
