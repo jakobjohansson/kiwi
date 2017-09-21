@@ -2,7 +2,7 @@
 
 namespace kiwi\Templating\Compilers;
 
-use kiwi\Filesystem;
+use kiwi\Filesystem\Filesystem;
 
 class IncludeCompiler implements CompilerInterface
 {
