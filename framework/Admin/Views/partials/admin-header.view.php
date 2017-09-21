@@ -11,7 +11,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">
-                    <a href="/"><?=app()->name?></a>
+                    <a href="/">{{app()->name}}</a>
                 </h1>
                 <h2 class="subtitle">Dashboard</h2>
             </div>

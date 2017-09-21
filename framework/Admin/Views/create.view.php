@@ -9,9 +9,11 @@
             </div>
             <?php
             if ($errors->title) {
-                foreach ($errors->title as $error) {
-                    echo "<p class='help is-danger'>$error</p>";
-                }
+            ?>
+                @foreach ($errors->title as $error)
+                    <p class='help is-danger'>{{$error}}</p>
+                @endforeach
+            <?php
             }
             ?>
         </div>
@@ -22,9 +24,11 @@
             </div>
             <?php
             if ($errors->body) {
-                foreach ($errors->body as $error) {
-                    echo "<p class='help is-danger'>$error</p>";
-                }
+            ?>
+                @foreach ($errors->body as $error)
+                    <p class='help is-danger'>{{$error}}</p>
+                @endforeach
+            <?php
             }
             ?>
         </div>
