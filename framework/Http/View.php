@@ -47,11 +47,11 @@ class View
     {
         $extracts['errors'] = resolve('bag');
 
-        if (Filesystem::find("cache/{$view}")) {
-            extract($extracts);
-
-            return require "cache/{$view}";
-        }
+        // if (Filesystem::find("cache/{$view}")) {
+        //     extract($extracts);
+        //
+        //     return require "cache/{$view}";
+        // }
 
         $engine = new Engine("app/Views/{$view}", $extracts);
 
