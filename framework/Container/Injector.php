@@ -132,7 +132,7 @@ class Injector
     /**
      * Resolve the class out of the Injector.
      *
-     * @return object
+     * @return object|void
      */
     public function resolve()
     {

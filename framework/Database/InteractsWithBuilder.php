@@ -31,7 +31,7 @@ trait InteractsWithBuilder
     /**
      * Fetch all models.
      *
-     * @return array
+     * @return array|object
      */
     public static function all()
     {
@@ -70,7 +70,7 @@ trait InteractsWithBuilder
     /**
      * Save a model to the database.
      *
-     * @return PDOStatement
+     * @return void
      */
     public function save()
     {
