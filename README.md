@@ -8,6 +8,8 @@ To install and make the autoloader work, clone the repository and run `composer 
 ### Configuration
 Included in the package is a `.env.example` file, which should be renamed to `.env` and omitted from version control. It is a simple environment file containing fields for database settings, user settings and more general application settings. Kiwi will not run without this file.
 
+After this is done, you should head to the */migrate* route to migrate the default SQL tables.
+
 ### Routes
 Custom routes can be set in the `app/routes.php` file, pointing a route towards a controller and a target method:
 ```php
