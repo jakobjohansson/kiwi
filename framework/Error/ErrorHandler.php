@@ -2,6 +2,8 @@
 
 namespace kiwi\Error;
 
+use kiwi\Http\View;
+
 class ErrorHandler
 {
     /**
@@ -11,6 +13,6 @@ class ErrorHandler
      */
     public static function render(\Throwable $e)
     {
-        require 'app' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . 'error.view.php';
+        View::render('error', compact('e'));
     }
 }
