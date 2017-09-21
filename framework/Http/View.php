@@ -28,6 +28,8 @@ class View
      */
     public static function renderAdminView($view, array $extracts = [])
     {
+        $extracts['errors'] = resolve('bag');
+
         $view = 'framework' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $view;
 
         extract($extracts);
@@ -36,7 +38,7 @@ class View
     }
 
     /**
-     * Extract variables, apply error bag and compile the view.
+     * Apply error bag, check for cache and include view.
      *
      * @param string $view
      * @param array  $extracts
