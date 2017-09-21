@@ -30,6 +30,17 @@ class Filesystem
     }
 
     /**
+     * Read a file.
+     *
+     * @param  string $file
+     * @return string
+     */
+    public static function read($file)
+    {
+        file_get_contents($file);
+    }
+
+    /**
      * Remove a file.
      *
      * @param string $path
