@@ -33,7 +33,8 @@ class ExpressionCompiler implements CompilerInterface
     /**
      * Run the compiler and return the processed content.
      *
-     * @param  string $content
+     * @param string $content
+     *
      * @return string
      */
     public function run($content)
