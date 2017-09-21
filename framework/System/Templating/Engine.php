@@ -85,10 +85,15 @@ class Engine
             $this->content = $compiler->run($this->content);
         }
 
-        $this->addContentToStorage();
+        $this->writeCache();
     }
 
-    private function addContentToStorage()
+    /**
+     * Write the processed content to cache.
+     *
+     * @return void
+     */
+    private function writeCache()
     {
         Filesystem::remove('cache/' . basename($this->path));
         Filesystem::write($this->content, 'cache/' . basename($this->path));
