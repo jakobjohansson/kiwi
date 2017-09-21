@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/partials/admin-header.php'; ?>
+@include(framework.Admin.Views.partials.admin-header)
 
 <div class="column is-offset-3 is-6">
     <form method="post" action="/admin/edit/<?=$post->id?>">
@@ -39,4 +39,4 @@
     </form>
 </div>
 
-<?php require __DIR__ . '/partials/admin-footer.php'; ?>
+@include(framework.Admin.Views.partials.admin-footer)
