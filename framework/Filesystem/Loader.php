@@ -80,9 +80,9 @@ class Loader
      */
     private function setEnvironmentVariable($key, $value)
     {
-        if ($value === "true") {
+        if ($value === 'true') {
             $value = true;
-        } elseif ($value === "false") {
+        } elseif ($value === 'false') {
             $value = false;
         }
 
