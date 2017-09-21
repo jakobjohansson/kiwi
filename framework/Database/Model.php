@@ -46,7 +46,6 @@ abstract class Model implements \ArrayAccess
      *
      * @param mixed $offset
      *
-     *
      * @return mixed|null
      */
     public function offsetGet($offset)

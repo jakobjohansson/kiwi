@@ -27,8 +27,10 @@ class Loader
 
     /**
      * Search for environment file and return the lines in an array.
-     * @return array
+     *
      * @throws EnvironmentException
+     *
+     * @return array
      */
     private function getLines()
     {

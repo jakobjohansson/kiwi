@@ -36,6 +36,7 @@ class View
      *
      * @param $path
      * @param array $extracts
+     *
      * @return void
      */
     public static function finish($path, array $extracts = [])
