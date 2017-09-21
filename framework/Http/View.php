@@ -17,7 +17,7 @@ class View
      */
     public static function render($view, array $extracts = [])
     {
-        self::finish($view.'.view.php', $extracts);
+        self::finish($view . '.view.php', $extracts);
     }
 
     /**
@@ -32,7 +32,7 @@ class View
 
         extract($extracts);
 
-        return require $view.'.view.php';
+        return require $view . '.view.php';
     }
 
     /**
