@@ -22,7 +22,11 @@
             <div class="column is-6 is-offset-3">
                 <div class="content">
                     @foreach ($posts as $post)
-                        <h3 class="subtitle is-4"><a href="/post/{$post->id}">{{$post->title}}</a></h3>
+                        <h3 class="subtitle is-4">
+                            <a href="/post/{{$post->id}}">
+                                {{$post->title}}
+                            </a>
+                        </h3>
                         <div class="content">
                             {{nl2br($post->body)}}
                         </div>
