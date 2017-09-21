@@ -2,7 +2,7 @@
 
 namespace kiwi\System\Templating\Compilers;
 
-use kiwi\System\Templating\Engine;
+use kiwi\System\Filesystem;
 
 class IncludeCompiler implements CompilerInterface
 {
@@ -28,14 +28,9 @@ class IncludeCompiler implements CompilerInterface
     public function compile()
     {
         $this->content = preg_replace_callback($this->expression, function ($matches) {
-
-            // Includes are tricky.
-            // Since they aren't part of any routes,
-            // We will have to call the compiler engine manually.
-            $engine = new Engine($matches[1]);
-            $engine->compile();
-
-            return sprintf('<?php include "%s.view.php"; ?>', $matches[1]);
+            return Filesystem::read(
+                str_replace('.', '/', $matches[1]) . '.view.php'
+            );
         }, $this->content);
     }
 

@@ -49,7 +49,7 @@ class Engine
      */
     private function storePathContent()
     {
-        $this->content = file_get_contents(
+        $this->content = Filesystem::read(
             str_replace('.', '/', $this->path) . '.view.php'
         );
     }

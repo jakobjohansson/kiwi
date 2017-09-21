@@ -37,7 +37,7 @@ class Filesystem
      */
     public static function read($file)
     {
-        file_get_contents($file);
+        return file_get_contents($file);
     }
 
     /**
