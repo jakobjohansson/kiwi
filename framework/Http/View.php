@@ -17,9 +17,7 @@ class View
      */
     public static function render($view, array $extracts = [])
     {
-        $view = 'app' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $view;
-
-        self::finish($view, $extracts);
+        self::finish($view.'.view.php', $extracts);
     }
 
     /**
@@ -32,7 +30,9 @@ class View
     {
         $view = 'framework' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $view;
 
-        self::finish($view, $extracts);
+        extract($extracts);
+
+        return require $view.'.view.php';
     }
 
     /**
@@ -47,13 +47,13 @@ class View
     {
         $extracts['errors'] = resolve('bag');
 
-        if (Filesystem::find("App/Storage/{$view}.view.php")) {
+        if (Filesystem::find("cache/{$view}")) {
             extract($extracts);
 
-            return require "App/Storage/{$view}.view.php";
+            return require "cache/{$view}";
         }
 
-        $engine = new Engine("App/Views/{$view}.view.php", $extracts);
+        $engine = new Engine("app/Views/{$view}", $extracts);
 
         $engine->compile();
     }
