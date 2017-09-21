@@ -16,22 +16,20 @@
                         <form method="post">
                             <div class="field">
                                 <div class="control">
-                                    <input type="text" class="input is-danger" placeholder="username" name="username" <?=isset($username) ? "value='$username'" : null?>/>
+                                    <input type="text" class="input is-danger" placeholder="username" name="username" {{isset($username) ? "value='$username'" : null}}/>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="control">
-                                    <input type="password" class="input is-danger" placeholder="password" name="password" <?=isset($password) ? "value='$password'" : null?>/>
+                                    <input type="password" class="input is-danger" placeholder="password" name="password" {{isset($password) ? "value='$password'" : null}}/>
                                 </div>
                             </div>
                             <div class="field has-text-right">
                                 <div class="level">
                                     <div class="level-left">
-                                        <?php
-                                        if (isset($error)) {
-                                            echo "<p class='help'>$error</p>";
-                                        }
-                                        ?>
+                                        @if (isset($error))
+                                            <p class='help'>{{$error}}</p>
+                                        @endif
                                     </div>
                                     <div class="level-right">
                                         <input type="submit" class="button is-info" value="Login"/>

@@ -3,7 +3,7 @@
 namespace kiwi;
 
 use kiwi\Http\Router;
-use kiwi\System\Loader;
+use kiwi\Filesystem\Loader;
 use kiwi\Error\ErrorHandler;
 
 class Kernel
@@ -37,7 +37,7 @@ class Kernel
 
         Container::bindArray([
             'connection' => Database\Connection::class,
-            'session'    => System\Session::class,
+            'session'    => Authentication\Session::class,
             'bag'        => Http\ValidationBag::class,
             'auth'       => Auth::class,
             'app'        => Application::class

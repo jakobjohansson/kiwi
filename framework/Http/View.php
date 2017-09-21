@@ -2,6 +2,9 @@
 
 namespace kiwi\Http;
 
+use kiwi\Templating\Engine;
+use kiwi\Filesystem\Filesystem;
+
 class View
 {
     /**
@@ -14,9 +17,7 @@ class View
      */
     public static function render($view, array $extracts = [])
     {
-        $view = 'app' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $view;
-
-        self::finish($view, $extracts);
+        self::finish('app.Views.' . $view, $extracts);
     }
 
     /**
@@ -27,25 +28,28 @@ class View
      */
     public static function renderAdminView($view, array $extracts = [])
     {
-        $view = 'framework' . DIRECTORY_SEPARATOR . 'Admin' . DIRECTORY_SEPARATOR . 'Views' . DIRECTORY_SEPARATOR . $view;
-
-        self::finish($view, $extracts);
+        self::finish('framework.Admin.Views.' . $view, $extracts);
     }
 
     /**
-     * Extract variables, apply error bag and include the view.
+     * Apply error bag, check for cache and include view.
      *
      * @param string $view
      * @param array  $extracts
      *
      * @return void
      */
-    public static function finish($view, array $extracts = [])
+    public static function finish($path, array $extracts = [])
     {
-        extract($extracts, EXTR_SKIP);
+        if (!Filesystem::find("cache/{$path}.view.php")) {
+            $engine = new Engine($path);
 
-        $errors = resolve('bag');
+            $engine->compile();
+        }
 
-        require "{$view}.view.php";
+        $extracts['errors'] = resolve('bag');
+        extract($extracts);
+
+        return require "cache/{$path}.view.php";
     }
 }

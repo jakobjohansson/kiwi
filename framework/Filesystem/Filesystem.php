@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi\System;
+namespace kiwi\Filesystem;
 
 class Filesystem
 {
@@ -27,6 +27,18 @@ class Filesystem
     public static function write($content, $file)
     {
         file_put_contents($file, $content);
+    }
+
+    /**
+     * Read a file.
+     *
+     * @param string $file
+     *
+     * @return string
+     */
+    public static function read($file)
+    {
+        return file_get_contents($file);
     }
 
     /**

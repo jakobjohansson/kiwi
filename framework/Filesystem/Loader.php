@@ -1,6 +1,6 @@
 <?php
 
-namespace kiwi\System;
+namespace kiwi\Filesystem;
 
 use kiwi\Error\EnvironmentException;
 
