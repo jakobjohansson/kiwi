@@ -32,7 +32,8 @@ class Filesystem
     /**
      * Read a file.
      *
-     * @param  string $file
+     * @param string $file
+     *
      * @return string
      */
     public static function read($file)
