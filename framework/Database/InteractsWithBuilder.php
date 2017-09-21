@@ -18,6 +18,7 @@ trait InteractsWithBuilder
      * Fetch a model from an id.
      *
      * @param int $id
+     * @return object
      */
     public static function from($id)
     {

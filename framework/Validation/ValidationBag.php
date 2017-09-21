@@ -37,6 +37,7 @@ class ValidationBag implements \ArrayAccess
      * Get an error when using ArrayAccess.
      *
      * @param mixed $offset
+     * @return mixed|null
      */
     public function offsetGet($offset)
     {

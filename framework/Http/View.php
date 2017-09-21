@@ -34,9 +34,8 @@ class View
     /**
      * Apply error bag, check for cache and include view.
      *
-     * @param string $view
-     * @param array  $extracts
-     *
+     * @param $path
+     * @param array $extracts
      * @return void
      */
     public static function finish($path, array $extracts = [])

@@ -45,6 +45,9 @@ abstract class Model implements \ArrayAccess
      * Get an attribute when using ArrayAccess.
      *
      * @param mixed $offset
+     *
+     *
+     * @return mixed|null
      */
     public function offsetGet($offset)
     {

@@ -23,7 +23,7 @@ class Migration
     /**
      * Creates a new Migration instance.
      *
-     * @param PDO $pdo
+     * @param \PDO $pdo
      */
     public function __construct(\PDO $pdo)
     {

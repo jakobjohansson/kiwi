@@ -9,7 +9,7 @@ class ErrorHandler
     /**
      * Render the error page.
      *
-     * @param Exception $e
+     * @param \Throwable $e
      */
     public static function render(\Throwable $e)
     {

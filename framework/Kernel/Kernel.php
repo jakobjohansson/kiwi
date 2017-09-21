@@ -10,8 +10,7 @@ class Kernel
 {
     /**
      * Fancy constructor.
-     *
-     * @return Kernel
+     *  @return void
      */
     public static function run()
     {
@@ -37,10 +36,10 @@ class Kernel
 
         Container::bindArray([
             'connection' => Database\Connection::class,
-            'session'    => Authentication\Session::class,
-            'bag'        => Http\ValidationBag::class,
-            'auth'       => Auth::class,
-            'app'        => Application::class
+            'session' => Authentication\Session::class,
+            'bag' => Http\ValidationBag::class,
+            'auth' => Auth::class,
+            'app' => Application::class
         ]);
     }
 }

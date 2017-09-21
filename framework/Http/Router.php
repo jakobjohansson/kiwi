@@ -66,8 +66,8 @@ class Router
 
     /**
      * If no static routes are hitting, check for wildcards.
-     *
-     * @return $this->fire
+     * @return $this ->fire
+     * @throws HttpException
      */
     private function checkWildcards()
     {
@@ -111,7 +111,9 @@ class Router
      * @param string $controller
      * @param string $method
      *
-     * @return Controller/method
+     * @param null $parameters
+     * @return mixed
+     * @throws HttpException
      */
     protected function fire($controller, $method, $parameters = null)
     {

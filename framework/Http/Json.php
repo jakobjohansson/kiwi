@@ -23,8 +23,6 @@ class Json implements InputInterface
     /**
      * Sanitize all the fields in a JSON collection.
      *
-     * @param string $type
-     *
      * @return array
      */
     public static function all()

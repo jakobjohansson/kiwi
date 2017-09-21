@@ -21,8 +21,8 @@ class PageController extends Controller
      * Render a specific post page.
      *
      * @param Post $post
-     *
      * @return void
+     * @throws HttpException
      */
     public function show(Post $post)
     {

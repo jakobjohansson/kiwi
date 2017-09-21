@@ -120,6 +120,7 @@ class Warden
      * Set a rule handler.
      *
      * @param string $method
+     * @throws HttpException
      */
     private function setHandler($method)
     {
