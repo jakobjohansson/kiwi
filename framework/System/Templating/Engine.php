@@ -95,7 +95,6 @@ class Engine
      */
     private function writeCache()
     {
-        Filesystem::remove('cache/' . basename($this->path));
         Filesystem::write($this->content, 'cache/' . basename($this->path));
     }
 }
