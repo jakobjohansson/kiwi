@@ -92,6 +92,8 @@ $post->title = Input::field(
         'min:3'    => 'The title need to be atleast 3 characters long.',
     ]
 );
+
+$post->save();
 ```
 The supported rules can be found in the `Rule` class. At the time of writing, the following rules are supported:
 - min
