@@ -12,7 +12,8 @@ class CompilerMap
     public static function get()
     {
         return [
-            \kiwi\System\Templating\Compilers\ExpressionCompiler::class
+            \kiwi\System\Templating\Compilers\ExpressionCompiler::class,
+            \kiwi\System\Templating\Compilers\ForeachCompiler::class
         ];
     }
 }
