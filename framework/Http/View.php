@@ -41,7 +41,7 @@ class View
      */
     public static function finish($path, array $extracts = [])
     {
-        if (!Filesystem::find("cache/{$path} . '.view.php'")) {
+        if (!Filesystem::find("cache/{$path}.view.php")) {
             $engine = new Engine($path);
 
             $engine->compile();
