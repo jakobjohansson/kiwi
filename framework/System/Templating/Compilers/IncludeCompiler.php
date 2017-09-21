@@ -36,6 +36,7 @@ class IncludeCompiler implements CompilerInterface
             $engine->compile();
 
             $realPath = str_replace('.', '/', $matches[1]) . '.view.php';
+
             return sprintf('<?php include "%s"; ?>', $realPath);
         }, $this->content);
     }
