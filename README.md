@@ -55,6 +55,9 @@ public function show(Post $post)
 ```
 Notice the type hinted *Post* parameter in the show method. It will be automatically injected when you provide a wildcard in your route!
 
+#### Middleware
+You can apply custom middleware by creating a `middleware()` method in your controller. It will run on every request directed towards the controller.
+
 ### Views
 As seen in the example above, views can be requested from a controller method by stating `View::render($viewpath, $arrayOfData)`. The view path is relative to the `app/Views` folder, with a suffixed `.view.php` added at the end, meaning you can simply enter the file name.
 
