@@ -116,6 +116,6 @@ abstract class Model implements \ArrayAccess
      */
     public function __toString()
     {
-        return serialize($this);
+        return serialize($this->attributes);
     }
 }
