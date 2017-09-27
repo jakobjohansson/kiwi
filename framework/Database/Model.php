@@ -108,4 +108,14 @@ abstract class Model implements \ArrayAccess
     {
         $this->attributes[$property] = $value;
     }
+
+    /**
+     * When trying to echo out the model, serialize it.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return serialize($this);
+    }
 }
