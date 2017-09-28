@@ -9,7 +9,7 @@ class ExpressionCompiler implements CompilerInterface
      *
      * @var string
      */
-    private $expression = '/\{{2}(.+)\}{2}/';
+    private $expression = '/\{{2}(.+?)\}{2}/';
 
     /**
      * The content to compile.
