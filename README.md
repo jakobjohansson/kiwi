@@ -3,7 +3,10 @@
 kiwi is a minimalistic and lightweight blog framework for php.
 
 ## Documentation
-To install and make the autoloader work, clone the repository and run `composer dumpautoload` while standing in the directory.
+Kiwi can be installed via Composer:
+```
+composer create-project jakobjohansson/kiwi
+```
 
 ### Configuration
 Included in the package is a `.env.example` file, which should be renamed to `.env` and omitted from version control. It is a simple environment file containing fields for database settings, user settings and more general application settings. Kiwi will not run without this file.
