@@ -51,7 +51,7 @@ class AdminController extends Controller
             'title',
             [
                 'required' => 'The title is required.',
-                'min:3'    => 'The title need to be atleast 3 characters long.',
+                'min:3'    => 'The title needs to be atleast 3 characters long.',
             ]
         );
 
