@@ -1,6 +1,18 @@
 {
+    "name": "kiwi/kiwi",
+    "type": "project",
+    "description": "a minimalistic and lightweight blog framework",
+    "keywords": ["blog", "framework", "minimal", "lightweight"],
+    "homepage": "https://github.com/jakobjohansson/kiwi",
+    "license": "MIT",
+    "support": {
+        "email": "jakobjohansson2@icloud.com",
+    },
     "autoload": {
         "classmap": ["./"],
         "files": ["framework/Kernel/helpers.php"]
-    }
+    },
+    "require" : {
+        "php" : "^7.0"
+    },
 }
