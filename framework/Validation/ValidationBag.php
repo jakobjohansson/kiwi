@@ -10,7 +10,7 @@ class ValidationBag implements \ArrayAccess
      * @var array
      */
     public $errors = [];
-    
+
     /**
      * Create a new ValidationBag instance.
      */
