@@ -1,5 +1,5 @@
 {
-    "name": "kiwi/kiwi",
+    "name": "jakobjohansson/kiwi",
     "type": "project",
     "description": "a minimalistic and lightweight blog framework",
     "keywords": ["blog", "framework", "minimal", "lightweight"],
