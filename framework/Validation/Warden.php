@@ -49,7 +49,7 @@ class Warden
     private $parameters = [];
 
     /**
-     * Create a new Enforcer instance.
+     * Create a new Warden instance.
      *
      * @param mixed $key
      * @param array $rules
