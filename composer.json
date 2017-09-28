@@ -6,7 +6,7 @@
     "homepage": "https://github.com/jakobjohansson/kiwi",
     "license": "MIT",
     "support": {
-        "email": "jakobjohansson2@icloud.com",
+        "email": "jakobjohansson2@icloud.com"
     },
     "autoload": {
         "classmap": ["./"],
