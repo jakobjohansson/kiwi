@@ -3,20 +3,11 @@
 namespace kiwi\Http;
 
 use kiwi\Database\Post;
+use kiwi\Http\Middleware\AuthorizesRequests;
 
 class AdminController extends Controller
 {
-    /**
-     * Dont access without authorizing.
-     *
-     * @return void
-     */
-    public function middleware()
-    {
-        if (!auth()->check()) {
-            Request::redirect('/login');
-        }
-    }
+    use AuthorizesRequests;
 
     /**
      * Render the index page.
