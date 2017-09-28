@@ -3,9 +3,9 @@
 namespace kiwi\Http\Middleware;
 
 use kiwi\Http\Request;
-use kiwi\Authentication\Session;
 
-trait AuthorizesRequests {
+trait AuthorizesRequests
+{
     /**
      * Dont access without authorizing.
      *
@@ -17,5 +17,4 @@ trait AuthorizesRequests {
             Request::redirect('/login');
         }
     }
-
 }
