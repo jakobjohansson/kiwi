@@ -53,4 +53,15 @@ class Rule
     {
         return filter_var($string, FILTER_VALIDATE_EMAIL);
     }
+
+    /**
+     * Set a alphabetical only rule.
+     *
+     * @param  string $string
+     * @return bool
+     */
+    public static function alpha($string)
+    {
+        return preg_match('/^[A-Za-zÅÄÖåäö]+$/', $string) === true;
+    }
 }
