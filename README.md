@@ -84,7 +84,7 @@ Kiwi supports templating similar to that of Laravel Blade:
 </div>
 ```
 At the time of writing, the following directives are supported:
-- if / else statements
+- if / elseif / else statements
 - echo expressions
 - foreach loops
 - includes
@@ -108,6 +108,9 @@ The supported rules can be found in the `Rule` class. At the time of writing, th
 - max
 - required
 - email
+- url
+- digits
+- alpha
 
 If validation fails, kiwi will redirect back with access to an `$errors` variable, containing all the data you need to display an informative error message!
 
