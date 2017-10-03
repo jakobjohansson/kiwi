@@ -55,6 +55,17 @@ class Rule
     }
 
     /**
+     * Set a URL validation rule.
+     *
+     * @param  string $string
+     * @return bool
+     */
+    public static function url($string)
+    {
+        return filter_var($string, FILTER_VALIDATE_URL);
+    }
+
+    /**
      * Set a alphabetical only rule.
      *
      * @param  string $string
