@@ -75,7 +75,7 @@ class Rule
      */
     public static function alpha($string)
     {
-        return preg_match('/^[A-Za-zÅÄÖåäö]+$/', $string) === true;
+        return preg_match('/^[A-Za-zÅÄÖåäö]+$/', $string) === 1;
     }
 
     /**
@@ -87,6 +87,6 @@ class Rule
      */
     public static function digits($string)
     {
-        return preg_match('/^\d+$/', $string) === true;
+        return preg_match('/^\d+$/', $string) === 1;
     }
 }
