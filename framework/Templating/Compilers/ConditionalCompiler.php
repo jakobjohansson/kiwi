@@ -5,13 +5,6 @@ namespace kiwi\Templating\Compilers;
 class ConditionalCompiler implements CompilerInterface
 {
     /**
-     * The regular expression to look for.
-     *
-     * @var string
-     */
-    private $expression = '/\@if\s\((.+)\)/';
-
-    /**
      * The content to compile.
      *
      * @var string
@@ -25,17 +18,10 @@ class ConditionalCompiler implements CompilerInterface
      */
     public function compile()
     {
-        $this->content = preg_replace_callback($this->expression, function ($matches) {
-            return sprintf('<?php if (%s) { ?>', $matches[1]);
-        }, $this->content);
-
-        $this->content = preg_replace_callback('/\@else/', function () {
-            return '<?php } else { ?>';
-        }, $this->content);
-
-        $this->content = preg_replace_callback('/\@endif/', function () {
-            return '<?php } ?>';
-        }, $this->content);
+        $this->compileIf();
+        $this->compileElseIf();
+        $this->compileElse();
+        $this->compileEndif();
     }
 
     /**
@@ -51,5 +37,51 @@ class ConditionalCompiler implements CompilerInterface
         $this->compile();
 
         return $this->content;
+    }
+
+    /**
+     * Check for if-statements.
+     *
+     * @return void
+     */
+    private function compileIf()
+    {
+        $this->content = preg_replace_callback('/\@if\s\((.+)\)/', function ($matches) {
+            return sprintf('<?php if (%s) { ?>', $matches[1]);
+        }, $this->content);
+    }
+
+    /**
+     * Check for elseif-statements.
+     *
+     * @return void
+     */
+    private function compileElseIf()
+    {
+        $this->content = preg_replace_callback('/\@elseif\s\((.+)\)/', function ($matches) {
+            return sprintf('<?php } elseif (%s) { ?>', $matches[1]);
+        }, $this->content);
+    }
+
+    /**
+     * Check for else-statements.
+     *
+     * @return void
+     */
+    private function compileElse() {
+        $this->content = preg_replace_callback('/\@else/', function () {
+            return '<?php } else { ?>';
+        }, $this->content);
+    }
+
+    /**
+     * Check for endif-statements.
+     *
+     * @return void
+     */
+    private function compileEndif() {
+        $this->content = preg_replace_callback('/\@endif/', function () {
+            return '<?php } ?>';
+        }, $this->content);
     }
 }
