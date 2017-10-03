@@ -31,7 +31,8 @@ class Rule
     /**
      * Set a URL validation rule.
      *
-     * @param  string $string
+     * @param string $string
+     *
      * @return bool
      */
     public static function url($string)
@@ -68,7 +69,8 @@ class Rule
     /**
      * Set a alphabetical only rule.
      *
-     * @param  string $string
+     * @param string $string
+     *
      * @return bool
      */
     public static function alpha($string)
@@ -79,7 +81,8 @@ class Rule
     /**
      * Set a digits only rule.
      *
-     * @param  string $string
+     * @param string $string
+     *
      * @return bool
      */
     public static function digits($string)
