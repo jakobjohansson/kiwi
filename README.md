@@ -109,7 +109,7 @@ The supported rules can be found in the `Rule` class. At the time of writing, th
 - required
 - email
 
-If validation fails, kiwi will redirect back with access to a `$errors` variable, containing all the data you need to display an informative error message!
+If validation fails, kiwi will redirect back with access to an `$errors` variable, containing all the data you need to display an informative error message!
 
 ## License
 Kiwi is MIT licensed, meaning you are free modify and do as you wish with the code.
