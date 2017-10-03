@@ -68,7 +68,8 @@ class ConditionalCompiler implements CompilerInterface
      *
      * @return void
      */
-    private function compileElse() {
+    private function compileElse()
+    {
         $this->content = preg_replace_callback('/\@else/', function () {
             return '<?php } else { ?>';
         }, $this->content);
@@ -79,7 +80,8 @@ class ConditionalCompiler implements CompilerInterface
      *
      * @return void
      */
-    private function compileEndif() {
+    private function compileEndif()
+    {
         $this->content = preg_replace_callback('/\@endif/', function () {
             return '<?php } ?>';
         }, $this->content);
