@@ -2,7 +2,7 @@
 
 namespace kiwi\Filesystem;
 
-class Filesystem
+class File
 {
     /**
      * Find a file in the project directory.
@@ -51,34 +51,5 @@ class Filesystem
     public static function remove($path)
     {
         return unlink($path);
-    }
-
-    /**
-     * Scan a folder of its files, skipping wildcards.
-     *
-     * @param string $folder
-     *
-     * @return array
-     */
-    public static function scanFolder($folder)
-    {
-        return array_diff(scandir($folder), ['.', '..']);
-    }
-
-    /**
-     * Recurse through a folder, removing everything inside it,
-     * as well as the folder itself.
-     *
-     * @param string $folder
-     *
-     * @return bool
-     */
-    public static function removeFolder($folder)
-    {
-        foreach (self::scanFolder($folder) as $file) {
-            is_dir("$folder/$file") ? self::removeFolder("$folder/$file") : self::remove("$folder/$file");
-        }
-
-        return $folder == getcwd() ? true : rmdir($folder);
     }
 }

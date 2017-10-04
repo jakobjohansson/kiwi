@@ -2,7 +2,7 @@
 
 namespace kiwi\Templating\Compilers;
 
-use kiwi\Filesystem\Filesystem;
+use kiwi\Filesystem\File;
 
 class IncludeCompiler implements CompilerInterface
 {
@@ -28,7 +28,7 @@ class IncludeCompiler implements CompilerInterface
     public function compile()
     {
         $this->content = preg_replace_callback($this->expression, function ($matches) {
-            return Filesystem::read(
+            return File::read(
                 str_replace('.', '/', $matches[1]) . '.view.php'
             );
         }, $this->content);

@@ -2,7 +2,7 @@
 
 namespace kiwi\Templating;
 
-use kiwi\Filesystem\Filesystem;
+use kiwi\Filesystem\File;
 use kiwi\Templating\Compilers\CompilerInterface;
 
 class Engine
@@ -49,7 +49,7 @@ class Engine
      */
     private function storePathContent()
     {
-        $this->content = Filesystem::read(
+        $this->content = File::read(
             str_replace('.', '/', $this->path) . '.view.php'
         );
     }
@@ -99,6 +99,6 @@ class Engine
      */
     private function writeCache()
     {
-        Filesystem::write($this->content, 'cache/' . $this->path . '.view.php');
+        File::write($this->content, 'cache/' . $this->path . '.view.php');
     }
 }

@@ -3,7 +3,7 @@
 namespace kiwi\Http;
 
 use kiwi\Templating\Engine;
-use kiwi\Filesystem\Filesystem;
+use kiwi\Filesystem\File;
 
 class View
 {
@@ -41,7 +41,7 @@ class View
      */
     public static function finish($path, array $extracts = [])
     {
-        if (env('DEVELOPMENT_MODE') || !Filesystem::find("cache/{$path}.view.php")) {
+        if (env('DEVELOPMENT_MODE') || !File::find("cache/{$path}.view.php")) {
             $engine = new Engine($path);
 
             $engine->compile();
